@@ -1,5 +1,5 @@
-import * as ExtensionDisplay from '../ExtensionDisplay/ExtensionDisplay.js'
-import * as SortExtensions from '../SortExtensions/SortExtensions.js'
+import * as ExtensionDisplay from '../ExtensionDisplay/ExtensionDisplay.ts'
+import * as SortExtensions from '../SortExtensions/SortExtensions.ts'
 
 const matchesParsedValue = (extension: any, parsedValue: any) => {
   if (extension && typeof extension.name === 'string') {
