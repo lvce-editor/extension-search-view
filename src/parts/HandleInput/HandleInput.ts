@@ -1,8 +1,8 @@
-import * as ErrorHandling from '../ErrorHandling/ErrorHandling.js'
-import * as GetFinalDeltaY from '../GetFinalDeltaY/GetFinalDeltaY.js'
-import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOfVisibleItems.js'
-import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.js'
-import * as SearchExtensions from '../SearchExtensions/SearchExtensions.js'
+import * as ErrorHandling from '../ErrorHandling/ErrorHandling.ts'
+import * as GetFinalDeltaY from '../GetFinalDeltaY/GetFinalDeltaY.ts'
+import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOfVisibleItems.ts'
+import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
+import * as SearchExtensions from '../SearchExtensions/SearchExtensions.ts'
 import { getListHeight } from '../GetListHeight/GetListHeight.ts'
 import * as ViewletExtensionsStrings from '../ExtensionStrings/ExtensionStrings.ts'
 
