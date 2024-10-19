@@ -3,7 +3,7 @@ import * as GetFinalDeltaY from '../GetFinalDeltaY/GetFinalDeltaY.js'
 import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOfVisibleItems.js'
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.js'
 import * as SearchExtensions from '../SearchExtensions/SearchExtensions.js'
-import { getListHeight } from '../GetListHeight/GetListHeight.ts
+import { getListHeight } from '../GetListHeight/GetListHeight.ts'
 import * as ViewletExtensionsStrings from '../ExtensionStrings/ExtensionStrings.ts'
 
 // TODO debounce
