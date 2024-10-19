@@ -28,6 +28,7 @@ export const handleInput = async (state: any, value: any) => {
         placeholder: ViewletExtensionsStrings.searchExtensionsInMarketPlace(),
       }
     }
+    // @ts-ignore
     const listHeight = getListHeight(state)
     const total = items.length
     const contentHeight = total * itemHeight
