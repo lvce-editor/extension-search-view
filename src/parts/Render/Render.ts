@@ -11,7 +11,7 @@ import * as RenderMethod from '../RenderMethod/RenderMethod.ts'
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
 
 const renderExtensions = {
-  isEqual(oldState, newState) {
+  isEqual(oldState: any, newState: any) {
     return (
       oldState.items === newState.items &&
       oldState.minLineY === newState.minLineY &&
@@ -20,7 +20,7 @@ const renderExtensions = {
       oldState.focusedIndex === newState.focusedIndex
     )
   },
-  apply(newState) {
+  apply(newState: any) {
     // TODO render extensions incrementally when scrolling
     const visibleExtensions = GetVisibleExtensions.getVisible(newState)
     const dom = GetExtensionsVirtualDom.getExtensionsVirtualDom(visibleExtensions)
@@ -29,7 +29,7 @@ const renderExtensions = {
 }
 
 const renderScrollBar = {
-  isEqual(oldState, newState) {
+  isEqual(oldState: any, newState: any) {
     return (
       oldState.negativeMargin === newState.negativeMargin &&
       oldState.deltaY === newState.deltaY &&
@@ -39,7 +39,7 @@ const renderScrollBar = {
       oldState.scrollBarActive === newState.scrollBarActive
     )
   },
-  apply(newState) {
+  apply(newState: any) {
     // @ts-ignore
     const listHeight = getListHeight(newState)
     const total = newState.items.length
@@ -63,28 +63,28 @@ const renderScrollBar = {
 }
 
 const renderMessage = {
-  isEqual(oldState, newState) {
+  isEqual(oldState: any, newState: any) {
     return oldState.message === newState.message
   },
-  apply(oldState, newState) {
+  apply(oldState: any, newState: any) {
     return [/* method */ RenderMethod.SetMessage, /* message */ newState.message]
   },
 }
 
 const renderSearchValue = {
-  isEqual(oldState, newState) {
+  isEqual(oldState: any, newState: any) {
     return oldState.searchValue === newState.searchValue
   },
-  apply(oldState, newState) {
+  apply(oldState: any, newState: any) {
     return [/* method */ RenderMethod.SetSearchValue, oldState.searchValue, newState.searchValue]
   },
 }
 
 const renderHeader = {
-  isEqual(oldState, newState) {
+  isEqual(oldState: any, newState: any) {
     return oldState.placeholder === newState.placeholder
   },
-  apply(newState) {
+  apply(newState: any) {
     const actions = [
       {
         type: ActionType.Button,
