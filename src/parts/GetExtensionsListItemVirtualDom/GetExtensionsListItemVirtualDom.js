@@ -1,8 +1,8 @@
-import * as AriaRoleDescription from '../AriaRoleDescription/AriaRoleDescription.js'
+import * as AriaRoleDescription from '../AriaRoleDescription/AriaRoleDescription.ts'
 import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
-import { text } from '../VirtualDomHelpers/VirtualDomHelpers.js'
+import { text } from '../VirtualDomHelpers/VirtualDomHelpers.ts'
 
 const listItemDetail = {
   type: VirtualDomElements.Div,

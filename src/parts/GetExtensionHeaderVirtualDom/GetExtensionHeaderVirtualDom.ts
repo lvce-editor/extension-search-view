@@ -1,11 +1,8 @@
 import * as ClassNames from '../ClassNames/ClassNames.ts'
-import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 import * as GetSearchFieldVirtualDom from '../GetSearchFieldVirtualDom/GetSearchFieldVirtualDom.js'
-import * as ActionType from '../ActionType/ActionType.ts'
-import * as MaskIcon from '../MaskIcon/MaskIcon.ts'
-import * as ViewletExtensionStrings from '../ViewletExtensions/ViewletExtensionsStrings.js'
+import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 
-export const getExtensionHeaderVirtualDom = (placeholder, actions) => {
+export const getExtensionHeaderVirtualDom = (placeholder: string, actions: any[]) => {
   return [
     {
       type: VirtualDomElements.Div,
