@@ -10,8 +10,6 @@ import * as Px from '../Px/Px.ts'
 import * as RenderMethod from '../RenderMethod/RenderMethod.ts'
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
 
-export const hasFunctionalRender = true
-
 const renderExtensions = {
   isEqual(oldState, newState) {
     return (
@@ -22,7 +20,7 @@ const renderExtensions = {
       oldState.focusedIndex === newState.focusedIndex
     )
   },
-  apply(oldState, newState) {
+  apply(newState) {
     // TODO render extensions incrementally when scrolling
     const visibleExtensions = GetVisibleExtensions.getVisible(newState)
     const dom = GetExtensionsVirtualDom.getExtensionsVirtualDom(visibleExtensions)
@@ -41,7 +39,7 @@ const renderScrollBar = {
       oldState.scrollBarActive === newState.scrollBarActive
     )
   },
-  apply(oldState, newState) {
+  apply(newState) {
     // @ts-ignore
     const listHeight = getListHeight(newState)
     const total = newState.items.length
@@ -86,7 +84,7 @@ const renderHeader = {
   isEqual(oldState, newState) {
     return oldState.placeholder === newState.placeholder
   },
-  apply(oldState, newState) {
+  apply(newState) {
     const actions = [
       {
         type: ActionType.Button,
@@ -105,7 +103,7 @@ const renderHeader = {
   },
 }
 
-export const render = [renderScrollBar, renderMessage, renderExtensions, renderSearchValue, renderHeader]
+const render = [renderScrollBar, renderMessage, renderExtensions, renderSearchValue, renderHeader]
 
 export const doRender = (oldState: any, newState: any) => {
   const commands: any = []
