@@ -1,4 +1,4 @@
-const getVisibleItem = (item, setSize, itemHeight, minLineY, relative, i, focusedIndex) => {
+const getVisibleItem = (item: any, setSize: number, itemHeight: number, minLineY: number, relative: number, i: number, focusedIndex: number) => {
   return {
     ...item,
     setSize,
@@ -8,7 +8,7 @@ const getVisibleItem = (item, setSize, itemHeight, minLineY, relative, i, focuse
   }
 }
 
-export const getVisible = (state) => {
+export const getVisible = (state: any) => {
   const { minLineY, maxLineY, items, itemHeight, deltaY, focusedIndex } = state
   const setSize = items.length
   const visible = []
