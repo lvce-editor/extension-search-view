@@ -1,7 +1,5 @@
-import * as AssetDir from '../AssetDir/AssetDir.ts'
+import * as GetRemoteUrl from '../GetRemoteUrl/GetRemoteUrl.ts'
 import * as Icon from '../Icon/Icon.ts'
-import * as Platform from '../Platform/Platform.ts'
-import * as PlatformType from '../PlatformType/PlatformType.ts'
 
 const isLanguageBasicsExtension = (extension: any) => {
   return extension.name && extension.name.startsWith('Language Basics')
@@ -24,13 +22,7 @@ export const getIcon = (extension: any) => {
     }
     return Icon.ExtensionDefaultIcon
   }
-  if (Platform.platform === PlatformType.Remote || Platform.platform === PlatformType.Electron) {
-    if (extension.builtin) {
-      return `${AssetDir.assetDir}/extensions/${extension.id}/${extension.icon}`
-    }
-    return `/remote/${extension.path}/${extension.icon}` // TODO support windows paths
-  }
-  return ''
+  return GetRemoteUrl.getRemoteUrl(extension)
 }
 
 const RE_PUBLISHER = /^[a-z\d\-]+/
