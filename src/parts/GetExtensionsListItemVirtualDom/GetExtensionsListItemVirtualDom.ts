@@ -33,7 +33,7 @@ const listItemAuthorName = {
   childCount: 1,
 }
 
-export const getExtensionListItemVirtualDom = (extension) => {
+export const getExtensionListItemVirtualDom = (extension: any) => {
   const { posInSet, setSize, top, icon, name, description, publisher, focused } = extension
   const dom: any[] = [
     {

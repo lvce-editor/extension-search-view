@@ -5,7 +5,7 @@ import * as GetExtensionsListItemVirtualDom from '../GetExtensionsListItemVirtua
 import * as ExtensionStrings from '../ExtensionStrings/ExtensionStrings.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 
-export const getExtensionsListVirtualDom = (visibleExtensions) => {
+export const getExtensionsListVirtualDom = (visibleExtensions: any[]) => {
   const dom = [
     {
       type: VirtualDomElements.Div,
