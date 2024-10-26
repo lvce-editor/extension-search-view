@@ -106,3 +106,13 @@ const renderHeader = {
 }
 
 export const render = [renderScrollBar, renderMessage, renderExtensions, renderSearchValue, renderHeader]
+
+export const doRender = (oldState: any, newState: any) => {
+  const commands: any = []
+  for (const item of render) {
+    if (!item.isEqual(oldState, newState)) {
+      commands.push(item.apply(oldState, newState))
+    }
+  }
+  return commands
+}
