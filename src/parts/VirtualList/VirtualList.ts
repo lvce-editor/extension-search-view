@@ -1,4 +1,5 @@
 import * as Assert from '../Assert/Assert.ts'
+import type { State } from '../State/State.ts'
 
 // @ts-ignore
 export const create = ({ itemHeight, headerHeight = 0, minimumSliderSize = 20 }) => {
@@ -27,7 +28,7 @@ const getListHeight = (height: number, headerHeight: number) => {
   return headerHeight
 }
 
-export const setDeltaY = (state: any, deltaY: number) => {
+export const setDeltaY = (state: State, deltaY: number) => {
   Assert.object(state)
   Assert.number(deltaY)
   const { itemHeight, items, height, headerHeight } = state
@@ -54,7 +55,7 @@ export const setDeltaY = (state: any, deltaY: number) => {
   }
 }
 
-export const handleWheel = (state: any, deltaMode: number, deltaY: number) => {
+export const handleWheel = (state: State, deltaMode: number, deltaY: number) => {
   Assert.object(state)
   Assert.number(deltaMode)
   Assert.number(deltaY)
