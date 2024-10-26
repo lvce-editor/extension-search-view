@@ -42,6 +42,7 @@ const renderScrollBar = {
     )
   },
   apply(oldState, newState) {
+    // @ts-ignore
     const listHeight = getListHeight(newState)
     const total = newState.items.length
     const contentHeight = total * newState.itemHeight

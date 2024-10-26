@@ -35,7 +35,7 @@ const listItemAuthorName = {
 
 export const getExtensionListItemVirtualDom = (extension) => {
   const { posInSet, setSize, top, icon, name, description, publisher, focused } = extension
-  const dom = [
+  const dom: any[] = [
     {
       type: VirtualDomElements.Div,
       role: AriaRoles.ListItem,
