@@ -1,5 +1,5 @@
 import * as AriaRoles from '../AriaRoles/AriaRoles.js'
-import * as ClassNames from '../ClassNames/ClassNames.js'
+import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.js'
 import * as GetExtensionsListItemVirtualDom from '../GetExtensionsListItemVirtualDom/GetExtensionsListItemVirtualDom.js'
 import * as ExtensionStrings from '../ExtensionStrings/ExtensionStrings.ts'

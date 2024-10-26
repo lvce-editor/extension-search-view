@@ -1,14 +1,14 @@
-import * as ActionType from '../ActionType/ActionType.js'
-import * as ClassNames from '../ClassNames/ClassNames.js'
+import * as ActionType from '../ActionType/ActionType.ts'
+import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as ViewletExtensionStrings from '../ExtensionStrings/ExtensionStrings.ts'
-import * as GetExtensionHeaderVirtualDom from '../GetExtensionHeaderVirtualDom/GetExtensionHeaderVirtualDom.js'
-import * as GetExtensionsVirtualDom from '../GetExtensionsVirtualDom/GetExtensionsVirtualDom.js'
+import * as GetExtensionHeaderVirtualDom from '../GetExtensionHeaderVirtualDom/GetExtensionHeaderVirtualDom.ts'
+import * as GetExtensionsVirtualDom from '../GetExtensionsVirtualDom/GetExtensionsVirtualDom.ts'
 import { getListHeight } from '../GetListHeight/GetListHeight.ts'
-import * as GetVisibleExtensions from '../GetVisibleExtensions/GetVisibleExtensions.js'
-import * as MaskIcon from '../MaskIcon/MaskIcon.js'
-import * as Px from '../Px/Px.js'
-import * as RenderMethod from '../RenderMethod/RenderMethod.js'
-import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.js'
+import * as GetVisibleExtensions from '../GetVisibleExtensions/GetVisibleExtensions.ts'
+import * as MaskIcon from '../MaskIcon/MaskIcon.ts'
+import * as Px from '../Px/Px.ts'
+import * as RenderMethod from '../RenderMethod/RenderMethod.ts'
+import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
 
 export const hasFunctionalRender = true
 

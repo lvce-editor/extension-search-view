@@ -1,6 +1,6 @@
 import * as AriaRoleDescription from '../AriaRoleDescription/AriaRoleDescription.js'
 import * as AriaRoles from '../AriaRoles/AriaRoles.js'
-import * as ClassNames from '../ClassNames/ClassNames.js'
+import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.js'
 import { text } from '../VirtualDomHelpers/VirtualDomHelpers.js'
 
