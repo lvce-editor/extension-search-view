@@ -3,12 +3,17 @@ import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as ViewletExtensionStrings from '../ExtensionStrings/ExtensionStrings.ts'
 import * as GetExtensionHeaderVirtualDom from '../GetExtensionHeaderVirtualDom/GetExtensionHeaderVirtualDom.ts'
 import * as GetExtensionsVirtualDom from '../GetExtensionsVirtualDom/GetExtensionsVirtualDom.ts'
-import { getListHeight } from '../GetListHeight/GetListHeight.ts'
 import * as GetVisibleExtensions from '../GetVisibleExtensions/GetVisibleExtensions.ts'
 import * as MaskIcon from '../MaskIcon/MaskIcon.ts'
 import * as Px from '../Px/Px.ts'
 import * as RenderMethod from '../RenderMethod/RenderMethod.ts'
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
+import type { State } from '../State/State.ts'
+
+export const getListHeight = (state: State) => {
+  const { height, headerHeight } = state
+  return height - headerHeight
+}
 
 const renderExtensions = {
   isEqual(oldState: any, newState: any) {

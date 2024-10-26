@@ -10,4 +10,3 @@ export const getListHeight = (itemsLength: number, itemHeight: number, maxHeight
   const totalHeight = itemsLength * itemHeight
   return Math.min(totalHeight, maxHeight)
 }
-2
