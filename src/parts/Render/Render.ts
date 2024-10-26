@@ -25,7 +25,7 @@ const renderExtensions = {
       oldState.focusedIndex === newState.focusedIndex
     )
   },
-  apply(newState: any) {
+  apply(oldState: any, newState: any) {
     // TODO render extensions incrementally when scrolling
     const visibleExtensions = GetVisibleExtensions.getVisible(newState)
     const dom = GetExtensionsVirtualDom.getExtensionsVirtualDom(visibleExtensions)
@@ -44,7 +44,7 @@ const renderScrollBar = {
       oldState.scrollBarActive === newState.scrollBarActive
     )
   },
-  apply(newState: any) {
+  apply(oldState: any, newState: any) {
     // @ts-ignore
     const listHeight = getListHeight(newState)
     const total = newState.items.length
@@ -89,7 +89,7 @@ const renderHeader = {
   isEqual(oldState: any, newState: any) {
     return oldState.placeholder === newState.placeholder
   },
-  apply(newState: any) {
+  apply(oldState: any, newState: any) {
     const actions = [
       {
         type: ActionType.Button,
