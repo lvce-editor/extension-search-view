@@ -1,5 +1,5 @@
 import { expect, test } from '@jest/globals'
-import * as ParseExtensionSearchValue from '../src/parts/ParseExtensionSearchValue/ParseExtensionSearchValue.js'
+import * as ParseExtensionSearchValue from '../src/parts/ParseExtensionSearchValue/ParseExtensionSearchValue.ts'
 
 test('parseValue - @installed', () => {
   expect(ParseExtensionSearchValue.parseValue('@installed abc')).toMatchObject({
