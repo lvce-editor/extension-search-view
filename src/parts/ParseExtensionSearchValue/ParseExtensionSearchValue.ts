@@ -1,9 +1,10 @@
 import * as ExtensionFilterParameter from '../ExtensionFilterParameter/ExtensionFilterParameter.ts'
+import type { ParsedExtensionSearchValue } from '../ParsedExtensionSearchValue/ParsedExtensionSearchValue.ts'
 
 const RE_PARAM = /@\w+/g
 
 // TODO test sorting and filtering
-export const parseValue = (value: string) => {
+export const parseValue = (value: string): ParsedExtensionSearchValue => {
   const parameters = Object.create(null)
   // TODO this is not very functional code (assignment)
   const replaced = value.replaceAll(RE_PARAM, (match, by, order) => {
