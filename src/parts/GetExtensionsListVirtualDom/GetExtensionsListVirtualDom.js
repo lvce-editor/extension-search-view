@@ -1,9 +1,9 @@
-import * as AriaRoles from '../AriaRoles/AriaRoles.js'
+import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.js'
 import * as GetExtensionsListItemVirtualDom from '../GetExtensionsListItemVirtualDom/GetExtensionsListItemVirtualDom.js'
 import * as ExtensionStrings from '../ExtensionStrings/ExtensionStrings.ts'
-import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.js'
+import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 
 export const getExtensionsListVirtualDom = (visibleExtensions) => {
   const dom = [

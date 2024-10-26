@@ -1,5 +1,5 @@
 import * as ClassNames from '../ClassNames/ClassNames.ts'
-import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.js'
+import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 import * as GetSearchFieldVirtualDom from '../GetSearchFieldVirtualDom/GetSearchFieldVirtualDom.js'
 import * as ActionType from '../ActionType/ActionType.ts'
 import * as MaskIcon from '../MaskIcon/MaskIcon.ts'
