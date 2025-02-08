@@ -5,7 +5,7 @@ export interface State {
   readonly deltaY: number
   readonly focusedIndex: number
   readonly itemHeight: number
-  readonly allExtensions: any[]
+  readonly allExtensions: readonly any[]
   readonly minimumSliderSize: number
   readonly height: number
   readonly scrollBarHeight: number
