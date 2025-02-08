@@ -9,7 +9,7 @@ const isThemeExtension = (extension: any) => {
   return extension.name && extension.name.endsWith(' Theme')
 }
 
-export const getIcon = (extension: any) => {
+export const getIcon = (extension: any, platform: number) => {
   if (!extension) {
     return Icon.ExtensionDefaultIcon
   }
@@ -22,7 +22,7 @@ export const getIcon = (extension: any) => {
     }
     return Icon.ExtensionDefaultIcon
   }
-  return GetRemoteUrl.getRemoteUrl(extension)
+  return GetRemoteUrl.getRemoteUrl(extension, platform)
 }
 
 const RE_PUBLISHER = /^[a-z\d\-]+/
