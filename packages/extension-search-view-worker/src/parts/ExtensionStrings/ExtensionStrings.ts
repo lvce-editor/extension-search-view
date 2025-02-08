@@ -18,50 +18,50 @@ const UiStrings = {
   Installed: 'Installed',
 }
 
-export const noExtensionsFound = () => {
+export const noExtensionsFound = (): string => {
   return I18nString.i18nString(UiStrings.NoExtensionsFound)
 }
 
-export const filter = () => {
+export const filter = (): string => {
   return I18nString.i18nString(UiStrings.Filter)
 }
 
-export const refresh = () => {
+export const refresh = (): string => {
   return I18nString.i18nString(UiStrings.Refresh)
 }
 
-export const extensions = () => {
+export const extensions = (): string => {
   return I18nString.i18nString(UiStrings.Extensions)
 }
 
-export const clearExtensionSearchResults = () => {
+export const clearExtensionSearchResults = (): string => {
   return I18nString.i18nString(UiStrings.ClearExtensionSearchResults)
 }
 
-export const enable = () => {
+export const enable = (): string => {
   return I18nString.i18nString(UiStrings.Enable)
 }
 
-export const disable = () => {
+export const disable = (): string => {
   return I18nString.i18nString(UiStrings.Disable)
 }
 
-export const uninstall = () => {
+export const uninstall = (): string => {
   return I18nString.i18nString(UiStrings.Uninstall)
 }
 
-export const installAnotherVersion = () => {
+export const installAnotherVersion = (): string => {
   return I18nString.i18nString(UiStrings.InstallAnotherVersion)
 }
 
-export const searchExtensionsInMarketPlace = () => {
+export const searchExtensionsInMarketPlace = (): string => {
   return I18nString.i18nString(UiStrings.SearchExtensionsInMarketplace)
 }
 
-export const viewsAndMoreActions = () => {
+export const viewsAndMoreActions = (): string => {
   return I18nString.i18nString(UiStrings.ViewsAndMoreActions)
 }
 
-export const installed = () => {
+export const installed = (): string => {
   return I18nString.i18nString(UiStrings.Installed)
 }
