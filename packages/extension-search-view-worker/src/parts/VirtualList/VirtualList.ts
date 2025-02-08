@@ -2,7 +2,15 @@ import type { State } from '../State/State.ts'
 import * as Assert from '../Assert/Assert.ts'
 
 // @ts-ignore
-export const create = ({ itemHeight, headerHeight = 0, minimumSliderSize = 20 }) => {
+export const create = ({
+  itemHeight,
+  headerHeight = 0,
+  minimumSliderSize = 20,
+}: {
+  readonly itemHeight: number
+  readonly headerHeight: number
+  readonly minimumSliderSize: number
+}) => {
   return {
     deltaY: 0,
     minLineY: 0,

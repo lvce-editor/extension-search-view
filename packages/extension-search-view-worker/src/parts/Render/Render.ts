@@ -10,13 +10,13 @@ import * as Px from '../Px/Px.ts'
 import * as RenderMethod from '../RenderMethod/RenderMethod.ts'
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
 
-export const getListHeight = (state: State) => {
+export const getListHeight = (state: State): number => {
   const { height, headerHeight } = state
   return height - headerHeight
 }
 
 const renderExtensions = {
-  isEqual(oldState: any, newState: any) {
+  isEqual(oldState: any, newState: any): boolean {
     return (
       oldState.items === newState.items &&
       oldState.minLineY === newState.minLineY &&
@@ -25,7 +25,7 @@ const renderExtensions = {
       oldState.focusedIndex === newState.focusedIndex
     )
   },
-  apply(oldState: any, newState: any) {
+  apply(oldState: any, newState: any): any {
     // TODO render extensions incrementally when scrolling
     const visibleExtensions = GetVisibleExtensions.getVisible(newState)
     const dom = GetExtensionsVirtualDom.getExtensionsVirtualDom(visibleExtensions)
@@ -34,7 +34,7 @@ const renderExtensions = {
 }
 
 const renderScrollBar = {
-  isEqual(oldState: any, newState: any) {
+  isEqual(oldState: any, newState: any): boolean {
     return (
       oldState.negativeMargin === newState.negativeMargin &&
       oldState.deltaY === newState.deltaY &&
@@ -44,7 +44,7 @@ const renderScrollBar = {
       oldState.scrollBarActive === newState.scrollBarActive
     )
   },
-  apply(oldState: any, newState: any) {
+  apply(oldState: any, newState: any): any {
     // @ts-ignore
     const listHeight = getListHeight(newState)
     const total = newState.items.length
@@ -54,7 +54,7 @@ const renderScrollBar = {
       newState.deltaY,
       newState.finalDeltaY,
       newState.height - newState.headerHeight,
-      scrollBarHeight
+      scrollBarHeight,
     )
     const roundedScrollBarY = Math.round(scrollBarY)
     const heightString = Px.px(scrollBarHeight)
@@ -68,28 +68,28 @@ const renderScrollBar = {
 }
 
 const renderMessage = {
-  isEqual(oldState: any, newState: any) {
+  isEqual(oldState: any, newState: any): boolean {
     return oldState.message === newState.message
   },
-  apply(oldState: any, newState: any) {
+  apply(oldState: any, newState: any): any {
     return [/* method */ RenderMethod.SetMessage, /* message */ newState.message]
   },
 }
 
 const renderSearchValue = {
-  isEqual(oldState: any, newState: any) {
+  isEqual(oldState: any, newState: any): boolean {
     return oldState.searchValue === newState.searchValue
   },
-  apply(oldState: any, newState: any) {
+  apply(oldState: any, newState: any): any {
     return [/* method */ RenderMethod.SetSearchValue, oldState.searchValue, newState.searchValue]
   },
 }
 
 const renderHeader = {
-  isEqual(oldState: any, newState: any) {
+  isEqual(oldState: any, newState: any): boolean {
     return oldState.placeholder === newState.placeholder
   },
-  apply(oldState: any, newState: any) {
+  apply(oldState: any, newState: any): any {
     const actions = [
       {
         type: ActionType.Button,
@@ -110,7 +110,7 @@ const renderHeader = {
 
 const render = [renderScrollBar, renderMessage, renderExtensions, renderSearchValue, renderHeader]
 
-export const doRender = (oldState: any, newState: any) => {
+export const doRender = (oldState: any, newState: any): any => {
   const commands: any = []
   for (const item of render) {
     if (!item.isEqual(oldState, newState)) {
