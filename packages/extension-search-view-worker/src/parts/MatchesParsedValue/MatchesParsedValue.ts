@@ -1,4 +1,4 @@
-export const matchesParsedValue = (extension: any, parsedValue: any) => {
+export const matchesParsedValue = (extension: any, parsedValue: any): boolean => {
   if (extension && typeof extension.name === 'string') {
     const extensionNameLower = extension.name.toLowerCase()
     return extensionNameLower.includes(parsedValue.query)

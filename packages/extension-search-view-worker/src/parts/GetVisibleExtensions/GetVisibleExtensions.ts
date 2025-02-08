@@ -1,6 +1,6 @@
 import type { State } from '../State/State.ts'
 
-const getVisibleItem = (item: any, setSize: number, itemHeight: number, minLineY: number, relative: number, i: number, focusedIndex: number) => {
+const getVisibleItem = (item: any, setSize: number, itemHeight: number, minLineY: number, relative: number, i: number, focusedIndex: number): any => {
   return {
     ...item,
     setSize,
@@ -10,7 +10,7 @@ const getVisibleItem = (item: any, setSize: number, itemHeight: number, minLineY
   }
 }
 
-export const getVisible = (state: State) => {
+export const getVisible = (state: State): readonly any[] => {
   const { minLineY, maxLineY, items, itemHeight, deltaY, focusedIndex } = state
   const setSize = items.length
   const visible = []

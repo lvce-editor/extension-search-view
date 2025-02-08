@@ -55,7 +55,7 @@ export const handleInput = async (state: State, value: string): Promise<State> =
     // TODO handle out of order responses (a bit complicated)
     // for now just assume everything comes back in order
   } catch (error) {
-    await ErrorHandling.handleError(error)
+    ErrorHandling.handleError(error)
     return {
       ...state,
       searchValue: value,
