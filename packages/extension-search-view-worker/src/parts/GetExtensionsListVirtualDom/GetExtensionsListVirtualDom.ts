@@ -5,7 +5,7 @@ import * as ExtensionStrings from '../ExtensionStrings/ExtensionStrings.ts'
 import * as GetExtensionsListItemVirtualDom from '../GetExtensionsListItemVirtualDom/GetExtensionsListItemVirtualDom.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 
-export const getExtensionsListVirtualDom = (visibleExtensions: any[]) => {
+export const getExtensionsListVirtualDom = (visibleExtensions: readonly any[]): readonly any[] => {
   const dom = [
     {
       type: VirtualDomElements.Div,
