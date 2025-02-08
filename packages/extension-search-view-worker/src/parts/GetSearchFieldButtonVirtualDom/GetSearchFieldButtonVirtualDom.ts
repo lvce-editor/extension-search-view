@@ -1,5 +1,5 @@
-import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
+import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 
 export const getSearchFieldButtonVirtualDom = (button: any) => {
   const { icon, checked, title } = button

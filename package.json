@@ -2,48 +2,30 @@
   "name": "@lvce-editor/extension-search-view",
   "version": "0.0.0-dev",
   "description": "",
-  "main": "src/extensionSearchViewWorkerMain.ts",
+  "keywords": [],
+  "license": "MIT",
+  "author": "",
   "type": "module",
+  "main": "src/extensionSearchViewWorkerMain.ts",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "lint": "eslint .",
-    "test": "lerna run test",
-    "test:watch": "node --unhandled-rejections=warn --experimental-vm-modules ./node_modules/jest/bin/jest.js --watch",
-    "type-check": "tsc -b",
     "build": "node scripts/build.js",
     "build:watch": "nodemon",
     "format": "prettier --write .",
-    "postinstall": "lerna bootstrap --ci"
+    "lint": "eslint .",
+    "postinstall": "lerna bootstrap --ci",
+    "test": "lerna run test",
+    "test:watch": "node --unhandled-rejections=warn --experimental-vm-modules ./node_modules/jest/bin/jest.js --watch",
+    "type-check": "tsc -b"
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
-  "jest": {
-    "injectGlobals": false,
-    "extensionsToTreatAsEsm": [
-      ".ts"
+  "nodemonConfig": {
+    "watch": [
+      "src"
     ],
-    "moduleNameMapper": {
-      "^(\\.{1,2}/.*)\\.js$": "$1"
-    },
-    "transform": {
-      "^.+\\.tsx?$": [
-        "ts-jest",
-        {
-          "useESM": true
-        }
-      ]
-    },
-    "collectCoverage": true,
-    "coverageThreshold": {
-      "global": {
-        "branches": 17,
-        "functions": 20,
-        "lines": 50
-      }
-    }
+    "ext": "ts,js",
+    "exec": "node scripts/build.js"
   },
   "xo": {
     "rules": {
@@ -102,6 +84,36 @@
       "distmin"
     ]
   },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 150
+  },
+  "jest": {
+    "injectGlobals": false,
+    "extensionsToTreatAsEsm": [
+      ".ts"
+    ],
+    "moduleNameMapper": {
+      "^(\\.{1,2}/.*)\\.js$": "$1"
+    },
+    "transform": {
+      "^.+\\.tsx?$": [
+        "ts-jest",
+        {
+          "useESM": true
+        }
+      ]
+    },
+    "collectCoverage": true,
+    "coverageThreshold": {
+      "global": {
+        "branches": 17,
+        "functions": 20,
+        "lines": 50
+      }
+    }
+  },
   "devDependencies": {
     "@babel/preset-typescript": "^7.26.0",
     "@lerna/legacy-package-management": "^8.1.9",
@@ -126,17 +138,5 @@
     "rollup": "^4.32.0",
     "ts-jest": "^29.2.5",
     "typescript": "^5.7.3"
-  },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true,
-    "printWidth": 150
-  },
-  "nodemonConfig": {
-    "watch": [
-      "src"
-    ],
-    "ext": "ts,js",
-    "exec": "node scripts/build.js"
   }
 }

@@ -1,3 +1,4 @@
+import type { State } from '../State/State.ts'
 import * as ActionType from '../ActionType/ActionType.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as ViewletExtensionStrings from '../ExtensionStrings/ExtensionStrings.ts'
@@ -8,7 +9,6 @@ import * as MaskIcon from '../MaskIcon/MaskIcon.ts'
 import * as Px from '../Px/Px.ts'
 import * as RenderMethod from '../RenderMethod/RenderMethod.ts'
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
-import type { State } from '../State/State.ts'
 
 export const getListHeight = (state: State) => {
   const { height, headerHeight } = state

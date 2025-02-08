@@ -1,5 +1,5 @@
-import * as Assert from '../Assert/Assert.ts'
 import type { State } from '../State/State.ts'
+import * as Assert from '../Assert/Assert.ts'
 
 // @ts-ignore
 export const create = ({ itemHeight, headerHeight = 0, minimumSliderSize = 20 }) => {

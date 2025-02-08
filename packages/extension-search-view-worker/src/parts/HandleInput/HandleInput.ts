@@ -1,12 +1,12 @@
+import type { State } from '../State/State.ts'
 import * as ErrorHandling from '../ErrorHandling/ErrorHandling.ts'
 import * as ViewletExtensionsStrings from '../ExtensionStrings/ExtensionStrings.ts'
 import * as GetFinalDeltaY from '../GetFinalDeltaY/GetFinalDeltaY.ts'
 import { getListHeight } from '../GetListHeight/GetListHeight.ts'
 import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOfVisibleItems.ts'
-import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
 import * as Platform from '../Platform/Platform.ts'
+import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
 import * as SearchExtensions from '../SearchExtensions/SearchExtensions.ts'
-import type { State } from '../State/State.ts'
 
 // TODO debounce
 export const handleInput = async (state: State, value: string): Promise<State> => {
