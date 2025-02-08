@@ -8,9 +8,9 @@ export const getSearchFieldVirtualDom = (
   placeholder: string,
   onInput: string,
   insideButtons: any,
-  outsideButtons: any[],
-  onFocus = ''
-) => {
+  outsideButtons: readonly any[],
+  onFocus = '',
+): readonly any[] => {
   const dom = [
     {
       type: VirtualDomElements.Div,
