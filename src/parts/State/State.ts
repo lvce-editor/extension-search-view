@@ -14,4 +14,5 @@ export interface State {
   readonly searchValue: string
   readonly placeholder: string
   readonly headerHeight: number
+  readonly platform: number
 }

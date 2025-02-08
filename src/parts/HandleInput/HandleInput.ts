@@ -4,16 +4,17 @@ import * as GetFinalDeltaY from '../GetFinalDeltaY/GetFinalDeltaY.ts'
 import { getListHeight } from '../GetListHeight/GetListHeight.ts'
 import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOfVisibleItems.ts'
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
+import * as Platform from '../Platform/Platform.ts'
 import * as SearchExtensions from '../SearchExtensions/SearchExtensions.ts'
 import type { State } from '../State/State.ts'
 
 // TODO debounce
 export const handleInput = async (state: State, value: string): Promise<State> => {
   try {
-    const { allExtensions, itemHeight, minimumSliderSize, height } = state
+    const { allExtensions, itemHeight, minimumSliderSize, height, platform } = state
     // TODO cancel ongoing requests
     // TODO handle errors
-    const items = await SearchExtensions.searchExtensions(allExtensions, value)
+    const items = await SearchExtensions.searchExtensions(allExtensions, value, platform || Platform.platform)
     if (items.length === 0) {
       return {
         ...state,

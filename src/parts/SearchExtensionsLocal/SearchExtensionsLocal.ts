@@ -2,7 +2,7 @@ import * as ExtensionDisplay from '../ExtensionDisplay/ExtensionDisplay.ts'
 import * as MatchesParsedValue from '../MatchesParsedValue/MatchesParsedValue.ts'
 import * as SortExtensions from '../SortExtensions/SortExtensions.ts'
 
-export const getExtensions = async (extensions: any, parsedValue: any) => {
+export const getExtensions = async (extensions: any, parsedValue: any, platform: number) => {
   const filteredExtensions = []
   for (const extension of extensions) {
     if (MatchesParsedValue.matchesParsedValue(extension, parsedValue)) {
@@ -10,7 +10,7 @@ export const getExtensions = async (extensions: any, parsedValue: any) => {
         name: ExtensionDisplay.getName(extension),
         id: ExtensionDisplay.getId(extension),
         publisher: ExtensionDisplay.getPublisher(extension),
-        icon: ExtensionDisplay.getIcon(extension),
+        icon: ExtensionDisplay.getIcon(extension, platform),
         description: ExtensionDisplay.getDescription(extension),
       })
     }
