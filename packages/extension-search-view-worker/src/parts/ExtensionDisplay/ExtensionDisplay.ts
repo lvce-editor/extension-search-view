@@ -25,7 +25,7 @@ export const getIcon = (extension: any, platform: number): string => {
   return GetRemoteUrl.getRemoteUrl(extension, platform)
 }
 
-const RE_PUBLISHER = /^[a-z\d\-]+/
+const RE_PUBLISHER = /^[a-z\d-]+/
 
 // TODO handle case when extension is of type number|array|null|string
 export const getPublisher = (extension: any): string => {
