@@ -29,14 +29,14 @@ export const create = ({
   }
 }
 
-const getListHeight = (height: number, headerHeight: number) => {
+const getListHeight = (height: number, headerHeight: number): number => {
   if (headerHeight) {
     return height - headerHeight
   }
   return headerHeight
 }
 
-export const setDeltaY = (state: State, deltaY: number) => {
+export const setDeltaY = (state: State, deltaY: number): any => {
   Assert.object(state)
   Assert.number(deltaY)
   const { itemHeight, items, height, headerHeight } = state
@@ -63,7 +63,7 @@ export const setDeltaY = (state: State, deltaY: number) => {
   }
 }
 
-export const handleWheel = (state: State, deltaMode: number, deltaY: number) => {
+export const handleWheel = (state: State, deltaMode: number, deltaY: number): any => {
   Assert.object(state)
   Assert.number(deltaMode)
   Assert.number(deltaY)
