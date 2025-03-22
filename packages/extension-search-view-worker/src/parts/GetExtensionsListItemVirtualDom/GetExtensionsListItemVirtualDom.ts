@@ -1,39 +1,40 @@
+import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import * as AriaRoleDescription from '../AriaRoleDescription/AriaRoleDescription.ts'
 import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 import { text } from '../VirtualDomHelpers/VirtualDomHelpers.ts'
 
-const listItemDetail = {
+const listItemDetail: VirtualDomNode = {
   type: VirtualDomElements.Div,
   className: ClassNames.ExtensionListItemDetail,
   childCount: 3,
 }
-const listItemName = {
+const listItemName: VirtualDomNode = {
   type: VirtualDomElements.Div,
   className: ClassNames.ExtensionListItemName,
   childCount: 1,
 }
 
-const listItemDescription = {
+const listItemDescription: VirtualDomNode = {
   type: VirtualDomElements.Div,
   className: ClassNames.ExtensionListItemDescription,
   childCount: 1,
 }
 
-const listItemFooter = {
+const listItemFooter: VirtualDomNode = {
   type: VirtualDomElements.Div,
   className: ClassNames.ExtensionListItemFooter,
   childCount: 2,
 }
 
-const listItemAuthorName = {
+const listItemAuthorName: VirtualDomNode = {
   type: VirtualDomElements.Div,
   className: ClassNames.ExtensionListItemAuthorName,
   childCount: 1,
 }
 
-export const getExtensionListItemVirtualDom = (extension: any): any[] => {
+export const getExtensionListItemVirtualDom = (extension: any): readonly VirtualDomNode[] => {
   const { posInSet, setSize, top, icon, name, description, publisher, focused } = extension
   const dom: any[] = [
     {
