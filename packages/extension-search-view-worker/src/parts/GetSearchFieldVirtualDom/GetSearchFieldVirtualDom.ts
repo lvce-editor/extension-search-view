@@ -1,3 +1,4 @@
+import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as GetSearchFieldButtonVirtualDom from '../GetSearchFieldButtonVirtualDom/GetSearchFieldButtonVirtualDom.ts'
@@ -10,7 +11,7 @@ export const getSearchFieldVirtualDom = (
   insideButtons: any,
   outsideButtons: readonly any[],
   onFocus = '',
-): readonly any[] => {
+): readonly VirtualDomNode[] => {
   const dom = [
     {
       type: VirtualDomElements.Div,

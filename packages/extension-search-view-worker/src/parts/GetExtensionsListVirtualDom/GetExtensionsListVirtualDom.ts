@@ -1,3 +1,4 @@
+import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
@@ -5,8 +6,8 @@ import * as ExtensionStrings from '../ExtensionStrings/ExtensionStrings.ts'
 import * as GetExtensionsListItemVirtualDom from '../GetExtensionsListItemVirtualDom/GetExtensionsListItemVirtualDom.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 
-export const getExtensionsListVirtualDom = (visibleExtensions: readonly any[]): readonly any[] => {
-  const dom = [
+export const getExtensionsListVirtualDom = (visibleExtensions: readonly any[]): readonly VirtualDomNode[] => {
+  const dom: readonly VirtualDomNode[] = [
     {
       type: VirtualDomElements.Div,
       className: ClassNames.ListItems,
