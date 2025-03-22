@@ -10,7 +10,7 @@ import * as Px from '../Px/Px.ts'
 import * as RenderMethod from '../RenderMethod/RenderMethod.ts'
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
 
-export const getListHeight = (state: State): number => {
+const getListHeight = (state: State): number => {
   const { height, headerHeight } = state
   return height - headerHeight
 }
