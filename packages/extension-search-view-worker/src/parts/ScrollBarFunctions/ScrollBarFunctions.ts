@@ -4,5 +4,3 @@ const getScrollBarOffset = (delta: number, finalDelta: number, size: number, scr
 }
 
 export const getScrollBarY = getScrollBarOffset
-
-export * from '../GetScrollBarSize/GetScrollBarSize.ts'
