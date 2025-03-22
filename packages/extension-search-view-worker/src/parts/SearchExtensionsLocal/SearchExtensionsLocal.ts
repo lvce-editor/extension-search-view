@@ -1,4 +1,5 @@
 import * as ExtensionDisplay from '../ExtensionDisplay/ExtensionDisplay.ts'
+import { getPublisher } from '../GetPublisher/GetPublisher.ts'
 import * as MatchesParsedValue from '../MatchesParsedValue/MatchesParsedValue.ts'
 import * as SortExtensions from '../SortExtensions/SortExtensions.ts'
 
@@ -9,7 +10,7 @@ export const getExtensions = async (extensions: any, parsedValue: any, platform:
       filteredExtensions.push({
         name: ExtensionDisplay.getName(extension),
         id: ExtensionDisplay.getId(extension),
-        publisher: ExtensionDisplay.getPublisher(extension),
+        publisher: getPublisher(extension),
         icon: ExtensionDisplay.getIcon(extension, platform),
         description: ExtensionDisplay.getDescription(extension),
       })
