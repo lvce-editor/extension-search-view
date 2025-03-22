@@ -4,6 +4,7 @@ import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as ViewletExtensionStrings from '../ExtensionStrings/ExtensionStrings.ts'
 import * as GetExtensionHeaderVirtualDom from '../GetExtensionHeaderVirtualDom/GetExtensionHeaderVirtualDom.ts'
 import * as GetExtensionsVirtualDom from '../GetExtensionsVirtualDom/GetExtensionsVirtualDom.ts'
+import { getScrollBarSize } from '../GetScrollBarSize/GetScrollBarSize.ts'
 import * as GetVisibleExtensions from '../GetVisibleExtensions/GetVisibleExtensions.ts'
 import * as MaskIcon from '../MaskIcon/MaskIcon.ts'
 import * as Px from '../Px/Px.ts'
@@ -49,7 +50,7 @@ const renderScrollBar = {
     const listHeight = getListHeight(newState)
     const total = newState.items.length
     const contentHeight = total * newState.itemHeight
-    const scrollBarHeight = ScrollBarFunctions.getScrollBarSize(listHeight, contentHeight, newState.minimumSliderSize)
+    const scrollBarHeight = getScrollBarSize(listHeight, contentHeight, newState.minimumSliderSize)
     const scrollBarY = ScrollBarFunctions.getScrollBarY(
       newState.deltaY,
       newState.finalDeltaY,
