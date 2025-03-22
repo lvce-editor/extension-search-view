@@ -6,7 +6,6 @@ import { getListHeight } from '../GetListHeight/GetListHeight.ts'
 import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOfVisibleItems.ts'
 import { getScrollBarSize } from '../GetScrollBarSize/GetScrollBarSize.ts'
 import * as Platform from '../Platform/Platform.ts'
-import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
 import * as SearchExtensions from '../SearchExtensions/SearchExtensions.ts'
 
 // TODO debounce
