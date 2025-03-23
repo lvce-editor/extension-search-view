@@ -5,6 +5,8 @@ import * as FocusIndex from '../FocusIndex/FocusIndex.ts'
 import * as GetKeyBindings from '../GetKeyBindings/GetKeyBindings.ts'
 import * as HandleBlur from '../HandleBlur/HandleBlur.ts'
 import * as HandleContextMenu from '../HandleContextMenu/HandleContextMenu.ts'
+import * as HandleDisable from '../HandleDisable/HandleDisable.ts'
+import * as HandleEnable from '../HandleEnable/HandleEnable.ts'
 import * as HandleFocus from '../HandleFocus/HandleFocus.ts'
 import * as HandleInstall from '../HandleInstall/HandleInstall.ts'
 import * as LoadContent from '../LoadContent/LoadContent.ts'
@@ -27,8 +29,10 @@ export const commandMap = {
   'SearchExtensions.handleInstall': HandleInstall.handleInstall,
   'SearchExtensions.searchExtensions': SearchExtensions.searchExtensions,
   'SearchExtensions.openSuggest': OpenSuggest.openSuggest,
+  'SearchExtensions.handleEnable': HandleEnable.handleEnable,
   'SearchExtensions.closeSuggest': CloseSuggest.closeSuggest,
   'SearchExtensions.focusIndex': FocusIndex.focusIndex,
+  'SearchExtensions.handleDisable': HandleDisable.handleDisable,
   'SearchExtensions.toggleSuggest': ToggleSuggest.toggleSuggest,
   'SearchExtensions.setDeltaY': SetDeltaY.setDeltaY,
   'SearchExtensions.handleContextMenu': HandleContextMenu.handleContextMenu,
