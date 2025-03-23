@@ -12,11 +12,6 @@ import * as MaskIcon from '../MaskIcon/MaskIcon.ts'
 import * as RenderMethod from '../RenderMethod/RenderMethod.ts'
 import * as RenderScrollBar from '../RenderScrollBar/RenderScrollBar.ts'
 
-const getListHeight = (state: State): number => {
-  const { height, headerHeight } = state
-  return height - headerHeight
-}
-
 const renderExtensions = {
   isEqual: DiffItems.isEqual,
   apply(oldState: any, newState: any): any {
