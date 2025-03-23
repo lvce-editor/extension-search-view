@@ -20,6 +20,7 @@ import * as HandleEnable from '../HandleEnable/HandleEnable.ts'
 import * as HandleFocus from '../HandleFocus/HandleFocus.ts'
 import * as HandleInstall from '../HandleInstall/HandleInstall.ts'
 import * as HandleScrollBarCaptureLost from '../HandleScrollBarCaptureLost/HandleScrollBarCaptureLost.ts'
+import * as HandleScrollBarMove from '../HandleScrollBarMove/HandleScrollBarMove.ts'
 import * as HandleWheel from '../HandleWheel/HandleWheel.ts'
 import * as LoadContent from '../LoadContent/LoadContent.ts'
 import * as OpenSuggest from '../OpenSuggest/OpenSuggest.ts'
@@ -43,7 +44,6 @@ export const commandMap = {
   'SearchExtensions.focusNextPage': FocusNextPage.focusNextPage,
   'SearchExtensions.focusPreviousPage': FocusPreviousPage.focusPreviousPage,
   'SearchExtensions.getActions': GetActions.getActions,
-  'SearchExtensions.scrollDown': ScrollDown.scrollDown,
   'SearchExtensions.getKeyBindings': GetKeyBindings.getKeyBindings,
   'SearchExtensions.handleBlur': HandleBlur.handleBlur,
   'SearchExtensions.handleClick': HandleClick.handleClick,
@@ -52,14 +52,16 @@ export const commandMap = {
   'SearchExtensions.handleContextMenu': HandleContextMenu.handleContextMenu,
   'SearchExtensions.handleDisable': HandleDisable.handleDisable,
   'SearchExtensions.handleEnable': HandleEnable.handleEnable,
-  'SearchExtensions.handleScrollBarCaptureLos': HandleScrollBarCaptureLost.handleScrollBarCaptureLost,
   'SearchExtensions.handleFocus': HandleFocus.handleFocus,
   'SearchExtensions.handleInstall': HandleInstall.handleInstall,
+  'SearchExtensions.handleScrollBarCaptureLos': HandleScrollBarCaptureLost.handleScrollBarCaptureLost,
+  'SearchExtensions.handleScrollBarMove': HandleScrollBarMove.handleScrollBarMove,
   'SearchExtensions.handleWheel': HandleWheel.handleWheel,
   'SearchExtensions.loadContent': LoadContent.loadContent,
   'SearchExtensions.openSuggest': OpenSuggest.openSuggest,
   'SearchExtensions.render': Render.doRender,
   'SearchExtensions.saveState': SaveState.saveState,
+  'SearchExtensions.scrollDown': ScrollDown.scrollDown,
   'SearchExtensions.searchExtensions': SearchExtensions.searchExtensions,
   'SearchExtensions.selectIndex': SelectIndex.selectIndex,
   'SearchExtensions.setDeltaY': SetDeltaY.setDeltaY,
