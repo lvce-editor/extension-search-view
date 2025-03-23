@@ -6,6 +6,7 @@ import * as GetExtensionHeaderVirtualDom from '../GetExtensionHeaderVirtualDom/G
 import * as GetExtensionsVirtualDom from '../GetExtensionsVirtualDom/GetExtensionsVirtualDom.ts'
 import { getScrollBarSize } from '../GetScrollBarSize/GetScrollBarSize.ts'
 import * as GetVisibleExtensions from '../GetVisibleExtensions/GetVisibleExtensions.ts'
+import * as DiffScrollBar from '../DiffScrollBar/DiffScrollBar.ts'
 import * as MaskIcon from '../MaskIcon/MaskIcon.ts'
 import * as Px from '../Px/Px.ts'
 import * as RenderMethod from '../RenderMethod/RenderMethod.ts'
@@ -35,16 +36,7 @@ const renderExtensions = {
 }
 
 const renderScrollBar = {
-  isEqual(oldState: any, newState: any): boolean {
-    return (
-      oldState.negativeMargin === newState.negativeMargin &&
-      oldState.deltaY === newState.deltaY &&
-      oldState.height === newState.height &&
-      oldState.finalDeltaY === newState.finalDeltaY &&
-      oldState.items.length === newState.items.length &&
-      oldState.scrollBarActive === newState.scrollBarActive
-    )
-  },
+  isEqual: DiffScrollBar.isEqual,
   apply(oldState: any, newState: any): any {
     // @ts-ignore
     const listHeight = getListHeight(newState)
