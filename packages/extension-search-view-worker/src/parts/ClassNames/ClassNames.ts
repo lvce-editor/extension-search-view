@@ -1,3 +1,4 @@
+export const Actions = 'Actions'
 export const ExtensionActions = 'ExtensionActions'
 export const ExtensionActive = 'ExtensionActive'
 export const ExtensionHeader = 'ExtensionHeader'
