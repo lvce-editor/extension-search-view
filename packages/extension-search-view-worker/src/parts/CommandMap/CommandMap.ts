@@ -19,8 +19,8 @@ import * as HandleDisable from '../HandleDisable/HandleDisable.ts'
 import * as HandleEnable from '../HandleEnable/HandleEnable.ts'
 import * as HandleFocus from '../HandleFocus/HandleFocus.ts'
 import * as HandleInstall from '../HandleInstall/HandleInstall.ts'
-import * as HandleScrollBarClick from '../HandleScrollBarClick/HandleScrollBarClick.ts'
 import * as HandleScrollBarCaptureLost from '../HandleScrollBarCaptureLost/HandleScrollBarCaptureLost.ts'
+import * as HandleScrollBarClick from '../HandleScrollBarClick/HandleScrollBarClick.ts'
 import * as HandleScrollBarMove from '../HandleScrollBarMove/HandleScrollBarMove.ts'
 import * as HandleWheel from '../HandleWheel/HandleWheel.ts'
 import * as LoadContent from '../LoadContent/LoadContent.ts'
@@ -55,13 +55,12 @@ export const commandMap = {
   'SearchExtensions.handleEnable': HandleEnable.handleEnable,
   'SearchExtensions.handleFocus': HandleFocus.handleFocus,
   'SearchExtensions.handleInstall': HandleInstall.handleInstall,
-  'SearchExtensions.handleScrollBarClick': HandleScrollBarClick.handleScrollBarClick,
   'SearchExtensions.handleScrollBarCaptureLos': HandleScrollBarCaptureLost.handleScrollBarCaptureLost,
+  'SearchExtensions.handleScrollBarClick': HandleScrollBarClick.handleScrollBarClick,
   'SearchExtensions.handleScrollBarMove': HandleScrollBarMove.handleScrollBarMove,
   'SearchExtensions.handleWheel': HandleWheel.handleWheel,
   'SearchExtensions.loadContent': LoadContent.loadContent,
   'SearchExtensions.openSuggest': OpenSuggest.openSuggest,
-  'SearchExtensions.scrollDown': ScrollDown.scrollDown,
   'SearchExtensions.render': Render.doRender,
   'SearchExtensions.saveState': SaveState.saveState,
   'SearchExtensions.scrollDown': ScrollDown.scrollDown,
