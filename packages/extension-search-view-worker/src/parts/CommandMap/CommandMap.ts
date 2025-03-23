@@ -60,7 +60,7 @@ export const commandMap = {
   'SearchExtensions.handleEnable': WrapCommand.wrapCommand(HandleEnable.handleEnable),
   'SearchExtensions.handleFocus': WrapCommand.wrapCommand(HandleFocus.handleFocus),
   'SearchExtensions.handleInstall': WrapCommand.wrapCommand(HandleInstall.handleInstall),
-  'SearchExtensions.handleScrollBarCaptureLos': WrapCommand.wrapCommand(HandleScrollBarCaptureLost.handleScrollBarCaptureLost),
+  'SearchExtensions.handleScrollBarCaptureLost': WrapCommand.wrapCommand(HandleScrollBarCaptureLost.handleScrollBarCaptureLost),
   'SearchExtensions.handleScrollBarClick': WrapCommand.wrapCommand(HandleScrollBarClick.handleScrollBarClick),
   'SearchExtensions.handleScrollBarMove': WrapCommand.wrapCommand(HandleScrollBarMove.handleScrollBarMove),
   'SearchExtensions.handleUninstall': WrapCommand.wrapCommand(HandleUninstall.handleUninstall),
