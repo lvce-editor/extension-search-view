@@ -1,3 +1,5 @@
+import * as ParentRpc from '../ParentRpc/ParentRpc.ts'
+
 export const openUri = async (uri: string): Promise<void> => {
-  // TODO
+  return ParentRpc.invoke('Main.openUri', uri)
 }
