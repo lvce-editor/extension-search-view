@@ -4,7 +4,7 @@ import * as ViewletExtensionsStrings from '../ExtensionStrings/ExtensionStrings.
 import * as GetFinalDeltaY from '../GetFinalDeltaY/GetFinalDeltaY.ts'
 import { getListHeight } from '../GetListHeight/GetListHeight.ts'
 import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOfVisibleItems.ts'
-import { getScrollBarSize } from '../GetScrollBarSize/GetScrollBarSize.ts'
+import * as GetScrollBarSize from '../GetScrollBarSize/GetScrollBarSize.ts'
 import * as Platform from '../Platform/Platform.ts'
 import * as SearchExtensions from '../SearchExtensions/SearchExtensions.ts'
 
@@ -34,7 +34,7 @@ export const handleInput = async (state: State, value: string): Promise<State> =
     const listHeight = getListHeight(state)
     const total = items.length
     const contentHeight = total * itemHeight
-    const scrollBarHeight = getScrollBarSize(height, contentHeight, minimumSliderSize)
+    const scrollBarHeight = GetScrollBarSize.getScrollBarSize(height, contentHeight, minimumSliderSize)
     const numberOfVisible = GetNumberOfVisibleItems.getNumberOfVisibleItems(listHeight, itemHeight)
     const maxLineY = Math.min(numberOfVisible, total)
     const finalDeltaY = GetFinalDeltaY.getFinalDeltaY(listHeight, itemHeight, total)
