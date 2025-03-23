@@ -1,5 +1,5 @@
 import type { State } from '../State/State.ts'
-import { set } from '../ExtensionSearchViewStates/ExtensionSearchViewStates.ts'
+import * as ExtensionSearchViewStates from '../ExtensionSearchViewStates/ExtensionSearchViewStates.ts'
 
 export const create = (id: number, uri: string, x: number, y: number, width: number, height: number, platform: number): void => {
   const state: State = {
@@ -20,5 +20,5 @@ export const create = (id: number, uri: string, x: number, y: number, width: num
     headerHeight: 0,
     scrollBarHeight: 0,
   }
-  set(id, state, state)
+  ExtensionSearchViewStates.set(id, state, state)
 }
