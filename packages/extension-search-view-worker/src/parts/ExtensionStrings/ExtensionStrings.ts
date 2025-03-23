@@ -1,22 +1,5 @@
 import * as I18nString from '../I18NString/I18NString.ts'
-
-/**
- * @enum {string}
- */
-const UiStrings = {
-  NoExtensionsFound: 'No extensions found.',
-  Filter: 'Filter',
-  Refresh: 'Refresh',
-  ClearExtensionSearchResults: 'Clear extension search results',
-  Enable: 'Enable',
-  Disable: 'Disable',
-  Uninstall: 'Uninstall',
-  InstallAnotherVersion: 'Install Another Version',
-  SearchExtensionsInMarketplace: 'Search Extensions in Marketplace',
-  ViewsAndMoreActions: 'Views and more Actions...',
-  Extensions: 'Extensions',
-  Installed: 'Installed',
-}
+import * as UiStrings from '../UiStrings/UiStrings.ts'
 
 export const noExtensionsFound = (): string => {
   return I18nString.i18nString(UiStrings.NoExtensionsFound)
