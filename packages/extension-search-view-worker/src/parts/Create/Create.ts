@@ -23,6 +23,8 @@ export const create = (id: number, uri: string, x: number, y: number, width: num
     size: 0,
     negativeMargin: 0,
     scrollBarActive: false,
+    x,
+    y,
   }
   ExtensionSearchViewStates.set(id, state, state)
 }

@@ -19,4 +19,6 @@ export interface State {
   readonly searchValue: string
   readonly size: number
   readonly width: number
+  readonly x: number
+  readonly y: number
 }
