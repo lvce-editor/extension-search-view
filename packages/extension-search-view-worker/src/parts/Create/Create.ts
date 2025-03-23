@@ -6,7 +6,7 @@ export const create = (id: number, uri: string, x: number, y: number, width: num
     searchValue: '',
     minLineY: 0,
     maxLineY: 0,
-    itemHeight: 0,
+    itemHeight: 72,
     items: [],
     height,
     message: '',
@@ -17,7 +17,6 @@ export const create = (id: number, uri: string, x: number, y: number, width: num
     focusedIndex: 0,
     minimumSliderSize: 0,
     deltaY: 0,
-    headerHeight: 0,
     scrollBarHeight: 0,
     width,
     size: 0,
@@ -27,6 +26,7 @@ export const create = (id: number, uri: string, x: number, y: number, width: num
     y,
     handleOffset: 0,
     assetDir: '',
+    headerHeight: 41,
   }
   ExtensionSearchViewStates.set(id, state, state)
 }
