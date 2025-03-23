@@ -1,6 +1,7 @@
 import type { State } from '../State/State.ts'
 import * as ActionType from '../ActionType/ActionType.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
+import * as DiffScrollBar from '../DiffScrollBar/DiffScrollBar.ts'
 import * as ViewletExtensionStrings from '../ExtensionStrings/ExtensionStrings.ts'
 import * as GetExtensionHeaderVirtualDom from '../GetExtensionHeaderVirtualDom/GetExtensionHeaderVirtualDom.ts'
 import * as GetExtensionsVirtualDom from '../GetExtensionsVirtualDom/GetExtensionsVirtualDom.ts'
@@ -35,16 +36,7 @@ const renderExtensions = {
 }
 
 const renderScrollBar = {
-  isEqual(oldState: any, newState: any): boolean {
-    return (
-      oldState.negativeMargin === newState.negativeMargin &&
-      oldState.deltaY === newState.deltaY &&
-      oldState.height === newState.height &&
-      oldState.finalDeltaY === newState.finalDeltaY &&
-      oldState.items.length === newState.items.length &&
-      oldState.scrollBarActive === newState.scrollBarActive
-    )
-  },
+  isEqual: DiffScrollBar.isEqual,
   apply(oldState: any, newState: any): any {
     // @ts-ignore
     const listHeight = getListHeight(newState)
