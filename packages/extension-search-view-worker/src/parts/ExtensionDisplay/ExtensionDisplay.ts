@@ -11,16 +11,16 @@ const isThemeExtension = (extension: any): string => {
 
 export const getIcon = (extension: any, platform: number, assetDir: string): string => {
   if (!extension) {
-    return Icon.ExtensionDefaultIcon
+    return Icon.getExtensionDefaultIcon(assetDir)
   }
   if (!extension.path || !extension.icon) {
     if (isLanguageBasicsExtension(extension)) {
-      return Icon.ExtensionLanguageBasics
+      return Icon.getExtensionLanguageBasicsIcon(assetDir)
     }
     if (isThemeExtension(extension)) {
-      return Icon.ExtensionTheme
+      return Icon.getExtensionThemeIcon(assetDir)
     }
-    return Icon.ExtensionDefaultIcon
+    return Icon.getExtensionDefaultIcon(assetDir)
   }
   return GetRemoteUrl.getRemoteUrl(extension, platform, assetDir)
 }
