@@ -1,6 +1,7 @@
 import * as ClearSearchResults from '../ClearSearchResults/ClearSearchResults.ts'
 import * as CloseSuggest from '../CloseSuggest/CloseSuggest.ts'
 import * as Create from '../Create/Create.ts'
+import * as FocusIndex from '../FocusIndex/FocusIndex.ts'
 import * as GetKeyBindings from '../GetKeyBindings/GetKeyBindings.ts'
 import * as HandleBlur from '../HandleBlur/HandleBlur.ts'
 import * as HandleFocus from '../HandleFocus/HandleFocus.ts'
@@ -23,5 +24,6 @@ export const commandMap = {
   'SearchExtensions.searchExtensions': SearchExtensions.searchExtensions,
   'SearchExtensions.openSuggest': OpenSuggest.openSuggest,
   'SearchExtensions.closeSuggest': CloseSuggest.closeSuggest,
+  'SearchExtensions.focusIndex': FocusIndex.focusIndex,
   'SearchExtensions.toggleSuggest': ToggleSuggest.toggleSuggest,
 }
