@@ -1,6 +1,7 @@
 import * as ClearSearchResults from '../ClearSearchResults/ClearSearchResults.ts'
 import * as CloseSuggest from '../CloseSuggest/CloseSuggest.ts'
 import * as Create from '../Create/Create.ts'
+import * as Diff from '../Diff/Diff.ts'
 import * as FocusIndex from '../FocusIndex/FocusIndex.ts'
 import * as GetActions from '../GetActions/GetActions.ts'
 import * as GetKeyBindings from '../GetKeyBindings/GetKeyBindings.ts'
@@ -20,22 +21,23 @@ import * as ToggleSuggest from '../ToggleSuggest/ToggleSuggest.ts'
 
 export const commandMap = {
   'SearchExtensions.clearSearchResults': ClearSearchResults.clearSearchResults,
-  'SearchExtensions.getActions': GetActions.getActions,
-  'SearchExtensions.handleFocus': HandleFocus.handleFocus,
+  'SearchExtensions.closeSuggest': CloseSuggest.closeSuggest,
   'SearchExtensions.create': Create.create,
+  'SearchExtensions.diff': Diff.diff,
+  'SearchExtensions.focusIndex': FocusIndex.focusIndex,
+  'SearchExtensions.getActions': GetActions.getActions,
   'SearchExtensions.getKeyBindings': GetKeyBindings.getKeyBindings,
+  'SearchExtensions.handleBlur': HandleBlur.handleBlur,
+  'SearchExtensions.handleContextMenu': HandleContextMenu.handleContextMenu,
+  'SearchExtensions.handleDisable': HandleDisable.handleDisable,
+  'SearchExtensions.handleEnable': HandleEnable.handleEnable,
+  'SearchExtensions.handleFocus': HandleFocus.handleFocus,
+  'SearchExtensions.handleInstall': HandleInstall.handleInstall,
   'SearchExtensions.loadContent': LoadContent.loadContent,
+  'SearchExtensions.openSuggest': OpenSuggest.openSuggest,
   'SearchExtensions.render': Render.doRender,
   'SearchExtensions.saveState': SaveState.saveState,
-  'SearchExtensions.handleBlur': HandleBlur.handleBlur,
-  'SearchExtensions.handleInstall': HandleInstall.handleInstall,
   'SearchExtensions.searchExtensions': SearchExtensions.searchExtensions,
-  'SearchExtensions.openSuggest': OpenSuggest.openSuggest,
-  'SearchExtensions.handleEnable': HandleEnable.handleEnable,
-  'SearchExtensions.closeSuggest': CloseSuggest.closeSuggest,
-  'SearchExtensions.focusIndex': FocusIndex.focusIndex,
-  'SearchExtensions.handleDisable': HandleDisable.handleDisable,
-  'SearchExtensions.toggleSuggest': ToggleSuggest.toggleSuggest,
   'SearchExtensions.setDeltaY': SetDeltaY.setDeltaY,
-  'SearchExtensions.handleContextMenu': HandleContextMenu.handleContextMenu,
+  'SearchExtensions.toggleSuggest': ToggleSuggest.toggleSuggest,
 }
