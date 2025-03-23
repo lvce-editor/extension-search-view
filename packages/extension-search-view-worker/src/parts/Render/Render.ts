@@ -5,6 +5,7 @@ import * as DiffMessage from '../DiffMessage/DiffMessage.ts'
 import * as DiffScrollBar from '../DiffScrollBar/DiffScrollBar.ts'
 import * as RenderHeader from '../RenderHeader/RenderHeader.ts'
 import * as RenderItems from '../RenderItems/RenderItems.ts'
+import * as RenderMessage from '../RenderMessage/RenderMessage.ts'
 import * as RenderMethod from '../RenderMethod/RenderMethod.ts'
 import * as RenderScrollBar from '../RenderScrollBar/RenderScrollBar.ts'
 
@@ -24,8 +25,8 @@ const renderScrollBar = {
 
 const renderMessage = {
   isEqual: DiffMessage.isEqual,
-  apply(oldState: any, newState: any): any {
-    return [/* method */ RenderMethod.SetMessage, /* message */ newState.message]
+  apply(oldState: State, newState: State): readonly any[] {
+    return RenderMessage.renderMessage(newState)
   },
 }
 
