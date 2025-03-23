@@ -22,4 +22,5 @@ export interface State {
   readonly x: number
   readonly y: number
   readonly handleOffset: number
+  readonly assetDir: string
 }
