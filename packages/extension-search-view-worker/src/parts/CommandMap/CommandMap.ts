@@ -3,6 +3,7 @@ import * as CloseSuggest from '../CloseSuggest/CloseSuggest.ts'
 import * as Create from '../Create/Create.ts'
 import * as GetKeyBindings from '../GetKeyBindings/GetKeyBindings.ts'
 import * as HandleBlur from '../HandleBlur/HandleBlur.ts'
+import * as HandleFocus from '../HandleFocus/HandleFocus.ts'
 import * as LoadContent from '../LoadContent/LoadContent.ts'
 import * as OpenSuggest from '../OpenSuggest/OpenSuggest.ts'
 import * as Render from '../Render/Render.ts'
@@ -12,6 +13,7 @@ import * as ToggleSuggest from '../ToggleSuggest/ToggleSuggest.ts'
 
 export const commandMap = {
   'SearchExtensions.clearSearchResults': ClearSearchResults.clearSearchResults,
+  'SearchExtensions.handleFocus': HandleFocus.handleFocus,
   'SearchExtensions.create': Create.create,
   'SearchExtensions.getKeyBindings': GetKeyBindings.getKeyBindings,
   'SearchExtensions.loadContent': LoadContent.loadContent,
