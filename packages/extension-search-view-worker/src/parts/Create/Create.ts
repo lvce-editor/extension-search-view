@@ -1,32 +1,32 @@
 import type { State } from '../State/State.ts'
 import * as ExtensionSearchViewStates from '../ExtensionSearchViewStates/ExtensionSearchViewStates.ts'
 
-export const create = (id: number, uri: string, x: number, y: number, width: number, height: number, platform: number): void => {
+export const create = (id: number, uri: string, x: number, y: number, width: number, height: number, platform: number, assetDir: string): void => {
   const state: State = {
-    searchValue: '',
-    minLineY: 0,
-    maxLineY: 0,
-    itemHeight: 72,
-    items: [],
-    height,
-    message: '',
     allExtensions: [],
-    placeholder: '',
-    platform,
+    assetDir,
+    deltaY: 0,
     finalDeltaY: 0,
     focusedIndex: 0,
+    handleOffset: 0,
+    headerHeight: 41,
+    height,
+    itemHeight: 72,
+    items: [],
+    maxLineY: 0,
+    message: '',
     minimumSliderSize: 0,
-    deltaY: 0,
-    scrollBarHeight: 0,
-    width,
-    size: 0,
+    minLineY: 0,
     negativeMargin: 0,
+    placeholder: '',
+    platform,
     scrollBarActive: false,
+    scrollBarHeight: 0,
+    searchValue: '',
+    size: 0,
+    width,
     x,
     y,
-    handleOffset: 0,
-    assetDir: '',
-    headerHeight: 41,
   }
   ExtensionSearchViewStates.set(id, state, state)
 }
