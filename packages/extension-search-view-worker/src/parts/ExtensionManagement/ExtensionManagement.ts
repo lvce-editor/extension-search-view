@@ -1,0 +1,8 @@
+import * as PlatformType from '../PlatformType/PlatformType.ts'
+
+export const getAllExtensions = async (platform: number): Promise<readonly any[]> => {
+  if (platform === PlatformType.Web) {
+    return []
+  }
+  return []
+}

@@ -15,4 +15,6 @@ export interface State {
   readonly placeholder: string
   readonly headerHeight: number
   readonly platform: number
+  readonly width: number
+  readonly size: number
 }
