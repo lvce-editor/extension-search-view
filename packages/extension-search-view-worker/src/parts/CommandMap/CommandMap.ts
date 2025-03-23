@@ -20,6 +20,7 @@ import * as HandleEnable from '../HandleEnable/HandleEnable.ts'
 import * as HandleFocus from '../HandleFocus/HandleFocus.ts'
 import * as HandleInstall from '../HandleInstall/HandleInstall.ts'
 import * as HandleScrollBarCaptureLost from '../HandleScrollBarCaptureLost/HandleScrollBarCaptureLost.ts'
+import * as HandleScrollBarClick from '../HandleScrollBarClick/HandleScrollBarClick.ts'
 import * as HandleScrollBarMove from '../HandleScrollBarMove/HandleScrollBarMove.ts'
 import * as HandleWheel from '../HandleWheel/HandleWheel.ts'
 import * as LoadContent from '../LoadContent/LoadContent.ts'
@@ -55,6 +56,7 @@ export const commandMap = {
   'SearchExtensions.handleFocus': HandleFocus.handleFocus,
   'SearchExtensions.handleInstall': HandleInstall.handleInstall,
   'SearchExtensions.handleScrollBarCaptureLos': HandleScrollBarCaptureLost.handleScrollBarCaptureLost,
+  'SearchExtensions.handleScrollBarClick': HandleScrollBarClick.handleScrollBarClick,
   'SearchExtensions.handleScrollBarMove': HandleScrollBarMove.handleScrollBarMove,
   'SearchExtensions.handleWheel': HandleWheel.handleWheel,
   'SearchExtensions.loadContent': LoadContent.loadContent,
