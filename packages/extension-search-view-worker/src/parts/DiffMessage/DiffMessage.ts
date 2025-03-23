@@ -1,5 +1,5 @@
+import type { State } from '../State/State.ts'
 import * as DiffType from '../DiffType/DiffType.ts'
-import { State } from '../State/State.ts'
 
 export const diffType = DiffType.RenderMessage
 
