@@ -10,10 +10,10 @@ import * as SearchExtensions from '../SearchExtensions/SearchExtensions.ts'
 // TODO debounce
 export const handleInput = async (state: State, value: string): Promise<State> => {
   try {
-    const { allExtensions, itemHeight, minimumSliderSize, height, platform } = state
+    const { allExtensions, itemHeight, minimumSliderSize, height, platform, assetDir } = state
     // TODO cancel ongoing requests
     // TODO handle errors
-    const items = await SearchExtensions.searchExtensions(allExtensions, value, platform)
+    const items = await SearchExtensions.searchExtensions(allExtensions, value, platform, assetDir)
     if (items.length === 0) {
       return {
         ...state,
