@@ -2,7 +2,7 @@ import type { State } from '../State/State.ts'
 import * as ErrorHandling from '../ErrorHandling/ErrorHandling.ts'
 import * as ViewletExtensionsStrings from '../ExtensionStrings/ExtensionStrings.ts'
 import * as GetFinalDeltaY from '../GetFinalDeltaY/GetFinalDeltaY.ts'
-import { getListHeight } from '../GetListHeight/GetListHeight.ts'
+import * as GetListHeight from '../GetListHeight/GetListHeight.ts'
 import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOfVisibleItems.ts'
 import * as GetScrollBarSize from '../GetScrollBarSize/GetScrollBarSize.ts'
 import * as SearchExtensions from '../SearchExtensions/SearchExtensions.ts'
@@ -29,8 +29,7 @@ export const handleInput = async (state: State, value: string): Promise<State> =
         placeholder: ViewletExtensionsStrings.searchExtensionsInMarketPlace(),
       }
     }
-    // @ts-ignore
-    const listHeight = getListHeight(state)
+    const listHeight = GetListHeight.getListHeight(state.items.length, state.itemHeight, state.height)
     const total = items.length
     const contentHeight = total * itemHeight
     const scrollBarHeight = GetScrollBarSize.getScrollBarSize(height, contentHeight, minimumSliderSize)
