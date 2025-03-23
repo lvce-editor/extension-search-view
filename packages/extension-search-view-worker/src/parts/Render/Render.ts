@@ -1,3 +1,4 @@
+import type { State } from '../State/State.ts'
 import * as ActionType from '../ActionType/ActionType.ts'
 import * as DiffHeader from '../DiffHeader/DiffHeader.ts'
 import * as DiffItems from '../DiffItems/DiffItems.ts'
@@ -9,7 +10,6 @@ import * as MaskIcon from '../MaskIcon/MaskIcon.ts'
 import * as RenderItems from '../RenderItems/RenderItems.ts'
 import * as RenderMethod from '../RenderMethod/RenderMethod.ts'
 import * as RenderScrollBar from '../RenderScrollBar/RenderScrollBar.ts'
-import type { State } from '../State/State.ts'
 
 const renderExtensions = {
   isEqual: DiffItems.isEqual,
