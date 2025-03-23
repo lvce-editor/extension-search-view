@@ -1,20 +1,12 @@
-import type { State } from '../State/State.ts'
-import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as DiffHeader from '../DiffHeader/DiffHeader.ts'
 import * as DiffItems from '../DiffItems/DiffItems.ts'
 import * as DiffMessage from '../DiffMessage/DiffMessage.ts'
 import * as DiffScrollBar from '../DiffScrollBar/DiffScrollBar.ts'
-import { getScrollBarSize } from '../GetScrollBarSize/GetScrollBarSize.ts'
-import * as Px from '../Px/Px.ts'
 import * as RenderHeader from '../RenderHeader/RenderHeader.ts'
 import * as RenderItems from '../RenderItems/RenderItems.ts'
 import * as RenderMethod from '../RenderMethod/RenderMethod.ts'
-import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
-
-const getListHeight = (state: State): number => {
-  const { height, headerHeight } = state
-  return height - headerHeight
-}
+import * as RenderScrollBar from '../RenderScrollBar/RenderScrollBar.ts'
+import type { State } from '../State/State.ts'
 
 const renderExtensions = {
   isEqual: DiffItems.isEqual,
@@ -25,26 +17,8 @@ const renderExtensions = {
 
 const renderScrollBar = {
   isEqual: DiffScrollBar.isEqual,
-  apply(oldState: any, newState: any): any {
-    // @ts-ignore
-    const listHeight = getListHeight(newState)
-    const total = newState.items.length
-    const contentHeight = total * newState.itemHeight
-    const scrollBarHeight = getScrollBarSize(listHeight, contentHeight, newState.minimumSliderSize)
-    const scrollBarY = ScrollBarFunctions.getScrollBarY(
-      newState.deltaY,
-      newState.finalDeltaY,
-      newState.height - newState.headerHeight,
-      scrollBarHeight,
-    )
-    const roundedScrollBarY = Math.round(scrollBarY)
-    const heightString = Px.px(scrollBarHeight)
-    const translateString = Px.position(0, roundedScrollBarY)
-    let className = ClassNames.ScrollBarThumb
-    if (newState.scrollBarActive) {
-      className += ' ' + ClassNames.ScrollBarThumbActive
-    }
-    return [/* method */ RenderMethod.SetScrollBar, translateString, heightString, className]
+  apply(oldState: State, newState: State): readonly any[] {
+    return RenderScrollBar.renderScrollBar(newState)
   },
 }
 
