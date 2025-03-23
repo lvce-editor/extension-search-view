@@ -26,7 +26,12 @@ function updateDependencies {
   fi
 }
 
-updateDependencies &&
+                                                       updateDependencies             &&
+cd packages/extension-search-view-worker            && updateDependencies && cd ../.. &&
+cd packages/build                                   && updateDependencies && cd ../.. &&
+cd packages/e2e                                     && updateDependencies && cd ../.. &&
+cd packages/memory                                  && updateDependencies && cd ../.. &&
+cd packages/server                                  && updateDependencies && cd ../.. &&
 
 echo "Great Success!"
 
