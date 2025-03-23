@@ -9,7 +9,7 @@ const isThemeExtension = (extension: any): string => {
   return extension.name && extension.name.endsWith(' Theme')
 }
 
-export const getIcon = (extension: any, platform: number): string => {
+export const getIcon = (extension: any, platform: number, assetDir: string): string => {
   if (!extension) {
     return Icon.ExtensionDefaultIcon
   }
@@ -22,7 +22,7 @@ export const getIcon = (extension: any, platform: number): string => {
     }
     return Icon.ExtensionDefaultIcon
   }
-  return GetRemoteUrl.getRemoteUrl(extension, platform)
+  return GetRemoteUrl.getRemoteUrl(extension, platform, assetDir)
 }
 
 export const getName = (extension: any): string => {
