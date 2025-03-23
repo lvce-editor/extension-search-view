@@ -21,4 +21,5 @@ export interface State {
   readonly width: number
   readonly x: number
   readonly y: number
+  readonly handleOffset: number
 }

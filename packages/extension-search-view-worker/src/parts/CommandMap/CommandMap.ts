@@ -18,6 +18,7 @@ import * as HandleDisable from '../HandleDisable/HandleDisable.ts'
 import * as HandleEnable from '../HandleEnable/HandleEnable.ts'
 import * as HandleFocus from '../HandleFocus/HandleFocus.ts'
 import * as HandleInstall from '../HandleInstall/HandleInstall.ts'
+import * as HandleScrollBarClick from '../HandleScrollBarClick/HandleScrollBarClick.ts'
 import * as HandleWheel from '../HandleWheel/HandleWheel.ts'
 import * as LoadContent from '../LoadContent/LoadContent.ts'
 import * as OpenSuggest from '../OpenSuggest/OpenSuggest.ts'
@@ -41,7 +42,6 @@ export const commandMap = {
   'SearchExtensions.focusNextPage': FocusNextPage.focusNextPage,
   'SearchExtensions.focusPreviousPage': FocusPreviousPage.focusPreviousPage,
   'SearchExtensions.getActions': GetActions.getActions,
-  'SearchExtensions.scrollDown': ScrollDown.scrollDown,
   'SearchExtensions.getKeyBindings': GetKeyBindings.getKeyBindings,
   'SearchExtensions.handleBlur': HandleBlur.handleBlur,
   'SearchExtensions.handleClick': HandleClick.handleClick,
@@ -51,9 +51,11 @@ export const commandMap = {
   'SearchExtensions.handleEnable': HandleEnable.handleEnable,
   'SearchExtensions.handleFocus': HandleFocus.handleFocus,
   'SearchExtensions.handleInstall': HandleInstall.handleInstall,
+  'SearchExtensions.handleScrollBarClick': HandleScrollBarClick.handleScrollBarClick,
   'SearchExtensions.handleWheel': HandleWheel.handleWheel,
   'SearchExtensions.loadContent': LoadContent.loadContent,
   'SearchExtensions.openSuggest': OpenSuggest.openSuggest,
+  'SearchExtensions.scrollDown': ScrollDown.scrollDown,
   'SearchExtensions.render': Render.doRender,
   'SearchExtensions.saveState': SaveState.saveState,
   'SearchExtensions.searchExtensions': SearchExtensions.searchExtensions,
