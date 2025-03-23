@@ -9,6 +9,7 @@ import * as FocusNext from '../FocusNext/FocusNext.ts'
 import * as FocusNextPage from '../FocusNextPage/FocusNextPage.ts'
 import * as FocusPreviousPage from '../FocusPreviousPage/FocusPreviousPage.ts'
 import * as GetActions from '../GetActions/GetActions.ts'
+import * as GetCommandIds from '../GetCommandIds/GetCommandIds.ts'
 import * as GetKeyBindings from '../GetKeyBindings/GetKeyBindings.ts'
 import * as HandleBlur from '../HandleBlur/HandleBlur.ts'
 import * as HandleClick from '../HandleClick/HandleClick.ts'
@@ -66,6 +67,7 @@ export const commandMap = {
   'SearchExtensions.handleUninstall': WrapCommand.wrapCommand(HandleUninstall.handleUninstall),
   'SearchExtensions.handleWheel': WrapCommand.wrapCommand(HandleWheel.handleWheel),
   'SearchExtensions.loadContent': LoadContent.loadContent,
+  'SearchExtensions.getCommandIds': GetCommandIds.getCommandIds,
   'SearchExtensions.openSuggest': WrapCommand.wrapCommand(OpenSuggest.openSuggest),
   'SearchExtensions.render': Render.doRender,
   'SearchExtensions.render2': Render2.render2,
