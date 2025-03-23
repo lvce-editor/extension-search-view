@@ -1,3 +1,4 @@
+import type { State } from '../State/State.ts'
 import * as ActionType from '../ActionType/ActionType.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as DiffHeader from '../DiffHeader/DiffHeader.ts'
@@ -12,7 +13,6 @@ import * as Px from '../Px/Px.ts'
 import * as RenderItems from '../RenderItems/RenderItems.ts'
 import * as RenderMethod from '../RenderMethod/RenderMethod.ts'
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
-import type { State } from '../State/State.ts'
 
 const getListHeight = (state: State): number => {
   const { height, headerHeight } = state
