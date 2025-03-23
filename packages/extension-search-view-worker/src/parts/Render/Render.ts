@@ -12,6 +12,7 @@ import { getScrollBarSize } from '../GetScrollBarSize/GetScrollBarSize.ts'
 import * as GetVisibleExtensions from '../GetVisibleExtensions/GetVisibleExtensions.ts'
 import * as MaskIcon from '../MaskIcon/MaskIcon.ts'
 import * as Px from '../Px/Px.ts'
+import * as RenderItems from '../RenderItems/RenderItems.ts'
 import * as RenderMethod from '../RenderMethod/RenderMethod.ts'
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
 
@@ -22,11 +23,8 @@ const getListHeight = (state: State): number => {
 
 const renderExtensions = {
   isEqual: DiffItems.isEqual,
-  apply(oldState: any, newState: any): any {
-    // TODO render extensions incrementally when scrolling
-    const visibleExtensions = GetVisibleExtensions.getVisible(newState)
-    const dom = GetExtensionsVirtualDom.getExtensionsVirtualDom(visibleExtensions)
-    return ['setExtensionsDom', dom]
+  apply(oldState: State, newState: State): readonly any[] {
+    return RenderItems.renderItems(newState)
   },
 }
 
