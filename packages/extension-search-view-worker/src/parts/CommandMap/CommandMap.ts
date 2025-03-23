@@ -28,6 +28,7 @@ import * as LoadContent from '../LoadContent/LoadContent.ts'
 import * as OpenSuggest from '../OpenSuggest/OpenSuggest.ts'
 import * as Render from '../Render/Render.ts'
 import * as RenderActions from '../RenderActions/RenderActions.ts'
+import * as RenderEventListeners from '../RenderEventListeners/RenderEventListeners.ts'
 import * as SaveState from '../SaveState/SaveState.ts'
 import * as ScrollDown from '../ScrollDown/ScrollDown.ts'
 import * as SearchExtensions from '../SearchExtensions/SearchExtensions.ts'
@@ -49,6 +50,7 @@ export const commandMap = {
   'SearchExtensions.getActions': GetActions.getActions,
   'SearchExtensions.getKeyBindings': GetKeyBindings.getKeyBindings,
   'SearchExtensions.handleBlur': HandleBlur.handleBlur,
+  'SearchExtensions.renderEventListeners': RenderEventListeners.renderEventListeners,
   'SearchExtensions.handleClick': HandleClick.handleClick,
   'SearchExtensions.handleClickCurrent': HandleClickCurrent.handleClickCurrent,
   'SearchExtensions.handleClickCurrentButKeepFocus': HandleClickCurrentButKeepFocus.handleClickCurrentButKeepFocus,
