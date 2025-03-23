@@ -1,6 +1,6 @@
 import type { State } from '../State/State.ts'
 import { getNewDeltaPercent } from '../GetNewDeltaYPercent/GetNewDeltaYPercent.ts'
-import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.js'
+import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
 import { setDeltaY } from '../SetDeltaY/SetDeltaY.ts'
 
 export const handleScrollBarClick = (state: State, eventY: number): State => {
