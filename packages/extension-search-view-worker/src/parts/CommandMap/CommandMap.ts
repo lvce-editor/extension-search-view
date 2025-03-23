@@ -6,6 +6,7 @@ import * as FocusFirst from '../FocusFirst/FocusFirst.ts'
 import * as FocusIndex from '../FocusIndex/FocusIndex.ts'
 import * as FocusLast from '../FocusLast/FocusLast.ts'
 import * as FocusNext from '../FocusNext/FocusNext.ts'
+import * as FocusNextPage from '../FocusNextPage/FocusNextPage.ts'
 import * as FocusPreviousPage from '../FocusPreviousPage/FocusPreviousPage.ts'
 import * as GetActions from '../GetActions/GetActions.ts'
 import * as GetKeyBindings from '../GetKeyBindings/GetKeyBindings.ts'
@@ -22,7 +23,9 @@ import * as LoadContent from '../LoadContent/LoadContent.ts'
 import * as OpenSuggest from '../OpenSuggest/OpenSuggest.ts'
 import * as Render from '../Render/Render.ts'
 import * as SaveState from '../SaveState/SaveState.ts'
+import * as ScrollDown from '../ScrollDown/ScrollDown.ts'
 import * as SearchExtensions from '../SearchExtensions/SearchExtensions.ts'
+import * as SelectIndex from '../SelectIndex/SelectIndex.ts'
 import * as SetDeltaY from '../SetDeltaY/SetDeltaY.ts'
 import * as ToggleSuggest from '../ToggleSuggest/ToggleSuggest.ts'
 
@@ -35,10 +38,11 @@ export const commandMap = {
   'SearchExtensions.focusIndex': FocusIndex.focusIndex,
   'SearchExtensions.focusLast': FocusLast.focusLast,
   'SearchExtensions.focusNext': FocusNext.focusNext,
+  'SearchExtensions.focusNextPage': FocusNextPage.focusNextPage,
   'SearchExtensions.focusPreviousPage': FocusPreviousPage.focusPreviousPage,
   'SearchExtensions.getActions': GetActions.getActions,
+  'SearchExtensions.scrollDown': ScrollDown.scrollDown,
   'SearchExtensions.getKeyBindings': GetKeyBindings.getKeyBindings,
-  'SearchExtensions.handleWheel': HandleWheel.handleWheel,
   'SearchExtensions.handleBlur': HandleBlur.handleBlur,
   'SearchExtensions.handleClick': HandleClick.handleClick,
   'SearchExtensions.handleClickCurrent': HandleClickCurrent.handleClickCurrent,
@@ -47,11 +51,13 @@ export const commandMap = {
   'SearchExtensions.handleEnable': HandleEnable.handleEnable,
   'SearchExtensions.handleFocus': HandleFocus.handleFocus,
   'SearchExtensions.handleInstall': HandleInstall.handleInstall,
+  'SearchExtensions.handleWheel': HandleWheel.handleWheel,
   'SearchExtensions.loadContent': LoadContent.loadContent,
   'SearchExtensions.openSuggest': OpenSuggest.openSuggest,
   'SearchExtensions.render': Render.doRender,
   'SearchExtensions.saveState': SaveState.saveState,
   'SearchExtensions.searchExtensions': SearchExtensions.searchExtensions,
+  'SearchExtensions.selectIndex': SelectIndex.selectIndex,
   'SearchExtensions.setDeltaY': SetDeltaY.setDeltaY,
   'SearchExtensions.toggleSuggest': ToggleSuggest.toggleSuggest,
 }
