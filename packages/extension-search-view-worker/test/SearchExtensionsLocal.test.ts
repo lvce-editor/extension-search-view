@@ -16,7 +16,10 @@ test('searchExtensions - error - extension has no name, use id for filtering', a
     },
   ]
   const platform = 0
-  expect(await SearchExtensionsLocal.getExtensions(extensions, ParseExtensionSearchValue.parseValue(searchValue), platform)).toMatchObject(expected)
+  const assetDir = ''
+  expect(await SearchExtensionsLocal.getExtensions(extensions, ParseExtensionSearchValue.parseValue(searchValue), platform, assetDir)).toMatchObject(
+    expected,
+  )
 })
 
 test('searchExtensions - error - extension has no name and no id', async () => {
@@ -28,7 +31,10 @@ test('searchExtensions - error - extension has no name and no id', async () => {
   const searchValue = 'test'
   const expected: any[] = []
   const platform = 0
-  expect(await SearchExtensionsLocal.getExtensions(extensions, ParseExtensionSearchValue.parseValue(searchValue), platform)).toMatchObject(expected)
+  const assetDir = ''
+  expect(await SearchExtensionsLocal.getExtensions(extensions, ParseExtensionSearchValue.parseValue(searchValue), platform, assetDir)).toMatchObject(
+    expected,
+  )
 })
 
 test('searchExtensions - error - extension name is of type number', async () => {
@@ -41,7 +47,10 @@ test('searchExtensions - error - extension name is of type number', async () => 
   const searchValue = 'test'
   const expected: any[] = []
   const platform = 0
-  expect(await SearchExtensionsLocal.getExtensions(extensions, ParseExtensionSearchValue.parseValue(searchValue), platform)).toMatchObject(expected)
+  const assetDir = ''
+  expect(await SearchExtensionsLocal.getExtensions(extensions, ParseExtensionSearchValue.parseValue(searchValue), platform, assetDir)).toMatchObject(
+    expected,
+  )
 })
 
 test('searchExtensions - error - extension id is of type number', async () => {
@@ -54,7 +63,10 @@ test('searchExtensions - error - extension id is of type number', async () => {
   const searchValue = 'test'
   const expected: any[] = []
   const platform = 0
-  expect(await SearchExtensionsLocal.getExtensions(extensions, ParseExtensionSearchValue.parseValue(searchValue), platform)).toMatchObject(expected)
+  const assetDir = ''
+  expect(await SearchExtensionsLocal.getExtensions(extensions, ParseExtensionSearchValue.parseValue(searchValue), platform, assetDir)).toMatchObject(
+    expected,
+  )
 })
 
 test('searchExtensions - error - extension is null', async () => {
@@ -62,7 +74,10 @@ test('searchExtensions - error - extension is null', async () => {
   const searchValue = 'test'
   const expected: any[] = []
   const platform = 0
-  expect(await SearchExtensionsLocal.getExtensions(extensions, ParseExtensionSearchValue.parseValue(searchValue), platform)).toMatchObject(expected)
+  const assetDir = ''
+  expect(await SearchExtensionsLocal.getExtensions(extensions, ParseExtensionSearchValue.parseValue(searchValue), platform, assetDir)).toMatchObject(
+    expected,
+  )
 })
 
 test('searchExtensions - error - extension is of type number', async () => {
@@ -70,7 +85,10 @@ test('searchExtensions - error - extension is of type number', async () => {
   const searchValue = 'test'
   const expected: any[] = []
   const platform = 0
-  expect(await SearchExtensionsLocal.getExtensions(extensions, ParseExtensionSearchValue.parseValue(searchValue), platform)).toMatchObject(expected)
+  const assetDir = ''
+  expect(await SearchExtensionsLocal.getExtensions(extensions, ParseExtensionSearchValue.parseValue(searchValue), platform, assetDir)).toMatchObject(
+    expected,
+  )
 })
 
 test('searchExtensions - match by lowercase name', async () => {
@@ -87,5 +105,8 @@ test('searchExtensions - match by lowercase name', async () => {
     },
   ]
   const platform = 0
-  expect(await SearchExtensionsLocal.getExtensions(extensions, ParseExtensionSearchValue.parseValue(searchValue), platform)).toMatchObject(expected)
+  const assetDir = ''
+  expect(await SearchExtensionsLocal.getExtensions(extensions, ParseExtensionSearchValue.parseValue(searchValue), platform, assetDir)).toMatchObject(
+    expected,
+  )
 })
