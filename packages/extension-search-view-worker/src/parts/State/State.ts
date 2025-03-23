@@ -1,20 +1,22 @@
 export interface State {
-  readonly minLineY: number
-  readonly maxLineY: number
-  readonly items: readonly any[]
-  readonly deltaY: number
-  readonly focusedIndex: number
-  readonly itemHeight: number
   readonly allExtensions: readonly any[]
-  readonly minimumSliderSize: number
-  readonly height: number
-  readonly scrollBarHeight: number
+  readonly deltaY: number
   readonly finalDeltaY: number
-  readonly message: string
-  readonly searchValue: string
-  readonly placeholder: string
+  readonly focusedIndex: number
   readonly headerHeight: number
+  readonly height: number
+  readonly itemHeight: number
+  readonly items: readonly any[]
+  readonly maxLineY: number
+  readonly message: string
+  readonly minimumSliderSize: number
+  readonly minLineY: number
+  readonly negativeMargin: number
+  readonly placeholder: string
   readonly platform: number
-  readonly width: number
+  readonly scrollBarActive: boolean
+  readonly scrollBarHeight: number
+  readonly searchValue: string
   readonly size: number
+  readonly width: number
 }
