@@ -7,8 +7,7 @@ import * as RenderMethod from '../RenderMethod/RenderMethod.ts'
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
 
 export const renderScrollBar = (newState: State): readonly any[] => {
-  // @ts-ignore
-  const listHeight = getListHeight(newState)
+  const listHeight = getListHeight(newState.items.length, newState.itemHeight, newState.height)
   const total = newState.items.length
   const contentHeight = total * newState.itemHeight
   const scrollBarHeight = getScrollBarSize(listHeight, contentHeight, newState.minimumSliderSize)
