@@ -11,6 +11,7 @@ import { getScrollBarSize } from '../GetScrollBarSize/GetScrollBarSize.ts'
 import * as MaskIcon from '../MaskIcon/MaskIcon.ts'
 import * as Px from '../Px/Px.ts'
 import * as RenderItems from '../RenderItems/RenderItems.ts'
+import * as RenderMessage from '../RenderMessage/RenderMessage.ts'
 import * as RenderMethod from '../RenderMethod/RenderMethod.ts'
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
 
@@ -53,8 +54,8 @@ const renderScrollBar = {
 
 const renderMessage = {
   isEqual: DiffMessage.isEqual,
-  apply(oldState: any, newState: any): any {
-    return [/* method */ RenderMethod.SetMessage, /* message */ newState.message]
+  apply(oldState: State, newState: State): readonly any[] {
+    return RenderMessage.renderMessage(newState)
   },
 }
 
