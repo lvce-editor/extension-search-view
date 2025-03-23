@@ -26,6 +26,7 @@ import * as HandleUninstall from '../HandleUninstall/HandleUninstall.ts'
 import * as HandleWheel from '../HandleWheel/HandleWheel.ts'
 import * as LoadContent from '../LoadContent/LoadContent.ts'
 import * as OpenSuggest from '../OpenSuggest/OpenSuggest.ts'
+import * as Render2 from '../Render2/Render2.ts'
 import * as Render from '../Render/Render.ts'
 import * as RenderActions from '../RenderActions/RenderActions.ts'
 import * as RenderEventListeners from '../RenderEventListeners/RenderEventListeners.ts'
@@ -51,11 +52,9 @@ export const commandMap = {
   'SearchExtensions.getActions': GetActions.getActions,
   'SearchExtensions.getKeyBindings': GetKeyBindings.getKeyBindings,
   'SearchExtensions.handleBlur': WrapCommand.wrapCommand(HandleBlur.handleBlur),
-  'SearchExtensions.renderEventListeners': RenderEventListeners.renderEventListeners,
   'SearchExtensions.handleClick': WrapCommand.wrapCommand(HandleClick.handleClick),
   'SearchExtensions.handleClickCurrent': WrapCommand.wrapCommand(HandleClickCurrent.handleClickCurrent),
   'SearchExtensions.handleClickCurrentButKeepFocus': WrapCommand.wrapCommand(HandleClickCurrentButKeepFocus.handleClickCurrentButKeepFocus),
-  'SearchExtensions.renderActions': RenderActions.renderActions,
   'SearchExtensions.handleContextMenu': WrapCommand.wrapCommand(HandleContextMenu.handleContextMenu),
   'SearchExtensions.handleDisable': WrapCommand.wrapCommand(HandleDisable.handleDisable),
   'SearchExtensions.handleEnable': WrapCommand.wrapCommand(HandleEnable.handleEnable),
@@ -69,6 +68,9 @@ export const commandMap = {
   'SearchExtensions.loadContent': LoadContent.loadContent,
   'SearchExtensions.openSuggest': WrapCommand.wrapCommand(OpenSuggest.openSuggest),
   'SearchExtensions.render': Render.doRender,
+  'SearchExtensions.render2': Render2.render2,
+  'SearchExtensions.renderActions': RenderActions.renderActions,
+  'SearchExtensions.renderEventListeners': RenderEventListeners.renderEventListeners,
   'SearchExtensions.saveState': SaveState.saveState,
   'SearchExtensions.scrollDown': WrapCommand.wrapCommand(ScrollDown.scrollDown),
   'SearchExtensions.searchExtensions': SearchExtensions.searchExtensions,
