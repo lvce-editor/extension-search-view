@@ -27,6 +27,7 @@ import * as HandleWheel from '../HandleWheel/HandleWheel.ts'
 import * as LoadContent from '../LoadContent/LoadContent.ts'
 import * as OpenSuggest from '../OpenSuggest/OpenSuggest.ts'
 import * as Render from '../Render/Render.ts'
+import * as RenderActions from '../RenderActions/RenderActions.ts'
 import * as SaveState from '../SaveState/SaveState.ts'
 import * as ScrollDown from '../ScrollDown/ScrollDown.ts'
 import * as SearchExtensions from '../SearchExtensions/SearchExtensions.ts'
@@ -51,6 +52,7 @@ export const commandMap = {
   'SearchExtensions.handleClick': HandleClick.handleClick,
   'SearchExtensions.handleClickCurrent': HandleClickCurrent.handleClickCurrent,
   'SearchExtensions.handleClickCurrentButKeepFocus': HandleClickCurrentButKeepFocus.handleClickCurrentButKeepFocus,
+  'SearchExtensions.renderActions': RenderActions.renderActions,
   'SearchExtensions.handleContextMenu': HandleContextMenu.handleContextMenu,
   'SearchExtensions.handleDisable': HandleDisable.handleDisable,
   'SearchExtensions.handleEnable': HandleEnable.handleEnable,
