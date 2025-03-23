@@ -7,6 +7,7 @@ import * as GetActions from '../GetActions/GetActions.ts'
 import * as GetKeyBindings from '../GetKeyBindings/GetKeyBindings.ts'
 import * as HandleBlur from '../HandleBlur/HandleBlur.ts'
 import * as HandleClick from '../HandleClick/HandleClick.ts'
+import * as HandleClickCurrent from '../HandleClickCurrent/HandleClickCurrent.ts'
 import * as HandleContextMenu from '../HandleContextMenu/HandleContextMenu.ts'
 import * as HandleDisable from '../HandleDisable/HandleDisable.ts'
 import * as HandleEnable from '../HandleEnable/HandleEnable.ts'
@@ -30,6 +31,7 @@ export const commandMap = {
   'SearchExtensions.getKeyBindings': GetKeyBindings.getKeyBindings,
   'SearchExtensions.handleBlur': HandleBlur.handleBlur,
   'SearchExtensions.handleClick': HandleClick.handleClick,
+  'SearchExtensions.handleClickCurrent': HandleClickCurrent.handleClickCurrent,
   'SearchExtensions.handleContextMenu': HandleContextMenu.handleContextMenu,
   'SearchExtensions.handleDisable': HandleDisable.handleDisable,
   'SearchExtensions.handleEnable': HandleEnable.handleEnable,
