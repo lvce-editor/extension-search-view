@@ -1,5 +1,5 @@
 import type { State } from '../State/State.ts'
-import * as Arrays from '../Arrays/Arrays.js'
+import * as Arrays from '../Arrays/Arrays.ts'
 import { focusIndex } from '../FocusIndex/FocusIndex.ts'
 
 export const focusNextPage = async (state: State): Promise<any> => {
