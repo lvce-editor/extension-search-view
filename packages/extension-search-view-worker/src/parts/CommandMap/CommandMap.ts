@@ -12,6 +12,7 @@ import * as OpenSuggest from '../OpenSuggest/OpenSuggest.ts'
 import * as Render from '../Render/Render.ts'
 import * as SaveState from '../SaveState/SaveState.ts'
 import * as SearchExtensions from '../SearchExtensions/SearchExtensions.ts'
+import * as SetDeltaY from '../SetDeltaY/SetDeltaY.ts'
 import * as ToggleSuggest from '../ToggleSuggest/ToggleSuggest.ts'
 
 export const commandMap = {
@@ -29,5 +30,6 @@ export const commandMap = {
   'SearchExtensions.closeSuggest': CloseSuggest.closeSuggest,
   'SearchExtensions.focusIndex': FocusIndex.focusIndex,
   'SearchExtensions.toggleSuggest': ToggleSuggest.toggleSuggest,
+  'SearchExtensions.setDeltaY': SetDeltaY.setDeltaY,
   'SearchExtensions.handleContextMenu': HandleContextMenu.handleContextMenu,
 }
