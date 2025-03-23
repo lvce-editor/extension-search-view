@@ -22,6 +22,7 @@ import * as HandleInstall from '../HandleInstall/HandleInstall.ts'
 import * as HandleScrollBarCaptureLost from '../HandleScrollBarCaptureLost/HandleScrollBarCaptureLost.ts'
 import * as HandleScrollBarClick from '../HandleScrollBarClick/HandleScrollBarClick.ts'
 import * as HandleScrollBarMove from '../HandleScrollBarMove/HandleScrollBarMove.ts'
+import * as HandleUninstall from '../HandleUninstall/HandleUninstall.ts'
 import * as HandleWheel from '../HandleWheel/HandleWheel.ts'
 import * as LoadContent from '../LoadContent/LoadContent.ts'
 import * as OpenSuggest from '../OpenSuggest/OpenSuggest.ts'
@@ -58,6 +59,7 @@ export const commandMap = {
   'SearchExtensions.handleScrollBarCaptureLos': HandleScrollBarCaptureLost.handleScrollBarCaptureLost,
   'SearchExtensions.handleScrollBarClick': HandleScrollBarClick.handleScrollBarClick,
   'SearchExtensions.handleScrollBarMove': HandleScrollBarMove.handleScrollBarMove,
+  'SearchExtensions.handleUninstall': HandleUninstall.handleUninstall,
   'SearchExtensions.handleWheel': HandleWheel.handleWheel,
   'SearchExtensions.loadContent': LoadContent.loadContent,
   'SearchExtensions.openSuggest': OpenSuggest.openSuggest,
