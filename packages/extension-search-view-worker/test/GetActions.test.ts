@@ -1,8 +1,8 @@
 import { expect, test } from '@jest/globals'
-import * as GetActions from '../src/parts/GetActions/GetActions'
-import * as ActionType from '../src/parts/ActionType/ActionType'
-import * as ViewletExtensionStrings from '../src/parts/ExtensionStrings/ExtensionStrings'
-import * as MaskIcon from '../src/parts/MaskIcon/MaskIcon'
+import * as GetActions from '../src/parts/GetActions/GetActions.ts'
+import * as ActionType from '../src/parts/ActionType/ActionType.ts'
+import * as ViewletExtensionStrings from '../src/parts/ExtensionStrings/ExtensionStrings.ts'
+import * as MaskIcon from '../src/parts/MaskIcon/MaskIcon.ts'
 
 test('returns correct actions', () => {
   const actions = GetActions.getActions()
