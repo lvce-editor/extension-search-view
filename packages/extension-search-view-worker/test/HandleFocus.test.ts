@@ -1,9 +1,16 @@
-import { expect, test } from '@jest/globals'
-import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
-import * as HandleFocus from '../src/parts/HandleFocus/HandleFocus.ts'
+import { expect, jest, test } from '@jest/globals'
+import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
+import { handleFocus } from '../src/parts/HandleFocus/HandleFocus.ts'
+import { RendererWorker } from '../src/parts/RpcId/RpcId.ts'
+import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
 
-test('handleFocus returns state', async () => {
-  const state = CreateDefaultState.createDefaultState()
-  const result = await HandleFocus.handleFocus(state)
-  expect(result).toBe(state)
+test('handleFocus invokes RPC focus method', async () => {
+  const mockFn = jest.fn()
+  const mockRpc = {
+    invoke: mockFn,
+  } as any
+  RpcRegistry.set(RendererWorker, mockRpc)
+  const state = createDefaultState()
+  expect(await handleFocus(state)).toBe(state)
+  expect(mockRpc.invoke).toHaveBeenCalledWith('focus')
 })
