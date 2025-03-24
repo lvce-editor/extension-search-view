@@ -1,8 +1,8 @@
 import { expect, test } from '@jest/globals'
-import * as RenderScrollBar from '../src/parts/RenderScrollBar/RenderScrollBar'
-import * as ClassNames from '../src/parts/ClassNames/ClassNames'
-import * as RenderMethod from '../src/parts/RenderMethod/RenderMethod'
-import { State } from '../src/parts/State/State.ts'
+import type { State } from '../src/parts/State/State.ts'
+import * as ClassNames from '../src/parts/ClassNames/ClassNames.ts'
+import * as RenderMethod from '../src/parts/RenderMethod/RenderMethod.ts'
+import * as RenderScrollBar from '../src/parts/RenderScrollBar/RenderScrollBar.ts'
 
 const createDefaultState = (): State => ({
   allExtensions: [],
