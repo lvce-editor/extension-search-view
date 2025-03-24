@@ -1,8 +1,8 @@
 import { expect, test } from '@jest/globals'
-import * as GetKeyBindings from '../src/parts/GetKeyBindings/GetKeyBindings'
-import * as KeyCode from '../src/parts/KeyCode/KeyCode'
-import * as KeyModifier from '../src/parts/KeyModifier/KeyModifier'
-import * as WhenExpression from '../src/parts/WhenExpression/WhenExpression'
+import * as GetKeyBindings from '../src/parts/GetKeyBindings/GetKeyBindings.ts'
+import * as KeyCode from '../src/parts/KeyCode/KeyCode.ts'
+import * as KeyModifier from '../src/parts/KeyModifier/KeyModifier.ts'
+import * as WhenExpression from '../src/parts/WhenExpression/WhenExpression.ts'
 
 test('returns array of key bindings', () => {
   const keyBindings = GetKeyBindings.getKeyBindings()
