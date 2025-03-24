@@ -1,8 +1,9 @@
 import * as Assert from '../Assert/Assert.ts'
 import { focusIndexScrollDown } from '../FocusIndexScrollDown/FocusIndexScrollDown.ts'
 import { focusIndexScrollUp } from '../FocusIndexScrollUp/FocusIndexScrollUp.ts'
+import { State } from '../State/State.ts'
 
-export const focusIndex = (state: any, index: number): any => {
+export const focusIndex = (state: State, index: number): State => {
   const { itemHeight, minLineY, maxLineY, headerHeight, height, items } = state
   const itemsLength = items.length
   if (itemsLength === 0) {
