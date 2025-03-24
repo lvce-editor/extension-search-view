@@ -1,5 +1,5 @@
 import { expect, test } from '@jest/globals'
-import * as Icon from '../src/parts/Icon/Icon'
+import * as Icon from '../src/parts/Icon/Icon.ts'
 
 test('getExtensionDefaultIcon returns correct path', () => {
   const assetDir = '/test/assets'
