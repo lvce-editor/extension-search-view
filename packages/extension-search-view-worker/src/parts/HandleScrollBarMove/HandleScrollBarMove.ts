@@ -17,5 +17,3 @@ export const handleScrollBarMove = (state: any, eventY: number): any => {
   const newDeltaY = newPercent * finalDeltaY
   return setDeltaY(state, newDeltaY)
 }
-
-export const handleScrollBarThumbPointerMove = handleScrollBarMove
