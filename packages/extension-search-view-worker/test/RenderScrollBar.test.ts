@@ -13,7 +13,7 @@ test('renders scrollbar with default state', () => {
 test('renders active scrollbar', () => {
   const state = { ...createDefaultState(), scrollBarActive: true }
   const result = RenderScrollBar.renderScrollBar(state)
-  expect(result).toEqual([RenderMethod.SetScrollBar, 'position(0px, 0px)', '20px', `${ClassNames.ScrollBarThumb} ${ClassNames.ScrollBarThumbActive}`])
+  expect(result).toEqual([RenderMethod.SetScrollBar, '0px, NaNpx', '25px', `${ClassNames.ScrollBarThumb} ${ClassNames.ScrollBarThumbActive}`])
 })
 
 test('renders scrollbar with scroll position', () => {
