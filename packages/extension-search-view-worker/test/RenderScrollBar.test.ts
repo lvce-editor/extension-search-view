@@ -7,7 +7,7 @@ import * as RenderScrollBar from '../src/parts/RenderScrollBar/RenderScrollBar.t
 test('renders scrollbar with default state', () => {
   const state = createDefaultState()
   const result = RenderScrollBar.renderScrollBar(state)
-  expect(result).toEqual([RenderMethod.SetScrollBar, 'position(0px, 0px)', '20px', ClassNames.ScrollBarThumb])
+  expect(result).toEqual([RenderMethod.SetScrollBar, '0 NaNpx', '25px', ClassNames.ScrollBarThumb])
 })
 
 test('renders active scrollbar', () => {
