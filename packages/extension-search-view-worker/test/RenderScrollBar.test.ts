@@ -21,6 +21,6 @@ test('renders scrollbar with scroll position', () => {
   const result = RenderScrollBar.renderScrollBar(state)
   expect(result[0]).toBe(RenderMethod.SetScrollBar)
   expect(result[1]).toBe('0px 75px')
-  expect(result[2]).toBe('20px')
+  expect(result[2]).toBe('25px')
   expect(result[3]).toBe(ClassNames.ScrollBarThumb)
 })
