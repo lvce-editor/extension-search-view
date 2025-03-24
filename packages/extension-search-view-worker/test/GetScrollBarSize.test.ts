@@ -1,5 +1,5 @@
 import { expect, test } from '@jest/globals'
-import * as GetScrollBarSize from '../src/parts/GetScrollBarSize/GetScrollBarSize'
+import * as GetScrollBarSize from '../src/parts/GetScrollBarSize/GetScrollBarSize.ts'
 
 test('returns 0 when container size is larger than content size', () => {
   expect(GetScrollBarSize.getScrollBarSize(100, 50, 20)).toBe(0)
