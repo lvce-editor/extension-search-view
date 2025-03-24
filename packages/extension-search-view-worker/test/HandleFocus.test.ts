@@ -12,5 +12,6 @@ test('handleFocus invokes RPC focus method', async () => {
   RpcRegistry.set(RendererWorker, mockRpc)
   const state = createDefaultState()
   expect(await handleFocus(state)).toBe(state)
-  expect(mockRpc.invoke).toHaveBeenCalledWith('focus')
+  expect(mockFn).toHaveBeenCalledTimes(1)
+  expect(mockFn).toHaveBeenCalledWith('Focus.setFocus', 15)
 })
