@@ -1,9 +1,14 @@
 import { expect, test } from '@jest/globals'
-import * as Px from '../src/parts/Px/Px.ts'
+import { px, position } from '../src/parts/Px/Px.ts'
 
-test('px converts number to pixel string', () => {
-  expect(Px.px(0)).toBe('0px')
-  expect(Px.px(100)).toBe('100px')
-  expect(Px.px(-50)).toBe('-50px')
-  expect(Px.px(1.5)).toBe('1.5px')
+test('px', () => {
+  expect(px(10)).toBe('10px')
+  expect(px(0)).toBe('0px')
+  expect(px(-5)).toBe('-5px')
+})
+
+test('position', () => {
+  expect(position(10, 20)).toBe('10px 20px')
+  expect(position(0, 0)).toBe('0px 0px')
+  expect(position(-5, -10)).toBe('-5px -10px')
 })
