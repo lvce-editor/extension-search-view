@@ -1,6 +1,6 @@
 import { expect, test } from '@jest/globals'
-import * as GetRemoteUrl from '../src/parts/GetRemoteUrl/GetRemoteUrl'
-import * as PlatformType from '../src/parts/PlatformType/PlatformType'
+import * as GetRemoteUrl from '../src/parts/GetRemoteUrl/GetRemoteUrl.ts'
+import * as PlatformType from '../src/parts/PlatformType/PlatformType.ts'
 
 test('returns empty string for non-remote platforms', () => {
   const extension = { id: 'test', icon: 'icon.png', builtin: false }
