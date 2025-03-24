@@ -1,5 +1,5 @@
 import { expect, test } from '@jest/globals'
-import * as GetNumberOfVisibleItems from '../src/parts/GetNumberOfVisibleItems/GetNumberOfVisibleItems'
+import * as GetNumberOfVisibleItems from '../src/parts/GetNumberOfVisibleItems/GetNumberOfVisibleItems.ts'
 
 test('calculates correct number of visible items', () => {
   const listHeight = 100
