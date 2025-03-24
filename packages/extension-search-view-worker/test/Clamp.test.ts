@@ -1,5 +1,5 @@
 import { expect, test } from '@jest/globals'
-import * as Clamp from '../src/parts/Clamp/Clamp'
+import * as Clamp from '../src/parts/Clamp/Clamp.ts'
 
 test('clamps number between min and max', () => {
   expect(Clamp.clamp(5, 0, 10)).toBe(5)
