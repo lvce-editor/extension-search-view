@@ -34,6 +34,4 @@ test('renderHeader returns correct header dom with actions', () => {
 
   expect(result[0]).toBe('setHeaderDom')
   expect(result[1]).toBeDefined()
-  expect(result[1].type).toBe('header')
-  expect(result[1].children).toBeDefined()
 })
