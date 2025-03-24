@@ -1,6 +1,6 @@
 import { expect, test } from '@jest/globals'
-import * as GetActionVirtualDom from '../src/parts/GetActionVirtualDom/GetActionVirtualDom.ts'
 import * as ActionType from '../src/parts/ActionType/ActionType.ts'
+import * as GetActionVirtualDom from '../src/parts/GetActionVirtualDom/GetActionVirtualDom.ts'
 
 test('returns empty array for unknown action type', () => {
   const action = {
