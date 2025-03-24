@@ -1,4 +1,4 @@
-import { State } from '../State/State.ts'
+import type { State } from '../State/State.ts'
 
 export const createDefaultState = (): State => {
   return {
