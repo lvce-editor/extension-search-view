@@ -26,5 +26,6 @@ export const createDefaultState = (): State => {
     y: 0,
     handleOffset: 0,
     assetDir: '',
+    focused: false,
   }
 }

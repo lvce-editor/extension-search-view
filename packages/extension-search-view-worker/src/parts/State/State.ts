@@ -23,4 +23,5 @@ export interface State {
   readonly y: number
   readonly handleOffset: number
   readonly assetDir: string
+  readonly focused: boolean
 }
