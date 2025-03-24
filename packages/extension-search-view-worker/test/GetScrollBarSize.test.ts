@@ -14,5 +14,5 @@ test('returns calculated size when larger than minimum', () => {
 })
 
 test('handles large numbers correctly', () => {
-  expect(GetScrollBarSize.getScrollBarSize(1000, 10000, 50)).toBe(100)
+  expect(GetScrollBarSize.getScrollBarSize(1000, 10_000, 50)).toBe(100)
 })
