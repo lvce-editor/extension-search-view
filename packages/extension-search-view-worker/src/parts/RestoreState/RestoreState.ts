@@ -1,11 +1,5 @@
 import type { RestoredState } from '../RestoredState/RestoredState.ts'
-
-const getSavedValue = (savedState: unknown): string => {
-  if (savedState && typeof savedState === 'object' && 'searchValue' in savedState && typeof savedState.searchValue === 'string') {
-    return savedState.searchValue
-  }
-  return ''
-}
+import { getSavedValue } from '../GetSavedValue/GetSavedValue.ts'
 
 export const restoreState = (savedState: unknown): RestoredState => {
   const searchValue = getSavedValue(savedState)
