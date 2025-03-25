@@ -31,10 +31,10 @@ const renderMessage = {
 }
 
 const renderSearchValue = {
-  isEqual(oldState: any, newState: any): boolean {
+  isEqual(oldState: State, newState: State): boolean {
     return oldState.searchValue === newState.searchValue
   },
-  apply(oldState: any, newState: any): any {
+  apply(oldState: State, newState: State): readonly any[] {
     return [/* method */ RenderMethod.SetSearchValue, oldState.searchValue, newState.searchValue]
   },
 }
@@ -48,8 +48,8 @@ const renderHeader = {
 
 const render = [renderScrollBar, renderMessage, renderExtensions, renderSearchValue, renderHeader]
 
-export const doRender = (oldState: any, newState: any): any => {
-  const commands: any = []
+export const doRender = (oldState: State, newState: State): readonly any[] => {
+  const commands: any[] = []
   for (const item of render) {
     if (!item.isEqual(oldState, newState)) {
       commands.push(item.apply(oldState, newState))
