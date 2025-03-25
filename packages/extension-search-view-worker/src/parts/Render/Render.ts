@@ -3,6 +3,7 @@ import * as DiffHeader from '../DiffHeader/DiffHeader.ts'
 import * as DiffItems from '../DiffItems/DiffItems.ts'
 import * as DiffMessage from '../DiffMessage/DiffMessage.ts'
 import * as DiffScrollBar from '../DiffScrollBar/DiffScrollBar.ts'
+import * as InputSource from '../InputSource/InputSource.ts'
 import * as RenderHeader from '../RenderHeader/RenderHeader.ts'
 import * as RenderItems from '../RenderItems/RenderItems.ts'
 import * as RenderMessage from '../RenderMessage/RenderMessage.ts'
@@ -32,7 +33,7 @@ const renderMessage = {
 
 const renderSearchValue = {
   isEqual(oldState: State, newState: State): boolean {
-    return oldState.searchValue === newState.searchValue
+    return newState.inputSource === InputSource.User || oldState.searchValue === newState.searchValue
   },
   apply(oldState: State, newState: State): readonly any[] {
     return [/* method */ RenderMethod.SetSearchValue, oldState.searchValue, newState.searchValue]
