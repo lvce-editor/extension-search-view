@@ -27,5 +27,6 @@ export const createDefaultState = (): State => {
     handleOffset: 0,
     assetDir: '',
     focused: false,
+    inputSource: 0,
   }
 }
