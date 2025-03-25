@@ -45,7 +45,7 @@ const renderHeader = {
   },
 }
 
-const render = [renderScrollBar, renderMessage, renderExtensions, renderSearchValue, renderHeader]
+const render = [renderScrollBar, renderMessage, renderExtensions, renderHeader, renderSearchValue]
 
 export const doRender = (oldState: State, newState: State): readonly any[] => {
   const commands: any[] = []
