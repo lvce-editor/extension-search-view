@@ -1,11 +1,13 @@
-import { expect, test } from '@jest/globals'
-import { focusFirst } from '../src/parts/FocusFirst/FocusFirst.ts'
+import { test, expect } from '@jest/globals'
+import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
+import * as FocusFirst from '../src/parts/FocusFirst/FocusFirst.ts'
 
-test.skip('focusFirst should focus the first index', () => {
+test('focuses first index', () => {
   const state = {
-    list: ['item1', 'item2', 'item3'],
-  } as any
+    ...CreateDefaultState.createDefaultState(),
+    focusedIndex: 5,
+  }
 
-  const result = focusFirst(state)
-  expect(result).toBeDefined()
+  const result = FocusFirst.focusFirst(state)
+  expect(result.focusedIndex).toBe(0)
 })
