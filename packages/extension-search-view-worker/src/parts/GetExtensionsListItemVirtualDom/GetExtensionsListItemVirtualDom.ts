@@ -1,4 +1,5 @@
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
+import type { VisibleItem } from '../VisibleItem/VisibleItem.ts'
 import * as AriaRoleDescription from '../AriaRoleDescription/AriaRoleDescription.ts'
 import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
@@ -34,7 +35,7 @@ const listItemAuthorName: VirtualDomNode = {
   childCount: 1,
 }
 
-export const getExtensionListItemVirtualDom = (extension: any): readonly VirtualDomNode[] => {
+export const getExtensionListItemVirtualDom = (extension: VisibleItem): readonly VirtualDomNode[] => {
   const { posInSet, setSize, top, icon, name, description, publisher, focused } = extension
   const dom: any[] = [
     {
