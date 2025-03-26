@@ -1,7 +1,7 @@
 import { expect, test } from '@jest/globals'
-import { renderActions } from '../src/parts/RenderActions/RenderActions.js'
-import * as ExtensionSearchViewStates from '../src/parts/ExtensionSearchViewStates/ExtensionSearchViewStates.js'
 import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaultState.js'
+import * as ExtensionSearchViewStates from '../src/parts/ExtensionSearchViewStates/ExtensionSearchViewStates.js'
+import { renderActions } from '../src/parts/RenderActions/RenderActions.js'
 
 test('returns empty array when oldState equals newState', () => {
   const state = createDefaultState()
