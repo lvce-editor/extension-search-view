@@ -1,6 +1,6 @@
-import { jest, test, expect } from '@jest/globals'
-import { handleBlur } from '../src/parts/HandleBlur/HandleBlur.ts'
+import { test, expect } from '@jest/globals'
 import type { State } from '../src/parts/State/State.ts'
+import { handleBlur } from '../src/parts/HandleBlur/HandleBlur.ts'
 
 test('handleBlur returns state with focused set to false', () => {
   const initialState: State = {
