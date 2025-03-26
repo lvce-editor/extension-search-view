@@ -17,8 +17,8 @@ test('normalizeExtension returns correct ExtensionListItem structure', () => {
     name: 'Test Extension',
     description: 'Test Description',
     uri: '',
-    publisher: 'Test Publisher',
-    icon: 'test-icon.png',
+    publisher: 'test-id',
+    icon: '/test/assets/icons/extensionDefaultIcon.png',
   })
 })
 
@@ -33,10 +33,10 @@ test('normalizeExtension handles extension with missing fields', () => {
   expect(result).toEqual({
     id: 'test-id',
     name: 'Test Extension',
-    description: '',
+    description: 'n/a',
     uri: '',
-    publisher: '',
-    icon: '',
+    publisher: 'test-id',
+    icon: '/test/assets/icons/extensionDefaultIcon.png',
   })
 })
 
@@ -56,7 +56,7 @@ test('normalizeExtension handles different platform values', () => {
     name: 'Test Extension',
     description: 'Test Description',
     uri: '',
-    publisher: 'Test Publisher',
-    icon: 'test-icon.png',
+    publisher: 'test-id',
+    icon: '/test/assets/icons/extensionDefaultIcon.png',
   })
 })
