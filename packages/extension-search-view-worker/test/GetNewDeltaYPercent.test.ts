@@ -9,7 +9,7 @@ test('calculates correct values when clicking at top of scrollbar', () => {
 
 test('calculates correct values when clicking in middle of scrollbar', () => {
   const result = GetNewDeltaYPercent.getNewDeltaPercent(100, 20, 50)
-  expect(result.percent).toBe(0.375)
+  expect(result.percent).toBe(0.5)
   expect(result.handleOffset).toBe(10)
 })
 
