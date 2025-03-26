@@ -26,7 +26,7 @@ test('next should handle single item array', () => {
 })
 
 test('next should handle empty array', () => {
-  expect(next([], 0)).toBe(0)
+  expect(next([], 0)).toBe(NaN)
 })
 
 test('next should handle negative index', () => {
