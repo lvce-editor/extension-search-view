@@ -71,6 +71,7 @@ export const commandMap = {
   'SearchExtensions.handleScrollBarCaptureLost': WrapCommand.wrapCommand(HandleScrollBarCaptureLost.handleScrollBarCaptureLost),
   'SearchExtensions.handleScrollBarClick': WrapCommand.wrapCommand(HandleScrollBarClick.handleScrollBarClick),
   'SearchExtensions.handleScrollBarMove': WrapCommand.wrapCommand(HandleScrollBarMove.handleScrollBarMove),
+  'SearchExtensions.handleScrollBarThumbPointerMove': WrapCommand.wrapCommand(HandleScrollBarMove.handleScrollBarMove),
   'SearchExtensions.handleUninstall': WrapCommand.wrapCommand(HandleUninstall.handleUninstall),
   'SearchExtensions.handleWheel': WrapCommand.wrapCommand(HandleWheel.handleWheel),
   'SearchExtensions.loadContent': LoadContent.loadContent,

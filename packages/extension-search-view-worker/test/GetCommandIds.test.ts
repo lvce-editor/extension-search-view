@@ -30,5 +30,6 @@ test('returns the commandIds array', () => {
     'selectIndex',
     'setDeltaY',
     'toggleSuggest',
+    'handleScrollBarThumbPointerMove',
   ])
 })
