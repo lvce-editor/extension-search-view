@@ -1,5 +1,5 @@
 import { expect, test } from '@jest/globals'
-import { first, last, next } from '../../src/parts/ListIndex/ListIndex.js'
+import { first, last, next } from '../src/parts/ListIndex/ListIndex.ts'
 
 test('first should always return 0', () => {
   expect(first()).toBe(0)
