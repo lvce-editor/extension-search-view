@@ -1,4 +1,4 @@
-import { jest, test, expect } from '@jest/globals'
+import { test, expect } from '@jest/globals'
 import * as ScrollDown from '../src/parts/ScrollDown/ScrollDown.ts'
 import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 
