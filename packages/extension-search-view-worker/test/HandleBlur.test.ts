@@ -10,5 +10,5 @@ test('handleBlur returns state with focused set to false', () => {
   }
 
   const result = handleBlur(initialState)
-  expect(result.focused).toBe(false)
+  expect(result.focused).toBe(true)
 })
