@@ -1,6 +1,6 @@
 import { test, expect } from '@jest/globals'
-import * as ScrollDown from '../src/parts/ScrollDown/ScrollDown.ts'
 import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
+import * as ScrollDown from '../src/parts/ScrollDown/ScrollDown.ts'
 
 test('scrollDown', () => {
   const state = {
