@@ -1,12 +1,14 @@
+import type { ExtensionListItem } from '../ExtensionListItem/ExtensionListItem.ts'
+
 export interface State {
-  readonly allExtensions: readonly any[]
+  readonly allExtensions: readonly ExtensionListItem[]
   readonly deltaY: number
   readonly finalDeltaY: number
   readonly focusedIndex: number
   readonly headerHeight: number
   readonly height: number
   readonly itemHeight: number
-  readonly items: readonly any[]
+  readonly items: readonly ExtensionListItem[]
   readonly maxLineY: number
   readonly message: string
   readonly minimumSliderSize: number
