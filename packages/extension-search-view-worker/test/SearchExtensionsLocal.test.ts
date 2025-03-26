@@ -8,7 +8,7 @@ test('searchExtensions - error - extension has no name, use id for filtering', a
       id: 'test-author.test-extension',
       main: 'main.js',
     },
-  ]
+  ] as any[]
   const searchValue = 'test'
   const expected = [
     {
@@ -27,7 +27,7 @@ test('searchExtensions - error - extension has no name and no id', async () => {
     {
       main: 'main.js',
     },
-  ]
+  ] as any[]
   const searchValue = 'test'
   const expected: any[] = []
   const platform = 0
@@ -43,7 +43,7 @@ test('searchExtensions - error - extension name is of type number', async () => 
       main: 'main.js',
       name: 123,
     },
-  ]
+  ] as any[]
   const searchValue = 'test'
   const expected: any[] = []
   const platform = 0
@@ -59,7 +59,7 @@ test('searchExtensions - error - extension id is of type number', async () => {
       main: 'main.js',
       id: 123,
     },
-  ]
+  ] as any[]
   const searchValue = 'test'
   const expected: any[] = []
   const platform = 0
@@ -70,7 +70,7 @@ test('searchExtensions - error - extension id is of type number', async () => {
 })
 
 test('searchExtensions - error - extension is null', async () => {
-  const extensions = [null]
+  const extensions = [null] as any[]
   const searchValue = 'test'
   const expected: any[] = []
   const platform = 0
@@ -81,7 +81,7 @@ test('searchExtensions - error - extension is null', async () => {
 })
 
 test('searchExtensions - error - extension is of type number', async () => {
-  const extensions = [123]
+  const extensions = [123] as any[]
   const searchValue = 'test'
   const expected: any[] = []
   const platform = 0
@@ -97,7 +97,7 @@ test('searchExtensions - match by lowercase name', async () => {
       name: 'Test extension',
       main: 'main.js',
     },
-  ]
+  ] as any[]
   const searchValue = 'test'
   const expected = [
     {
