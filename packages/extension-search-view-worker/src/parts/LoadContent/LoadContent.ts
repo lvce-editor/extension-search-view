@@ -1,5 +1,5 @@
-import * as ExtensionManagement from '../ExtensionManagement/ExtensionManagement.ts'
 import * as ExtensionSearchViewStates from '../ExtensionSearchViewStates/ExtensionSearchViewStates.ts'
+import * as GetAllExtensions from '../GetAllExtensions/GetAllExtensions.ts'
 import * as GetViewletSize from '../GetViewletSize/GetViewletSize.ts'
 import * as HandleInput from '../HandleInput/HandleInput.ts'
 import * as InputSource from '../InputSource/InputSource.ts'
@@ -10,7 +10,7 @@ export const loadContent = async (uid: number, savedState: unknown): Promise<voi
   const { width, platform } = newState
   const { searchValue } = RestoreState.restoreState(savedState)
   // TODO just get local extensions on demand (not when query string is already different)
-  const allExtensions = await ExtensionManagement.getAllExtensions(platform)
+  const allExtensions = await GetAllExtensions.getAllExtensions(platform)
   const size = GetViewletSize.getViewletSize(width)
   const updatedState = await HandleInput.handleInput({ ...newState, allExtensions, size, inputSource: InputSource.Script }, searchValue)
   ExtensionSearchViewStates.set(uid, newState, updatedState)
