@@ -1,9 +1,21 @@
-import { expect, test } from '@jest/globals'
+import { test, expect } from '@jest/globals'
+import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
+import * as ExtensionSearchViewStates from '../src/parts/ExtensionSearchViewStates/ExtensionSearchViewStates.ts'
 import { saveState } from '../src/parts/SaveState/SaveState.ts'
 
-test.skip('saveState returns SavedState with searchValue', () => {
-  const result = saveState(0)
+test('saveState should return search value from extension search view states', () => {
+  const mockUid = 123
+  const mockSearchValue = 'test search'
+  const mockState = {
+    ...createDefaultState(),
+    searchValue: mockSearchValue,
+  }
+
+  ExtensionSearchViewStates.set(mockUid, mockState, mockState)
+
+  const result = saveState(mockUid)
+
   expect(result).toEqual({
-    searchValue: 'test search',
+    searchValue: mockSearchValue,
   })
 })
