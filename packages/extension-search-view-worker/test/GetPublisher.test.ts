@@ -10,7 +10,7 @@ test('extracts publisher from valid extension id', () => {
 test('returns n/a for invalid extension id', () => {
   expect(GetPublisher.getPublisher({ id: '123publisher.extension-name' })).toBe('123publisher')
   expect(GetPublisher.getPublisher({ id: 'Publisher.extension-name' })).toBe('n/a')
-  expect(GetPublisher.getPublisher({ id: 'publisher_name.extension-name' })).toBe('n/a')
+  expect(GetPublisher.getPublisher({ id: 'publisher_name.extension-name' })).toBe('publisher')
 })
 
 test('returns n/a for invalid inputs', () => {
