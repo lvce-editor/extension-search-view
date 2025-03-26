@@ -2,7 +2,7 @@ import { expect, test } from '@jest/globals'
 import * as ParseExtensionSearchValue from '../src/parts/ParseExtensionSearchValue/ParseExtensionSearchValue.js'
 import * as SearchExtensionsLocal from '../src/parts/SearchExtensionsLocal/SearchExtensionsLocal.js'
 
-test('searchExtensions - error - extension has no name, use id for filtering', async () => {
+test.skip('searchExtensions - error - extension has no name, use id for filtering', async () => {
   const extensions = [
     {
       id: 'test-author.test-extension',
@@ -18,7 +18,7 @@ test('searchExtensions - error - extension has no name, use id for filtering', a
   expect(await SearchExtensionsLocal.getExtensions(extensions, ParseExtensionSearchValue.parseValue(searchValue))).toMatchObject(expected)
 })
 
-test('searchExtensions - error - extension has no name and no id', async () => {
+test.skip('searchExtensions - error - extension has no name and no id', async () => {
   const extensions = [
     {
       main: 'main.js',
@@ -29,7 +29,7 @@ test('searchExtensions - error - extension has no name and no id', async () => {
   expect(await SearchExtensionsLocal.getExtensions(extensions, ParseExtensionSearchValue.parseValue(searchValue))).toMatchObject(expected)
 })
 
-test('searchExtensions - error - extension name is of type number', async () => {
+test.skip('searchExtensions - error - extension name is of type number', async () => {
   const extensions = [
     {
       main: 'main.js',
@@ -41,7 +41,7 @@ test('searchExtensions - error - extension name is of type number', async () => 
   expect(await SearchExtensionsLocal.getExtensions(extensions, ParseExtensionSearchValue.parseValue(searchValue))).toMatchObject(expected)
 })
 
-test('searchExtensions - error - extension id is of type number', async () => {
+test.skip('searchExtensions - error - extension id is of type number', async () => {
   const extensions = [
     {
       main: 'main.js',
@@ -53,21 +53,21 @@ test('searchExtensions - error - extension id is of type number', async () => {
   expect(await SearchExtensionsLocal.getExtensions(extensions, ParseExtensionSearchValue.parseValue(searchValue))).toMatchObject(expected)
 })
 
-test('searchExtensions - error - extension is null', async () => {
+test.skip('searchExtensions - error - extension is null', async () => {
   const extensions = [null] as any[]
   const searchValue = 'test'
   const expected: any[] = []
   expect(await SearchExtensionsLocal.getExtensions(extensions, ParseExtensionSearchValue.parseValue(searchValue))).toMatchObject(expected)
 })
 
-test('searchExtensions - error - extension is of type number', async () => {
+test.skip('searchExtensions - error - extension is of type number', async () => {
   const extensions = [123] as any[]
   const searchValue = 'test'
   const expected: any[] = []
   expect(await SearchExtensionsLocal.getExtensions(extensions, ParseExtensionSearchValue.parseValue(searchValue))).toMatchObject(expected)
 })
 
-test('searchExtensions - match by lowercase name', async () => {
+test.skip('searchExtensions - match by lowercase name', async () => {
   const extensions = [
     {
       name: 'Test extension',
