@@ -26,4 +26,5 @@ export const commandIds = [
   'selectIndex',
   'setDeltaY',
   'toggleSuggest',
+  'handleScrollBarThumbPointerMove',
 ]
