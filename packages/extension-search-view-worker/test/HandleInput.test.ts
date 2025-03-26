@@ -6,24 +6,21 @@ import { Remote } from '../src/parts/PlatformType/PlatformType.js'
 import { RendererWorker } from '../src/parts/RpcId/RpcId.js'
 import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.js'
 
+const mockExtensions = [
+  { name: 'Test Extension', id: 'test-extension', publisher: 'test-publisher', icon: 'test-icon', description: 'test-description', uri: 'test-uri' },
+]
+
 const mockRpc = {
   async invoke(method: string, ...args: any[]) {
-    if (method === 'searchExtensions') {
-      const query = args[0]
-      if (query === 'nonexistent') {
-        return []
-      }
-      if (query === 'error') {
-        throw new Error('error')
-      }
-      return [{ name: 'Test Extension', id: 'test-extension' }]
+    if (method === 'ExtensionManagement.getAllExtensions') {
+      return mockExtensions
     }
     return undefined
   },
 } as any
 
 test('handles empty search results', async () => {
-  const state = { ...createDefaultState(), platform: Remote }
+  const state = { ...createDefaultState(), platform: Remote, allExtensions: [] }
   RpcRegistry.set(RendererWorker, mockRpc)
   const result = await handleInput(state, 'nonexistent')
 
@@ -33,8 +30,8 @@ test('handles empty search results', async () => {
   expect(result.placeholder).toBe(ViewletExtensionsStrings.searchExtensionsInMarketPlace())
 })
 
-test.skip('handles successful search', async () => {
-  const state = { ...createDefaultState(), platform: Remote }
+test('handles successful search', async () => {
+  const state = { ...createDefaultState(), platform: Remote, allExtensions: mockExtensions }
   RpcRegistry.set(RendererWorker, mockRpc)
   const result = await handleInput(state, 'test')
 
@@ -43,8 +40,8 @@ test.skip('handles successful search', async () => {
   expect(result.placeholder).toBe(ViewletExtensionsStrings.searchExtensionsInMarketPlace())
 })
 
-test.skip('handles error during search', async () => {
-  const state = { ...createDefaultState(), platform: Remote }
+test('handles error during search', async () => {
+  const state = { ...createDefaultState(), platform: Remote, allExtensions: mockExtensions }
   RpcRegistry.set(RendererWorker, mockRpc)
   const result = await handleInput(state, 'error')
 
