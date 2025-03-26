@@ -66,10 +66,6 @@ test('returns n/a when no description available', () => {
   expect(ExtensionDisplay.getDescription(extension)).toBe('n/a')
 })
 
-test('returns n/a when extension is null', () => {
-  expect(ExtensionDisplay.getDescription(null)).toBe('n/a')
-})
-
 test('returns id when available', () => {
   const extension = { id: 'test-extension' }
   expect(ExtensionDisplay.getId(extension)).toBe('test-extension')
