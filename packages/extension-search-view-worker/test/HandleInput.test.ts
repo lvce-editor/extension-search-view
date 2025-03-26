@@ -12,7 +12,7 @@ const mockExtensions = [
 ]
 
 const mockRpc = {
-  async invoke(method: string, ...args: any[]) {
+  async invoke(method: string, ...args: readonly any[]) {
     if (method === 'ExtensionManagement.getAllExtensions') {
       return mockExtensions
     }
@@ -43,7 +43,7 @@ test('handles successful search', async () => {
 
 test.skip('handles error during search', async () => {
   const errorRpc = {
-    async invoke(method: string, ...args: any[]) {
+    async invoke(method: string, ...args: readonly any[]) {
       if (method === 'ExtensionManagement.getAllExtensions') {
         throw new VError(new Error('error'), 'Failed to search for extensions')
       }
