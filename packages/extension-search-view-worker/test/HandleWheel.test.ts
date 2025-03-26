@@ -1,6 +1,6 @@
 import { test, expect } from '@jest/globals'
-import { handleWheel } from '../src/parts/HandleWheel/HandleWheel.ts'
 import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
+import { handleWheel } from '../src/parts/HandleWheel/HandleWheel.ts'
 import { setDeltaY } from '../src/parts/SetDeltaY/SetDeltaY.ts'
 
 test('handleWheel should update deltaY', () => {
