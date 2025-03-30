@@ -1,6 +1,7 @@
 import * as ClearSearchResults from '../ClearSearchResults/ClearSearchResults.ts'
 import * as CloseSuggest from '../CloseSuggest/CloseSuggest.ts'
 import * as Create from '../Create/Create.ts'
+import * as Diff2 from '../Diff2/Diff2.ts'
 import * as Diff from '../Diff/Diff.ts'
 import * as FocusFirst from '../FocusFirst/FocusFirst.ts'
 import * as FocusIndex from '../FocusIndex/FocusIndex.ts'
@@ -46,7 +47,7 @@ export const commandMap = {
   'SearchExtensions.clearSearchResults': WrapCommand.wrapCommand(ClearSearchResults.clearSearchResults),
   'SearchExtensions.closeSuggest': WrapCommand.wrapCommand(CloseSuggest.closeSuggest),
   'SearchExtensions.create': Create.create,
-  'SearchExtensions.diff': Diff.diff,
+  'SearchExtensions.diff2': Diff2.diff2,
   'SearchExtensions.focusFirst': WrapCommand.wrapCommand(FocusFirst.focusFirst),
   'SearchExtensions.terminate': Terminate.terminate,
   'SearchExtensions.focusIndex': WrapCommand.wrapCommand(FocusIndex.focusIndex),
@@ -86,4 +87,7 @@ export const commandMap = {
   'SearchExtensions.selectIndex': WrapCommand.wrapCommand(SelectIndex.selectIndex),
   'SearchExtensions.setDeltaY': WrapCommand.wrapCommand(SetDeltaY.setDeltaY),
   'SearchExtensions.toggleSuggest': WrapCommand.wrapCommand(ToggleSuggest.toggleSuggest),
+
+  // deprecated
+  'SearchExtensions.diff': Diff.diff,
 }
