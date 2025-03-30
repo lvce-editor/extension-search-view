@@ -3,6 +3,7 @@ import * as CloseSuggest from '../CloseSuggest/CloseSuggest.ts'
 import * as Create from '../Create/Create.ts'
 import * as Diff2 from '../Diff2/Diff2.ts'
 import * as Diff from '../Diff/Diff.ts'
+import * as Dispose from '../Dispose/Dispose.ts'
 import * as FocusFirst from '../FocusFirst/FocusFirst.ts'
 import * as FocusIndex from '../FocusIndex/FocusIndex.ts'
 import * as FocusLast from '../FocusLast/FocusLast.ts'
@@ -54,6 +55,7 @@ export const commandMap = {
   'SearchExtensions.focusLast': WrapCommand.wrapCommand(FocusLast.focusLast),
   'SearchExtensions.focusNext': WrapCommand.wrapCommand(FocusNext.focusNext),
   'SearchExtensions.focusNextPage': WrapCommand.wrapCommand(FocusNextPage.focusNextPage),
+  'SearchExtensions.dispose': Dispose.dispose,
   'SearchExtensions.focusPreviousPage': WrapCommand.wrapCommand(FocusPreviousPage.focusPreviousPage),
   'SearchExtensions.getActions': GetActions.getActions,
   'SearchExtensions.getCommandIds': GetCommandIds.getCommandIds,
