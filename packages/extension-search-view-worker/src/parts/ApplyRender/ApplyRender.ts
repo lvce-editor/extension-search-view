@@ -5,7 +5,7 @@ export const applyRender = (oldState: State, newState: State, diffResult: readon
   const commands = []
   for (const item of diffResult) {
     const fn = GetRenderer.getRenderer(item)
-    commands.push(fn(oldState, newState))
+    commands.push(fn(newState))
   }
   return commands
 }
