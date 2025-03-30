@@ -17,3 +17,7 @@ export const set = (uid: number, oldState: State, newState: State): void => {
     newState,
   }
 }
+
+export const remove = (uid: number): void => {
+  delete states[uid]
+}
