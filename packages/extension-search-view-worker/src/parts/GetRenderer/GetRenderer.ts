@@ -1,5 +1,5 @@
-import * as DiffType from '../DiffType/DiffType.ts'
 import type { Renderer } from '../Renderer/Renderer.ts'
+import * as DiffType from '../DiffType/DiffType.ts'
 import * as RenderItems from '../RenderItems/RenderItems.ts'
 import * as RenderMessage from '../RenderMessage/RenderMessage.ts'
 import * as RenderScrollBar from '../RenderScrollBar/RenderScrollBar.ts'
