@@ -32,6 +32,7 @@ import * as HandleWheel from '../HandleWheel/HandleWheel.ts'
 import * as LoadContent from '../LoadContent/LoadContent.ts'
 import * as OpenSuggest from '../OpenSuggest/OpenSuggest.ts'
 import * as Render2 from '../Render2/Render2.ts'
+import * as Render3 from '../Render3/Render3.ts'
 import * as Render from '../Render/Render.ts'
 import * as RenderActions from '../RenderActions/RenderActions.ts'
 import * as RenderEventListeners from '../RenderEventListeners/RenderEventListeners.ts'
@@ -49,13 +50,12 @@ export const commandMap = {
   'SearchExtensions.closeSuggest': WrapCommand.wrapCommand(CloseSuggest.closeSuggest),
   'SearchExtensions.create': Create.create,
   'SearchExtensions.diff2': Diff2.diff2,
+  'SearchExtensions.dispose': Dispose.dispose,
   'SearchExtensions.focusFirst': WrapCommand.wrapCommand(FocusFirst.focusFirst),
-  'SearchExtensions.terminate': Terminate.terminate,
   'SearchExtensions.focusIndex': WrapCommand.wrapCommand(FocusIndex.focusIndex),
   'SearchExtensions.focusLast': WrapCommand.wrapCommand(FocusLast.focusLast),
   'SearchExtensions.focusNext': WrapCommand.wrapCommand(FocusNext.focusNext),
   'SearchExtensions.focusNextPage': WrapCommand.wrapCommand(FocusNextPage.focusNextPage),
-  'SearchExtensions.dispose': Dispose.dispose,
   'SearchExtensions.focusPreviousPage': WrapCommand.wrapCommand(FocusPreviousPage.focusPreviousPage),
   'SearchExtensions.getActions': GetActions.getActions,
   'SearchExtensions.getCommandIds': GetCommandIds.getCommandIds,
@@ -79,8 +79,7 @@ export const commandMap = {
   'SearchExtensions.handleWheel': WrapCommand.wrapCommand(HandleWheel.handleWheel),
   'SearchExtensions.loadContent': LoadContent.loadContent,
   'SearchExtensions.openSuggest': WrapCommand.wrapCommand(OpenSuggest.openSuggest),
-  'SearchExtensions.render': Render.doRender,
-  'SearchExtensions.render2': Render2.render2,
+  'SearchExtensions.render3': Render3.render3,
   'SearchExtensions.renderActions': RenderActions.renderActions,
   'SearchExtensions.renderEventListeners': RenderEventListeners.renderEventListeners,
   'SearchExtensions.saveState': SaveState.saveState,
@@ -88,8 +87,11 @@ export const commandMap = {
   'SearchExtensions.searchExtensions': SearchExtensions.searchExtensions,
   'SearchExtensions.selectIndex': WrapCommand.wrapCommand(SelectIndex.selectIndex),
   'SearchExtensions.setDeltaY': WrapCommand.wrapCommand(SetDeltaY.setDeltaY),
+  'SearchExtensions.terminate': Terminate.terminate,
   'SearchExtensions.toggleSuggest': WrapCommand.wrapCommand(ToggleSuggest.toggleSuggest),
 
   // deprecated
   'SearchExtensions.diff': Diff.diff,
+  'SearchExtensions.render': Render.doRender,
+  'SearchExtensions.render2': Render2.render2,
 }
