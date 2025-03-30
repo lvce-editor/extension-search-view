@@ -13,8 +13,6 @@ export const getRenderer = (diffType: number): Renderer => {
       return RenderMessage.renderMessage
     case DiffType.RenderScrollBar:
       return RenderScrollBar.renderScrollBar
-    case DiffType.RenderMessage:
-      return RenderMessage.renderMessage
     case DiffType.RenderSearchValue:
       return RenderSearchValue.renderSearchValue
     default:
