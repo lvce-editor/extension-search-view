@@ -1,9 +1,9 @@
-import type { Renderer } from '../Renderer/Renderer.ts'
 import * as DiffType from '../DiffType/DiffType.ts'
+import type { Renderer } from '../Renderer/Renderer.ts'
 import * as RenderItems from '../RenderItems/RenderItems.ts'
 import * as RenderMessage from '../RenderMessage/RenderMessage.ts'
-import * as RenderSearchValue from '../RenderSearchValue/RenderSearchValue.ts'
 import * as RenderScrollBar from '../RenderScrollBar/RenderScrollBar.ts'
+import * as RenderSearchValue from '../RenderSearchValue/RenderSearchValue.ts'
 
 export const getRenderer = (diffType: number): Renderer => {
   switch (diffType) {
@@ -16,7 +16,7 @@ export const getRenderer = (diffType: number): Renderer => {
     case DiffType.RenderMessage:
       return RenderMessage.renderMessage
     case DiffType.RenderSearchValue:
-      return
+      return RenderSearchValue.renderSearchValue
     default:
       throw new Error('unknown renderer')
   }
