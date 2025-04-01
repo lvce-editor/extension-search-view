@@ -2,7 +2,6 @@ import * as ClearSearchResults from '../ClearSearchResults/ClearSearchResults.ts
 import * as CloseSuggest from '../CloseSuggest/CloseSuggest.ts'
 import * as Create from '../Create/Create.ts'
 import * as Diff2 from '../Diff2/Diff2.ts'
-import * as Diff from '../Diff/Diff.ts'
 import * as Dispose from '../Dispose/Dispose.ts'
 import * as FocusFirst from '../FocusFirst/FocusFirst.ts'
 import * as FocusIndex from '../FocusIndex/FocusIndex.ts'
@@ -31,9 +30,7 @@ import * as HandleUninstall from '../HandleUninstall/HandleUninstall.ts'
 import * as HandleWheel from '../HandleWheel/HandleWheel.ts'
 import * as LoadContent from '../LoadContent/LoadContent.ts'
 import * as OpenSuggest from '../OpenSuggest/OpenSuggest.ts'
-import * as Render2 from '../Render2/Render2.ts'
 import * as Render3 from '../Render3/Render3.ts'
-import * as Render from '../Render/Render.ts'
 import * as RenderActions from '../RenderActions/RenderActions.ts'
 import * as RenderEventListeners from '../RenderEventListeners/RenderEventListeners.ts'
 import * as SaveState from '../SaveState/SaveState.ts'
@@ -89,9 +86,4 @@ export const commandMap = {
   'SearchExtensions.setDeltaY': WrapCommand.wrapCommand(SetDeltaY.setDeltaY),
   'SearchExtensions.terminate': Terminate.terminate,
   'SearchExtensions.toggleSuggest': WrapCommand.wrapCommand(ToggleSuggest.toggleSuggest),
-
-  // deprecated
-  'SearchExtensions.diff': Diff.diff,
-  'SearchExtensions.render': Render.doRender,
-  'SearchExtensions.render2': Render2.render2,
 }
