@@ -1,23 +1,4 @@
 import type { State } from '../State/State.ts'
+import * as ViewletRegistry from '../ViewletRegistry/ViewletRegistry.ts'
 
-const states = Object.create(null)
-
-export const get = (
-  uid: number,
-): {
-  oldState: State
-  newState: State
-} => {
-  return states[uid]
-}
-
-export const set = (uid: number, oldState: State, newState: State): void => {
-  states[uid] = {
-    oldState,
-    newState,
-  }
-}
-
-export const remove = (uid: number): void => {
-  delete states[uid]
-}
+export const { get, set, dispose, getKeys } = ViewletRegistry.create<State>()
