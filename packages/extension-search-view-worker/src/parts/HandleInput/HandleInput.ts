@@ -29,8 +29,8 @@ export const handleInput = async (state: State, value: string): Promise<State> =
         placeholder: ViewletExtensionsStrings.searchExtensionsInMarketPlace(),
       }
     }
-    const listHeight = GetListHeight.getListHeight(items.length, itemHeight, height)
     const total = items.length
+    const listHeight = GetListHeight.getListHeight(total, itemHeight, height)
     const contentHeight = total * itemHeight
     const scrollBarHeight = GetScrollBarSize.getScrollBarSize(height, contentHeight, minimumSliderSize)
     const numberOfVisible = GetNumberOfVisibleItems.getNumberOfVisibleItems(listHeight, itemHeight)
