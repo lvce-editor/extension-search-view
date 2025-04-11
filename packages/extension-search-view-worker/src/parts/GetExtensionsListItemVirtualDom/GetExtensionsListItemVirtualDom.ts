@@ -3,6 +3,7 @@ import type { VisibleItem } from '../VisibleItem/VisibleItem.ts'
 import * as AriaRoleDescription from '../AriaRoleDescription/AriaRoleDescription.ts'
 import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
+import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 import { text } from '../VirtualDomHelpers/VirtualDomHelpers.ts'
 
@@ -35,14 +36,29 @@ const listItemAuthorName: VirtualDomNode = {
   childCount: 1,
 }
 
+const getClassName = (focused: boolean): string => {
+  if (focused) {
+    return MergeClassNames.mergeClassNames(ClassNames.ExtensionListItem, ClassNames.ExtensionActive)
+  }
+  return ClassNames.ExtensionListItem
+}
+
+const getId = (focused: boolean): string | undefined => {
+  if (focused) {
+    return `ExtensionActive`
+  }
+  return undefined
+}
+
 export const getExtensionListItemVirtualDom = (extension: VisibleItem): readonly VirtualDomNode[] => {
   const { posInSet, setSize, top, icon, name, description, publisher, focused } = extension
-  const dom: any[] = [
+  const dom: readonly VirtualDomNode[] = [
     {
       type: VirtualDomElements.Div,
       role: AriaRoles.ListItem,
       ariaRoleDescription: AriaRoleDescription.Extension,
-      className: ClassNames.ExtensionListItem,
+      className: getClassName(focused),
+      id: getId(focused),
       ariaPosInSet: posInSet,
       ariaSetSize: setSize,
       top,
@@ -69,9 +85,5 @@ export const getExtensionListItemVirtualDom = (extension: VisibleItem): readonly
       childCount: 0,
     },
   ]
-  if (focused) {
-    dom[0].id = 'ExtensionActive'
-    dom[0].className += ' ' + ClassNames.ExtensionActive
-  }
   return dom
 }
