@@ -24,5 +24,9 @@ test('renderEventListeners returns array of event listeners', () => {
       name: DomEventListenerFunctions.HandleClearSearchResults,
       params: ['clearSearchResults'],
     },
+    {
+      name: 'handleClickFilter',
+      params: ['handleClickFilter'],
+    },
   ])
 })
