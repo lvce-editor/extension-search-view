@@ -1,9 +1,9 @@
 import type { InputAction } from '../InputAction/InputAction.ts'
 import type { State } from '../State/State.ts'
 import * as ActionType from '../ActionType/ActionType.ts'
+import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
 import * as ViewletExtensionStrings from '../ExtensionStrings/ExtensionStrings.ts'
 import * as MaskIcon from '../MaskIcon/MaskIcon.ts'
-import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
 
 export const getInputActions = (newState: State): readonly InputAction[] => {
   const actions: readonly InputAction[] = [
