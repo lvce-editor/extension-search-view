@@ -1,3 +1,4 @@
+import type { InputAction } from '../InputAction/InputAction.ts'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
@@ -8,10 +9,11 @@ export const getSearchFieldVirtualDom = (
   name: string,
   placeholder: string,
   onInput: string,
-  insideButtons: any,
-  outsideButtons: readonly any[],
+  insideButtons: readonly InputAction[],
+  outsideButtons: readonly InputAction[],
   onFocus = '',
 ): readonly VirtualDomNode[] => {
+  // TODO avoid mutation
   const dom = [
     {
       type: VirtualDomElements.Div,

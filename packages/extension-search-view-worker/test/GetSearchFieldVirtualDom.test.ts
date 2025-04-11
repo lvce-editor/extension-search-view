@@ -35,7 +35,7 @@ test('creates basic search field virtual dom', () => {
 })
 
 test.skip('creates search field with inside buttons', () => {
-  const insideButtons = [{ id: 'button1' }]
+  const insideButtons: readonly any[] = [{ id: 'button1' }]
   const result = GetSearchFieldVirtualDom.getSearchFieldVirtualDom('search', 'Search...', 'onInput()', insideButtons, [])
 
   expect(result).toEqual([
@@ -66,7 +66,7 @@ test.skip('creates search field with inside buttons', () => {
 })
 
 test('creates search field with outside buttons', () => {
-  const outsideButtons = [{ id: 'button1' }]
+  const outsideButtons: readonly any[] = [{ id: 'button1' }]
   const result = GetSearchFieldVirtualDom.getSearchFieldVirtualDom('search', 'Search...', 'onInput()', [], outsideButtons)
 
   expect(result[0]).toEqual({

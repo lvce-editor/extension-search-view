@@ -1,9 +1,10 @@
 import { expect, test } from '@jest/globals'
+import type { InputAction } from '../src/parts/InputAction/InputAction.ts'
 import * as GetExtensionHeaderVirtualDom from '../src/parts/GetExtensionHeaderVirtualDom/GetExtensionHeaderVirtualDom.ts'
 
 test('should return correct virtual DOM structure', () => {
   const placeholder = 'Search extensions...'
-  const actions: readonly any[] = []
+  const actions: readonly InputAction[] = []
   const result = GetExtensionHeaderVirtualDom.getExtensionHeaderVirtualDom(placeholder, actions)
   expect(result).toEqual([
     {

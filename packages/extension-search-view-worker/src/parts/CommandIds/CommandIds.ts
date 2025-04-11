@@ -9,6 +9,7 @@ export const commandIds = [
   'focusPreviousPage',
   'handleBlur',
   'handleClick',
+  'handleClickFilter',
   'handleContextMenu',
   'handleDisable',
   'handleFocus',
@@ -17,6 +18,7 @@ export const commandIds = [
   'handleScrollBarCaptureLost',
   'handleScrollBarClick',
   'handleScrollBarMove',
+  'handleScrollBarThumbPointerMove',
   'handleUninstall',
   'handleWheel',
   'openSuggest',
@@ -26,5 +28,4 @@ export const commandIds = [
   'selectIndex',
   'setDeltaY',
   'toggleSuggest',
-  'handleScrollBarThumbPointerMove',
 ]

@@ -1,3 +1,4 @@
+import type { InputAction } from '../InputAction/InputAction.ts'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
@@ -10,7 +11,7 @@ const parentNode: VirtualDomNode = {
   childCount: 1,
 }
 
-export const getExtensionHeaderVirtualDom = (placeholder: string, actions: readonly any[]): readonly VirtualDomNode[] => {
+export const getExtensionHeaderVirtualDom = (placeholder: string, actions: readonly InputAction[]): readonly VirtualDomNode[] => {
   return [
     parentNode,
     ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom('extensions', placeholder, DomEventListenerFunctions.HandleExtensionsInput, actions, []),
