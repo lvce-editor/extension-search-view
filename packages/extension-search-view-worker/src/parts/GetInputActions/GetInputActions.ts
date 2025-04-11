@@ -6,18 +6,21 @@ import * as ViewletExtensionStrings from '../ExtensionStrings/ExtensionStrings.t
 import * as MaskIcon from '../MaskIcon/MaskIcon.ts'
 
 export const getInputActions = (newState: State): readonly InputAction[] => {
+  const clearEnabled = newState.searchValue.length > 0
   const actions: readonly InputAction[] = [
     {
       command: DomEventListenerFunctions.HandleClearSearchResults,
       icon: `MaskIcon${MaskIcon.ClearAll}`,
       title: ViewletExtensionStrings.clearExtensionSearchResults(),
       type: ActionType.Button,
+      enabled: clearEnabled,
     },
     {
       icon: `MaskIcon${MaskIcon.Filter}`,
       title: ViewletExtensionStrings.filter(),
       type: ActionType.Button,
       command: DomEventListenerFunctions.HandleClickFilter,
+      enabled: true,
     },
   ]
   return actions
