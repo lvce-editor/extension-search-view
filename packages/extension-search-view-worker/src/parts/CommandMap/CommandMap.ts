@@ -41,6 +41,7 @@ import * as SelectIndex from '../SelectIndex/SelectIndex.ts'
 import * as SetDeltaY from '../SetDeltaY/SetDeltaY.ts'
 import * as Terminate from '../Terminate/Terminate.ts'
 import * as ToggleSuggest from '../ToggleSuggest/ToggleSuggest.ts'
+import * as RestoreState from '../RestoreState/RestoreState.ts'
 import * as WrapCommand from '../WrapCommand/WrapCommand.ts'
 
 export const commandMap = {
@@ -58,6 +59,7 @@ export const commandMap = {
   'SearchExtensions.getActions': GetActions.getActions,
   'SearchExtensions.getCommandIds': GetCommandIds.getCommandIds,
   'SearchExtensions.getKeyBindings': GetKeyBindings.getKeyBindings,
+  'SearchExtensions.getMenuEntries': GetMenuEntries.getMenuEntries,
   'SearchExtensions.handleBlur': WrapCommand.wrapCommand(HandleBlur.handleBlur),
   'SearchExtensions.handleClick': WrapCommand.wrapCommand(HandleClick.handleClick),
   'SearchExtensions.handleClickAt': WrapCommand.wrapCommand(HandleClickAt.handleClickAt),
@@ -80,12 +82,12 @@ export const commandMap = {
   'SearchExtensions.render3': Render3.render3,
   'SearchExtensions.renderActions': RenderActions.renderActions,
   'SearchExtensions.renderEventListeners': RenderEventListeners.renderEventListeners,
+  'SearchExtensions.restoreState': RestoreState.restoreState,
   'SearchExtensions.saveState': SaveState.saveState,
   'SearchExtensions.scrollDown': WrapCommand.wrapCommand(ScrollDown.scrollDown),
   'SearchExtensions.searchExtensions': SearchExtensions.searchExtensions,
   'SearchExtensions.selectIndex': WrapCommand.wrapCommand(SelectIndex.selectIndex),
   'SearchExtensions.setDeltaY': WrapCommand.wrapCommand(SetDeltaY.setDeltaY),
-  'SearchExtensions.getMenuEntries': GetMenuEntries.getMenuEntries,
   'SearchExtensions.terminate': Terminate.terminate,
   'SearchExtensions.toggleSuggest': WrapCommand.wrapCommand(ToggleSuggest.toggleSuggest),
 }
