@@ -12,7 +12,7 @@ const getClassName = (enabled: boolean): string => {
 }
 
 export const getSearchFieldButtonVirtualDom = (button: InputAction): readonly VirtualDomNode[] => {
-  const { icon, title, enabled } = button
+  const { icon, title, enabled, onClick } = button
   return [
     {
       type: VirtualDomElements.Div,
@@ -20,6 +20,7 @@ export const getSearchFieldButtonVirtualDom = (button: InputAction): readonly Vi
       title,
       tabIndex: 0,
       childCount: 1,
+      onClick,
     },
     {
       type: VirtualDomElements.Div,
