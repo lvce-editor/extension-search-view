@@ -37,6 +37,14 @@ export const installAnotherVersion = (): string => {
   return I18nString.i18nString(UiStrings.InstallAnotherVersion)
 }
 
+export const copy = (): string => {
+  return I18nString.i18nString(UiStrings.Copy)
+}
+
+export const copyExtensionId = (): string => {
+  return I18nString.i18nString(UiStrings.CopyExtensionId)
+}
+
 export const searchExtensionsInMarketPlace = (): string => {
   return I18nString.i18nString(UiStrings.SearchExtensionsInMarketplace)
 }

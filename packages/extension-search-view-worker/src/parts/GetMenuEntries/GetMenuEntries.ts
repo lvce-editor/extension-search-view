@@ -22,5 +22,17 @@ export const getMenuEntries = (): readonly MenuEntry[] => {
       flags: MenuItemFlags.None,
       command: 'SearchExtensions.installAnotherVersion',
     },
+    {
+      id: 'copy',
+      label: ExtensionStrings.copy(),
+      flags: MenuItemFlags.None,
+      command: 'SearchExtensions.copy',
+    },
+    {
+      id: 'copyExtensionId',
+      label: ExtensionStrings.copyExtensionId(),
+      flags: MenuItemFlags.None,
+      command: 'SearchExtensions.copyExtensionId',
+    },
   ]
 }
