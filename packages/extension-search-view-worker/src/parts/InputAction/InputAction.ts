@@ -1,5 +1,5 @@
 export interface InputAction {
-  readonly command: string
+  readonly onClick: string
   readonly icon: string
   readonly title: string
   readonly type: number

@@ -9,7 +9,7 @@ export const getInputActions = (newState: State): readonly InputAction[] => {
   const clearEnabled = newState.searchValue.length > 0
   const actions: readonly InputAction[] = [
     {
-      command: DomEventListenerFunctions.HandleClearSearchResults,
+      onClick: DomEventListenerFunctions.HandleClearSearchResults,
       icon: `MaskIcon${MaskIcon.ClearAll}`,
       title: ViewletExtensionStrings.clearExtensionSearchResults(),
       type: ActionType.Button,
@@ -19,7 +19,7 @@ export const getInputActions = (newState: State): readonly InputAction[] => {
       icon: `MaskIcon${MaskIcon.Filter}`,
       title: ViewletExtensionStrings.filter(),
       type: ActionType.Button,
-      command: DomEventListenerFunctions.HandleClickFilter,
+      onClick: DomEventListenerFunctions.HandleClickFilter,
       enabled: true,
     },
   ]
