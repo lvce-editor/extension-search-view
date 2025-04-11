@@ -3,15 +3,17 @@ import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as GetSearchFieldButtonVirtualDom from '../GetSearchFieldButtonVirtualDom/GetSearchFieldButtonVirtualDom.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
+import { InputAction } from '../InputAction/InputAction.ts'
 
 export const getSearchFieldVirtualDom = (
   name: string,
   placeholder: string,
   onInput: string,
-  insideButtons: any,
-  outsideButtons: readonly any[],
+  insideButtons: readonly InputAction[],
+  outsideButtons: readonly InputAction[],
   onFocus = '',
 ): readonly VirtualDomNode[] => {
+  // TODO avoid mutation
   const dom = [
     {
       type: VirtualDomElements.Div,
