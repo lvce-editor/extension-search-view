@@ -18,5 +18,13 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
       name: DomEventListenerFunctions.HandleExtensionsInput,
       params: ['handleExtensionsInput', 'event.target.value', InputSource.User],
     },
+    {
+      name: DomEventListenerFunctions.HandleClearSearchResults,
+      params: ['clearSearchResults'],
+    },
+    {
+      name: DomEventListenerFunctions.HandleClickFilter,
+      params: ['handleClickFilter'],
+    },
   ]
 }

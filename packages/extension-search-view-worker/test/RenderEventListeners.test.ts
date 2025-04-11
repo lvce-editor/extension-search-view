@@ -20,5 +20,9 @@ test('renderEventListeners returns array of event listeners', () => {
       name: DomEventListenerFunctions.HandleExtensionsInput,
       params: ['handleExtensionsInput', 'event.target.value', InputSource.User],
     },
+    {
+      name: DomEventListenerFunctions.HandleClearSearchResults,
+      params: ['clearSearchResults'],
+    },
   ])
 })

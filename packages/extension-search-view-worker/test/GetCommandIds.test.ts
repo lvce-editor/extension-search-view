@@ -13,6 +13,7 @@ test('returns the commandIds array', () => {
     'focusPreviousPage',
     'handleBlur',
     'handleClick',
+    'handleClickFilter',
     'handleContextMenu',
     'handleDisable',
     'handleFocus',
@@ -21,6 +22,7 @@ test('returns the commandIds array', () => {
     'handleScrollBarCaptureLost',
     'handleScrollBarClick',
     'handleScrollBarMove',
+    'handleScrollBarThumbPointerMove',
     'handleUninstall',
     'handleWheel',
     'openSuggest',
@@ -30,6 +32,5 @@ test('returns the commandIds array', () => {
     'selectIndex',
     'setDeltaY',
     'toggleSuggest',
-    'handleScrollBarThumbPointerMove',
   ])
 })
