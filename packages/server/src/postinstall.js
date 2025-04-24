@@ -26,7 +26,7 @@ const rendererWorkerMainPath = join(serverStaticPath, commitHash, 'packages', 'r
 
 const content = await readFile(rendererWorkerMainPath, 'utf-8')
 
-const workerPath = join(root, '.tmp/dist/dist/extensionSearchViewWorker.js')
+const workerPath = join(root, '.tmp/dist/dist/extensionSearchViewWorkerMain.js')
 
 const remoteUrl = getRemoteUrl(workerPath)
 if (!content.includes('// const extensionSearchViewWorkerUrl = ')) {
