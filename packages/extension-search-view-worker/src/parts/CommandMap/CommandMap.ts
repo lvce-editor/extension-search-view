@@ -3,6 +3,7 @@ import * as CloseSuggest from '../CloseSuggest/CloseSuggest.ts'
 import * as Create from '../Create/Create.ts'
 import * as Diff2 from '../Diff2/Diff2.ts'
 import * as Dispose from '../Dispose/Dispose.ts'
+import * as WrapCommand from '../ExtensionSearchViewStates/ExtensionSearchViewStates.ts'
 import * as FocusFirst from '../FocusFirst/FocusFirst.ts'
 import * as FocusIndex from '../FocusIndex/FocusIndex.ts'
 import * as FocusLast from '../FocusLast/FocusLast.ts'
@@ -42,7 +43,6 @@ import * as SelectIndex from '../SelectIndex/SelectIndex.ts'
 import * as SetDeltaY from '../SetDeltaY/SetDeltaY.ts'
 import * as Terminate from '../Terminate/Terminate.ts'
 import * as ToggleSuggest from '../ToggleSuggest/ToggleSuggest.ts'
-import * as WrapCommand from '../WrapCommand/WrapCommand.ts'
 
 export const commandMap = {
   'SearchExtensions.clearSearchResults': WrapCommand.wrapCommand(ClearSearchResults.clearSearchResults),
