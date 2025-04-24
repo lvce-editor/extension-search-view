@@ -42,7 +42,7 @@ import * as SelectIndex from '../SelectIndex/SelectIndex.ts'
 import * as SetDeltaY from '../SetDeltaY/SetDeltaY.ts'
 import * as Terminate from '../Terminate/Terminate.ts'
 import * as ToggleSuggest from '../ToggleSuggest/ToggleSuggest.ts'
-import * as WrapCommand from '../WrapCommand/WrapCommand.ts'
+import * as WrapCommand from '../ExtensionSearchViewStates/ExtensionSearchViewStates.ts'
 
 export const commandMap = {
   'SearchExtensions.clearSearchResults': WrapCommand.wrapCommand(ClearSearchResults.clearSearchResults),
