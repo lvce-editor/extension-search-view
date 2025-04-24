@@ -26,14 +26,14 @@ const rendererWorkerMainPath = join(serverStaticPath, commitHash, 'packages', 'r
 
 const content = await readFile(rendererWorkerMainPath, 'utf-8')
 
-const workerPath = join(root, '.tmp/dist/dist/extensionDetailViewWorkerMain.js')
+const workerPath = join(root, '.tmp/dist/dist/extensionSearchViewWorkerMain.js')
 
 const remoteUrl = getRemoteUrl(workerPath)
-if (!content.includes('// const extensionDetailViewWorkerUrl = ')) {
+if (!content.includes('// const extensionSearchViewWorkerUrl = ')) {
   await cp(rendererWorkerMainPath, rendererWorkerMainPath + '.original')
-  const occurrence = `const extensionDetailViewWorkerUrl = \`\${assetDir}/packages/extension-detail-view-worker/dist/extensionDetailViewWorkerMain.js\``
-  const replacement = `// const extensionDetailViewWorkerUrl = \`\${assetDir}/packages/extension-detail-view-worker/dist/extensionDetailViewWorkerMain.js\`
-  const extensionDetailViewWorkerUrl = \`${remoteUrl}\``
+  const occurrence = `const extensionSearchViewWorkerUrl = \`\${assetDir}/packages/extension-search-view-worker/dist/extensionSearchViewWorkerMain.js\``
+  const replacement = `// const extensionSearchViewWorkerUrl = \`\${assetDir}/packages/extension-search-view-worker/dist/extensionSearchViewWorkerMain.js\`
+  const extensionSearchViewWorkerUrl = \`${remoteUrl}\``
   const newContent = content.replace(occurrence, replacement)
   await writeFile(rendererWorkerMainPath, newContent)
 }
