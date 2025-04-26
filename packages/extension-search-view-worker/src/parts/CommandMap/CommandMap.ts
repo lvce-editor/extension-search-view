@@ -9,6 +9,7 @@ import * as FocusIndex from '../FocusIndex/FocusIndex.ts'
 import * as FocusLast from '../FocusLast/FocusLast.ts'
 import * as FocusNext from '../FocusNext/FocusNext.ts'
 import * as FocusNextPage from '../FocusNextPage/FocusNextPage.ts'
+import * as FocusPrevious from '../FocusPrevious/FocusPrevious.ts'
 import * as FocusPreviousPage from '../FocusPreviousPage/FocusPreviousPage.ts'
 import * as GetActions from '../GetActions/GetActions.ts'
 import * as GetCommandIds from '../GetCommandIds/GetCommandIds.ts'
@@ -56,6 +57,7 @@ export const commandMap = {
   'SearchExtensions.focusNext': WrapCommand.wrapCommand(FocusNext.focusNext),
   'SearchExtensions.focusNextPage': WrapCommand.wrapCommand(FocusNextPage.focusNextPage),
   'SearchExtensions.focusPreviousPage': WrapCommand.wrapCommand(FocusPreviousPage.focusPreviousPage),
+  'SearchExtensions.focusPrevious': WrapCommand.wrapCommand(FocusPrevious.focusPrevious),
   'SearchExtensions.getActions': GetActions.getActions,
   'SearchExtensions.getCommandIds': GetCommandIds.getCommandIds,
   'SearchExtensions.getKeyBindings': GetKeyBindings.getKeyBindings,
