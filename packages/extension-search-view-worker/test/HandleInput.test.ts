@@ -2,9 +2,8 @@ import { expect, test } from '@jest/globals'
 import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaultState.js'
 import * as ViewletExtensionsStrings from '../src/parts/ExtensionStrings/ExtensionStrings.js'
 import { handleInput } from '../src/parts/HandleInput/HandleInput.js'
+import * as ParentRpc from '../src/parts/ParentRpc/ParentRpc.js'
 import { Remote } from '../src/parts/PlatformType/PlatformType.js'
-import { RendererWorker } from '../src/parts/RpcId/RpcId.js'
-import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.js'
 import { VError } from '../src/parts/VError/VError.js'
 
 const mockExtensions = [
@@ -22,7 +21,7 @@ const mockRpc = {
 
 test('handles empty search results', async () => {
   const state = { ...createDefaultState(), platform: Remote, allExtensions: [] }
-  RpcRegistry.set(RendererWorker, mockRpc)
+  ParentRpc.set(mockRpc)
   const result = await handleInput(state, 'nonexistent')
 
   expect(result.items).toHaveLength(0)
@@ -33,7 +32,7 @@ test('handles empty search results', async () => {
 
 test('handles successful search', async () => {
   const state = { ...createDefaultState(), platform: Remote, allExtensions: mockExtensions }
-  RpcRegistry.set(RendererWorker, mockRpc)
+  ParentRpc.set(mockRpc)
   const result = await handleInput(state, 'test')
 
   expect(result.message).toBe('')
@@ -52,9 +51,8 @@ test.skip('handles error during search', async () => {
   } as any
 
   const state = { ...createDefaultState(), platform: Remote, allExtensions: mockExtensions }
-  RpcRegistry.set(RendererWorker, errorRpc)
+  ParentRpc.set(errorRpc)
   const result = await handleInput(state, 'test')
-
   expect(result.message).toBe('Failed to search for extensions: error')
   expect(result.searchValue).toBe('test')
 })
