@@ -10,5 +10,5 @@ test('openUri calls Main.openUri with correct parameters', async () => {
   } as any
   RendererWorker.set(mockRpc)
   await OpenUri.openUri(uri)
-  expect(mockFn).toHaveBeenCalledWith('Main.openUri', uri)
+  expect(mockFn).toHaveBeenCalledWith('Main.openUri', uri, undefined, undefined)
 })
