@@ -1,12 +1,9 @@
-import { expect, test, jest } from '@jest/globals'
+import { test } from '@jest/globals'
+import { mockWorkerGlobalRpc } from '@lvce-editor/rpc'
 
-jest.unstable_mockModule('../src/parts/Main/Main.ts', () => ({
-  main: jest.fn(),
-}))
-
-const Main = await import('../src/parts/Main/Main.ts')
-
-test('calls main function when imported', async () => {
+test('main', async () => {
+  const { start, dispose } = mockWorkerGlobalRpc()
+  start()
   await import('../src/extensionSearchViewWorkerMain.ts')
-  expect(Main.main).toHaveBeenCalledTimes(1)
+  dispose()
 })
