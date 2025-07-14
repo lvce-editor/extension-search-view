@@ -6,6 +6,7 @@ import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOf
 import * as GetScrollBarSize from '../GetScrollBarSize/GetScrollBarSize.ts'
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
 import * as SearchExtensions from '../SearchExtensions/SearchExtensions.ts'
+import * as FocusId from '../FocusId/FocusId.ts'
 import type { State } from '../State/State.ts'
 
 // TODO debounce
@@ -18,16 +19,17 @@ export const handleInput = async (state: State, value: string): Promise<State> =
     if (items.length === 0) {
       return {
         ...state,
-        items,
-        minLineY: 0,
-        deltaY: 0,
         allExtensions,
-        maxLineY: 0,
-        scrollBarHeight: 0,
+        deltaY: 0,
         finalDeltaY: 0,
+        focus: FocusId.InputField,
+        items,
+        maxLineY: 0,
         message: ViewletExtensionsStrings.noExtensionsFound(),
-        searchValue: value,
+        minLineY: 0,
         placeholder: ViewletExtensionsStrings.searchExtensionsInMarketPlace(),
+        scrollBarHeight: 0,
+        searchValue: value,
       }
     }
     const total = items.length
