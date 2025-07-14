@@ -18,7 +18,7 @@ export const getExtensionsViewVirtualDom = (state: State): readonly VirtualDomNo
       ariaBusy: false,
       role: AriaRoles.None,
     },
-    ...getExtensionHeaderVirtualDom(state.placeholder, []),
+    ...getExtensionHeaderVirtualDom(state.placeholder, state.inputActions),
     {
       type: VirtualDomElements.Div,
       className: MergeClassNames.mergeClassNames(ClassNames.Viewlet, ClassNames.List),
