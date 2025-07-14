@@ -58,5 +58,5 @@ test('handles scrolled down deltaY - at second index', () => {
   const itemHeight = 72
   const headerHeight = 41
   const index = GetListIndex.getListIndex(eventX, eventY, x, y, deltaY, itemHeight, headerHeight)
-  expect(index).toBe(0)
+  expect(index).toBe(1)
 })
