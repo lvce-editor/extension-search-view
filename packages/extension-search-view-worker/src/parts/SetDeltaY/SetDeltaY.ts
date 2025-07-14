@@ -1,9 +1,9 @@
+import type { State } from '../State/State.ts'
 import * as Assert from '../Assert/Assert.ts'
 import * as Clamp from '../Clamp/Clamp.ts'
 import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOfVisibleItems.ts'
 import * as GetScrollBarSize from '../GetScrollBarSize/GetScrollBarSize.ts'
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
-import type { State } from '../State/State.ts'
 
 export const setDeltaY = (state: State, value: number): State => {
   Assert.object(state)
