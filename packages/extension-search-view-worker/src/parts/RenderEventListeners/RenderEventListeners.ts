@@ -16,7 +16,7 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
     },
     {
       name: DomEventListenerFunctions.HandleExtensionsInput,
-      params: ['handleExtensionsInput', 'event.target.value', InputSource.User],
+      params: ['handleInput', 'event.target.value', InputSource.User],
     },
     {
       name: DomEventListenerFunctions.HandleClearSearchResults,
