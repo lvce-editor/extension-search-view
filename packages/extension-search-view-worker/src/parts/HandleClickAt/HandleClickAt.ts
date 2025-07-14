@@ -1,6 +1,6 @@
+import type { State } from '../State/State.ts'
 import * as GetListIndex from '../GetListIndex/GetListIndex.ts'
 import { handleClick } from '../HandleClick/HandleClick.ts'
-import type { State } from '../State/State.ts'
 
 export const handleClickAt = async (state: State, eventX: number, eventY: number): Promise<State> => {
   const { x, y, itemHeight, deltaY, headerHeight } = state
