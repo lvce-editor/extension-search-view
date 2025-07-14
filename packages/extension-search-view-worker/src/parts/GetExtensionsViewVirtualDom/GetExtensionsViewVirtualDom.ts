@@ -1,9 +1,9 @@
 import { VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
+import type { State } from '../State/State.ts'
+import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import { getExtensionHeaderVirtualDom } from '../GetExtensionHeaderVirtualDom/GetExtensionHeaderVirtualDom.ts'
 import * as GetExtensionsVirtualDom from '../GetExtensionsVirtualDom/GetExtensionsVirtualDom.ts'
 import * as GetVisibleExtensions from '../GetVisibleExtensions/GetVisibleExtensions.ts'
-import { State } from '../State/State.ts'
-import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 
 export const getExtensionsViewVirtualDom = (state: State): readonly VirtualDomNode[] => {
   const visibleExtensions = GetVisibleExtensions.getVisible(state)
