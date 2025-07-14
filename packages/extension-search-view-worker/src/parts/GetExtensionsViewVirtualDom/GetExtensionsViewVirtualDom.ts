@@ -33,7 +33,7 @@ export const getExtensionsViewVirtualDom = (state: State): readonly VirtualDomNo
       ariaBusy: false,
       role: AriaRoles.None,
     },
-    ...getExtensionHeaderVirtualDom(state.placeholder, []),
+    ...getExtensionHeaderVirtualDom(state.placeholder, state.inputActions),
     ...getContentVirtualDom(visibleExtensions, state.message),
   ]
 }
