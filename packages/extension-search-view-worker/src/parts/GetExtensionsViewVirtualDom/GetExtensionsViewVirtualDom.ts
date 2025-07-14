@@ -24,6 +24,7 @@ const getContentVirtualDom = (visibleExtensions: readonly VisibleItem[], message
 
 export const getExtensionsViewVirtualDom = (state: State): readonly VirtualDomNode[] => {
   const visibleExtensions = GetVisibleExtensions.getVisible(state)
+  const { placeholder, inputActions, message } = state
   return [
     {
       type: VirtualDomElements.Div,
@@ -33,7 +34,7 @@ export const getExtensionsViewVirtualDom = (state: State): readonly VirtualDomNo
       ariaBusy: false,
       role: AriaRoles.None,
     },
-    ...getExtensionHeaderVirtualDom(state.placeholder, state.inputActions),
-    ...getContentVirtualDom(visibleExtensions, state.message),
+    ...getExtensionHeaderVirtualDom(placeholder, inputActions),
+    ...getContentVirtualDom(visibleExtensions, message),
   ]
 }
