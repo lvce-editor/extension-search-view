@@ -18,7 +18,6 @@ export const getExtensionsListVirtualDom = (visibleExtensions: readonly VisibleI
       onContextmenu: DomEventListenerFunctions.HandleContextMenu,
       onPointerDown: DomEventListenerFunctions.HandlePointerDown,
       onFocus: DomEventListenerFunctions.HandleFocus,
-      onScroll: DomEventListenerFunctions.HandleScroll,
       onTouchStart: DomEventListenerFunctions.HandleTouchStart,
       onTouchMove: DomEventListenerFunctions.HandleTouchMove,
       onTouchEnd: DomEventListenerFunctions.HandleTouchEnd,
