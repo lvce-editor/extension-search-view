@@ -8,6 +8,7 @@ export const create = (id: number, uri: string, x: number, y: number, width: num
     assetDir,
     deltaY: 0,
     finalDeltaY: 0,
+    focus: 0,
     focusedIndex: 0,
     handleOffset: 0,
     headerHeight: 41,

@@ -9,6 +9,7 @@ export const createDefaultState = (): State => {
     focused: false,
     focusedIndex: 0,
     handleOffset: 0,
+    focus: 0,
     headerHeight: 0,
     height: 100,
     inputActions: [],
