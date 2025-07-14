@@ -23,6 +23,7 @@ export const getExtensionsListVirtualDom = (visibleExtensions: readonly VisibleI
       onTouchMove: DomEventListenerFunctions.HandleTouchMove,
       onTouchEnd: DomEventListenerFunctions.HandleTouchEnd,
       onWheel: DomEventListenerFunctions.HandleWheel,
+      onContextMenu: DomEventListenerFunctions.HandleContextMenu,
       childCount: visibleExtensions.length,
     },
     ...visibleExtensions.flatMap(GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom),
