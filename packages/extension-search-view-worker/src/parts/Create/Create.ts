@@ -29,6 +29,7 @@ export const create = (id: number, uri: string, x: number, y: number, width: num
     y,
     focused: false,
     inputSource: 0,
+    inputActions: [],
   }
   ExtensionSearchViewStates.set(id, state, state)
 }

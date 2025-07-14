@@ -28,5 +28,6 @@ export const createDefaultState = (): State => {
     assetDir: '',
     focused: false,
     inputSource: 0,
+    inputActions: [],
   }
 }

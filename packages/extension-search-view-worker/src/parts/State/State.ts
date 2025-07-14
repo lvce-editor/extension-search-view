@@ -1,12 +1,18 @@
+import type { Action } from '../Action/Action.ts'
 import type { ExtensionListItem } from '../ExtensionListItem/ExtensionListItem.ts'
 
 export interface State {
   readonly allExtensions: readonly ExtensionListItem[]
+  readonly assetDir: string
   readonly deltaY: number
+  readonly inputActions: readonly Action[]
   readonly finalDeltaY: number
+  readonly focused: boolean
   readonly focusedIndex: number
+  readonly handleOffset: number
   readonly headerHeight: number
   readonly height: number
+  readonly inputSource: number
   readonly itemHeight: number
   readonly items: readonly ExtensionListItem[]
   readonly maxLineY: number
@@ -23,8 +29,4 @@ export interface State {
   readonly width: number
   readonly x: number
   readonly y: number
-  readonly handleOffset: number
-  readonly assetDir: string
-  readonly focused: boolean
-  readonly inputSource: number
 }
