@@ -9,6 +9,7 @@ export const commandIds = [
   'focusPreviousPage',
   'handleBlur',
   'handleClick',
+  'handleClickAt',
   'handleClickFilter',
   'handleContextMenu',
   'handleDisable',
