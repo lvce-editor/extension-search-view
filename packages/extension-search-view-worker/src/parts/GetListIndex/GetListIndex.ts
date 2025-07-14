@@ -7,7 +7,9 @@ export const getListIndex = (
   itemHeight: number,
   headerHeight: number,
 ): number => {
+  const relativeDeltaY = deltaY % itemHeight
   const relativeY = eventY - y - headerHeight + deltaY
+  console.log({ eventY, relativeY })
   const index = Math.floor(relativeY / itemHeight)
   return index
 }

@@ -3,8 +3,9 @@ import * as ExtensionSearchViewStates from '../ExtensionSearchViewStates/Extensi
 
 export const saveState = (uid: number): SavedState => {
   const { newState } = ExtensionSearchViewStates.get(uid)
-  const { searchValue } = newState
+  const { searchValue, deltaY } = newState
   return {
     searchValue,
+    deltaY,
   }
 }
