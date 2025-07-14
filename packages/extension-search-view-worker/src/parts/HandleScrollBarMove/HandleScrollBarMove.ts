@@ -1,4 +1,5 @@
 import { setDeltaY } from '../SetDeltaY/SetDeltaY.ts'
+import { State } from '../State/State.ts'
 
 const getNewPercent = (contentHeight: number, scrollBarHeight: number, relativeY: number): number => {
   if (relativeY <= contentHeight - scrollBarHeight / 2) {
@@ -9,7 +10,7 @@ const getNewPercent = (contentHeight: number, scrollBarHeight: number, relativeY
   return 1
 }
 
-export const handleScrollBarMove = (state: any, eventY: number): any => {
+export const handleScrollBarMove = (state: State, eventY: number): any => {
   const { y, headerHeight, handleOffset, finalDeltaY, height, scrollBarHeight } = state
   const relativeY = eventY - y - headerHeight - handleOffset
   const contentHeight = height - headerHeight
