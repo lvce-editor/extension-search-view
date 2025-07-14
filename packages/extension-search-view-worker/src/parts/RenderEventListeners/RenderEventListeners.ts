@@ -10,6 +10,11 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
       preventDefault: true,
     },
     {
+      name: DomEventListenerFunctions.HandlePointerDown,
+      params: ['handleClickAt', 'event.clientX', 'event.clientY'],
+      preventDefault: true,
+    },
+    {
       name: DomEventListenerFunctions.HandleWheel,
       params: ['handleWheel', 'event.deltaMode', 'event.deltaY'],
       passive: true,
@@ -25,11 +30,6 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
     {
       name: DomEventListenerFunctions.HandleClickFilter,
       params: ['handleClickFilter'],
-    },
-    {
-      name: DomEventListenerFunctions.HandleListContextMenu,
-      params: ['handleContextMenu', 'event.button', 'event.clientX', 'event.clientY'],
-      preventDefault: true,
     },
   ]
 }
