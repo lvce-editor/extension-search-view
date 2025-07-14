@@ -7,7 +7,6 @@ import * as GetExtensionsVirtualDom from '../GetExtensionsVirtualDom/GetExtensio
 import * as GetVisibleExtensions from '../GetVisibleExtensions/GetVisibleExtensions.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 import { VisibleItem } from '../VisibleItem/VisibleItem.ts'
-import { NodeWebSocketRpcClient } from '@lvce-editor/rpc'
 
 const getContentVirtualDom = (visibleExtensions: readonly VisibleItem[], message: string): readonly VirtualDomNode[] => {
   if (message) {
