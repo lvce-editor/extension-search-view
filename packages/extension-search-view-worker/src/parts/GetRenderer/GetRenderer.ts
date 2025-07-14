@@ -1,5 +1,6 @@
 import * as DiffType from '../DiffType/DiffType.ts'
 import type { Renderer } from '../Renderer/Renderer.ts'
+import { renderFocus } from '../RenderFocus/RenderFocus.ts'
 import * as RenderHeader from '../RenderHeader/RenderHeader.ts'
 import { renderItems2 } from '../RenderItems2/RenderItems2.ts'
 import * as RenderMessage from '../RenderMessage/RenderMessage.ts'
@@ -18,6 +19,8 @@ export const getRenderer = (diffType: number): Renderer => {
       return RenderSearchValue.renderSearchValue
     case DiffType.RenderHeader:
       return RenderHeader.renderHeader
+    case DiffType.RenderFocus:
+      return renderFocus
     default:
       throw new Error('unknown renderer')
   }
