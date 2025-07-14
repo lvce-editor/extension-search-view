@@ -3,6 +3,7 @@ import * as ExtensionSearchViewStates from '../ExtensionSearchViewStates/Extensi
 
 export const create = (id: number, uri: string, x: number, y: number, width: number, height: number, platform: number, assetDir: string): void => {
   const state: State = {
+    uid: id,
     allExtensions: [],
     assetDir,
     deltaY: 0,

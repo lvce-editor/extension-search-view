@@ -3,6 +3,7 @@ import type { State } from '../State/State.ts'
 export const createDefaultState = (): State => {
   return {
     allExtensions: [],
+    uid: 0,
     deltaY: 0,
     finalDeltaY: 0,
     focusedIndex: 0,

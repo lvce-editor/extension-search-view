@@ -2,6 +2,7 @@ import type { ExtensionListItem } from '../ExtensionListItem/ExtensionListItem.t
 import type { InputAction } from '../InputAction/InputAction.ts'
 
 export interface State {
+  readonly uid: number
   readonly allExtensions: readonly ExtensionListItem[]
   readonly assetDir: string
   readonly deltaY: number
