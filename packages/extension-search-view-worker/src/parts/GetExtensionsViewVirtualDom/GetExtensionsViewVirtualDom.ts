@@ -7,8 +7,9 @@ import { getExtensionHeaderVirtualDom } from '../GetExtensionHeaderVirtualDom/Ge
 import * as GetExtensionsVirtualDom from '../GetExtensionsVirtualDom/GetExtensionsVirtualDom.ts'
 import * as GetVisibleExtensions from '../GetVisibleExtensions/GetVisibleExtensions.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
+import { getScrollBarVirtualDom } from '../GetScrollBarVirtualDom/GetScrollBarVirtualDom.ts'
 
-const getContentVirtualDom = (visibleExtensions: readonly VisibleItem[], message: string): readonly VirtualDomNode[] => {
+const getContentVirtualDom = (visibleExtensions: readonly VisibleItem[], message: string, scrollBarHeight: number): readonly VirtualDomNode[] => {
   if (message) {
     return [{ type: VirtualDomElements.Div, childCount: 1 }, text(message)]
   }
@@ -19,12 +20,14 @@ const getContentVirtualDom = (visibleExtensions: readonly VisibleItem[], message
       childCount: 2,
     },
     ...GetExtensionsVirtualDom.getExtensionsVirtualDom(visibleExtensions),
+    ...getScrollBarVirtualDom(scrollBarHeight, 0),
   ]
 }
 
 export const getExtensionsViewVirtualDom = (state: State): readonly VirtualDomNode[] => {
   const visibleExtensions = GetVisibleExtensions.getVisible(state)
-  const { placeholder, inputActions, message } = state
+  const { placeholder, inputActions, message, scrollBarHeight } = state
+
   return [
     {
       type: VirtualDomElements.Div,
@@ -35,6 +38,6 @@ export const getExtensionsViewVirtualDom = (state: State): readonly VirtualDomNo
       role: AriaRoles.None,
     },
     ...getExtensionHeaderVirtualDom(placeholder, inputActions),
-    ...getContentVirtualDom(visibleExtensions, message),
+    ...getContentVirtualDom(visibleExtensions, message, scrollBarHeight),
   ]
 }
