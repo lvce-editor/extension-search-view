@@ -9,7 +9,7 @@ test('calculates correct list index', () => {
   const deltaY = 0
   const itemHeight = 30
 
-  const index = GetListIndex.getListIndex(eventX, eventY, x, y, deltaY, itemHeight)
+  const index = GetListIndex.getListIndex(eventX, eventY, x, y, deltaY, itemHeight, 0)
   expect(index).toBe(1)
 })
 
@@ -21,7 +21,7 @@ test('handles negative deltaY', () => {
   const deltaY = -30
   const itemHeight = 30
 
-  const index = GetListIndex.getListIndex(eventX, eventY, x, y, deltaY, itemHeight)
+  const index = GetListIndex.getListIndex(eventX, eventY, x, y, deltaY, itemHeight, 0)
   expect(index).toBe(0)
 })
 
@@ -33,6 +33,6 @@ test('handles zero relative position', () => {
   const deltaY = 0
   const itemHeight = 30
 
-  const index = GetListIndex.getListIndex(eventX, eventY, x, y, deltaY, itemHeight)
+  const index = GetListIndex.getListIndex(eventX, eventY, x, y, deltaY, itemHeight, 0)
   expect(index).toBe(0)
 })
