@@ -1,3 +1,4 @@
+import { terminate } from '@lvce-editor/viewlet-registry'
 import * as ClearSearchResults from '../ClearSearchResults/ClearSearchResults.ts'
 import * as CloseSuggest from '../CloseSuggest/CloseSuggest.ts'
 import * as Create from '../Create/Create.ts'
@@ -42,7 +43,6 @@ import * as ScrollDown from '../ScrollDown/ScrollDown.ts'
 import * as SearchExtensions from '../SearchExtensions/SearchExtensions.ts'
 import * as SelectIndex from '../SelectIndex/SelectIndex.ts'
 import * as SetDeltaY from '../SetDeltaY/SetDeltaY.ts'
-import * as Terminate from '../Terminate/Terminate.ts'
 import * as ToggleSuggest from '../ToggleSuggest/ToggleSuggest.ts'
 
 export const commandMap = {
@@ -90,6 +90,6 @@ export const commandMap = {
   'SearchExtensions.searchExtensions': SearchExtensions.searchExtensions,
   'SearchExtensions.selectIndex': WrapCommand.wrapCommand(SelectIndex.selectIndex),
   'SearchExtensions.setDeltaY': WrapCommand.wrapCommand(SetDeltaY.setDeltaY),
-  'SearchExtensions.terminate': Terminate.terminate,
+  'SearchExtensions.terminate': terminate,
   'SearchExtensions.toggleSuggest': WrapCommand.wrapCommand(ToggleSuggest.toggleSuggest),
 }
