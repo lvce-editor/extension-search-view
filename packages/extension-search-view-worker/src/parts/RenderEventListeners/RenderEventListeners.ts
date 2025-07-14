@@ -28,7 +28,7 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
     },
     {
       name: DomEventListenerFunctions.HandleListContextMenu,
-      params: ['handleListContextMenu'],
+      params: ['handleContextMenu', 'event.button', 'event.clientX', 'event.clientY'],
       preventDefault: true,
     },
   ]
