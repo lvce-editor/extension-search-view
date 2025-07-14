@@ -43,7 +43,6 @@ import * as ScrollDown from '../ScrollDown/ScrollDown.ts'
 import * as SearchExtensions from '../SearchExtensions/SearchExtensions.ts'
 import * as SelectIndex from '../SelectIndex/SelectIndex.ts'
 import * as SetDeltaY from '../SetDeltaY/SetDeltaY.ts'
-import * as Terminate from '../Terminate/Terminate.ts'
 import * as ToggleSuggest from '../ToggleSuggest/ToggleSuggest.ts'
 
 export const commandMap = {
