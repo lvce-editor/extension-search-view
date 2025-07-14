@@ -1,11 +1,11 @@
-import type { Action } from '../Action/Action.ts'
 import type { ExtensionListItem } from '../ExtensionListItem/ExtensionListItem.ts'
+import type { InputAction } from '../InputAction/InputAction.ts'
 
 export interface State {
   readonly allExtensions: readonly ExtensionListItem[]
   readonly assetDir: string
   readonly deltaY: number
-  readonly inputActions: readonly Action[]
+  readonly inputActions: readonly InputAction[]
   readonly finalDeltaY: number
   readonly focused: boolean
   readonly focusedIndex: number
