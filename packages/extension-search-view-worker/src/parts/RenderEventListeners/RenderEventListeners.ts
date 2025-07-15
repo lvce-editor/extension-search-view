@@ -10,13 +10,32 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
       preventDefault: true,
     },
     {
+      name: DomEventListenerFunctions.HandlePointerDown,
+      params: ['handleClickAt', 'event.clientX', 'event.clientY'],
+      preventDefault: true,
+    },
+    {
+      name: DomEventListenerFunctions.HandleScrollBarPointerDown,
+      params: ['handleScrollBarClick', 'event.clientY'],
+      preventDefault: true,
+      trackPointerEvents: [DomEventListenerFunctions.HandleScrollBarMove, DomEventListenerFunctions.HandleScrollBarPointerCaptureLost],
+    },
+    {
+      name: DomEventListenerFunctions.HandleScrollBarMove,
+      params: ['handleScrollBarMove', 'event.clientY'],
+    },
+    {
+      name: DomEventListenerFunctions.HandleScrollBarPointerCaptureLost,
+      params: ['handleScrollBarCaptureLost'],
+    },
+    {
       name: DomEventListenerFunctions.HandleWheel,
       params: ['handleWheel', 'event.deltaMode', 'event.deltaY'],
       passive: true,
     },
     {
       name: DomEventListenerFunctions.HandleExtensionsInput,
-      params: ['handleExtensionsInput', 'event.target.value', InputSource.User],
+      params: ['handleInput', 'event.target.value', InputSource.User],
     },
     {
       name: DomEventListenerFunctions.HandleClearSearchResults,
@@ -25,6 +44,10 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
     {
       name: DomEventListenerFunctions.HandleClickFilter,
       params: ['handleClickFilter'],
+    },
+    {
+      name: DomEventListenerFunctions.HandleFocus,
+      params: ['handleFocus'],
     },
   ]
 }
