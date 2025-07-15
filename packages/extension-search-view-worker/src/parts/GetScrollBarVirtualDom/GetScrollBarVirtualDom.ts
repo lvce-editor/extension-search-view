@@ -17,7 +17,7 @@ export const getScrollBarVirtualDom = (scrollBarHeight: number, scrollBarTop: nu
     {
       type: VirtualDomElements.Div,
       className: MergeClassNames.mergeClassNames(ClassNames.ScrollBar, ClassNames.ScrollBarSmall),
-      onPointerDown: DomEventListenerFunctions.HandleScrollBarPointerDown,
+      onPointerDown: DomEventListenerFunctions.HandleScrollBarPointerDown, // TODO support pointercapture event
       childCount: 1,
     },
     {
