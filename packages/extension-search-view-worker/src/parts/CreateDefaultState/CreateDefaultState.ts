@@ -6,6 +6,7 @@ export const createDefaultState = (): State => {
     assetDir: '',
     deltaY: 0,
     finalDeltaY: 0,
+    focus: 0,
     focused: false,
     focusedIndex: 0,
     handleOffset: 0,
