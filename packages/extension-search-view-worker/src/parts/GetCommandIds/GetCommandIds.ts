@@ -1,6 +1,6 @@
 import { commandMapRef } from '../CommandMapRef/CommandMapRef.ts'
 
-const toCommandId = (key: string) => {
+const toCommandId = (key: string): string => {
   const dotIndex = key.indexOf('.')
   return key.slice(dotIndex + 1)
 }
