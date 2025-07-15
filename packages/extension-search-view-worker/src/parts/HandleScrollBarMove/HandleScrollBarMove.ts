@@ -1,3 +1,4 @@
+import type { State } from '../State/State.ts'
 import { setDeltaY } from '../SetDeltaY/SetDeltaY.ts'
 import { State } from '../State/State.ts'
 
