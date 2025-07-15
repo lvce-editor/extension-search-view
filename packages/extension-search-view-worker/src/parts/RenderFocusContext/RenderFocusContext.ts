@@ -1,5 +1,5 @@
-import * as FocusId from '../FocusId/FocusId.ts'
 import type { State } from '../State/State.ts'
+import * as FocusId from '../FocusId/FocusId.ts'
 import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
 
 export const renderFocusContext = (newState: State): readonly any[] => {

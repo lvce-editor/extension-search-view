@@ -1,6 +1,6 @@
+import type { State } from '../State/State.ts'
 import * as FocusId from '../FocusId/FocusId.ts'
 import * as InputName from '../InputName/InputName.ts'
-import type { State } from '../State/State.ts'
 
 const getSelector = (focus: number) => {
   switch (focus) {

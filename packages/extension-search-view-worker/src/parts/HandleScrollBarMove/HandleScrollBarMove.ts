@@ -1,6 +1,6 @@
 import type { State } from '../State/State.ts'
+import type { State } from '../State/State.ts'
 import { setDeltaY } from '../SetDeltaY/SetDeltaY.ts'
-import { State } from '../State/State.ts'
 
 const getNewPercent = (contentHeight: number, scrollBarHeight: number, relativeY: number): number => {
   if (relativeY <= contentHeight - scrollBarHeight / 2) {

@@ -1,12 +1,12 @@
 import type { Renderer } from '../Renderer/Renderer.ts'
 import * as DiffType from '../DiffType/DiffType.ts'
 import { renderFocus } from '../RenderFocus/RenderFocus.ts'
+import { renderFocusContext } from '../RenderFocusContext/RenderFocusContext.ts'
 import * as RenderHeader from '../RenderHeader/RenderHeader.ts'
 import { renderItems2 } from '../RenderItems2/RenderItems2.ts'
 import * as RenderMessage from '../RenderMessage/RenderMessage.ts'
 import * as RenderScrollBar from '../RenderScrollBar/RenderScrollBar.ts'
 import * as RenderSearchValue from '../RenderSearchValue/RenderSearchValue.ts'
-import { renderFocusContext } from '../RenderFocusContext/RenderFocusContext.ts'
 
 export const getRenderer = (diffType: number): Renderer => {
   switch (diffType) {
