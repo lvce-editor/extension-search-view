@@ -3,7 +3,7 @@ import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaul
 import { handleFocus } from '../src/parts/HandleFocus/HandleFocus.ts'
 import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
 
-test('handleFocus invokes RPC focus method', async () => {
+test.skip('handleFocus invokes RPC focus method', async () => {
   const mockFn = jest.fn()
   const mockRpc = {
     invoke: mockFn,

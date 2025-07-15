@@ -4,6 +4,7 @@ import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts
 import { setDeltaY } from '../SetDeltaY/SetDeltaY.ts'
 
 export const handleScrollBarClick = (state: State, eventY: number): State => {
+  // TODO move this to list
   const { y, deltaY, headerHeight, finalDeltaY, scrollBarHeight, height } = state
   const contentHeight = height - headerHeight
   const relativeY = eventY - y - headerHeight

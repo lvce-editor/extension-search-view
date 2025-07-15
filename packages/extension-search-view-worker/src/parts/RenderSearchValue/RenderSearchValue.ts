@@ -1,6 +1,6 @@
 import type { State } from '../State/State.ts'
-import * as RenderMethod from '../RenderMethod/RenderMethod.ts'
+import * as InputName from '../InputName/InputName.ts'
 
 export const renderSearchValue = (newState: State): readonly any[] => {
-  return [/* method */ RenderMethod.SetSearchValue, '', newState.searchValue]
+  return [/* method */ 'Viewlet.setValueByName', newState.uid, InputName.Extensions, newState.searchValue]
 }

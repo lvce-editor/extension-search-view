@@ -1,8 +1,9 @@
 import type { State } from '../State/State.ts'
-import * as SetFocus from '../SetFocus/SetFocus.ts'
-import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
+import * as FocusId from '../FocusId/FocusId.ts'
 
 export const handleFocus = async (state: State): Promise<State> => {
-  await SetFocus.setFocus(WhenExpression.FocusExtensions)
-  return state
+  return {
+    ...state,
+    focus: FocusId.List,
+  }
 }
