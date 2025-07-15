@@ -6,6 +6,7 @@ export interface State {
   readonly assetDir: string
   readonly deltaY: number
   readonly finalDeltaY: number
+  readonly focus: number
   readonly focused: boolean
   readonly focusedIndex: number
   readonly handleOffset: number
