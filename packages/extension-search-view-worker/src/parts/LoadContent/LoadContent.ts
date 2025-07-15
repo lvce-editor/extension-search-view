@@ -9,7 +9,7 @@ import * as RestoreState from '../RestoreState/RestoreState.ts'
 
 export const loadContent = async (state: State, savedState: unknown): Promise<State> => {
   const { width, platform, assetDir } = state
-  const { searchValue } = RestoreState.restoreState(savedState)
+  const { searchValue, deltaY } = RestoreState.restoreState(savedState)
   // TODO just get local extensions on demand (not when query string is already different)
   const allExtensions = await GetAllExtensions.getAllExtensions(platform)
   const size = GetViewletSize.getViewletSize(width)
@@ -22,6 +22,7 @@ export const loadContent = async (state: State, savedState: unknown): Promise<St
       size,
       inputSource: InputSource.Script,
       inputActions,
+      deltaY,
     },
     searchValue,
   )
