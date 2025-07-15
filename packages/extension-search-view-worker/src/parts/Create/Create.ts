@@ -31,6 +31,7 @@ export const create = (id: number, uri: string, x: number, y: number, width: num
     focused: false,
     inputSource: 0,
     inputActions: [],
+    scrollBarY: 0,
   }
   ExtensionSearchViewStates.set(id, state, state)
 }
