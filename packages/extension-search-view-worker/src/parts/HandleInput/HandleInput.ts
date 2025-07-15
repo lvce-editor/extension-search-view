@@ -1,32 +1,35 @@
 import type { State } from '../State/State.ts'
 import * as ErrorHandling from '../ErrorHandling/ErrorHandling.ts'
 import * as ViewletExtensionsStrings from '../ExtensionStrings/ExtensionStrings.ts'
+import * as FocusId from '../FocusId/FocusId.ts'
 import * as GetFinalDeltaY from '../GetFinalDeltaY/GetFinalDeltaY.ts'
 import * as GetListHeight from '../GetListHeight/GetListHeight.ts'
 import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOfVisibleItems.ts'
 import * as GetScrollBarSize from '../GetScrollBarSize/GetScrollBarSize.ts'
+import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
 import * as SearchExtensions from '../SearchExtensions/SearchExtensions.ts'
 
 // TODO debounce
 export const handleInput = async (state: State, value: string): Promise<State> => {
   try {
-    const { allExtensions, itemHeight, minimumSliderSize, height, platform, assetDir } = state
+    const { allExtensions, itemHeight, minimumSliderSize, height, platform, assetDir, deltaY, headerHeight } = state
     // TODO cancel ongoing requests
     // TODO handle errors
     const items = await SearchExtensions.searchExtensions(allExtensions, value, platform, assetDir)
     if (items.length === 0) {
       return {
         ...state,
-        items,
-        minLineY: 0,
-        deltaY: 0,
         allExtensions,
-        maxLineY: 0,
-        scrollBarHeight: 0,
+        deltaY: 0,
         finalDeltaY: 0,
+        focus: FocusId.Input,
+        items,
+        maxLineY: 0,
         message: ViewletExtensionsStrings.noExtensionsFound(),
-        searchValue: value,
+        minLineY: 0,
         placeholder: ViewletExtensionsStrings.searchExtensionsInMarketPlace(),
+        scrollBarHeight: 0,
+        searchValue: value,
       }
     }
     const total = items.length
@@ -36,18 +39,20 @@ export const handleInput = async (state: State, value: string): Promise<State> =
     const numberOfVisible = GetNumberOfVisibleItems.getNumberOfVisibleItems(listHeight, itemHeight)
     const maxLineY = Math.min(numberOfVisible, total)
     const finalDeltaY = GetFinalDeltaY.getFinalDeltaY(listHeight, itemHeight, total)
+    const scrollBarY = ScrollBarFunctions.getScrollBarY(0, finalDeltaY, height - headerHeight, scrollBarHeight)
     return {
       ...state,
-      items,
-      minLineY: 0,
-      deltaY: 0,
       allExtensions,
-      maxLineY,
-      scrollBarHeight,
+      deltaY: 0,
       finalDeltaY,
+      items,
+      maxLineY,
       message: '',
-      searchValue: value,
+      minLineY: 0,
       placeholder: ViewletExtensionsStrings.searchExtensionsInMarketPlace(),
+      scrollBarHeight,
+      scrollBarY,
+      searchValue: value,
     }
 
     // TODO handle out of order responses (a bit complicated)
