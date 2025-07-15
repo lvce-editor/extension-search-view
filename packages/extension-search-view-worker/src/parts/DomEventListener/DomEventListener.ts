@@ -3,4 +3,5 @@ export interface DomEventListener {
   readonly params: readonly (string | number)[]
   readonly preventDefault?: boolean
   readonly passive?: boolean
+  readonly trackPointerEvents?: readonly any[]
 }
