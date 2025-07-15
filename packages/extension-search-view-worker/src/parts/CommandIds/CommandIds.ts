@@ -20,6 +20,7 @@ export const commandIds = [
   'handleScrollBarClick',
   'handleScrollBarMove',
   'handleScrollBarThumbPointerMove',
+  'handleClickCurrentButKeepFocus',
   'handleUninstall',
   'handleWheel',
   'openSuggest',
