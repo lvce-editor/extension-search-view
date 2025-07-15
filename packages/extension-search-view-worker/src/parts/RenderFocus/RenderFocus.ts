@@ -1,7 +1,20 @@
-import type { State } from '../State/State.ts'
+import * as FocusId from '../FocusId/FocusId.ts'
 import * as InputName from '../InputName/InputName.ts'
+import type { State } from '../State/State.ts'
+
+const getSelector = (focus: number) => {
+  switch (focus) {
+    case FocusId.Input:
+      return `[name="${InputName.Extensions}"]`
+    case FocusId.List:
+      return '.ListItems'
+    default:
+      return ''
+  }
+}
 
 export const renderFocus = (newState: State): readonly any[] => {
-  const selector = `[name="${InputName.Extensions}"]`
-  return ['Viewlet.focusSelector', newState.uid, selector]
+  const { uid, focus } = newState
+  const selector = getSelector(focus)
+  return ['Viewlet.focusSelector', uid, selector]
 }
