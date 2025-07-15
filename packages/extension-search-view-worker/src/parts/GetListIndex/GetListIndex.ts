@@ -9,7 +9,6 @@ export const getListIndex = (
 ): number => {
   const relativeDeltaY = deltaY % itemHeight
   const relativeY = eventY - y - headerHeight + relativeDeltaY
-  console.log({ eventY, relativeY, headerHeight, relativeDeltaY })
   const index = Math.floor(relativeY / itemHeight)
   return index
 }
