@@ -22,7 +22,7 @@ export const handleInput = async (state: State, value: string): Promise<State> =
         allExtensions,
         deltaY: 0,
         finalDeltaY: 0,
-        focus: FocusId.InputField,
+        focus: FocusId.Input,
         items,
         maxLineY: 0,
         message: ViewletExtensionsStrings.noExtensionsFound(),
