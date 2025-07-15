@@ -2,17 +2,16 @@ import type { ExtensionListItem } from '../ExtensionListItem/ExtensionListItem.t
 import type { InputAction } from '../InputAction/InputAction.ts'
 
 export interface State {
-  readonly uid: number
   readonly allExtensions: readonly ExtensionListItem[]
   readonly assetDir: string
   readonly deltaY: number
-  readonly inputActions: readonly InputAction[]
   readonly finalDeltaY: number
   readonly focused: boolean
   readonly focusedIndex: number
   readonly handleOffset: number
   readonly headerHeight: number
   readonly height: number
+  readonly inputActions: readonly InputAction[]
   readonly inputSource: number
   readonly itemHeight: number
   readonly items: readonly ExtensionListItem[]
@@ -25,8 +24,10 @@ export interface State {
   readonly platform: number
   readonly scrollBarActive: boolean
   readonly scrollBarHeight: number
+  readonly scrollBarY: number
   readonly searchValue: string
   readonly size: number
+  readonly uid: number
   readonly width: number
   readonly x: number
   readonly y: number
