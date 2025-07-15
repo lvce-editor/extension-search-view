@@ -3,15 +3,17 @@ import * as ExtensionSearchViewStates from '../ExtensionSearchViewStates/Extensi
 
 export const create = (id: number, uri: string, x: number, y: number, width: number, height: number, platform: number, assetDir: string): void => {
   const state: State = {
-    uid: id,
     allExtensions: [],
     assetDir,
     deltaY: 0,
     finalDeltaY: 0,
+    focused: false,
     focusedIndex: 0,
     handleOffset: 0,
     headerHeight: 41,
     height,
+    inputActions: [],
+    inputSource: 0,
     itemHeight: 72,
     items: [],
     maxLineY: 0,
@@ -23,14 +25,13 @@ export const create = (id: number, uri: string, x: number, y: number, width: num
     platform,
     scrollBarActive: false,
     scrollBarHeight: 0,
+    scrollBarY: 0,
     searchValue: '',
     size: 0,
+    uid: id,
     width,
     x,
     y,
-    focused: false,
-    inputSource: 0,
-    inputActions: [],
   }
   ExtensionSearchViewStates.set(id, state, state)
 }
