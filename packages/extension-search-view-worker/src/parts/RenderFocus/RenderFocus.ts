@@ -2,7 +2,7 @@ import type { State } from '../State/State.ts'
 import * as FocusId from '../FocusId/FocusId.ts'
 import * as InputName from '../InputName/InputName.ts'
 
-const getSelector = (focus: number) => {
+const getSelector = (focus: number): string => {
   switch (focus) {
     case FocusId.Input:
       return `[name="${InputName.Extensions}"]`
