@@ -15,6 +15,9 @@ const getSelector = (focus: number) => {
 
 export const renderFocus = (newState: State): readonly any[] => {
   const { uid, focus } = newState
+  if (!focus) {
+    return []
+  }
   const selector = getSelector(focus)
   return ['Viewlet.focusSelector', uid, selector]
 }
