@@ -10,7 +10,7 @@ export const handleClick = async (state: State, index: number): Promise<State> =
   const extension = items[actualIndex]
   const uri = getExtensionDetailUri(extension.id)
   await OpenUri.openUri(uri)
-  const partialNewState = await focusIndex(state, actualIndex)
+  const partialNewState = focusIndex(state, actualIndex)
   const newState = {
     ...partialNewState,
     focus: FocusId.List,
