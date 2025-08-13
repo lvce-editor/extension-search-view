@@ -1,7 +1,6 @@
 {
   "name": "@lvce-editor/extension-search-view",
   "version": "0.0.0-dev",
-  "description": "",
   "license": "MIT",
   "type": "module",
   "main": "",
