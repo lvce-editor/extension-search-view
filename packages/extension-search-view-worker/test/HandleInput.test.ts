@@ -10,13 +10,12 @@ const mockExtensions = [
   { name: 'Test Extension', id: 'test-extension', publisher: 'test-publisher', icon: 'test-icon', description: 'test-description', uri: 'test-uri' },
 ]
 
-const mockRpc = RendererWorker.registerMockRpc({
-  'ExtensionManagement.getAllExtensions'() {
-    return mockExtensions
-  },
-})
-
 test('handles empty search results', async () => {
+  RendererWorker.registerMockRpc({
+    'ExtensionManagement.getAllExtensions'() {
+      return mockExtensions
+    },
+  })
   const state = { ...createDefaultState(), platform: Remote, allExtensions: [] }
   // rpc mock registered above
   const result = await handleInput(state, 'nonexistent')
@@ -28,6 +27,11 @@ test('handles empty search results', async () => {
 })
 
 test('handles successful search', async () => {
+  RendererWorker.registerMockRpc({
+    'ExtensionManagement.getAllExtensions'() {
+      return mockExtensions
+    },
+  })
   const state = { ...createDefaultState(), platform: Remote, allExtensions: mockExtensions }
   // rpc mock registered above
   const result = await handleInput(state, 'test')
@@ -38,7 +42,7 @@ test('handles successful search', async () => {
 })
 
 test.skip('handles error during search', async () => {
-  const errorRpc = RendererWorker.registerMockRpc({
+  RendererWorker.registerMockRpc({
     'ExtensionManagement.getAllExtensions'() {
       throw new VError(new Error('error'), 'Failed to search for extensions')
     },
