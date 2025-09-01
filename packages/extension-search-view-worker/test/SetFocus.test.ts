@@ -1,5 +1,5 @@
 import { expect, test } from '@jest/globals'
-import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
+import { RendererWorker } from '@lvce-editor/rpc-registry'
 import { setFocus } from '../src/parts/SetFocus/SetFocus.ts'
 
 test('setFocus calls RPC with correct parameters', async () => {
@@ -8,5 +8,5 @@ test('setFocus calls RPC with correct parameters', async () => {
   })
   const focusId = 123
   await setFocus(focusId)
-  expect(mockRpc.invocations).toEqual([["Focus.setFocus", focusId]])
+  expect(mockRpc.invocations).toEqual([['Focus.setFocus', focusId]])
 })

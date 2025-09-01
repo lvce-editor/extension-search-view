@@ -1,9 +1,9 @@
 import { expect, test } from '@jest/globals'
+import { RendererWorker } from '@lvce-editor/rpc-registry'
 import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaultState.js'
 import * as ViewletExtensionsStrings from '../src/parts/ExtensionStrings/ExtensionStrings.js'
 import { handleInput } from '../src/parts/HandleInput/HandleInput.js'
 import { Remote } from '../src/parts/PlatformType/PlatformType.js'
-import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
 import { VError } from '../src/parts/VError/VError.js'
 
 const mockExtensions = [
