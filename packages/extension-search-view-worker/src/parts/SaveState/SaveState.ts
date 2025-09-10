@@ -1,9 +1,8 @@
 import type { SavedState } from '../SavedState/SavedState.ts'
-import * as ExtensionSearchViewStates from '../ExtensionSearchViewStates/ExtensionSearchViewStates.ts'
+import type { State } from '../State/State.ts'
 
-export const saveState = (uid: number): SavedState => {
-  const { newState } = ExtensionSearchViewStates.get(uid)
-  const { searchValue, deltaY } = newState
+export const saveState = (state: State): SavedState => {
+  const { searchValue, deltaY } = state
   return {
     searchValue,
     deltaY,
