@@ -85,7 +85,7 @@ export const commandMap = {
   'SearchExtensions.renderActions': RenderActions.renderActions,
   'SearchExtensions.renderEventListeners': RenderEventListeners.renderEventListeners,
   'SearchExtensions.restoreState': RestoreState.restoreState,
-  'SearchExtensions.saveState': SaveState.saveState,
+  'SearchExtensions.saveState': WrapCommand.wrapGetter(SaveState.saveState),
   'SearchExtensions.scrollDown': WrapCommand.wrapCommand(ScrollDown.scrollDown),
   'SearchExtensions.searchExtensions': SearchExtensions.searchExtensions,
   'SearchExtensions.selectIndex': WrapCommand.wrapCommand(SelectIndex.selectIndex),
