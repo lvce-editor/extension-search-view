@@ -16,6 +16,7 @@ test('creates basic search field virtual dom', () => {
     },
     {
       type: VirtualDomElements.Input,
+      inputType: 'search',
       className: ClassNames.MultilineInputBox,
       spellcheck: false,
       autocapitalize: 'off',

@@ -30,6 +30,7 @@ test('should return correct virtual DOM structure', () => {
       placeholder: 'Search extensions...',
       spellcheck: false,
       type: VirtualDomElements.Input,
+      inputType: 'search',
     },
     {
       childCount: 0,
