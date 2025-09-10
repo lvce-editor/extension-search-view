@@ -1,8 +1,8 @@
 import { expect, test } from '@jest/globals'
+import { VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
 import * as AriaRoles from '../src/parts/AriaRoles/AriaRoles.ts'
 import * as ClassNames from '../src/parts/ClassNames/ClassNames.ts'
 import * as GetSearchFieldVirtualDom from '../src/parts/GetSearchFieldVirtualDom/GetSearchFieldVirtualDom.ts'
-import * as VirtualDomElements from '../src/parts/VirtualDomElements/VirtualDomElements.ts'
 
 test('creates basic search field virtual dom', () => {
   const result = GetSearchFieldVirtualDom.getSearchFieldVirtualDom('search', 'Search...', 'onInput()', [], [])
@@ -15,7 +15,7 @@ test('creates basic search field virtual dom', () => {
       childCount: 2,
     },
     {
-      type: VirtualDomElements.TextArea,
+      type: VirtualDomElements.Input,
       className: ClassNames.MultilineInputBox,
       spellcheck: false,
       autocapitalize: 'off',
