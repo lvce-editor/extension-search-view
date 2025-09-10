@@ -1,4 +1,5 @@
 import { expect, test } from '@jest/globals'
+import { VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
 import type { InputAction } from '../src/parts/InputAction/InputAction.ts'
 import * as GetExtensionHeaderVirtualDom from '../src/parts/GetExtensionHeaderVirtualDom/GetExtensionHeaderVirtualDom.ts'
 
@@ -28,7 +29,7 @@ test('should return correct virtual DOM structure', () => {
       onInput: 'handleExtensionsInput',
       placeholder: 'Search extensions...',
       spellcheck: false,
-      type: 62,
+      type: VirtualDomElements.Input,
     },
     {
       childCount: 0,

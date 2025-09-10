@@ -22,7 +22,7 @@ export const getSearchFieldVirtualDom = (
       childCount: 2,
     },
     {
-      type: VirtualDomElements.TextArea,
+      type: VirtualDomElements.Input,
       className: ClassNames.MultilineInputBox,
       spellcheck: false,
       autocapitalize: 'off',
