@@ -28,6 +28,7 @@ export const getSearchFieldVirtualDom = (
       spellcheck: false,
       autocapitalize: 'off',
       autocorrect: 'off',
+      autocomplete: 'off',
       placeholder,
       name,
       onInput,

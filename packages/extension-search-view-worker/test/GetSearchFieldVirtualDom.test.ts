@@ -21,6 +21,7 @@ test('creates basic search field virtual dom', () => {
       spellcheck: false,
       autocapitalize: 'off',
       autocorrect: 'off',
+      autocomplete: 'off',
       placeholder: 'Search...',
       name: 'search',
       onInput: 'onInput()',

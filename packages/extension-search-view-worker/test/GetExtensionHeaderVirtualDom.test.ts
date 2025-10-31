@@ -22,6 +22,7 @@ test('should return correct virtual DOM structure', () => {
     {
       autocapitalize: 'off',
       autocorrect: 'off',
+      autocomplete: 'off',
       childCount: 0,
       className: 'MultilineInputBox',
       name: 'extensions',
