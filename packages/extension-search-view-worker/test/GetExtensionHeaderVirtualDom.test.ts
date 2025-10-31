@@ -27,7 +27,7 @@ test('should return correct virtual DOM structure', () => {
       className: 'MultilineInputBox',
       name: 'extensions',
       onFocus: '',
-      onInput: 'handleExtensionsInput',
+      onInput: 4,
       placeholder: 'Search extensions...',
       spellcheck: false,
       type: VirtualDomElements.Input,
