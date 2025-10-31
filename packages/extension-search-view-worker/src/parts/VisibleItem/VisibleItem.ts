@@ -1,11 +1,11 @@
 export interface VisibleItem {
-  readonly id: string
-  readonly setSize: number
-  readonly posInSet: number
-  readonly top: number
+  readonly description: string
   readonly focused: boolean
   readonly icon: string
+  readonly id: string
   readonly name: string
-  readonly description: string
+  readonly posInSet: number
   readonly publisher: string
+  readonly setSize: number
+  readonly top: number
 }
