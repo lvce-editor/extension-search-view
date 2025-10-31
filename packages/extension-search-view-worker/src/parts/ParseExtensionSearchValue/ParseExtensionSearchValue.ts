@@ -27,12 +27,12 @@ export const parseValue = (value: string): ParsedExtensionSearchValue => {
       builtin = true
     }
     if (match.startsWith(ExtensionFilterParameter.Sort)) {
-      // TODO
+      // TODO correcly parse sort order
       sort = 'installs'
     }
     if (match.startsWith(ExtensionFilterParameter.Id)) {
-      // TODO
-      id = 'abc'
+      // TODO improve parsing
+      id = value.replace('@id:', '')
     }
     if (match.startsWith(ExtensionFilterParameter.Outdated)) {
       outdated = true
@@ -40,6 +40,7 @@ export const parseValue = (value: string): ParsedExtensionSearchValue => {
     return ''
   })
   const isLocal = enabled || builtin || disabled || outdated || installed
+
   return {
     query: replaced,
     enabled,

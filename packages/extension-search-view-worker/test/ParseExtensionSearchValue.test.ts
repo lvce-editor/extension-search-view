@@ -38,7 +38,14 @@ test('parseValue - @sort', () => {
 })
 
 test('parseValue - @id', () => {
+  // TODO maybe support this syntax also
   expect(ParseExtensionSearchValue.parseValue('@id abc')).toMatchObject({
+    id: '@id abc',
+  })
+})
+
+test('parseValue - @id - alternative version', () => {
+  expect(ParseExtensionSearchValue.parseValue('@id:abc')).toMatchObject({
     id: 'abc',
   })
 })
