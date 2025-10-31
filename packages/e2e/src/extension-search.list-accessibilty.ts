@@ -11,6 +11,9 @@ export const test: Test = async ({ Locator, expect, SideBar, Command }) => {
 
   // assert
   const listItems = Locator('.Extensions .ListItems')
+  await expect(listItems).toHaveAttribute('tabIndex', '0')
+  await expect(listItems).toHaveAttribute('aria-label', 'Extensions')
+  await expect(listItems).toHaveAttribute('role', 'list')
   await expect(listItems).toHaveCount(1)
   const firstItem = listItems.locator('.ExtensionListItem')
   await expect(firstItem).toHaveAttribute('aria-roledescription', 'Extension')
