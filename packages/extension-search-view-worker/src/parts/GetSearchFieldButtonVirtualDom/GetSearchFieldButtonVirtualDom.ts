@@ -4,18 +4,20 @@ import type { InputAction } from '../InputAction/InputAction.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 
+const disabledClassName = MergeClassNames.mergeClassNames(ClassNames.SearchFieldButton, ClassNames.SearchFieldDisabled)
+
 const getClassName = (enabled: boolean): string => {
   if (enabled) {
     return ClassNames.SearchFieldButton
   }
-  return MergeClassNames.mergeClassNames(ClassNames.SearchFieldButton, ClassNames.SearchFieldDisabled)
+  return disabledClassName
 }
 
 export const getSearchFieldButtonVirtualDom = (button: InputAction): readonly VirtualDomNode[] => {
   const { icon, title, enabled, onClick } = button
   return [
     {
-      type: VirtualDomElements.Div,
+      type: VirtualDomElements.Button,
       className: getClassName(enabled),
       title,
       tabIndex: 0,

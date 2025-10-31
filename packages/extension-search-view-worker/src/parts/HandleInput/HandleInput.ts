@@ -6,11 +6,12 @@ import * as GetFinalDeltaY from '../GetFinalDeltaY/GetFinalDeltaY.ts'
 import * as GetListHeight from '../GetListHeight/GetListHeight.ts'
 import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOfVisibleItems.ts'
 import * as GetScrollBarSize from '../GetScrollBarSize/GetScrollBarSize.ts'
+import * as InputSource from '../InputSource/InputSource.ts'
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
 import * as SearchExtensions from '../SearchExtensions/SearchExtensions.ts'
 
 // TODO debounce
-export const handleInput = async (state: State, value: string): Promise<State> => {
+export const handleInput = async (state: State, value: string, inputSource = InputSource.User): Promise<State> => {
   try {
     const { allExtensions, itemHeight, minimumSliderSize, height, platform, assetDir, headerHeight } = state
     // TODO cancel ongoing requests
@@ -30,6 +31,7 @@ export const handleInput = async (state: State, value: string): Promise<State> =
         placeholder: ViewletExtensionsStrings.searchExtensionsInMarketPlace(),
         scrollBarHeight: 0,
         searchValue: value,
+        inputSource,
       }
     }
     const total = items.length
@@ -53,6 +55,7 @@ export const handleInput = async (state: State, value: string): Promise<State> =
       scrollBarHeight,
       scrollBarY,
       searchValue: value,
+      inputSource,
     }
 
     // TODO handle out of order responses (a bit complicated)
