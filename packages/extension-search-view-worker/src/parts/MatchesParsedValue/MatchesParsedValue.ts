@@ -12,6 +12,9 @@ const matchesId = (extension: ExtensionListItem, query: string): boolean => {
 }
 
 export const matchesParsedValue = (extension: ExtensionListItem, parsedValue: ParsedExtensionSearchValue): boolean => {
+  if (parsedValue.id && extension.id) {
+    return parsedValue.id === extension.id
+  }
   if (extension.name) {
     return matchesName(extension, parsedValue.query)
   }
