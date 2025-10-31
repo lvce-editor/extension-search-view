@@ -2,6 +2,10 @@
   "name": "@lvce-editor/extension-search-view",
   "version": "0.0.0-dev",
   "description": "Extension Search View Worker",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lvce-editor/extension-search-view.git"
+  },
   "license": "MIT",
   "author": "Lvce Editor",
   "type": "module",
