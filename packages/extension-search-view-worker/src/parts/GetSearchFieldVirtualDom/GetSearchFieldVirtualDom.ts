@@ -8,7 +8,7 @@ import * as GetSearchFieldButtonVirtualDom from '../GetSearchFieldButtonVirtualD
 export const getSearchFieldVirtualDom = (
   name: string,
   placeholder: string,
-  onInput: string,
+  onInput: string | number,
   insideButtons: readonly InputAction[],
   outsideButtons: readonly InputAction[],
   onFocus = '',
