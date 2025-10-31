@@ -5,6 +5,30 @@ export const noExtensionsFound = (): string => {
   return I18nString.i18nString(UiStrings.NoExtensionsFound)
 }
 
+export const name = (): string => {
+  return I18nString.i18nString(UiStrings.Name)
+}
+
+export const id = (): string => {
+  return I18nString.i18nString(UiStrings.Id)
+}
+
+export const version = (): string => {
+  return I18nString.i18nString(UiStrings.Version)
+}
+
+export const description = (): string => {
+  return I18nString.i18nString(UiStrings.Description)
+}
+
+export const publisher = (): string => {
+  return I18nString.i18nString(UiStrings.Publisher)
+}
+
+export const marketplaceLink = (): string => {
+  return I18nString.i18nString(UiStrings.MarketplaceLink)
+}
+
 export const filter = (): string => {
   return I18nString.i18nString(UiStrings.Filter)
 }
