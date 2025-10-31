@@ -6,6 +6,11 @@ interface Row {
   readonly value: string
 }
 
+const stringifyRow = (row: Row): string => {
+  const { key, value } = row
+  return `${key}: ${value}`.trim()
+}
+
 export const getExtensionInfoText = (extension: ExtensionListItem): string => {
   const { name, id, publisher, description } = extension
   const version = '' // TODO
@@ -36,7 +41,7 @@ export const getExtensionInfoText = (extension: ExtensionListItem): string => {
       value: marketplaceLink,
     },
   ]
-  const infoRows = rows.map(({ key, value }) => `${key}: ${value}`)
+  const infoRows = rows.map(stringifyRow)
   const infoText = infoRows.join('\n')
   return infoText
 }
