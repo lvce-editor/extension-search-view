@@ -1,3 +1,4 @@
+import { EventExpression } from '@lvce-editor/constants'
 import type { DomEventListener } from '../DomEventListener/DomEventListener.ts'
 import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
 import * as InputSource from '../InputSource/InputSource.ts'
@@ -6,23 +7,23 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
   return [
     {
       name: DomEventListenerFunctions.HandleContextMenu,
-      params: ['handleContextMenu', 'event.button', 'event.clientX', 'event.clientY'],
+      params: ['handleContextMenu', EventExpression.Button, EventExpression.ClientX, EventExpression.ClientY],
       preventDefault: true,
     },
     {
       name: DomEventListenerFunctions.HandlePointerDown,
-      params: ['handleClickAt', 'event.clientX', 'event.clientY'],
+      params: ['handleClickAt', EventExpression.ClientX, EventExpression.ClientY],
       preventDefault: true,
     },
     {
       name: DomEventListenerFunctions.HandleScrollBarPointerDown,
-      params: ['handleScrollBarClick', 'event.clientY'],
+      params: ['handleScrollBarClick', EventExpression.ClientY],
       preventDefault: true,
       trackPointerEvents: [DomEventListenerFunctions.HandleScrollBarMove, DomEventListenerFunctions.HandleScrollBarPointerCaptureLost],
     },
     {
       name: DomEventListenerFunctions.HandleScrollBarMove,
-      params: ['handleScrollBarMove', 'event.clientY'],
+      params: ['handleScrollBarMove', EventExpression.ClientY],
     },
     {
       name: DomEventListenerFunctions.HandleScrollBarPointerCaptureLost,
@@ -30,12 +31,12 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
     },
     {
       name: DomEventListenerFunctions.HandleWheel,
-      params: ['handleWheel', 'event.deltaMode', 'event.deltaY'],
+      params: ['handleWheel', EventExpression.DeltaMode, EventExpression.DeltaY],
       passive: true,
     },
     {
       name: DomEventListenerFunctions.HandleExtensionsInput,
-      params: ['handleInput', 'event.target.value', InputSource.User],
+      params: ['handleInput', EventExpression.TargetValue, InputSource.User],
     },
     {
       name: DomEventListenerFunctions.HandleClearSearchResults,
