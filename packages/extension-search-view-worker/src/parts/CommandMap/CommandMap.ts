@@ -35,6 +35,7 @@ import * as HandleScrollBarClick from '../HandleScrollBarClick/HandleScrollBarCl
 import * as HandleScrollBarMove from '../HandleScrollBarMove/HandleScrollBarMove.ts'
 import * as HandleUninstall from '../HandleUninstall/HandleUninstall.ts'
 import * as HandleWheel from '../HandleWheel/HandleWheel.ts'
+import * as Initialize from '../Initialize/Initialize.ts'
 import * as LoadContent from '../LoadContent/LoadContent.ts'
 import * as OpenSuggest from '../OpenSuggest/OpenSuggest.ts'
 import * as Render3 from '../Render3/Render3.ts'
@@ -51,6 +52,8 @@ import * as ToggleSuggest from '../ToggleSuggest/ToggleSuggest.ts'
 export const commandMap = {
   'SearchExtensions.clearSearchResults': WrapCommand.wrapCommand(ClearSearchResults.clearSearchResults),
   'SearchExtensions.closeSuggest': WrapCommand.wrapCommand(CloseSuggest.closeSuggest),
+  'SearchExtensions.copyExtensionId': WrapCommand.wrapCommand(copyExtensionId),
+  'SearchExtensions.copyExtensionInfo': WrapCommand.wrapCommand(copyExtensionInfo),
   'SearchExtensions.create': Create.create,
   'SearchExtensions.diff2': Diff2.diff2,
   'SearchExtensions.dispose': Dispose.dispose,
@@ -59,14 +62,13 @@ export const commandMap = {
   'SearchExtensions.focusLast': WrapCommand.wrapCommand(FocusLast.focusLast),
   'SearchExtensions.focusNext': WrapCommand.wrapCommand(FocusNext.focusNext),
   'SearchExtensions.focusNextPage': WrapCommand.wrapCommand(FocusNextPage.focusNextPage),
-  'SearchExtensions.focusPreviousPage': WrapCommand.wrapCommand(FocusPreviousPage.focusPreviousPage),
   'SearchExtensions.focusPrevious': WrapCommand.wrapCommand(FocusPrevious.focusPrevious),
+  'SearchExtensions.focusPreviousPage': WrapCommand.wrapCommand(FocusPreviousPage.focusPreviousPage),
   'SearchExtensions.getActions': GetActions.getActions,
   'SearchExtensions.getCommandIds': getCommandIds,
   'SearchExtensions.getKeyBindings': GetKeyBindings.getKeyBindings,
   'SearchExtensions.getMenuEntries': GetMenuEntries.getMenuEntries,
   'SearchExtensions.handleBlur': WrapCommand.wrapCommand(HandleBlur.handleBlur),
-  'SearchExtensions.copyExtensionInfo': WrapCommand.wrapCommand(copyExtensionInfo),
   'SearchExtensions.handleClick': WrapCommand.wrapCommand(HandleClick.handleClick),
   'SearchExtensions.handleClickAt': WrapCommand.wrapCommand(HandleClickAt.handleClickAt),
   'SearchExtensions.handleClickCurrent': WrapCommand.wrapCommand(HandleClickCurrent.handleClickCurrent),
@@ -83,9 +85,9 @@ export const commandMap = {
   'SearchExtensions.handleScrollBarThumbPointerMove': WrapCommand.wrapCommand(HandleScrollBarMove.handleScrollBarMove),
   'SearchExtensions.handleUninstall': WrapCommand.wrapCommand(HandleUninstall.handleUninstall),
   'SearchExtensions.handleWheel': WrapCommand.wrapCommand(HandleWheel.handleWheel),
+  'SearchExtensions.initialize': Initialize.initialize,
   'SearchExtensions.loadContent': WrapCommand.wrapCommand(LoadContent.loadContent),
   'SearchExtensions.openSuggest': WrapCommand.wrapCommand(OpenSuggest.openSuggest),
-  'SearchExtensions.copyExtensionId': WrapCommand.wrapCommand(copyExtensionId),
   'SearchExtensions.render3': Render3.render3,
   'SearchExtensions.renderActions': RenderActions.renderActions,
   'SearchExtensions.renderEventListeners': RenderEventListeners.renderEventListeners,
