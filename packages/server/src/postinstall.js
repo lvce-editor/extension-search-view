@@ -33,7 +33,7 @@ if (!content.includes('// const extensionSearchViewWorkerUrl = ')) {
   await cp(rendererWorkerMainPath, rendererWorkerMainPath + '.original')
   const occurrence = `const extensionSearchViewWorkerUrl = \`\${assetDir}/packages/extension-search-view-worker/dist/extensionSearchViewWorkerMain.js\``
   const replacement = `// const extensionSearchViewWorkerUrl = \`\${assetDir}/packages/extension-search-view-worker/dist/extensionSearchViewWorkerMain.js\`
-  const extensionSearchViewWorkerUrl = \`${remoteUrl}\``
+const extensionSearchViewWorkerUrl = \`${remoteUrl}\``
   const newContent = content.replace(occurrence, replacement)
   await writeFile(rendererWorkerMainPath, newContent)
 }
