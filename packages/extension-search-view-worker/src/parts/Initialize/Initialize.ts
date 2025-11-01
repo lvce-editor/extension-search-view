@@ -1,3 +1,5 @@
+import { initializeExtensionHostWorker } from '../InitializeExtensionHostWorker/InitializeExtensionHostWorker.ts'
+
 export const initialize = async (): Promise<void> => {
-  // TODO create connection to extension host worker
+  await initializeExtensionHostWorker()
 }
