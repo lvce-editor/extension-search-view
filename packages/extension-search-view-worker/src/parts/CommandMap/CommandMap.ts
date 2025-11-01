@@ -7,6 +7,7 @@ import * as Create from '../Create/Create.ts'
 import * as Diff2 from '../Diff2/Diff2.ts'
 import * as Dispose from '../Dispose/Dispose.ts'
 import * as WrapCommand from '../ExtensionSearchViewStates/ExtensionSearchViewStates.ts'
+import { getCommandIds } from '../ExtensionSearchViewStates/ExtensionSearchViewStates.ts'
 import * as FocusFirst from '../FocusFirst/FocusFirst.ts'
 import * as FocusIndex from '../FocusIndex/FocusIndex.ts'
 import * as FocusLast from '../FocusLast/FocusLast.ts'
@@ -61,7 +62,7 @@ export const commandMap = {
   'SearchExtensions.focusPreviousPage': WrapCommand.wrapCommand(FocusPreviousPage.focusPreviousPage),
   'SearchExtensions.focusPrevious': WrapCommand.wrapCommand(FocusPrevious.focusPrevious),
   'SearchExtensions.getActions': GetActions.getActions,
-  'SearchExtensions.getCommandIds': GetCommandIds.getCommandIds,
+  'SearchExtensions.getCommandIds': getCommandIds,
   'SearchExtensions.getKeyBindings': GetKeyBindings.getKeyBindings,
   'SearchExtensions.getMenuEntries': GetMenuEntries.getMenuEntries,
   'SearchExtensions.handleBlur': WrapCommand.wrapCommand(HandleBlur.handleBlur),
