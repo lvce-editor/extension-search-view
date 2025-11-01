@@ -84,7 +84,7 @@ export const commandMap = {
   'SearchExtensions.handleScrollBarThumbPointerMove': WrapCommand.wrapCommand(HandleScrollBarMove.handleScrollBarMove),
   'SearchExtensions.handleUninstall': WrapCommand.wrapCommand(HandleUninstall.handleUninstall),
   'SearchExtensions.handleWheel': WrapCommand.wrapCommand(HandleWheel.handleWheel),
-  'SearchExtensions.inialize': Initialize.initialize,
+  'SearchExtensions.initialize': Initialize.initialize,
   'SearchExtensions.loadContent': WrapCommand.wrapCommand(LoadContent.loadContent),
   'SearchExtensions.openSuggest': WrapCommand.wrapCommand(OpenSuggest.openSuggest),
   'SearchExtensions.render3': Render3.render3,
