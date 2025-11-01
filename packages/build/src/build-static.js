@@ -27,9 +27,9 @@ const content = await readFile(rendererWorkerPath, 'utf8')
 const workerPath = join(root, '.tmp/dist/dist/extensionSearchViewWorkerMain.js')
 const remoteUrl = getRemoteUrl(workerPath)
 
-const occurrence = `// const extensionSearchViewWorkerUrl = \`\${assetDir}/packagesextension-search-view-worker/dist/extensionSearchViewWorkerMain.js\`
+const occurrence = `// const extensionSearchViewWorkerUrl = \`\${assetDir}/packages/extension-search-view-worker/dist/extensionSearchViewWorkerMain.js\`
 const extensionSearchViewWorkerUrl = \`${remoteUrl}\``
-const replacement = `const extensionSearchViewWorkerUrl = \`\${assetDir}/packagesextension-search-view-worker/dist/extensionSearchViewWorkerMain.js\``
+const replacement = `const extensionSearchViewWorkerUrl = \`\${assetDir}/packages/extension-search-view-worker/dist/extensionSearchViewWorkerMain.js\``
 if (!content.includes(occurrence)) {
   throw new Error('occurrence not found')
 }
