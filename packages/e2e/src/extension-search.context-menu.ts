@@ -23,5 +23,5 @@ export const test: Test = async ({ Locator, expect, SideBar, Command }) => {
   const menuItem4 = menuItems.nth(3)
   await expect(menuItem4).toHaveText('Copy')
   const menuItem5 = menuItems.nth(4)
-  await expect(menuItem5).toHaveText('CopyExtensionId')
+  await expect(menuItem5).toHaveText('Copy Extension Id')
 }
