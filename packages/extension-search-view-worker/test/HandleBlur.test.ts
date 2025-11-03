@@ -1,14 +1,15 @@
 import { test, expect } from '@jest/globals'
 import type { State } from '../src/parts/State/State.ts'
 import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
+import * as FocusId from '../src/parts/FocusId/FocusId.ts'
 import { handleBlur } from '../src/parts/HandleBlur/HandleBlur.ts'
 
-test.skip('handleBlur returns state with focused set to false', () => {
+test('handleBlur returns state with focus set to None', () => {
   const initialState: State = {
     ...createDefaultState(),
-    focused: true,
+    focus: FocusId.Input,
   }
 
   const result = handleBlur(initialState)
-  expect(result.focused).toBe(true)
+  expect(result.focus).toBe(FocusId.None)
 })
