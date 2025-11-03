@@ -25,6 +25,7 @@ export const loadContent = async (state: State, savedState: unknown): Promise<St
       deltaY,
     },
     searchValue,
+    InputSource.Script,
   )
   return updatedState
 }
