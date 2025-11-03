@@ -1,7 +1,7 @@
 import { expect, test } from '@jest/globals'
+import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import * as FocusId from '../src/parts/FocusId/FocusId.ts'
 import * as InputName from '../src/parts/InputName/InputName.ts'
-import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import * as RenderFocus from '../src/parts/RenderFocus/RenderFocus.ts'
 
 test('returns empty array when focus is None', () => {
