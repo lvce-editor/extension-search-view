@@ -53,3 +53,13 @@ test('returns focus selector command with different uid', () => {
   const result = RenderFocus.renderFocus(state)
   expect(result).toEqual(['Viewlet.focusSelector', 5, `[name="${InputName.Extensions}"]`])
 })
+
+test('returns focus selector command with empty selector for invalid focus value', () => {
+  const state = {
+    ...createDefaultState(),
+    focus: 99,
+    uid: 3,
+  }
+  const result = RenderFocus.renderFocus(state)
+  expect(result).toEqual(['Viewlet.focusSelector', 3, ''])
+})
