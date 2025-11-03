@@ -1,15 +1,15 @@
 import type { Test } from '@lvce-editor/test-with-playwright'
 
-export const test: Test = async ({ Locator, expect, SideBar, Command, ClipBoard }) => {
+export const test: Test = async ({ Locator, expect, SideBar, Command, ClipBoard, ExtensionSearch }) => {
   // arrange
   await ClipBoard.enableMemoryClipBoard()
-  await SideBar.open('Extensions')
+  await ExtensionSearch.open()
   const extensionsView = Locator('.Extensions')
   await expect(extensionsView).toBeVisible()
-  await Command.execute('Extensions.handleInput', 'atom', 2)
+  await ExtensionSearch.handleInput('atom')
 
   // act
-  await Command.execute('Extensions.copyExtensionInfo')
+  await ExtensionSearch.copyExtensionInfo()
 
   // assert
   await ClipBoard.shouldHaveText(`Name: Atom One Dark Theme
