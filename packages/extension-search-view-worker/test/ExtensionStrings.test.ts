@@ -48,3 +48,35 @@ test('installed', () => {
 test('searchExtensionsInMarketPlace', () => {
   expect(ExtensionStrings.searchExtensionsInMarketPlace()).toBe('Search Extensions in Marketplace')
 })
+
+test('name', () => {
+  expect(ExtensionStrings.name()).toBe('Name')
+})
+
+test('id', () => {
+  expect(ExtensionStrings.id()).toBe('Id')
+})
+
+test('version', () => {
+  expect(ExtensionStrings.version()).toBe('Version')
+})
+
+test('description', () => {
+  expect(ExtensionStrings.description()).toBe('Description')
+})
+
+test('publisher', () => {
+  expect(ExtensionStrings.publisher()).toBe('Publisher')
+})
+
+test('marketplaceLink', () => {
+  expect(ExtensionStrings.marketplaceLink()).toBe('Marketplace Link')
+})
+
+test('copy', () => {
+  expect(ExtensionStrings.copy()).toBe('Copy')
+})
+
+test('copyExtensionId', () => {
+  expect(ExtensionStrings.copyExtensionId()).toBe('Copy Extension Id')
+})
