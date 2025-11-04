@@ -10,6 +10,7 @@ const mockItem1: ExtensionListItem = {
   icon: 'test-icon-1.png',
   description: 'Test Description 1',
   uri: 'https://example.com/1',
+  categories: [],
 }
 
 const mockItem2: ExtensionListItem = {
@@ -19,6 +20,7 @@ const mockItem2: ExtensionListItem = {
   icon: 'test-icon-2.png',
   description: 'Test Description 2',
   uri: 'https://example.com/2',
+  categories: [],
 }
 
 const mockItem3: ExtensionListItem = {
@@ -28,6 +30,7 @@ const mockItem3: ExtensionListItem = {
   icon: 'test-icon-3.png',
   description: 'Test Description 3',
   uri: 'https://example.com/3',
+  categories: [],
 }
 
 test('returns undefined when focusedIndex is -1', () => {

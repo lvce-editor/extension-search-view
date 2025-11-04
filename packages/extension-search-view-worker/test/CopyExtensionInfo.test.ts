@@ -11,6 +11,7 @@ const mockItem: ExtensionListItem = {
   icon: 'icon.png',
   description: 'A test extension',
   uri: 'https://example.com',
+  categories: [],
 }
 
 test('copyExtensionInfo returns state unchanged when no focused item', async () => {
@@ -54,6 +55,7 @@ test('copyExtensionInfo handles item with empty strings', async () => {
     icon: '',
     description: '',
     uri: '',
+    categories: [],
   }
   const state = {
     ...createDefaultState(),
