@@ -10,6 +10,7 @@ const createExtension = (name: string, id: string): ExtensionListItem => ({
   icon: 'test-icon',
   description: 'test-description',
   uri: 'test-uri',
+  categories: [],
 })
 
 const createParsedValue = (query: string): ParsedExtensionSearchValue => ({
@@ -94,6 +95,7 @@ test('matches partial id in middle of id when extension has no name', () => {
     icon: 'test-icon',
     description: 'test-description',
     uri: 'test-uri',
+    categories: [],
   }
   const parsedValue = createParsedValue('awesome')
   expect(matchesParsedValue(extension, parsedValue)).toBe(true)
@@ -143,6 +145,7 @@ test('matches extension with special characters in id when extension has no name
     icon: 'test-icon',
     description: 'test-description',
     uri: 'test-uri',
+    categories: [],
   }
   const parsedValue = createParsedValue('v2')
   expect(matchesParsedValue(extension, parsedValue)).toBe(true)
@@ -168,6 +171,7 @@ test('matches full id when extension has no name', () => {
     icon: 'test-icon',
     description: 'test-description',
     uri: 'test-uri',
+    categories: [],
   }
   const parsedValue = createParsedValue('test-extension')
   expect(matchesParsedValue(extension, parsedValue)).toBe(true)
@@ -199,6 +203,7 @@ test('matches with numbers in id when extension has no name', () => {
     icon: 'test-icon',
     description: 'test-description',
     uri: 'test-uri',
+    categories: [],
   }
   const parsedValue = createParsedValue('2024')
   expect(matchesParsedValue(extension, parsedValue)).toBe(true)

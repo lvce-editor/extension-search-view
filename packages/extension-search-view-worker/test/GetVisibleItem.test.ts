@@ -9,6 +9,7 @@ const mockItem: ExtensionListItem = {
   icon: 'test-icon.png',
   description: 'Test Description',
   uri: 'https://example.com',
+  categories: [],
 }
 
 test('returns visible item with correct basic properties', () => {

@@ -10,6 +10,7 @@ test('should return formatted info text with all fields', () => {
     icon: 'icon.png',
     description: 'A test extension',
     uri: 'https://example.com',
+    categories: [],
   }
   const result = getExtensionInfoText(extension)
   const lines = result.split('\n')
@@ -30,6 +31,7 @@ test('should handle empty strings', () => {
     icon: '',
     description: '',
     uri: '',
+    categories: [],
   }
   const result = getExtensionInfoText(extension)
   const lines = result.split('\n')
@@ -50,6 +52,7 @@ test('should trim trailing whitespace from formatted rows', () => {
     icon: 'icon.png',
     description: '  A test extension  ',
     uri: 'https://example.com',
+    categories: [],
   }
   const result = getExtensionInfoText(extension)
   const lines = result.split('\n')
@@ -67,6 +70,7 @@ test('should maintain correct order of fields', () => {
     icon: 'icon.png',
     description: 'Description A',
     uri: 'https://example.com',
+    categories: [],
   }
   const result = getExtensionInfoText(extension)
   expect(result).toContain('Name: Extension A')

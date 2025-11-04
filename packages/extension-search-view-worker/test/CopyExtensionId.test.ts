@@ -16,6 +16,7 @@ test('copyExtensionId copies extension id to clipboard when item is focused', as
     icon: 'icon.png',
     description: 'Test description',
     uri: 'test-uri',
+    categories: [],
   }
   const stateWithItem = {
     ...state,

@@ -7,7 +7,15 @@ import { Remote } from '../src/parts/PlatformType/PlatformType.js'
 import { VError } from '../src/parts/VError/VError.js'
 
 const mockExtensions = [
-  { name: 'Test Extension', id: 'test-extension', publisher: 'test-publisher', icon: 'test-icon', description: 'test-description', uri: 'test-uri' },
+  {
+    name: 'Test Extension',
+    id: 'test-extension',
+    publisher: 'test-publisher',
+    icon: 'test-icon',
+    description: 'test-description',
+    uri: 'test-uri',
+    categories: [],
+  },
 ]
 
 test('handles empty search results', async () => {

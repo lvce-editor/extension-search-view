@@ -13,6 +13,7 @@ test('handleClickCurrentButKeepFocus opens URI for focused extension', async () 
     icon: 'test-icon',
     description: 'test-description',
     uri: 'test-uri',
+    categories: [],
   }
 
   const state = {
@@ -41,6 +42,7 @@ test('handleClickCurrentButKeepFocus uses focusedIndex correctly', async () => {
     icon: 'icon-1',
     description: 'desc-1',
     uri: 'uri-1',
+    categories: [],
   }
 
   const mockExtension2: ExtensionListItem = {
@@ -50,6 +52,7 @@ test('handleClickCurrentButKeepFocus uses focusedIndex correctly', async () => {
     icon: 'icon-2',
     description: 'desc-2',
     uri: 'uri-2',
+    categories: [],
   }
 
   const state = {
