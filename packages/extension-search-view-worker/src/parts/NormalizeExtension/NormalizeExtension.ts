@@ -10,7 +10,6 @@ export const normalizeExtension = (extension: unknown, platform: number, assetDi
     uri: '',
     publisher: getPublisher(extension),
     icon: ExtensionDisplay.getIcon(extension, platform, assetDir),
-    // @ts-ignore // TODO
-    categories: extension.categories,
+    categories: ExtensionDisplay.getCategories(extension),
   }
 }

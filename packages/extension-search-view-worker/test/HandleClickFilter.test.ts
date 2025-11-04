@@ -28,6 +28,7 @@ test('returns state with items unchanged', async () => {
         icon: 'test-icon',
         description: 'test-description',
         uri: 'test-uri',
+        categories: [],
       },
     ],
   }
