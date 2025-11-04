@@ -55,3 +55,22 @@ test('parseValue - @outdated', () => {
     outdated: true,
   })
 })
+
+test('parseValue - @category', () => {
+  // TODO maybe support this syntax also
+  expect(ParseExtensionSearchValue.parseValue('@category themes')).toMatchObject({
+    category: 'themes',
+  })
+})
+
+test('parseValue - @category - alternative version', () => {
+  expect(ParseExtensionSearchValue.parseValue('@category:themes')).toMatchObject({
+    category: 'themes',
+  })
+})
+
+test('parseValue - @category - with quotes', () => {
+  expect(ParseExtensionSearchValue.parseValue('@category:"themes"')).toMatchObject({
+    category: 'themes',
+  })
+})

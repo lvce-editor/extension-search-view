@@ -3,6 +3,19 @@ import * as ExtensionFilterParameter from '../ExtensionFilterParameter/Extension
 
 const RE_PARAM = /@\w+/g
 
+const deserializeCategory = (value: string): string => {
+  if (value.startsWith(':"') && value.endsWith('"')) {
+    return value.slice(2, -1)
+  }
+  if (value.startsWith('"') && value.endsWith('"')) {
+    return value.slice(1, -1)
+  }
+  if (value.startsWith(':')) {
+    return value.slice(1)
+  }
+  return value.trim()
+}
+
 // TODO test sorting and filtering
 export const parseValue = (value: string): ParsedExtensionSearchValue => {
   let installed = false
@@ -12,6 +25,7 @@ export const parseValue = (value: string): ParsedExtensionSearchValue => {
   let sort = ''
   let id = ''
   let outdated = false
+  let category = ''
   // TODO this is not very functional code (assignment)
   const replaced = value.replaceAll(RE_PARAM, (match, by, order) => {
     if (match.startsWith(ExtensionFilterParameter.Installed)) {
@@ -34,6 +48,10 @@ export const parseValue = (value: string): ParsedExtensionSearchValue => {
       // TODO improve parsing
       id = value.replace('@id:', '')
     }
+    if (match.startsWith(ExtensionFilterParameter.Category)) {
+      const raw = value.replace('@category', '')
+      category = deserializeCategory(raw)
+    }
     if (match.startsWith(ExtensionFilterParameter.Outdated)) {
       outdated = true
     }
@@ -51,5 +69,6 @@ export const parseValue = (value: string): ParsedExtensionSearchValue => {
     id,
     sort,
     isLocal,
+    category,
   }
 }

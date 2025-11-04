@@ -8,4 +8,5 @@ export interface ParsedExtensionSearchValue {
   readonly outdated: boolean
   readonly query: string
   readonly isLocal: boolean
+  readonly category?: string
 }
