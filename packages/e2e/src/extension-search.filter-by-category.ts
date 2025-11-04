@@ -1,7 +1,5 @@
 import type { Test } from '@lvce-editor/test-with-playwright'
 
-export const skip = 1
-
 export const test: Test = async ({ Locator, expect, SideBar, Command }) => {
   // arrange
   await SideBar.open('Extensions')
@@ -13,6 +11,8 @@ export const test: Test = async ({ Locator, expect, SideBar, Command }) => {
 
   // assert
   const listItems = Locator('.Extensions .ListItems')
-  const firstItem = listItems.locator('.ExtensionListItem')
+  const firstItem = listItems.locator('.ExtensionListItem').nth(0)
   await expect(firstItem).toBeVisible()
+  const name = firstItem.locator('.ExtensionListItemName')
+  await expect(name).toHaveText('Ayu Theme')
 }
