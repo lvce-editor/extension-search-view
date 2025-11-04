@@ -55,3 +55,14 @@ export const getId = (extension: any): string => {
   }
   return extension.id
 }
+
+const isString = (item: unknown): item is string => {
+  return typeof item === 'string'
+}
+
+export const getCategories = (extension: any): readonly string[] => {
+  if (!extension || !extension.categories || !Array.isArray(extension.categories)) {
+    return []
+  }
+  return extension.categories.filter(isString)
+}

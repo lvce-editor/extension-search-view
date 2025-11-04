@@ -20,6 +20,7 @@ test('handleClickAt handles left click and opens URI', async () => {
     icon: 'test-icon',
     description: 'test-description',
     uri: 'test-uri',
+    categories: [],
   }
 
   const state = {
@@ -54,6 +55,7 @@ test('handleClickAt calculates correct index from coordinates', async () => {
     icon: 'icon-1',
     description: 'desc-1',
     uri: 'uri-1',
+    categories: [],
   }
 
   const mockExtension2: ExtensionListItem = {
@@ -63,6 +65,7 @@ test('handleClickAt calculates correct index from coordinates', async () => {
     icon: 'icon-2',
     description: 'desc-2',
     uri: 'uri-2',
+    categories: [],
   }
 
   const state = {
