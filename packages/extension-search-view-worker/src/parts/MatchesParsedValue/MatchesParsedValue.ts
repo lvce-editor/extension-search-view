@@ -11,9 +11,24 @@ const matchesId = (extension: ExtensionListItem, query: string): boolean => {
   return extensionIdLower.includes(query)
 }
 
+const matchesCategory = (extension: ExtensionListItem, category: string): boolean => {
+  return (
+    extension &&
+    typeof extension === 'object' &&
+    'categories' in extension &&
+    Array.isArray(extension.categories) &&
+    extension.categories.some((item) => {
+      return item.toLowerCase() === category
+    })
+  )
+}
+
 export const matchesParsedValue = (extension: ExtensionListItem, parsedValue: ParsedExtensionSearchValue): boolean => {
   if (parsedValue.id && extension.id) {
     return parsedValue.id === extension.id
+  }
+  if (parsedValue.category && matchesCategory(extension, parsedValue.category)) {
+    return true
   }
   if (extension.name) {
     return matchesName(extension, parsedValue.query)

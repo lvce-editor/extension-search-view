@@ -253,3 +253,20 @@ test('when parsedValue.id is set but does not match, returns false even if query
   }
   expect(matchesParsedValue(extension, parsedValue)).toBe(false)
 })
+
+test.skip('category - match', () => {
+  const extension = { ...createExtension('Test Extension', 'test-extension'), categories: ['Themes'] }
+  const parsedValue: ParsedExtensionSearchValue = {
+    installed: false,
+    enabled: true,
+    disabled: false,
+    builtin: false,
+    sort: 'name',
+    id: 'different-id',
+    outdated: false,
+    query: 'test',
+    isLocal: false,
+    category: 'Themes',
+  }
+  expect(matchesParsedValue(extension, parsedValue)).toBe(true)
+})
