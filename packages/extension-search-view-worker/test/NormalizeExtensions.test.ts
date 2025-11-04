@@ -15,6 +15,7 @@ test('normalizeExtension should normalize multiple extensions', () => {
     uri: '',
     publisher: '1',
     icon: '/assets/icons/extensionDefaultIcon.png',
+    categories: [],
   })
   expect(result[1]).toEqual({
     id: '2',
@@ -23,6 +24,7 @@ test('normalizeExtension should normalize multiple extensions', () => {
     uri: '',
     publisher: '2',
     icon: '/assets/icons/extensionDefaultIcon.png',
+    categories: [],
   })
 })
 

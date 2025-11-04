@@ -19,6 +19,7 @@ test('normalizeExtension returns correct ExtensionListItem structure', () => {
     uri: '',
     publisher: 'test-id',
     icon: '/test/assets/icons/extensionDefaultIcon.png',
+    categories: [],
   })
 })
 
@@ -37,6 +38,7 @@ test('normalizeExtension handles extension with missing fields', () => {
     uri: '',
     publisher: 'test-id',
     icon: '/test/assets/icons/extensionDefaultIcon.png',
+    categories: [],
   })
 })
 
@@ -58,5 +60,6 @@ test('normalizeExtension handles different platform values', () => {
     uri: '',
     publisher: 'test-id',
     icon: '/test/assets/icons/extensionDefaultIcon.png',
+    categories: [],
   })
 })
