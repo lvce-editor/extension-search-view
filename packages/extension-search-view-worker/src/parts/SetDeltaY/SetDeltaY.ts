@@ -16,10 +16,9 @@ export const setDeltaY = (state: State, value: number): State => {
   }
   // TODO when it only moves by one px, extensions don't need to be rerendered, only negative margin
   const minLineY = Math.floor(newDeltaY / itemHeight)
-  const maxLineY = minLineY + GetNumberOfVisibleItems.getNumberOfVisibleItems(listHeight, itemHeight)
   const total = items.length
+  const maxLineY = Math.min(minLineY + GetNumberOfVisibleItems.getNumberOfVisibleItems(listHeight, itemHeight), total)
   const contentHeight = total * itemHeight
-
   const scrollBarHeight = GetScrollBarSize.getScrollBarSize(listHeight, contentHeight, minimumSliderSize)
   const scrollBarY = ScrollBarFunctions.getScrollBarY(newDeltaY, finalDeltaY, height - headerHeight, scrollBarHeight)
   return {
