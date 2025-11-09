@@ -7,6 +7,7 @@ export const isEqual = (oldState: State, newState: State): boolean => {
     oldState.height === newState.height &&
     oldState.finalDeltaY === newState.finalDeltaY &&
     oldState.items.length === newState.items.length &&
-    oldState.scrollBarActive === newState.scrollBarActive
+    oldState.scrollBarActive === newState.scrollBarActive &&
+    oldState.scrollBarHeight === newState.scrollBarHeight
   )
 }
