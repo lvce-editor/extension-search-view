@@ -13,3 +13,4 @@ export const HandleTouchEnd = 12
 export const HandleTouchMove = 13
 export const HandleTouchStart = 14
 export const HandleWheel = 15
+export const HandleHeaderContextMenu = 16

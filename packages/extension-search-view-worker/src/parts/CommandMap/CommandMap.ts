@@ -27,6 +27,7 @@ import * as HandleContextMenu from '../HandleContextMenu/HandleContextMenu.ts'
 import * as HandleDisable from '../HandleDisable/HandleDisable.ts'
 import * as HandleEnable from '../HandleEnable/HandleEnable.ts'
 import * as HandleFocus from '../HandleFocus/HandleFocus.ts'
+import { handleHeaderContextMenu } from '../HandleHeaderContextMenu/HandleHeaderContextMenu.ts'
 import * as HandleInput from '../HandleInput/HandleInput.ts'
 import * as HandleInstall from '../HandleInstall/HandleInstall.ts'
 import * as HandleScrollBarCaptureLost from '../HandleScrollBarCaptureLost/HandleScrollBarCaptureLost.ts'
@@ -60,6 +61,7 @@ export const commandMap = {
   'SearchExtensions.focusIndex': WrapCommand.wrapCommand(FocusIndex.focusIndex),
   'SearchExtensions.focusLast': WrapCommand.wrapCommand(FocusLast.focusLast),
   'SearchExtensions.focusNext': WrapCommand.wrapCommand(FocusNext.focusNext),
+  'SearchExtensions.handleHeaderContextMenu': WrapCommand.wrapCommand(handleHeaderContextMenu),
   'SearchExtensions.focusNextPage': WrapCommand.wrapCommand(FocusNextPage.focusNextPage),
   'SearchExtensions.focusPrevious': WrapCommand.wrapCommand(FocusPrevious.focusPrevious),
   'SearchExtensions.focusPreviousPage': WrapCommand.wrapCommand(FocusPreviousPage.focusPreviousPage),

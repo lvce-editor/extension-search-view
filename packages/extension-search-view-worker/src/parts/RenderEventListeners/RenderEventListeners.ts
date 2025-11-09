@@ -11,6 +11,11 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
       preventDefault: true,
     },
     {
+      name: DomEventListenerFunctions.HandleHeaderContextMenu,
+      params: ['handleHeaderContextMenu'],
+      preventDefault: true,
+    },
+    {
       name: DomEventListenerFunctions.HandlePointerDown,
       params: ['handleClickAt', EventExpression.Button, EventExpression.ClientX, EventExpression.ClientY],
       preventDefault: true,
