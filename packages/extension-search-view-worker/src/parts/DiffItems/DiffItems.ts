@@ -9,6 +9,7 @@ export const isEqual = (oldState: State, newState: State): boolean => {
     oldState.focusedIndex === newState.focusedIndex &&
     oldState.message === newState.message &&
     oldState.inputActions === newState.inputActions &&
-    oldState.placeholder === newState.placeholder
+    oldState.placeholder === newState.placeholder &&
+    oldState.scrollBarHeight === newState.scrollBarHeight
   )
 }
