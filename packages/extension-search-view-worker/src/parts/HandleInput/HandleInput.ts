@@ -3,6 +3,7 @@ import * as ErrorHandling from '../ErrorHandling/ErrorHandling.ts'
 import * as ViewletExtensionsStrings from '../ExtensionStrings/ExtensionStrings.ts'
 import * as FocusId from '../FocusId/FocusId.ts'
 import * as GetFinalDeltaY from '../GetFinalDeltaY/GetFinalDeltaY.ts'
+import * as GetInputActions from '../GetInputActions/GetInputActions.ts'
 import * as GetListHeight from '../GetListHeight/GetListHeight.ts'
 import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOfVisibleItems.ts'
 import * as GetScrollBarSize from '../GetScrollBarSize/GetScrollBarSize.ts'
@@ -13,6 +14,8 @@ import * as SearchExtensions from '../SearchExtensions/SearchExtensions.ts'
 // TODO debounce
 export const handleInput = async (state: State, value: string, inputSource = InputSource.User): Promise<State> => {
   try {
+    const hasValue = value.length > 0
+    const inputActions = GetInputActions.getInputActions(hasValue)
     const { allExtensions, itemHeight, minimumSliderSize, height, platform, assetDir, headerHeight } = state
     // TODO cancel ongoing requests
     // TODO handle errors
@@ -32,6 +35,7 @@ export const handleInput = async (state: State, value: string, inputSource = Inp
         scrollBarHeight: 0,
         searchValue: value,
         inputSource,
+        inputActions,
       }
     }
     const total = items.length
@@ -42,6 +46,7 @@ export const handleInput = async (state: State, value: string, inputSource = Inp
     const maxLineY = Math.min(numberOfVisible, total)
     const finalDeltaY = GetFinalDeltaY.getFinalDeltaY(listHeight, itemHeight, total)
     const scrollBarY = ScrollBarFunctions.getScrollBarY(0, finalDeltaY, height - headerHeight, scrollBarHeight)
+
     return {
       ...state,
       allExtensions,
@@ -56,6 +61,7 @@ export const handleInput = async (state: State, value: string, inputSource = Inp
       scrollBarY,
       searchValue: value,
       inputSource,
+      inputActions,
     }
 
     // TODO handle out of order responses (a bit complicated)
