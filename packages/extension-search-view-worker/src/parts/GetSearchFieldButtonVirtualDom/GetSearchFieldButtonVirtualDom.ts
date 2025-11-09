@@ -4,7 +4,7 @@ import type { InputAction } from '../InputAction/InputAction.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 
-const disabledClassName = MergeClassNames.mergeClassNames(ClassNames.SearchFieldButton, ClassNames.SearchFieldDisabled)
+const disabledClassName = MergeClassNames.mergeClassNames(ClassNames.SearchFieldButton, ClassNames.SearchFieldButtonDisabled)
 
 const getClassName = (enabled: boolean): string => {
   if (enabled) {
