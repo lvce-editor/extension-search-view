@@ -47,6 +47,7 @@ import * as SearchExtensions from '../SearchExtensions/SearchExtensions.ts'
 import * as SelectIndex from '../SelectIndex/SelectIndex.ts'
 import * as SetDeltaY from '../SetDeltaY/SetDeltaY.ts'
 import * as ToggleSuggest from '../ToggleSuggest/ToggleSuggest.ts'
+import { resize } from '../Resize/Resize.ts'
 
 export const commandMap = {
   'SearchExtensions.clearSearchResults': WrapCommand.wrapCommand(ClearSearchResults.clearSearchResults),
@@ -98,4 +99,5 @@ export const commandMap = {
   'SearchExtensions.setDeltaY': WrapCommand.wrapCommand(SetDeltaY.setDeltaY),
   'SearchExtensions.terminate': terminate,
   'SearchExtensions.toggleSuggest': WrapCommand.wrapCommand(ToggleSuggest.toggleSuggest),
+  'SearchExtensions.resize': WrapCommand.wrapCommand(resize),
 }
