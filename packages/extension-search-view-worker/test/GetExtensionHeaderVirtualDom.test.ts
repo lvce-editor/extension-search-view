@@ -12,6 +12,7 @@ test('should return correct virtual DOM structure', () => {
       childCount: 1,
       className: 'ExtensionHeader',
       type: 4,
+      onContextMenu: 16,
     },
     {
       childCount: 2,
