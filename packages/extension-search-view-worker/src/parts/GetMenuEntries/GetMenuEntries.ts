@@ -26,13 +26,13 @@ export const getMenuEntries = (): readonly MenuEntry[] => {
       id: 'copy',
       label: ExtensionStrings.copy(),
       flags: MenuItemFlags.None,
-      command: 'SearchExtensions.copy',
+      command: 'Extensions.copyExtensionInfo',
     },
     {
       id: 'copyExtensionId',
       label: ExtensionStrings.copyExtensionId(),
       flags: MenuItemFlags.None,
-      command: 'SearchExtensions.copyExtensionId',
+      command: 'Extensions.copyExtensionId',
     },
   ]
 }
