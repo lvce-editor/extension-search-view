@@ -26,12 +26,12 @@ export const resize = async (state: State, dimensions: Dimensions): Promise<Stat
   return {
     ...state,
     finalDeltaY,
+    height,
     maxLineY,
     scrollBarHeight,
     scrollBarY,
+    width,
     x,
     y,
-    width,
-    height,
   }
 }
