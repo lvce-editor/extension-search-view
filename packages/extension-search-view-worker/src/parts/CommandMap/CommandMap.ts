@@ -41,6 +41,7 @@ import * as OpenSuggest from '../OpenSuggest/OpenSuggest.ts'
 import * as Render3 from '../Render3/Render3.ts'
 import * as RenderActions from '../RenderActions/RenderActions.ts'
 import * as RenderEventListeners from '../RenderEventListeners/RenderEventListeners.ts'
+import { resize } from '../Resize/Resize.ts'
 import * as RestoreState from '../RestoreState/RestoreState.ts'
 import * as SaveState from '../SaveState/SaveState.ts'
 import * as ScrollDown from '../ScrollDown/ScrollDown.ts'
@@ -100,4 +101,5 @@ export const commandMap = {
   'SearchExtensions.setDeltaY': WrapCommand.wrapCommand(SetDeltaY.setDeltaY),
   'SearchExtensions.terminate': terminate,
   'SearchExtensions.toggleSuggest': WrapCommand.wrapCommand(ToggleSuggest.toggleSuggest),
+  'SearchExtensions.resize': WrapCommand.wrapCommand(resize),
 }
