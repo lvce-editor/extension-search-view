@@ -3,7 +3,7 @@ import * as GetExtensionHeaderVirtualDom from '../GetExtensionHeaderVirtualDom/G
 import * as GetInputActions from '../GetInputActions/GetInputActions.ts'
 
 export const renderHeader = (newState: State): readonly any[] => {
-  const actions = GetInputActions.getInputActions(newState)
+  const actions = GetInputActions.getInputActions(newState.searchValue.length > 0)
   const dom = GetExtensionHeaderVirtualDom.getExtensionHeaderVirtualDom(newState.placeholder, actions)
   return ['setHeaderDom', dom]
 }
