@@ -30,3 +30,12 @@ test('getScrollBarY returns max offset when delta equals finalDelta', () => {
   const result = getScrollBarY(delta, finalDelta, size, scrollBarSize)
   expect(result).toBe(450) // (100/100) * (500-50) = 1 * 450 = 450
 })
+
+test('getScrollBarY returns zero when size needs no scrollbar', () => {
+  const delta = 0
+  const finalDelta = 0
+  const size = 421 - 41
+  const scrollBarSize = 0
+  const result = getScrollBarY(delta, finalDelta, size, scrollBarSize)
+  expect(result).toBe(0)
+})

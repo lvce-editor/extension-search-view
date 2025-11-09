@@ -7,5 +7,8 @@ export const getRemoteUrl = (extension: any, platform: number, assetDir: string)
     }
     return `/remote/${extension.path}/${extension.icon}` // TODO support windows paths
   }
+  if (platform === PlatformType.Web) {
+    return `${extension.path}/${extension.icon}`
+  }
   return ''
 }
