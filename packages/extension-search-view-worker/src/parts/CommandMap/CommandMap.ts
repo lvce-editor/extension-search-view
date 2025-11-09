@@ -27,6 +27,7 @@ import * as HandleContextMenu from '../HandleContextMenu/HandleContextMenu.ts'
 import * as HandleDisable from '../HandleDisable/HandleDisable.ts'
 import * as HandleEnable from '../HandleEnable/HandleEnable.ts'
 import * as HandleFocus from '../HandleFocus/HandleFocus.ts'
+import { handleHeaderContextMenu } from '../HandleHeaderContextMenu/HandleHeaderContextMenu.ts'
 import * as HandleInput from '../HandleInput/HandleInput.ts'
 import * as HandleInstall from '../HandleInstall/HandleInstall.ts'
 import * as HandleScrollBarCaptureLost from '../HandleScrollBarCaptureLost/HandleScrollBarCaptureLost.ts'
@@ -40,6 +41,7 @@ import * as OpenSuggest from '../OpenSuggest/OpenSuggest.ts'
 import * as Render3 from '../Render3/Render3.ts'
 import * as RenderActions from '../RenderActions/RenderActions.ts'
 import * as RenderEventListeners from '../RenderEventListeners/RenderEventListeners.ts'
+import { resize } from '../Resize/Resize.ts'
 import * as RestoreState from '../RestoreState/RestoreState.ts'
 import * as SaveState from '../SaveState/SaveState.ts'
 import * as ScrollDown from '../ScrollDown/ScrollDown.ts'
@@ -60,6 +62,7 @@ export const commandMap = {
   'SearchExtensions.focusIndex': WrapCommand.wrapCommand(FocusIndex.focusIndex),
   'SearchExtensions.focusLast': WrapCommand.wrapCommand(FocusLast.focusLast),
   'SearchExtensions.focusNext': WrapCommand.wrapCommand(FocusNext.focusNext),
+  'SearchExtensions.handleHeaderContextMenu': WrapCommand.wrapCommand(handleHeaderContextMenu),
   'SearchExtensions.focusNextPage': WrapCommand.wrapCommand(FocusNextPage.focusNextPage),
   'SearchExtensions.focusPrevious': WrapCommand.wrapCommand(FocusPrevious.focusPrevious),
   'SearchExtensions.focusPreviousPage': WrapCommand.wrapCommand(FocusPreviousPage.focusPreviousPage),
@@ -98,4 +101,5 @@ export const commandMap = {
   'SearchExtensions.setDeltaY': WrapCommand.wrapCommand(SetDeltaY.setDeltaY),
   'SearchExtensions.terminate': terminate,
   'SearchExtensions.toggleSuggest': WrapCommand.wrapCommand(ToggleSuggest.toggleSuggest),
+  'SearchExtensions.resize': WrapCommand.wrapCommand(resize),
 }
