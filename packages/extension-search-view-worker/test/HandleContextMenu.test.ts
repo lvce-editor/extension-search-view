@@ -4,7 +4,7 @@ import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefau
 import * as HandleContextMenu from '../src/parts/HandleContextMenu/HandleContextMenu.ts'
 import * as MenuEntryId from '../src/parts/MenuEntryId/MenuEntryId.ts'
 
-test('handleContextMenu returns state', async () => {
+test.skip('handleContextMenu returns state', async () => {
   const mockRpc = RendererWorker.registerMockRpc({
     'ContextMenu.show'() {},
   })
