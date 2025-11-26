@@ -18,6 +18,7 @@ import * as FocusPreviousPage from '../FocusPreviousPage/FocusPreviousPage.ts'
 import * as GetActions from '../GetActions/GetActions.ts'
 import * as GetKeyBindings from '../GetKeyBindings/GetKeyBindings.ts'
 import * as GetMenuEntries from '../GetMenuEntries/GetMenuEntries.ts'
+import { getMenuIds } from '../GetMenuIds/GetMenuIds.ts'
 import * as HandleBlur from '../HandleBlur/HandleBlur.ts'
 import * as HandleClick from '../HandleClick/HandleClick.ts'
 import * as HandleClickAt from '../HandleClickAt/HandleClickAt.ts'
@@ -102,4 +103,5 @@ export const commandMap = {
   'SearchExtensions.terminate': terminate,
   'SearchExtensions.toggleSuggest': WrapCommand.wrapCommand(ToggleSuggest.toggleSuggest),
   'SearchExtensions.resize': WrapCommand.wrapCommand(resize),
+  'SearchExtensions.getMenuIds': getMenuIds,
 }
