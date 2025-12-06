@@ -44,8 +44,8 @@ test.skip('searchExtensions - error - extension name is of type number', async (
 test.skip('searchExtensions - error - extension id is of type number', async () => {
   const extensions = [
     {
-      main: 'main.js',
       id: 123,
+      main: 'main.js',
     },
   ] as any[]
   const searchValue = 'test'
@@ -70,8 +70,8 @@ test.skip('searchExtensions - error - extension is of type number', async () => 
 test.skip('searchExtensions - match by lowercase name', async () => {
   const extensions = [
     {
-      name: 'Test extension',
       main: 'main.js',
+      name: 'Test extension',
     },
   ] as any[]
   const searchValue = 'test'

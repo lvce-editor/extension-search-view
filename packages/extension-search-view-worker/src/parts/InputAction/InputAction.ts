@@ -1,7 +1,7 @@
 export interface InputAction {
-  readonly onClick: string | number
+  readonly enabled: boolean
   readonly icon: string
+  readonly onClick: string | number
   readonly title: string
   readonly type: number
-  readonly enabled: boolean
 }

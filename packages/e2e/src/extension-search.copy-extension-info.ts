@@ -1,6 +1,6 @@
 import type { Test } from '@lvce-editor/test-with-playwright'
 
-export const test: Test = async ({ Locator, expect, SideBar, Command, ClipBoard }) => {
+export const test: Test = async ({ ClipBoard, Command, expect, Locator, SideBar }) => {
   // arrange
   await ClipBoard.enableMemoryClipBoard()
   await SideBar.open('Extensions')

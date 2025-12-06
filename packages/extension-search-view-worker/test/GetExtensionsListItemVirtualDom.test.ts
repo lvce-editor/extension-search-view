@@ -9,15 +9,15 @@ import * as MergeClassNames from '../src/parts/MergeClassNames/MergeClassNames.t
 
 const createMockVisibleItem = (overrides?: Partial<VisibleItem>): VisibleItem => {
   return {
+    description: 'Test Description',
+    focused: false,
+    icon: 'test-icon.png',
+    id: 'test-extension',
+    name: 'Test Extension',
     posInSet: 1,
+    publisher: 'Test Publisher',
     setSize: 10,
     top: 0,
-    icon: 'test-icon.png',
-    name: 'Test Extension',
-    description: 'Test Description',
-    publisher: 'Test Publisher',
-    focused: false,
-    id: 'test-extension',
     ...overrides,
   }
 }
@@ -34,15 +34,15 @@ test('sets main list item div with correct properties when focused', () => {
   const result = GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom(item)
 
   expect(result[0]).toEqual({
-    type: VirtualDomElements.Div,
-    role: AriaRoles.ListItem,
+    ariaPosInSet: 3,
     ariaRoleDescription: AriaRoleDescription.Extension,
+    ariaSetSize: 20,
+    childCount: 2,
     className: MergeClassNames.mergeClassNames(ClassNames.ExtensionListItem, ClassNames.ExtensionActive),
     id: 'ExtensionActive',
-    ariaPosInSet: 3,
-    ariaSetSize: 20,
+    role: AriaRoles.ListItem,
     top: 100,
-    childCount: 2,
+    type: VirtualDomElements.Div,
   })
 })
 
@@ -51,15 +51,15 @@ test('sets main list item div with correct properties when not focused', () => {
   const result = GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom(item)
 
   expect(result[0]).toEqual({
-    type: VirtualDomElements.Div,
-    role: AriaRoles.ListItem,
+    ariaPosInSet: 5,
     ariaRoleDescription: AriaRoleDescription.Extension,
+    ariaSetSize: 15,
+    childCount: 2,
     className: ClassNames.ExtensionListItem,
     id: undefined,
-    ariaPosInSet: 5,
-    ariaSetSize: 15,
+    role: AriaRoles.ListItem,
     top: 200,
-    childCount: 2,
+    type: VirtualDomElements.Div,
   })
 })
 
@@ -68,11 +68,11 @@ test('sets icon img with correct properties', () => {
   const result = GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom(item)
 
   expect(result[1]).toEqual({
-    type: VirtualDomElements.Img,
-    src: 'custom-icon.png',
+    childCount: 0,
     className: ClassNames.ExtensionListItemIcon,
     role: AriaRoles.None,
-    childCount: 0,
+    src: 'custom-icon.png',
+    type: VirtualDomElements.Img,
   })
 })
 
@@ -81,9 +81,9 @@ test('sets detail div with correct className', () => {
   const result = GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom(item)
 
   expect(result[2]).toEqual({
-    type: VirtualDomElements.Div,
-    className: ClassNames.ExtensionListItemDetail,
     childCount: 3,
+    className: ClassNames.ExtensionListItemDetail,
+    type: VirtualDomElements.Div,
   })
 })
 
@@ -92,9 +92,9 @@ test('sets name div with correct className', () => {
   const result = GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom(item)
 
   expect(result[3]).toEqual({
-    type: VirtualDomElements.Div,
-    className: ClassNames.ExtensionListItemName,
     childCount: 1,
+    className: ClassNames.ExtensionListItemName,
+    type: VirtualDomElements.Div,
   })
 })
 
@@ -110,9 +110,9 @@ test('sets description div with correct className', () => {
   const result = GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom(item)
 
   expect(result[5]).toEqual({
-    type: VirtualDomElements.Div,
-    className: ClassNames.ExtensionListItemDescription,
     childCount: 1,
+    className: ClassNames.ExtensionListItemDescription,
+    type: VirtualDomElements.Div,
   })
 })
 
@@ -128,9 +128,9 @@ test('sets footer div with correct className', () => {
   const result = GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom(item)
 
   expect(result[7]).toEqual({
-    type: VirtualDomElements.Div,
-    className: ClassNames.ExtensionListItemFooter,
     childCount: 2,
+    className: ClassNames.ExtensionListItemFooter,
+    type: VirtualDomElements.Div,
   })
 })
 
@@ -139,9 +139,9 @@ test('sets author name div with correct className', () => {
   const result = GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom(item)
 
   expect(result[8]).toEqual({
-    type: VirtualDomElements.Div,
-    className: ClassNames.ExtensionListItemAuthorName,
     childCount: 1,
+    className: ClassNames.ExtensionListItemAuthorName,
+    type: VirtualDomElements.Div,
   })
 })
 
@@ -157,22 +157,22 @@ test('sets actions div with correct className', () => {
   const result = GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom(item)
 
   expect(result[10]).toEqual({
-    type: VirtualDomElements.Div,
-    className: ClassNames.ExtensionActions,
     childCount: 0,
+    className: ClassNames.ExtensionActions,
+    type: VirtualDomElements.Div,
   })
 })
 
 test('handles all properties correctly together', () => {
   const item = createMockVisibleItem({
-    posInSet: 7,
-    setSize: 25,
-    top: 350,
+    description: 'Extension Description',
+    focused: true,
     icon: 'icon.png',
     name: 'Extension Name',
-    description: 'Extension Description',
+    posInSet: 7,
     publisher: 'Publisher Name',
-    focused: true,
+    setSize: 25,
+    top: 350,
   })
   const result = GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom(item)
 

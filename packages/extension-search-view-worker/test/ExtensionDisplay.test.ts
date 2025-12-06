@@ -22,7 +22,7 @@ test('returns theme icon for theme extension', () => {
 })
 
 test('returns remote url when extension has path and icon', () => {
-  const extension = { path: '/path', icon: 'icon.png' }
+  const extension = { icon: 'icon.png', path: '/path' }
   const result = ExtensionDisplay.getIcon(extension, mockPlatform, mockAssetDir)
   expect(result).toBe('/path/icon.png')
 })

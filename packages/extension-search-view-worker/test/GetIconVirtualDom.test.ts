@@ -7,19 +7,19 @@ import * as GetIconVirtualDom from '../src/parts/GetIconVirtualDom/GetIconVirtua
 test('creates virtual dom node with default div type', () => {
   const result = GetIconVirtualDom.getIconVirtualDom('test')
   expect(result).toEqual({
-    type: VirtualDomElements.Div,
+    childCount: 0,
     className: `${ClassNames.MaskIcon} MaskIcontest`,
     role: AriaRoles.None,
-    childCount: 0,
+    type: VirtualDomElements.Div,
   })
 })
 
 test('creates virtual dom node with custom type', () => {
   const result = GetIconVirtualDom.getIconVirtualDom('test', VirtualDomElements.Button)
   expect(result).toEqual({
-    type: VirtualDomElements.Button,
+    childCount: 0,
     className: `${ClassNames.MaskIcon} MaskIcontest`,
     role: AriaRoles.None,
-    childCount: 0,
+    type: VirtualDomElements.Button,
   })
 })

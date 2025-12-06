@@ -10,11 +10,9 @@ import * as GetExtensionsListItemVirtualDom from '../GetExtensionsListItemVirtua
 export const getExtensionsListVirtualDom = (visibleExtensions: readonly VisibleItem[]): readonly VirtualDomNode[] => {
   const dom: readonly VirtualDomNode[] = [
     {
-      type: VirtualDomElements.Div,
-      className: ClassNames.ListItems,
-      tabIndex: 0,
       ariaLabel: ExtensionStrings.extensions(),
-      role: AriaRoles.List,
+      childCount: visibleExtensions.length,
+      className: ClassNames.ListItems,
       onContextmenu: DomEventListenerFunctions.HandleContextMenu,
       onContextMenu: DomEventListenerFunctions.HandleContextMenu,
       onFocus: DomEventListenerFunctions.HandleFocus,
@@ -23,7 +21,9 @@ export const getExtensionsListVirtualDom = (visibleExtensions: readonly VisibleI
       onTouchMove: DomEventListenerFunctions.HandleTouchMove,
       onTouchStart: DomEventListenerFunctions.HandleTouchStart,
       onWheel: DomEventListenerFunctions.HandleWheel,
-      childCount: visibleExtensions.length,
+      role: AriaRoles.List,
+      tabIndex: 0,
+      type: VirtualDomElements.Div,
     },
     ...visibleExtensions.flatMap(GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom),
   ]

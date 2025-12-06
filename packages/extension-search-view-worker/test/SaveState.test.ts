@@ -16,7 +16,7 @@ test('saveState should return search value from extension search view states', (
   const result = saveState(mockState)
 
   expect(result).toEqual({
-    searchValue: mockSearchValue,
     deltaY: 0,
+    searchValue: mockSearchValue,
   })
 })

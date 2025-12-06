@@ -7,7 +7,7 @@ export const clearSearchResults = (state: State): Promise<State> => {
   return HandleChange.handleChange(state, {
     ...state,
     focus: FocusId.Input,
-    searchValue: '',
     inputSource: InputSource.Script,
+    searchValue: '',
   })
 }

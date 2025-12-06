@@ -7,8 +7,8 @@ test('handleWheel should update deltaY', () => {
   let state = createDefaultState()
   state = {
     ...state,
-    height: 400,
     finalDeltaY: 1000,
+    height: 400,
     itemHeight: 40,
     items: Array(25).fill(null),
   }
@@ -24,8 +24,8 @@ test('handleWheel should handle negative deltaY', () => {
   let state = createDefaultState()
   state = {
     ...state,
-    height: 400,
     finalDeltaY: 1000,
+    height: 400,
     itemHeight: 40,
     items: Array(25).fill(null),
   }

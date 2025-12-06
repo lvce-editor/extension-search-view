@@ -7,20 +7,20 @@ import { handleClick } from '../src/parts/HandleClick/HandleClick.ts'
 
 test('handleClick opens URI and updates state with focus', async () => {
   const mockExtension: ExtensionListItem = {
-    name: 'Test Extension',
-    id: 'test-extension-id',
-    publisher: 'test-publisher',
-    icon: 'test-icon',
-    description: 'test-description',
-    uri: 'test-uri',
     categories: [],
+    description: 'test-description',
+    icon: 'test-icon',
+    id: 'test-extension-id',
+    name: 'Test Extension',
+    publisher: 'test-publisher',
+    uri: 'test-uri',
   }
 
   const state = {
     ...createDefaultState(),
+    focusedIndex: 0,
     items: [mockExtension],
     minLineY: 0,
-    focusedIndex: 0,
   }
 
   const mockRpc = RendererWorker.registerMockRpc({
@@ -36,30 +36,30 @@ test('handleClick opens URI and updates state with focus', async () => {
 
 test('handleClick calculates actualIndex correctly with minLineY', async () => {
   const mockExtension1: ExtensionListItem = {
-    name: 'Extension 1',
-    id: 'extension-1',
-    publisher: 'publisher-1',
-    icon: 'icon-1',
-    description: 'desc-1',
-    uri: 'uri-1',
     categories: [],
+    description: 'desc-1',
+    icon: 'icon-1',
+    id: 'extension-1',
+    name: 'Extension 1',
+    publisher: 'publisher-1',
+    uri: 'uri-1',
   }
 
   const mockExtension2: ExtensionListItem = {
-    name: 'Extension 2',
-    id: 'extension-2',
-    publisher: 'publisher-2',
-    icon: 'icon-2',
-    description: 'desc-2',
-    uri: 'uri-2',
     categories: [],
+    description: 'desc-2',
+    icon: 'icon-2',
+    id: 'extension-2',
+    name: 'Extension 2',
+    publisher: 'publisher-2',
+    uri: 'uri-2',
   }
 
   const state = {
     ...createDefaultState(),
+    focusedIndex: 0,
     items: [mockExtension1, mockExtension2],
     minLineY: 1,
-    focusedIndex: 0,
   }
 
   const mockRpc = RendererWorker.registerMockRpc({

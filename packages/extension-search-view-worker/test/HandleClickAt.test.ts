@@ -14,25 +14,25 @@ test('handleClickAt returns state unchanged for non-left click', async () => {
 
 test('handleClickAt handles left click and opens URI', async () => {
   const mockExtension: ExtensionListItem = {
-    name: 'Test Extension',
-    id: 'test-extension-id',
-    publisher: 'test-publisher',
-    icon: 'test-icon',
-    description: 'test-description',
-    uri: 'test-uri',
     categories: [],
+    description: 'test-description',
+    icon: 'test-icon',
+    id: 'test-extension-id',
+    name: 'Test Extension',
+    publisher: 'test-publisher',
+    uri: 'test-uri',
   }
 
   const state = {
     ...createDefaultState(),
+    deltaY: 0,
+    focusedIndex: 0,
+    headerHeight: 0,
+    itemHeight: 30,
     items: [mockExtension],
     minLineY: 0,
     x: 50,
     y: 100,
-    itemHeight: 30,
-    deltaY: 0,
-    headerHeight: 0,
-    focusedIndex: 0,
   }
 
   const mockRpc = RendererWorker.registerMockRpc({
@@ -49,35 +49,35 @@ test('handleClickAt handles left click and opens URI', async () => {
 
 test('handleClickAt calculates correct index from coordinates', async () => {
   const mockExtension1: ExtensionListItem = {
-    name: 'Extension 1',
-    id: 'extension-1',
-    publisher: 'publisher-1',
-    icon: 'icon-1',
-    description: 'desc-1',
-    uri: 'uri-1',
     categories: [],
+    description: 'desc-1',
+    icon: 'icon-1',
+    id: 'extension-1',
+    name: 'Extension 1',
+    publisher: 'publisher-1',
+    uri: 'uri-1',
   }
 
   const mockExtension2: ExtensionListItem = {
-    name: 'Extension 2',
-    id: 'extension-2',
-    publisher: 'publisher-2',
-    icon: 'icon-2',
-    description: 'desc-2',
-    uri: 'uri-2',
     categories: [],
+    description: 'desc-2',
+    icon: 'icon-2',
+    id: 'extension-2',
+    name: 'Extension 2',
+    publisher: 'publisher-2',
+    uri: 'uri-2',
   }
 
   const state = {
     ...createDefaultState(),
+    deltaY: 48,
+    focusedIndex: 0,
+    headerHeight: 41,
+    itemHeight: 72,
     items: [mockExtension1, mockExtension2],
     minLineY: 0,
     x: 100,
     y: 55,
-    itemHeight: 72,
-    deltaY: 48,
-    headerHeight: 41,
-    focusedIndex: 0,
   }
 
   const mockRpc = RendererWorker.registerMockRpc({

@@ -22,17 +22,17 @@ test('returns scrollbar virtual dom when scrollBarHeight is positive', () => {
   const result = GetScrollBarVirtualDom.getScrollBarVirtualDom(scrollBarHeight, scrollBarTop)
   expect(result).toHaveLength(2)
   expect(result[0]).toEqual({
-    type: VirtualDomElements.Div,
+    childCount: 1,
     className: MergeClassNames.mergeClassNames(ClassNames.ScrollBar, ClassNames.ScrollBarSmall),
     onPointerDown: DomEventListenerFunctions.HandleScrollBarPointerDown,
-    childCount: 1,
+    type: VirtualDomElements.Div,
   })
   expect(result[1]).toEqual({
-    type: VirtualDomElements.Div,
-    className: ClassNames.ScrollBarThumb,
     childCount: 0,
+    className: ClassNames.ScrollBarThumb,
     height: Px.px(scrollBarHeight),
     translate: Px.position(0, scrollBarTop),
+    type: VirtualDomElements.Div,
   })
 })
 

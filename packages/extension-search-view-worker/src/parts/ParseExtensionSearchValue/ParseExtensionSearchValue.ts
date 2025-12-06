@@ -60,15 +60,15 @@ export const parseValue = (value: string): ParsedExtensionSearchValue => {
   const isLocal = enabled || builtin || disabled || outdated || installed
 
   return {
-    query: replaced,
-    enabled,
     builtin,
-    disabled,
-    outdated,
-    installed,
-    id,
-    sort,
-    isLocal,
     category,
+    disabled,
+    enabled,
+    id,
+    installed,
+    isLocal,
+    outdated,
+    query: replaced,
+    sort,
   }
 }

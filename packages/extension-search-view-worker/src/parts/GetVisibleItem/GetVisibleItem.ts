@@ -11,16 +11,16 @@ export const getVisibleItem = (
   focusedIndex: number,
 ): VisibleItem => {
   // TODO use normal parameters
-  const { publisher, description, icon, id, name } = item
+  const { description, icon, id, name, publisher } = item
   return {
-    setSize,
-    posInSet: i + 1,
-    top: (i - minLineY) * itemHeight - relative,
-    focused: i === focusedIndex,
-    publisher,
     description,
+    focused: i === focusedIndex,
     icon,
     id,
     name,
+    posInSet: i + 1,
+    publisher,
+    setSize,
+    top: (i - minLineY) * itemHeight - relative,
   }
 }

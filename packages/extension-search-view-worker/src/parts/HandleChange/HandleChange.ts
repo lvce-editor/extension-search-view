@@ -21,7 +21,7 @@ export const handleChange = async (state: State, update: Partial<State>): Promis
     const { inputSource } = fullNewState
     const hasValue = value.length > 0
     const inputActions = GetInputActions.getInputActions(hasValue)
-    const { allExtensions, itemHeight, minimumSliderSize, height, platform, assetDir, headerHeight } = state
+    const { allExtensions, assetDir, headerHeight, height, itemHeight, minimumSliderSize, platform } = state
     // TODO cancel ongoing requests
     // TODO handle errors
     const items = await SearchExtensions.searchExtensions(allExtensions, value, platform, assetDir)
@@ -32,6 +32,8 @@ export const handleChange = async (state: State, update: Partial<State>): Promis
         deltaY: 0,
         finalDeltaY: 0,
         focus: FocusId.Input,
+        inputActions,
+        inputSource,
         items,
         maxLineY: 0,
         message: ViewletExtensionsStrings.noExtensionsFound(),
@@ -39,8 +41,6 @@ export const handleChange = async (state: State, update: Partial<State>): Promis
         placeholder: ViewletExtensionsStrings.searchExtensionsInMarketPlace(),
         scrollBarHeight: 0,
         searchValue: value,
-        inputSource,
-        inputActions,
       }
     }
     const total = items.length
@@ -57,6 +57,8 @@ export const handleChange = async (state: State, update: Partial<State>): Promis
       allExtensions,
       deltaY: 0,
       finalDeltaY,
+      inputActions,
+      inputSource,
       items,
       maxLineY,
       message: '',
@@ -65,8 +67,6 @@ export const handleChange = async (state: State, update: Partial<State>): Promis
       scrollBarHeight,
       scrollBarY,
       searchValue: value,
-      inputSource,
-      inputActions,
     }
 
     // TODO handle out of order responses (a bit complicated)

@@ -11,7 +11,7 @@ const getNewPercent = (contentHeight: number, scrollBarHeight: number, relativeY
 }
 
 export const handleScrollBarMove = (state: State, eventY: number): State => {
-  const { y, headerHeight, handleOffset, finalDeltaY, height, scrollBarHeight } = state
+  const { finalDeltaY, handleOffset, headerHeight, height, scrollBarHeight, y } = state
   const relativeY = eventY - y - headerHeight - handleOffset
   const contentHeight = height - headerHeight
   const newPercent = getNewPercent(contentHeight, scrollBarHeight, relativeY)
