@@ -8,15 +8,15 @@ test('returns correct actions', () => {
   const actions = GetActions.getActions()
   expect(actions).toHaveLength(2)
   expect(actions[0]).toEqual({
-    type: ActionType.Button,
-    id: ViewletExtensionStrings.refresh(),
-    icon: MaskIcon.Refresh,
     command: '',
+    icon: MaskIcon.Refresh,
+    id: ViewletExtensionStrings.refresh(),
+    type: ActionType.Button,
   })
   expect(actions[1]).toEqual({
-    type: ActionType.Button,
-    id: ViewletExtensionStrings.viewsAndMoreActions(),
-    icon: MaskIcon.Ellipsis,
     command: '',
+    icon: MaskIcon.Ellipsis,
+    id: ViewletExtensionStrings.viewsAndMoreActions(),
+    type: ActionType.Button,
   })
 })

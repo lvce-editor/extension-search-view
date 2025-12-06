@@ -4,25 +4,25 @@ import type { ParsedExtensionSearchValue } from '../src/parts/ParsedExtensionSea
 import { matchesParsedValue } from '../src/parts/MatchesParsedValue/MatchesParsedValue.js'
 
 const createExtension = (name: string, id: string): ExtensionListItem => ({
-  name,
-  id,
-  publisher: 'test-publisher',
-  icon: 'test-icon',
-  description: 'test-description',
-  uri: 'test-uri',
   categories: [],
+  description: 'test-description',
+  icon: 'test-icon',
+  id,
+  name,
+  publisher: 'test-publisher',
+  uri: 'test-uri',
 })
 
 const createParsedValue = (query: string): ParsedExtensionSearchValue => ({
-  installed: false,
-  enabled: true,
-  disabled: false,
   builtin: false,
-  sort: 'name',
+  disabled: false,
+  enabled: true,
   id: '',
+  installed: false,
+  isLocal: false,
   outdated: false,
   query,
-  isLocal: false,
+  sort: 'name',
 })
 
 test('matches extension by name', () => {
@@ -52,15 +52,15 @@ test('case insensitive matching', () => {
 test('exact id match when parsedValue.id is set', () => {
   const extension = createExtension('Test Extension', 'test-extension-id')
   const parsedValue: ParsedExtensionSearchValue = {
-    installed: false,
-    enabled: true,
-    disabled: false,
     builtin: false,
-    sort: 'name',
+    disabled: false,
+    enabled: true,
     id: 'test-extension-id',
+    installed: false,
+    isLocal: false,
     outdated: false,
     query: 'ignored',
-    isLocal: false,
+    sort: 'name',
   }
   expect(matchesParsedValue(extension, parsedValue)).toBe(true)
 })
@@ -68,15 +68,15 @@ test('exact id match when parsedValue.id is set', () => {
 test('exact id match fails when ids do not match', () => {
   const extension = createExtension('Test Extension', 'test-extension-id')
   const parsedValue: ParsedExtensionSearchValue = {
-    installed: false,
-    enabled: true,
-    disabled: false,
     builtin: false,
-    sort: 'name',
+    disabled: false,
+    enabled: true,
     id: 'different-id',
+    installed: false,
+    isLocal: false,
     outdated: false,
     query: 'ignored',
-    isLocal: false,
+    sort: 'name',
   }
   expect(matchesParsedValue(extension, parsedValue)).toBe(false)
 })
@@ -89,13 +89,13 @@ test('matches partial name in middle of name', () => {
 
 test('matches partial id in middle of id when extension has no name', () => {
   const extension: ExtensionListItem = {
-    name: '',
-    id: 'my-awesome-extension',
-    publisher: 'test-publisher',
-    icon: 'test-icon',
-    description: 'test-description',
-    uri: 'test-uri',
     categories: [],
+    description: 'test-description',
+    icon: 'test-icon',
+    id: 'my-awesome-extension',
+    name: '',
+    publisher: 'test-publisher',
+    uri: 'test-uri',
   }
   const parsedValue = createParsedValue('awesome')
   expect(matchesParsedValue(extension, parsedValue)).toBe(true)
@@ -139,13 +139,13 @@ test('matches extension with special characters in name', () => {
 
 test('matches extension with special characters in id when extension has no name', () => {
   const extension: ExtensionListItem = {
-    name: '',
-    id: 'test-extension-v2',
-    publisher: 'test-publisher',
-    icon: 'test-icon',
-    description: 'test-description',
-    uri: 'test-uri',
     categories: [],
+    description: 'test-description',
+    icon: 'test-icon',
+    id: 'test-extension-v2',
+    name: '',
+    publisher: 'test-publisher',
+    uri: 'test-uri',
   }
   const parsedValue = createParsedValue('v2')
   expect(matchesParsedValue(extension, parsedValue)).toBe(true)
@@ -165,13 +165,13 @@ test('matches full name', () => {
 
 test('matches full id when extension has no name', () => {
   const extension: ExtensionListItem = {
-    name: '',
-    id: 'test-extension',
-    publisher: 'test-publisher',
-    icon: 'test-icon',
-    description: 'test-description',
-    uri: 'test-uri',
     categories: [],
+    description: 'test-description',
+    icon: 'test-icon',
+    id: 'test-extension',
+    name: '',
+    publisher: 'test-publisher',
+    uri: 'test-uri',
   }
   const parsedValue = createParsedValue('test-extension')
   expect(matchesParsedValue(extension, parsedValue)).toBe(true)
@@ -197,13 +197,13 @@ test('matches with numbers in name', () => {
 
 test('matches with numbers in id when extension has no name', () => {
   const extension: ExtensionListItem = {
-    name: '',
-    id: 'extension-2024',
-    publisher: 'test-publisher',
-    icon: 'test-icon',
-    description: 'test-description',
-    uri: 'test-uri',
     categories: [],
+    description: 'test-description',
+    icon: 'test-icon',
+    id: 'extension-2024',
+    name: '',
+    publisher: 'test-publisher',
+    uri: 'test-uri',
   }
   const parsedValue = createParsedValue('2024')
   expect(matchesParsedValue(extension, parsedValue)).toBe(true)
@@ -230,15 +230,15 @@ test('case insensitive matching with mixed case', () => {
 test('when parsedValue.id is set, exact match takes precedence over query', () => {
   const extension = createExtension('Different Name', 'target-id')
   const parsedValue: ParsedExtensionSearchValue = {
-    installed: false,
-    enabled: true,
-    disabled: false,
     builtin: false,
-    sort: 'name',
+    disabled: false,
+    enabled: true,
     id: 'target-id',
+    installed: false,
+    isLocal: false,
     outdated: false,
     query: 'different',
-    isLocal: false,
+    sort: 'name',
   }
   expect(matchesParsedValue(extension, parsedValue)).toBe(true)
 })
@@ -246,15 +246,15 @@ test('when parsedValue.id is set, exact match takes precedence over query', () =
 test('when parsedValue.id is set but does not match, returns false even if query matches', () => {
   const extension = createExtension('Test Extension', 'test-extension')
   const parsedValue: ParsedExtensionSearchValue = {
-    installed: false,
-    enabled: true,
-    disabled: false,
     builtin: false,
-    sort: 'name',
+    disabled: false,
+    enabled: true,
     id: 'different-id',
+    installed: false,
+    isLocal: false,
     outdated: false,
     query: 'test',
-    isLocal: false,
+    sort: 'name',
   }
   expect(matchesParsedValue(extension, parsedValue)).toBe(false)
 })
@@ -262,16 +262,16 @@ test('when parsedValue.id is set but does not match, returns false even if query
 test.skip('category - match', () => {
   const extension = { ...createExtension('Test Extension', 'test-extension'), categories: ['Themes'] }
   const parsedValue: ParsedExtensionSearchValue = {
-    installed: false,
-    enabled: true,
-    disabled: false,
     builtin: false,
-    sort: 'name',
+    category: 'Themes',
+    disabled: false,
+    enabled: true,
     id: 'different-id',
+    installed: false,
+    isLocal: false,
     outdated: false,
     query: 'test',
-    isLocal: false,
-    category: 'Themes',
+    sort: 'name',
   }
   expect(matchesParsedValue(extension, parsedValue)).toBe(true)
 })

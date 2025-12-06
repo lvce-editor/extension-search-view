@@ -14,7 +14,7 @@ const getSelector = (focus: number): string => {
 }
 
 export const renderFocus = (newState: State): readonly any[] => {
-  const { uid, focus } = newState
+  const { focus, uid } = newState
   if (!focus) {
     return []
   }

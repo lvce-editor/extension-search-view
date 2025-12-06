@@ -6,53 +6,53 @@ import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
 export const getKeyBindings = (): readonly KeyBinding[] => {
   return [
     {
-      key: KeyCode.Home,
       command: 'Extensions.focusFirst',
+      key: KeyCode.Home,
       when: WhenExpression.FocusExtensions,
     },
     {
-      key: KeyCode.End,
       command: 'Extensions.focusLast',
+      key: KeyCode.End,
       when: WhenExpression.FocusExtensions,
     },
     {
-      key: KeyCode.PageUp,
       command: 'Extensions.focusPreviousPage',
+      key: KeyCode.PageUp,
       when: WhenExpression.FocusExtensions,
     },
     {
-      key: KeyCode.PageDown,
       command: 'Extensions.focusNextPage',
+      key: KeyCode.PageDown,
       when: WhenExpression.FocusExtensions,
     },
     {
-      key: KeyCode.UpArrow,
       command: 'Extensions.focusPrevious',
+      key: KeyCode.UpArrow,
       when: WhenExpression.FocusExtensions,
     },
     {
-      key: KeyCode.DownArrow,
       command: 'Extensions.focusNext',
+      key: KeyCode.DownArrow,
       when: WhenExpression.FocusExtensions,
     },
     {
-      key: KeyCode.Space,
       command: 'Extensions.handleClickCurrentButKeepFocus',
+      key: KeyCode.Space,
       when: WhenExpression.FocusExtensions,
     },
     {
-      key: KeyCode.Enter,
       command: 'Extensions.handleClickCurrent',
+      key: KeyCode.Enter,
       when: WhenExpression.FocusExtensions,
     },
     {
-      key: KeyModifier.CtrlCmd | KeyCode.Space,
       command: 'Extensions.toggleSuggest',
+      key: KeyModifier.CtrlCmd | KeyCode.Space,
       when: WhenExpression.FocusExtensions,
     },
     {
-      key: KeyModifier.CtrlCmd | KeyCode.DownArrow,
       command: 'Extensions.scrollDown',
+      key: KeyModifier.CtrlCmd | KeyCode.DownArrow,
       when: WhenExpression.FocusExtensions,
     },
   ]

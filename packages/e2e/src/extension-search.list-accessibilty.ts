@@ -1,6 +1,6 @@
 import type { Test } from '@lvce-editor/test-with-playwright'
 
-export const test: Test = async ({ Locator, expect, SideBar, Command }) => {
+export const test: Test = async ({ Command, expect, Locator, SideBar }) => {
   // arrange
   await SideBar.open('Extensions')
   const extensionsView = Locator('.Extensions')

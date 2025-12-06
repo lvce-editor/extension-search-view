@@ -16,13 +16,13 @@ const getContentVirtualDom = (
   scrollBarY: number,
 ): readonly VirtualDomNode[] => {
   if (message) {
-    return [{ type: VirtualDomElements.Div, childCount: 1 }, text(message)]
+    return [{ childCount: 1, type: VirtualDomElements.Div }, text(message)]
   }
   return [
     {
-      type: VirtualDomElements.Div,
-      className: MergeClassNames.mergeClassNames(ClassNames.Viewlet, ClassNames.List),
       childCount: 2,
+      className: MergeClassNames.mergeClassNames(ClassNames.Viewlet, ClassNames.List),
+      type: VirtualDomElements.Div,
     },
     ...GetExtensionsVirtualDom.getExtensionsVirtualDom(visibleExtensions),
     ...getScrollBarVirtualDom(scrollBarHeight, scrollBarY),
@@ -31,16 +31,16 @@ const getContentVirtualDom = (
 
 export const getExtensionsViewVirtualDom = (state: State): readonly VirtualDomNode[] => {
   const visibleExtensions = GetVisibleExtensions.getVisible(state)
-  const { placeholder, inputActions, message, scrollBarHeight, scrollBarY } = state
+  const { inputActions, message, placeholder, scrollBarHeight, scrollBarY } = state
 
   return [
     {
-      type: VirtualDomElements.Div,
-      className: MergeClassNames.mergeClassNames(ClassNames.Viewlet, ClassNames.Extensions),
-      childCount: 2,
-      ariaLive: 'polite',
       ariaBusy: false,
+      ariaLive: 'polite',
+      childCount: 2,
+      className: MergeClassNames.mergeClassNames(ClassNames.Viewlet, ClassNames.Extensions),
       role: AriaRoles.None,
+      type: VirtualDomElements.Div,
     },
     ...getExtensionHeaderVirtualDom(placeholder, inputActions),
     ...getContentVirtualDom(visibleExtensions, message, scrollBarHeight, scrollBarY),

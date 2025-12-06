@@ -11,8 +11,8 @@ test('should return correct virtual DOM structure', () => {
     {
       childCount: 1,
       className: 'ExtensionHeader',
-      type: 4,
       onContextMenu: 16,
+      type: 4,
     },
     {
       childCount: 2,
@@ -22,17 +22,17 @@ test('should return correct virtual DOM structure', () => {
     },
     {
       autocapitalize: 'off',
-      autocorrect: 'off',
       autocomplete: 'off',
+      autocorrect: 'off',
       childCount: 0,
       className: 'MultilineInputBox',
+      inputType: 'search',
       name: 'extensions',
       onFocus: '',
       onInput: 4,
       placeholder: 'Search extensions...',
       spellcheck: false,
       type: VirtualDomElements.Input,
-      inputType: 'search',
     },
     {
       childCount: 0,

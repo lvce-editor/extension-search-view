@@ -12,7 +12,7 @@ const stringifyRow = (row: Row): string => {
 }
 
 export const getExtensionInfoText = (extension: ExtensionListItem): string => {
-  const { name, id, publisher, description } = extension
+  const { description, id, name, publisher } = extension
   const version = '' // TODO
   const marketplaceLink = '' // TODO
   const rows: readonly Row[] = [

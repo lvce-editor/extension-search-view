@@ -6,16 +6,16 @@ import * as MaskIcon from '../MaskIcon/MaskIcon.ts'
 export const getActions = (): readonly Action[] => {
   return [
     {
-      type: ActionType.Button,
-      id: ViewletExtensionStrings.refresh(),
-      icon: MaskIcon.Refresh,
       command: '',
+      icon: MaskIcon.Refresh,
+      id: ViewletExtensionStrings.refresh(),
+      type: ActionType.Button,
     },
     {
-      type: ActionType.Button,
-      id: ViewletExtensionStrings.viewsAndMoreActions(),
-      icon: MaskIcon.Ellipsis,
       command: '',
+      icon: MaskIcon.Ellipsis,
+      id: ViewletExtensionStrings.viewsAndMoreActions(),
+      type: ActionType.Button,
     },
   ]
 }

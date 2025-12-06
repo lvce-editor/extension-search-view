@@ -5,13 +5,13 @@ import * as CopyExtensionInfo from '../src/parts/CopyExtensionInfo/CopyExtension
 import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 
 const mockItem: ExtensionListItem = {
-  name: 'Test Extension',
-  id: 'test.extension',
-  publisher: 'Test Publisher',
-  icon: 'icon.png',
-  description: 'A test extension',
-  uri: 'https://example.com',
   categories: [],
+  description: 'A test extension',
+  icon: 'icon.png',
+  id: 'test.extension',
+  name: 'Test Extension',
+  publisher: 'Test Publisher',
+  uri: 'https://example.com',
 }
 
 test('copyExtensionInfo returns state unchanged when no focused item', async () => {
@@ -49,13 +49,13 @@ test('copyExtensionInfo copies extension info text to clipboard when focused ite
 
 test('copyExtensionInfo handles item with empty strings', async () => {
   const emptyItem: ExtensionListItem = {
-    name: '',
-    id: '',
-    publisher: '',
-    icon: '',
-    description: '',
-    uri: '',
     categories: [],
+    description: '',
+    icon: '',
+    id: '',
+    name: '',
+    publisher: '',
+    uri: '',
   }
   const state = {
     ...createDefaultState(),

@@ -8,18 +8,18 @@ export const getInputActions = (hasValue: boolean): readonly InputAction[] => {
   const clearEnabled = hasValue
   const actions: readonly InputAction[] = [
     {
-      onClick: DomEventListenerFunctions.HandleClearSearchResults,
+      enabled: clearEnabled,
       icon: `MaskIcon${MaskIcon.ClearAll}`,
+      onClick: DomEventListenerFunctions.HandleClearSearchResults,
       title: ViewletExtensionStrings.clearExtensionSearchResults(),
       type: ActionType.Button,
-      enabled: clearEnabled,
     },
     {
+      enabled: true,
       icon: `MaskIcon${MaskIcon.Filter}`,
+      onClick: DomEventListenerFunctions.HandleClickFilter,
       title: ViewletExtensionStrings.filter(),
       type: ActionType.Button,
-      onClick: DomEventListenerFunctions.HandleClickFilter,
-      enabled: true,
     },
   ]
   return actions

@@ -9,29 +9,29 @@ test('creates basic search field virtual dom', () => {
 
   expect(result).toEqual([
     {
-      type: VirtualDomElements.Div,
+      childCount: 2,
       className: ClassNames.SearchField,
       role: AriaRoles.None,
-      childCount: 2,
-    },
-    {
-      type: VirtualDomElements.Input,
-      inputType: 'search',
-      className: ClassNames.MultilineInputBox,
-      spellcheck: false,
-      autocapitalize: 'off',
-      autocorrect: 'off',
-      autocomplete: 'off',
-      placeholder: 'Search...',
-      name: 'search',
-      onInput: 'onInput()',
-      onFocus: '',
-      childCount: 0,
-    },
-    {
       type: VirtualDomElements.Div,
-      className: ClassNames.SearchFieldButtons,
+    },
+    {
+      autocapitalize: 'off',
+      autocomplete: 'off',
+      autocorrect: 'off',
       childCount: 0,
+      className: ClassNames.MultilineInputBox,
+      inputType: 'search',
+      name: 'search',
+      onFocus: '',
+      onInput: 'onInput()',
+      placeholder: 'Search...',
+      spellcheck: false,
+      type: VirtualDomElements.Input,
+    },
+    {
+      childCount: 0,
+      className: ClassNames.SearchFieldButtons,
+      type: VirtualDomElements.Div,
     },
   ])
 })
@@ -42,27 +42,27 @@ test.skip('creates search field with inside buttons', () => {
 
   expect(result).toEqual([
     {
-      type: VirtualDomElements.Div,
+      childCount: 2,
       className: ClassNames.SearchField,
       role: AriaRoles.None,
-      childCount: 2,
+      type: VirtualDomElements.Div,
     },
     {
-      type: VirtualDomElements.TextArea,
-      className: ClassNames.MultilineInputBox,
-      spellcheck: false,
       autocapitalize: 'off',
       autocorrect: 'off',
-      placeholder: 'Search...',
-      name: 'search',
-      onInput: 'onInput()',
-      onFocus: '',
       childCount: 0,
+      className: ClassNames.MultilineInputBox,
+      name: 'search',
+      onFocus: '',
+      onInput: 'onInput()',
+      placeholder: 'Search...',
+      spellcheck: false,
+      type: VirtualDomElements.TextArea,
     },
     {
-      type: VirtualDomElements.Div,
-      className: ClassNames.SearchFieldButtons,
       childCount: 1,
+      className: ClassNames.SearchFieldButtons,
+      type: VirtualDomElements.Div,
     },
   ])
 })
@@ -72,9 +72,9 @@ test('creates search field with outside buttons', () => {
   const result = GetSearchFieldVirtualDom.getSearchFieldVirtualDom('search', 'Search...', 'onInput()', [], outsideButtons)
 
   expect(result[0]).toEqual({
-    type: VirtualDomElements.Div,
+    childCount: 2,
     className: ClassNames.SearchFieldContainer,
     role: AriaRoles.None,
-    childCount: 2,
+    type: VirtualDomElements.Div,
   })
 })

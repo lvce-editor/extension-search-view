@@ -3,7 +3,7 @@ import type { VisibleItem } from '../VisibleItem/VisibleItem.ts'
 import { getVisibleItem } from '../GetVisibleItem/GetVisibleItem.ts'
 
 export const getVisible = (state: State): readonly VisibleItem[] => {
-  const { minLineY, maxLineY, items, itemHeight, deltaY, focusedIndex } = state
+  const { deltaY, focusedIndex, itemHeight, items, maxLineY, minLineY } = state
   const setSize = items.length
   const visible = []
   const relative = deltaY % itemHeight

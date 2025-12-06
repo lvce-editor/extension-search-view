@@ -5,34 +5,34 @@ import * as MenuItemFlags from '../MenuItemFlags/MenuItemFlags.ts'
 export const getMenuEntries = (): readonly MenuEntry[] => {
   return [
     {
+      command: 'SearchExtensions.enable',
+      flags: MenuItemFlags.None,
       id: 'enable',
       label: ExtensionStrings.enable(),
-      flags: MenuItemFlags.None,
-      command: 'SearchExtensions.enable',
     },
     {
+      command: 'SearchExtensions.disable',
+      flags: MenuItemFlags.None,
       id: 'disable',
       label: ExtensionStrings.disable(),
-      flags: MenuItemFlags.None,
-      command: 'SearchExtensions.disable',
     },
     {
+      command: 'SearchExtensions.installAnotherVersion',
+      flags: MenuItemFlags.None,
       id: 'installAnotherVersion',
       label: ExtensionStrings.installAnotherVersion(),
-      flags: MenuItemFlags.None,
-      command: 'SearchExtensions.installAnotherVersion',
     },
     {
+      command: 'Extensions.copyExtensionInfo',
+      flags: MenuItemFlags.None,
       id: 'copy',
       label: ExtensionStrings.copy(),
-      flags: MenuItemFlags.None,
-      command: 'Extensions.copyExtensionInfo',
     },
     {
+      command: 'Extensions.copyExtensionId',
+      flags: MenuItemFlags.None,
       id: 'copyExtensionId',
       label: ExtensionStrings.copyExtensionId(),
-      flags: MenuItemFlags.None,
-      command: 'Extensions.copyExtensionId',
     },
   ]
 }

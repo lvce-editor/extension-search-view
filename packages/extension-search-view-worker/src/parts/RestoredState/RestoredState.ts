@@ -1,4 +1,4 @@
 export interface RestoredState {
-  readonly searchValue: string
   readonly deltaY: number
+  readonly searchValue: string
 }

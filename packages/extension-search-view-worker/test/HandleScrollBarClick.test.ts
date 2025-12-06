@@ -7,14 +7,14 @@ test('should set scrollBarActive and handleOffset when clicking within scrollbar
   let state = createDefaultState()
   state = {
     ...state,
-    height: 400,
-    headerHeight: 50,
-    y: 100,
     deltaY: 100,
     finalDeltaY: 1000,
-    scrollBarHeight: 40,
+    headerHeight: 50,
+    height: 400,
     itemHeight: 40,
     items: Array(25).fill(null),
+    scrollBarHeight: 40,
+    y: 100,
   }
   state = setDeltaY(state, 100)
 
@@ -31,14 +31,14 @@ test('should jump to top when clicking above scrollbar', () => {
   let state = createDefaultState()
   state = {
     ...state,
-    height: 400,
-    headerHeight: 50,
-    y: 100,
     deltaY: 500,
     finalDeltaY: 1000,
-    scrollBarHeight: 40,
+    headerHeight: 50,
+    height: 400,
     itemHeight: 40,
     items: Array(25).fill(null),
+    scrollBarHeight: 40,
+    y: 100,
   }
   state = setDeltaY(state, 500)
 
@@ -54,14 +54,14 @@ test('should jump to bottom when clicking below scrollbar', () => {
   let state = createDefaultState()
   state = {
     ...state,
-    height: 400,
-    headerHeight: 50,
-    y: 100,
     deltaY: 100,
     finalDeltaY: 1000,
-    scrollBarHeight: 40,
+    headerHeight: 50,
+    height: 400,
     itemHeight: 40,
     items: Array(25).fill(null),
+    scrollBarHeight: 40,
+    y: 100,
   }
   state = setDeltaY(state, 100)
 
@@ -78,14 +78,14 @@ test('should calculate appropriate position when clicking in middle area', () =>
   let state = createDefaultState()
   state = {
     ...state,
-    height: 400,
-    headerHeight: 50,
-    y: 100,
     deltaY: 100,
     finalDeltaY: 1000,
-    scrollBarHeight: 40,
+    headerHeight: 50,
+    height: 400,
     itemHeight: 40,
     items: Array(25).fill(null),
+    scrollBarHeight: 40,
+    y: 100,
   }
   state = setDeltaY(state, 100)
 

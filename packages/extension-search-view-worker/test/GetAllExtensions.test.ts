@@ -3,7 +3,7 @@ import { ExtensionHost, RendererWorker } from '@lvce-editor/rpc-registry'
 import * as GetAllExtensions from '../src/parts/GetAllExtensions/GetAllExtensions.ts'
 import { Electron, Remote, Web } from '../src/parts/PlatformType/PlatformType.ts'
 
-const mockExtensions = [{ name: 'Test Extension', id: 'test-extension', publisher: 'test-publisher' }]
+const mockExtensions = [{ id: 'test-extension', name: 'Test Extension', publisher: 'test-publisher' }]
 
 test('returns extensions for Web platform', async () => {
   ExtensionHost.registerMockRpc({

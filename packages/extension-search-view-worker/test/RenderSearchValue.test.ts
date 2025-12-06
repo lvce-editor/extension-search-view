@@ -16,7 +16,7 @@ test('returns method call array with search value', () => {
 })
 
 test('returns method call array with different uid', () => {
-  const state = { ...createDefaultState(), uid: 123, searchValue: 'search' }
+  const state = { ...createDefaultState(), searchValue: 'search', uid: 123 }
   const result = RenderSearchValue.renderSearchValue(state)
   expect(result).toEqual(['Viewlet.setValueByName', 123, InputName.Extensions, 'search'])
 })

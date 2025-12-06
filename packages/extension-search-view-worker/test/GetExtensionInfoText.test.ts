@@ -4,13 +4,13 @@ import { getExtensionInfoText } from '../src/parts/GetExtensionInfoText/GetExten
 
 test('should return formatted info text with all fields', () => {
   const extension: ExtensionListItem = {
-    name: 'Test Extension',
-    id: 'test.extension',
-    publisher: 'Test Publisher',
-    icon: 'icon.png',
-    description: 'A test extension',
-    uri: 'https://example.com',
     categories: [],
+    description: 'A test extension',
+    icon: 'icon.png',
+    id: 'test.extension',
+    name: 'Test Extension',
+    publisher: 'Test Publisher',
+    uri: 'https://example.com',
   }
   const result = getExtensionInfoText(extension)
   const lines = result.split('\n')
@@ -25,13 +25,13 @@ test('should return formatted info text with all fields', () => {
 
 test('should handle empty strings', () => {
   const extension: ExtensionListItem = {
-    name: '',
-    id: '',
-    publisher: '',
-    icon: '',
-    description: '',
-    uri: '',
     categories: [],
+    description: '',
+    icon: '',
+    id: '',
+    name: '',
+    publisher: '',
+    uri: '',
   }
   const result = getExtensionInfoText(extension)
   const lines = result.split('\n')
@@ -46,13 +46,13 @@ test('should handle empty strings', () => {
 
 test('should trim trailing whitespace from formatted rows', () => {
   const extension: ExtensionListItem = {
-    name: '  Test Extension  ',
-    id: '  test.extension  ',
-    publisher: '  Test Publisher  ',
-    icon: 'icon.png',
-    description: '  A test extension  ',
-    uri: 'https://example.com',
     categories: [],
+    description: '  A test extension  ',
+    icon: 'icon.png',
+    id: '  test.extension  ',
+    name: '  Test Extension  ',
+    publisher: '  Test Publisher  ',
+    uri: 'https://example.com',
   }
   const result = getExtensionInfoText(extension)
   const lines = result.split('\n')
@@ -64,13 +64,13 @@ test('should trim trailing whitespace from formatted rows', () => {
 
 test('should maintain correct order of fields', () => {
   const extension: ExtensionListItem = {
-    name: 'Extension A',
-    id: 'ext.a',
-    publisher: 'Publisher A',
-    icon: 'icon.png',
-    description: 'Description A',
-    uri: 'https://example.com',
     categories: [],
+    description: 'Description A',
+    icon: 'icon.png',
+    id: 'ext.a',
+    name: 'Extension A',
+    publisher: 'Publisher A',
+    uri: 'https://example.com',
   }
   const result = getExtensionInfoText(extension)
   expect(result).toContain('Name: Extension A')
