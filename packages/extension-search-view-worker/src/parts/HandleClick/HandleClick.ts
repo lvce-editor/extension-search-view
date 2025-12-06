@@ -7,6 +7,9 @@ import * as OpenUri from '../OpenUri/OpenUri.ts'
 export const handleClick = async (state: State, index: number): Promise<State> => {
   const { items, minLineY } = state
   const actualIndex = index + minLineY
+  if (actualIndex < 0 || actualIndex >= items.length) {
+    return state
+  }
   const extension = items[actualIndex]
   const uri = getExtensionDetailUri(extension.id)
   await OpenUri.openUri(uri)
