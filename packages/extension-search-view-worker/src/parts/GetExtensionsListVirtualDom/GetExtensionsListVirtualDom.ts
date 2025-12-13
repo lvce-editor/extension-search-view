@@ -14,6 +14,7 @@ export const getExtensionsListVirtualDom = (visibleExtensions: readonly VisibleI
       ariaLabel: ExtensionStrings.extensions(),
       childCount: visibleExtensions.length,
       className,
+      onBlur: DomEventListenerFunctions.HandleBlur,
       onContextmenu: DomEventListenerFunctions.HandleContextMenu,
       onContextMenu: DomEventListenerFunctions.HandleContextMenu,
       onFocus: DomEventListenerFunctions.HandleFocus,
