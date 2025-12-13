@@ -11,5 +11,7 @@ export const test: Test = async ({ Command, expect, ExtensionSearch, Locator }) 
   await Command.execute('Extensions.handleClick', -1)
 
   // assert
-  // TODO verify focusoutline
+  const listItems = Locator('.ListItems')
+  await expect(listItems).toBeVisible()
+  await expect(listItems).toHaveClass('FocusOutline')
 }
