@@ -3,6 +3,7 @@ import type { State } from '../State/State.ts'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import type { VisibleItem } from '../VisibleItem/VisibleItem.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
+import * as FocusId from '../FocusId/FocusId.ts'
 import { getExtensionHeaderVirtualDom } from '../GetExtensionHeaderVirtualDom/GetExtensionHeaderVirtualDom.ts'
 import * as GetExtensionsVirtualDom from '../GetExtensionsVirtualDom/GetExtensionsVirtualDom.ts'
 import { getNoExtensionsFoundVirtualDom } from '../GetNoExtensionsFoundVirtualDom/GetNoExtensionsFoundVirtualDom.ts'
@@ -35,8 +36,7 @@ export const getExtensionsViewVirtualDom = (state: State): readonly VirtualDomNo
   const visibleExtensions = GetVisibleExtensions.getVisible(state)
   const { focusedIndex, inputActions, message, placeholder, scrollBarHeight, scrollBarY } = state
 
-  const focusOutline = focusedIndex === -1
-
+  const focusOutline = focusedIndex === -1 && state.focus === FocusId.List
   return [
     {
       ariaBusy: false,
