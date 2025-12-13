@@ -1,3 +1,4 @@
+import { ViewletCommand } from '@lvce-editor/constants'
 import type { State } from '../State/State.ts'
 import * as FocusId from '../FocusId/FocusId.ts'
 import * as InputName from '../InputName/InputName.ts'
@@ -19,5 +20,5 @@ export const renderFocus = (newState: State): readonly any[] => {
     return []
   }
   const selector = getSelector(focus)
-  return ['Viewlet.focusSelector', uid, selector]
+  return [ViewletCommand.FocusSelector, uid, selector]
 }
