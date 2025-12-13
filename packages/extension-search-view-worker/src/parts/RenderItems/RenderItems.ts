@@ -4,7 +4,8 @@ import * as GetVisibleExtensions from '../GetVisibleExtensions/GetVisibleExtensi
 
 export const renderItems = (newState: State): readonly any[] => {
   // TODO render extensions incrementally when scrolling
+  const focusOutline = newState.focusedIndex === -1
   const visibleExtensions = GetVisibleExtensions.getVisible(newState)
-  const dom = GetExtensionsVirtualDom.getExtensionsVirtualDom(visibleExtensions)
+  const dom = GetExtensionsVirtualDom.getExtensionsVirtualDom(visibleExtensions, focusOutline)
   return ['setExtensionsDom', dom]
 }

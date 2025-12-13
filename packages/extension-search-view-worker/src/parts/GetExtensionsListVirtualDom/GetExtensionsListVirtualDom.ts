@@ -1,4 +1,4 @@
-import { VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
+import { mergeClassNames, VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import type { VisibleItem } from '../VisibleItem/VisibleItem.ts'
 import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
@@ -7,12 +7,13 @@ import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEven
 import * as ExtensionStrings from '../ExtensionStrings/ExtensionStrings.ts'
 import * as GetExtensionsListItemVirtualDom from '../GetExtensionsListItemVirtualDom/GetExtensionsListItemVirtualDom.ts'
 
-export const getExtensionsListVirtualDom = (visibleExtensions: readonly VisibleItem[]): readonly VirtualDomNode[] => {
+export const getExtensionsListVirtualDom = (visibleExtensions: readonly VisibleItem[], focusOutline: boolean): readonly VirtualDomNode[] => {
+  const className = focusOutline ? mergeClassNames(ClassNames.ListItems, ClassNames.FocusOutline) : ClassNames.ListItems
   const dom: readonly VirtualDomNode[] = [
     {
       ariaLabel: ExtensionStrings.extensions(),
       childCount: visibleExtensions.length,
-      className: ClassNames.ListItems,
+      className,
       onContextmenu: DomEventListenerFunctions.HandleContextMenu,
       onContextMenu: DomEventListenerFunctions.HandleContextMenu,
       onFocus: DomEventListenerFunctions.HandleFocus,

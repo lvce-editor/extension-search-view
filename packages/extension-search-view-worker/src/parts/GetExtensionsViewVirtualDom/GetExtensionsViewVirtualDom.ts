@@ -15,6 +15,7 @@ const getContentVirtualDom = (
   message: string,
   scrollBarHeight: number,
   scrollBarY: number,
+  focusOutline: boolean,
 ): readonly VirtualDomNode[] => {
   if (message) {
     return getNoExtensionsFoundVirtualDom(message)
@@ -25,14 +26,16 @@ const getContentVirtualDom = (
       className: MergeClassNames.mergeClassNames(ClassNames.Viewlet, ClassNames.List),
       type: VirtualDomElements.Div,
     },
-    ...GetExtensionsVirtualDom.getExtensionsVirtualDom(visibleExtensions),
+    ...GetExtensionsVirtualDom.getExtensionsVirtualDom(visibleExtensions, focusOutline),
     ...getScrollBarVirtualDom(scrollBarHeight, scrollBarY),
   ]
 }
 
 export const getExtensionsViewVirtualDom = (state: State): readonly VirtualDomNode[] => {
   const visibleExtensions = GetVisibleExtensions.getVisible(state)
-  const { inputActions, message, placeholder, scrollBarHeight, scrollBarY } = state
+  const { focusedIndex, inputActions, message, placeholder, scrollBarHeight, scrollBarY } = state
+
+  const focusOutline = focusedIndex === -1
 
   return [
     {
@@ -44,6 +47,6 @@ export const getExtensionsViewVirtualDom = (state: State): readonly VirtualDomNo
       type: VirtualDomElements.Div,
     },
     ...getExtensionHeaderVirtualDom(placeholder, inputActions),
-    ...getContentVirtualDom(visibleExtensions, message, scrollBarHeight, scrollBarY),
+    ...getContentVirtualDom(visibleExtensions, message, scrollBarHeight, scrollBarY, focusOutline),
   ]
 }
