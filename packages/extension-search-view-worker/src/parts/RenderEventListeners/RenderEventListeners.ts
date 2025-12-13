@@ -55,5 +55,9 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
       name: DomEventListenerFunctions.HandleFocus,
       params: ['handleFocus'],
     },
+    {
+      name: DomEventListenerFunctions.HandleBlur,
+      params: ['handleBlur'],
+    },
   ]
 }
