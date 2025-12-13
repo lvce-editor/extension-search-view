@@ -10,6 +10,7 @@ export const handleClick = async (state: State, index: number): Promise<State> =
   if (actualIndex < 0 || actualIndex >= items.length) {
     return {
       ...state,
+      focus: FocusId.List,
       focusedIndex: -1,
     }
   }
