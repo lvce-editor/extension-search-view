@@ -7,8 +7,8 @@ import * as GetScrollBarSize from '../GetScrollBarSize/GetScrollBarSize.ts'
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
 
 export const resize = async (state: State, dimensions: Dimensions): Promise<State> => {
-  const { items, itemHeight, headerHeight, minimumSliderSize } = state
-  const { x, y, width, height } = dimensions
+  const { headerHeight, itemHeight, items, minimumSliderSize } = state
+  const { height, width, x, y } = dimensions
   const total = items.length
   const listHeight = GetListHeight.getListHeight(total, itemHeight, height)
   const contentHeight = total * itemHeight

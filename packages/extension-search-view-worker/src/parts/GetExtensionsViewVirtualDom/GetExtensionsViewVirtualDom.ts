@@ -1,10 +1,11 @@
-import { AriaRoles, text, VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
+import { AriaRoles, VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
 import type { State } from '../State/State.ts'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import type { VisibleItem } from '../VisibleItem/VisibleItem.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
 import { getExtensionHeaderVirtualDom } from '../GetExtensionHeaderVirtualDom/GetExtensionHeaderVirtualDom.ts'
 import * as GetExtensionsVirtualDom from '../GetExtensionsVirtualDom/GetExtensionsVirtualDom.ts'
+import { getNoExtensionsFoundVirtualDom } from '../GetNoExtensionsFoundVirtualDom/GetNoExtensionsFoundVirtualDom.ts'
 import { getScrollBarVirtualDom } from '../GetScrollBarVirtualDom/GetScrollBarVirtualDom.ts'
 import * as GetVisibleExtensions from '../GetVisibleExtensions/GetVisibleExtensions.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
@@ -16,13 +17,13 @@ const getContentVirtualDom = (
   scrollBarY: number,
 ): readonly VirtualDomNode[] => {
   if (message) {
-    return [{ type: VirtualDomElements.Div, childCount: 1 }, text(message)]
+    return getNoExtensionsFoundVirtualDom(message)
   }
   return [
     {
-      type: VirtualDomElements.Div,
-      className: MergeClassNames.mergeClassNames(ClassNames.Viewlet, ClassNames.List),
       childCount: 2,
+      className: MergeClassNames.mergeClassNames(ClassNames.Viewlet, ClassNames.List),
+      type: VirtualDomElements.Div,
     },
     ...GetExtensionsVirtualDom.getExtensionsVirtualDom(visibleExtensions),
     ...getScrollBarVirtualDom(scrollBarHeight, scrollBarY),
@@ -31,16 +32,16 @@ const getContentVirtualDom = (
 
 export const getExtensionsViewVirtualDom = (state: State): readonly VirtualDomNode[] => {
   const visibleExtensions = GetVisibleExtensions.getVisible(state)
-  const { placeholder, inputActions, message, scrollBarHeight, scrollBarY } = state
+  const { inputActions, message, placeholder, scrollBarHeight, scrollBarY } = state
 
   return [
     {
-      type: VirtualDomElements.Div,
-      className: MergeClassNames.mergeClassNames(ClassNames.Viewlet, ClassNames.Extensions),
-      childCount: 2,
-      ariaLive: 'polite',
       ariaBusy: false,
+      ariaLive: 'polite',
+      childCount: 2,
+      className: MergeClassNames.mergeClassNames(ClassNames.Viewlet, ClassNames.Extensions),
       role: AriaRoles.None,
+      type: VirtualDomElements.Div,
     },
     ...getExtensionHeaderVirtualDom(placeholder, inputActions),
     ...getContentVirtualDom(visibleExtensions, message, scrollBarHeight, scrollBarY),

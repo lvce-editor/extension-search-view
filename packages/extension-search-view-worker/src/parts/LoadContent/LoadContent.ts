@@ -7,8 +7,8 @@ import * as NormalizeExtensions from '../NormalizeExtensions/NormalizeExtensions
 import * as RestoreState from '../RestoreState/RestoreState.ts'
 
 export const loadContent = async (state: State, savedState: unknown): Promise<State> => {
-  const { width, platform, assetDir } = state
-  const { searchValue, deltaY } = RestoreState.restoreState(savedState)
+  const { assetDir, platform, width } = state
+  const { deltaY, searchValue } = RestoreState.restoreState(savedState)
   // TODO just get local extensions on demand (not when query string is already different)
   const allExtensions = await GetAllExtensions.getAllExtensions(platform)
   const size = GetViewletSize.getViewletSize(width)
@@ -17,9 +17,9 @@ export const loadContent = async (state: State, savedState: unknown): Promise<St
     {
       ...state,
       allExtensions: normalized,
-      size,
-      inputSource: InputSource.Script,
       deltaY,
+      inputSource: InputSource.Script,
+      size,
     },
     searchValue,
     InputSource.Script,

@@ -17,7 +17,9 @@ import * as FocusPrevious from '../FocusPrevious/FocusPrevious.ts'
 import * as FocusPreviousPage from '../FocusPreviousPage/FocusPreviousPage.ts'
 import * as GetActions from '../GetActions/GetActions.ts'
 import * as GetKeyBindings from '../GetKeyBindings/GetKeyBindings.ts'
+import { getMenuEntries2 } from '../GetMenuEntries2/GetMenuEntries2.ts'
 import * as GetMenuEntries from '../GetMenuEntries/GetMenuEntries.ts'
+import { getMenuIds } from '../GetMenuIds/GetMenuIds.ts'
 import * as HandleBlur from '../HandleBlur/HandleBlur.ts'
 import * as HandleClick from '../HandleClick/HandleClick.ts'
 import * as HandleClickAt from '../HandleClickAt/HandleClickAt.ts'
@@ -62,7 +64,6 @@ export const commandMap = {
   'SearchExtensions.focusIndex': WrapCommand.wrapCommand(FocusIndex.focusIndex),
   'SearchExtensions.focusLast': WrapCommand.wrapCommand(FocusLast.focusLast),
   'SearchExtensions.focusNext': WrapCommand.wrapCommand(FocusNext.focusNext),
-  'SearchExtensions.handleHeaderContextMenu': WrapCommand.wrapCommand(handleHeaderContextMenu),
   'SearchExtensions.focusNextPage': WrapCommand.wrapCommand(FocusNextPage.focusNextPage),
   'SearchExtensions.focusPrevious': WrapCommand.wrapCommand(FocusPrevious.focusPrevious),
   'SearchExtensions.focusPreviousPage': WrapCommand.wrapCommand(FocusPreviousPage.focusPreviousPage),
@@ -70,6 +71,8 @@ export const commandMap = {
   'SearchExtensions.getCommandIds': getCommandIds,
   'SearchExtensions.getKeyBindings': GetKeyBindings.getKeyBindings,
   'SearchExtensions.getMenuEntries': GetMenuEntries.getMenuEntries,
+  'SearchExtensions.getMenuEntries2': WrapCommand.wrapGetter(getMenuEntries2),
+  'SearchExtensions.getMenuIds': getMenuIds,
   'SearchExtensions.handleBlur': WrapCommand.wrapCommand(HandleBlur.handleBlur),
   'SearchExtensions.handleClick': WrapCommand.wrapCommand(HandleClick.handleClick),
   'SearchExtensions.handleClickAt': WrapCommand.wrapCommand(HandleClickAt.handleClickAt),
@@ -79,6 +82,7 @@ export const commandMap = {
   'SearchExtensions.handleDisable': WrapCommand.wrapCommand(HandleDisable.handleDisable),
   'SearchExtensions.handleEnable': WrapCommand.wrapCommand(HandleEnable.handleEnable),
   'SearchExtensions.handleFocus': WrapCommand.wrapCommand(HandleFocus.handleFocus),
+  'SearchExtensions.handleHeaderContextMenu': WrapCommand.wrapCommand(handleHeaderContextMenu),
   'SearchExtensions.handleInput': WrapCommand.wrapCommand(HandleInput.handleInput),
   'SearchExtensions.handleInstall': WrapCommand.wrapCommand(HandleInstall.handleInstall),
   'SearchExtensions.handleScrollBarCaptureLost': WrapCommand.wrapCommand(HandleScrollBarCaptureLost.handleScrollBarCaptureLost),
@@ -93,6 +97,7 @@ export const commandMap = {
   'SearchExtensions.render3': Render3.render3,
   'SearchExtensions.renderActions': RenderActions.renderActions,
   'SearchExtensions.renderEventListeners': RenderEventListeners.renderEventListeners,
+  'SearchExtensions.resize': WrapCommand.wrapCommand(resize),
   'SearchExtensions.restoreState': RestoreState.restoreState,
   'SearchExtensions.saveState': WrapCommand.wrapGetter(SaveState.saveState),
   'SearchExtensions.scrollDown': WrapCommand.wrapCommand(ScrollDown.scrollDown),
@@ -101,5 +106,4 @@ export const commandMap = {
   'SearchExtensions.setDeltaY': WrapCommand.wrapCommand(SetDeltaY.setDeltaY),
   'SearchExtensions.terminate': terminate,
   'SearchExtensions.toggleSuggest': WrapCommand.wrapCommand(ToggleSuggest.toggleSuggest),
-  'SearchExtensions.resize': WrapCommand.wrapCommand(resize),
 }

@@ -4,7 +4,7 @@ import * as ExtensionSearchViewStates from '../ExtensionSearchViewStates/Extensi
 import * as GetActionsVirtualDom from '../GetActionsVirtualDom/GetActionsVirtualDom.ts'
 
 export const renderActions = (uid: number): readonly VirtualDomNode[] => {
-  const { oldState, newState } = ExtensionSearchViewStates.get(uid)
+  const { newState, oldState } = ExtensionSearchViewStates.get(uid)
   if (oldState === newState) {
     return []
   }

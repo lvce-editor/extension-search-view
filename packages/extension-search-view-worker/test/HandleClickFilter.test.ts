@@ -22,13 +22,13 @@ test('returns state with items unchanged', async () => {
     ...createDefaultState(),
     items: [
       {
-        name: 'Test Extension',
-        id: 'test-extension',
-        publisher: 'test-publisher',
-        icon: 'test-icon',
-        description: 'test-description',
-        uri: 'test-uri',
         categories: [],
+        description: 'test-description',
+        icon: 'test-icon',
+        id: 'test-extension',
+        name: 'Test Extension',
+        publisher: 'test-publisher',
+        uri: 'test-uri',
       },
     ],
   }

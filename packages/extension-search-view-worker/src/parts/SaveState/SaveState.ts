@@ -2,9 +2,9 @@ import type { SavedState } from '../SavedState/SavedState.ts'
 import type { State } from '../State/State.ts'
 
 export const saveState = (state: State): SavedState => {
-  const { searchValue, deltaY } = state
+  const { deltaY, searchValue } = state
   return {
-    searchValue,
     deltaY,
+    searchValue,
   }
 }

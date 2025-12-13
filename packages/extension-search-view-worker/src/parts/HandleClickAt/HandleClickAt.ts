@@ -7,7 +7,7 @@ export const handleClickAt = async (state: State, button: number, eventX: number
   if (button !== MouseEventType.LeftClick) {
     return state
   }
-  const { x, y, itemHeight, deltaY, headerHeight } = state
+  const { deltaY, headerHeight, itemHeight, x, y } = state
   const index = GetListIndex.getListIndex(eventX, eventY, x, y, deltaY, itemHeight, headerHeight)
   return handleClick(state, index)
 }

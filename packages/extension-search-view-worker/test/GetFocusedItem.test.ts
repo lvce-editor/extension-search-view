@@ -4,33 +4,33 @@ import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaul
 import * as GetFocusedItem from '../src/parts/GetFocusedItem/GetFocusedItem.ts'
 
 const mockItem1: ExtensionListItem = {
-  name: 'Test Extension 1',
-  id: 'test-extension-1',
-  publisher: 'Test Publisher',
-  icon: 'test-icon-1.png',
-  description: 'Test Description 1',
-  uri: 'https://example.com/1',
   categories: [],
+  description: 'Test Description 1',
+  icon: 'test-icon-1.png',
+  id: 'test-extension-1',
+  name: 'Test Extension 1',
+  publisher: 'Test Publisher',
+  uri: 'https://example.com/1',
 }
 
 const mockItem2: ExtensionListItem = {
-  name: 'Test Extension 2',
-  id: 'test-extension-2',
-  publisher: 'Test Publisher',
-  icon: 'test-icon-2.png',
-  description: 'Test Description 2',
-  uri: 'https://example.com/2',
   categories: [],
+  description: 'Test Description 2',
+  icon: 'test-icon-2.png',
+  id: 'test-extension-2',
+  name: 'Test Extension 2',
+  publisher: 'Test Publisher',
+  uri: 'https://example.com/2',
 }
 
 const mockItem3: ExtensionListItem = {
-  name: 'Test Extension 3',
-  id: 'test-extension-3',
-  publisher: 'Test Publisher',
-  icon: 'test-icon-3.png',
-  description: 'Test Description 3',
-  uri: 'https://example.com/3',
   categories: [],
+  description: 'Test Description 3',
+  icon: 'test-icon-3.png',
+  id: 'test-extension-3',
+  name: 'Test Extension 3',
+  publisher: 'Test Publisher',
+  uri: 'https://example.com/3',
 }
 
 test('returns undefined when focusedIndex is -1', () => {

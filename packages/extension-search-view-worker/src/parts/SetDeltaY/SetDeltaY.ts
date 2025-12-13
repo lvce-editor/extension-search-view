@@ -8,7 +8,7 @@ import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts
 export const setDeltaY = (state: State, value: number): State => {
   Assert.object(state)
   Assert.number(value)
-  const { itemHeight, finalDeltaY, deltaY, height, headerHeight, items, minimumSliderSize } = state
+  const { deltaY, finalDeltaY, headerHeight, height, itemHeight, items, minimumSliderSize } = state
   const listHeight = height - headerHeight
   const newDeltaY = Clamp.clamp(value, 0, finalDeltaY)
   if (deltaY === newDeltaY) {
@@ -24,8 +24,8 @@ export const setDeltaY = (state: State, value: number): State => {
   return {
     ...state,
     deltaY: newDeltaY,
-    minLineY,
     maxLineY,
+    minLineY,
     scrollBarY,
   }
 }

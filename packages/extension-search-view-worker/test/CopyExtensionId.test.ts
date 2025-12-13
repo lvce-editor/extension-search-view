@@ -10,18 +10,18 @@ test('copyExtensionId copies extension id to clipboard when item is focused', as
   })
   const state = createDefaultState()
   const item: ExtensionListItem = {
-    name: 'Test Extension',
-    id: 'test-extension-id',
-    publisher: 'test-publisher',
-    icon: 'icon.png',
-    description: 'Test description',
-    uri: 'test-uri',
     categories: [],
+    description: 'Test description',
+    icon: 'icon.png',
+    id: 'test-extension-id',
+    name: 'Test Extension',
+    publisher: 'test-publisher',
+    uri: 'test-uri',
   }
   const stateWithItem = {
     ...state,
-    items: [item],
     focusedIndex: 0,
+    items: [item],
   }
   const result = await copyExtensionId(stateWithItem)
   expect(result).toBe(stateWithItem)
@@ -49,8 +49,8 @@ test('copyExtensionId returns state unchanged when items array is empty', async 
   const state = createDefaultState()
   const stateWithEmptyItems = {
     ...state,
-    items: [],
     focusedIndex: 0,
+    items: [],
   }
   const result = await copyExtensionId(stateWithEmptyItems)
   expect(result).toBe(stateWithEmptyItems)

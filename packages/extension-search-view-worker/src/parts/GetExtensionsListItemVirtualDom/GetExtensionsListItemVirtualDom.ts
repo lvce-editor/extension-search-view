@@ -8,32 +8,32 @@ import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 import { text } from '../VirtualDomHelpers/VirtualDomHelpers.ts'
 
 const listItemDetail: VirtualDomNode = {
-  type: VirtualDomElements.Div,
-  className: ClassNames.ExtensionListItemDetail,
   childCount: 3,
+  className: ClassNames.ExtensionListItemDetail,
+  type: VirtualDomElements.Div,
 }
 const listItemName: VirtualDomNode = {
-  type: VirtualDomElements.Div,
-  className: ClassNames.ExtensionListItemName,
   childCount: 1,
+  className: ClassNames.ExtensionListItemName,
+  type: VirtualDomElements.Div,
 }
 
 const listItemDescription: VirtualDomNode = {
-  type: VirtualDomElements.Div,
-  className: ClassNames.ExtensionListItemDescription,
   childCount: 1,
+  className: ClassNames.ExtensionListItemDescription,
+  type: VirtualDomElements.Div,
 }
 
 const listItemFooter: VirtualDomNode = {
-  type: VirtualDomElements.Div,
-  className: ClassNames.ExtensionListItemFooter,
   childCount: 2,
+  className: ClassNames.ExtensionListItemFooter,
+  type: VirtualDomElements.Div,
 }
 
 const listItemAuthorName: VirtualDomNode = {
-  type: VirtualDomElements.Div,
-  className: ClassNames.ExtensionListItemAuthorName,
   childCount: 1,
+  className: ClassNames.ExtensionListItemAuthorName,
+  type: VirtualDomElements.Div,
 }
 
 const getClassName = (focused: boolean): string => {
@@ -51,25 +51,25 @@ const getId = (focused: boolean): string | undefined => {
 }
 
 export const getExtensionListItemVirtualDom = (extension: VisibleItem): readonly VirtualDomNode[] => {
-  const { posInSet, setSize, top, icon, name, description, publisher, focused } = extension
+  const { description, focused, icon, name, posInSet, publisher, setSize, top } = extension
   const dom: readonly VirtualDomNode[] = [
     {
-      type: VirtualDomElements.Div,
-      role: AriaRoles.ListItem,
+      ariaPosInSet: posInSet,
       ariaRoleDescription: AriaRoleDescription.Extension,
+      ariaSetSize: setSize,
+      childCount: 2,
       className: getClassName(focused),
       id: getId(focused),
-      ariaPosInSet: posInSet,
-      ariaSetSize: setSize,
+      role: AriaRoles.ListItem,
       top,
-      childCount: 2,
+      type: VirtualDomElements.Div,
     },
     {
-      type: VirtualDomElements.Img,
-      src: icon,
+      childCount: 0,
       className: ClassNames.ExtensionListItemIcon,
       role: AriaRoles.None,
-      childCount: 0,
+      src: icon,
+      type: VirtualDomElements.Img,
     },
     listItemDetail,
     listItemName,
@@ -80,9 +80,9 @@ export const getExtensionListItemVirtualDom = (extension: VisibleItem): readonly
     listItemAuthorName,
     text(publisher),
     {
-      type: VirtualDomElements.Div,
-      className: ClassNames.ExtensionActions,
       childCount: 0,
+      className: ClassNames.ExtensionActions,
+      type: VirtualDomElements.Div,
     },
   ]
   return dom

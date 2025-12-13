@@ -3,13 +3,13 @@ import type { ExtensionListItem } from '../src/parts/ExtensionListItem/Extension
 import * as GetVisibleItem from '../src/parts/GetVisibleItem/GetVisibleItem.ts'
 
 const mockItem: ExtensionListItem = {
-  name: 'Test Extension',
-  id: 'test-extension',
-  publisher: 'Test Publisher',
-  icon: 'test-icon.png',
-  description: 'Test Description',
-  uri: 'https://example.com',
   categories: [],
+  description: 'Test Description',
+  icon: 'test-icon.png',
+  id: 'test-extension',
+  name: 'Test Extension',
+  publisher: 'Test Publisher',
+  uri: 'https://example.com',
 }
 
 test('returns visible item with correct basic properties', () => {

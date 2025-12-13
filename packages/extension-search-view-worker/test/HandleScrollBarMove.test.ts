@@ -7,14 +7,14 @@ test('should calculate new deltaY when clicking in middle of scrollbar', () => {
   let state = createDefaultState()
   state = {
     ...state,
-    y: 10,
-    headerHeight: 50,
-    height: 500,
-    scrollBarHeight: 100,
     finalDeltaY: 1000,
     handleOffset: 0,
+    headerHeight: 50,
+    height: 500,
     itemHeight: 40,
     items: Array(25).fill(null),
+    scrollBarHeight: 100,
+    y: 10,
   }
   state = setDeltaY(state, 0)
   const eventY = 160 // relativeY = 160 - 10 - 50 - 0 = 100
@@ -32,14 +32,14 @@ test('should calculate new deltaY when clicking at bottom of scrollbar', () => {
   let state = createDefaultState()
   state = {
     ...state,
-    y: 10,
-    headerHeight: 50,
-    height: 500,
-    scrollBarHeight: 100,
     finalDeltaY: 1000,
     handleOffset: 0,
+    headerHeight: 50,
+    height: 500,
     itemHeight: 40,
     items: Array(25).fill(null),
+    scrollBarHeight: 100,
+    y: 10,
   }
   state = setDeltaY(state, 0)
   const eventY = 500 // relativeY = 500 - 10 - 50 - 0 = 440
@@ -57,14 +57,14 @@ test('should handle handleOffset correctly', () => {
   let state = createDefaultState()
   state = {
     ...state,
-    y: 10,
-    headerHeight: 50,
-    height: 500,
-    scrollBarHeight: 100,
     finalDeltaY: 1000,
     handleOffset: 20,
+    headerHeight: 50,
+    height: 500,
     itemHeight: 40,
     items: Array(25).fill(null),
+    scrollBarHeight: 100,
+    y: 10,
   }
   state = setDeltaY(state, 0)
   const eventY = 180 // relativeY = 180 - 10 - 50 - 20 = 100
@@ -82,14 +82,14 @@ test('should handle click at boundary between middle and bottom', () => {
   let state = createDefaultState()
   state = {
     ...state,
-    y: 0,
-    headerHeight: 50,
-    height: 500,
-    scrollBarHeight: 100,
     finalDeltaY: 1000,
     handleOffset: 0,
+    headerHeight: 50,
+    height: 500,
     itemHeight: 40,
     items: Array(25).fill(null),
+    scrollBarHeight: 100,
+    y: 0,
   }
   state = setDeltaY(state, 0)
   const eventY = 400 // relativeY = 400 - 0 - 50 - 0 = 350
@@ -107,14 +107,14 @@ test('should handle click just above boundary', () => {
   let state = createDefaultState()
   state = {
     ...state,
-    y: 0,
-    headerHeight: 50,
-    height: 500,
-    scrollBarHeight: 100,
     finalDeltaY: 1000,
     handleOffset: 0,
+    headerHeight: 50,
+    height: 500,
     itemHeight: 40,
     items: Array(25).fill(null),
+    scrollBarHeight: 100,
+    y: 0,
   }
   state = setDeltaY(state, 0)
   const eventY = 399 // relativeY = 399 - 0 - 50 - 0 = 349

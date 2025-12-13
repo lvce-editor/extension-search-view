@@ -14,20 +14,20 @@ const getClassName = (enabled: boolean): string => {
 }
 
 export const getSearchFieldButtonVirtualDom = (button: InputAction): readonly VirtualDomNode[] => {
-  const { icon, title, enabled, onClick } = button
+  const { enabled, icon, onClick, title } = button
   return [
     {
-      type: VirtualDomElements.Button,
-      className: getClassName(enabled),
-      title,
-      tabIndex: 0,
       childCount: 1,
+      className: getClassName(enabled),
       onClick,
+      tabIndex: 0,
+      title,
+      type: VirtualDomElements.Button,
     },
     {
-      type: VirtualDomElements.Div,
-      className: MergeClassNames.mergeClassNames(ClassNames.MaskIcon, icon),
       childCount: 0,
+      className: MergeClassNames.mergeClassNames(ClassNames.MaskIcon, icon),
+      type: VirtualDomElements.Div,
     },
   ]
 }

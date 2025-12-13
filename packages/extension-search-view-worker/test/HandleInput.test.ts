@@ -8,13 +8,13 @@ import { VError } from '../src/parts/VError/VError.js'
 
 const mockExtensions = [
   {
-    name: 'Test Extension',
-    id: 'test-extension',
-    publisher: 'test-publisher',
-    icon: 'test-icon',
-    description: 'test-description',
-    uri: 'test-uri',
     categories: [],
+    description: 'test-description',
+    icon: 'test-icon',
+    id: 'test-extension',
+    name: 'Test Extension',
+    publisher: 'test-publisher',
+    uri: 'test-uri',
   },
 ]
 
@@ -24,7 +24,7 @@ test('handles empty search results', async () => {
       return mockExtensions
     },
   })
-  const state = { ...createDefaultState(), platform: Remote, allExtensions: [] }
+  const state = { ...createDefaultState(), allExtensions: [], platform: Remote }
   // rpc mock registered above
   const result = await handleInput(state, 'nonexistent')
 
@@ -40,7 +40,7 @@ test('handles successful search', async () => {
       return mockExtensions
     },
   })
-  const state = { ...createDefaultState(), platform: Remote, allExtensions: mockExtensions }
+  const state = { ...createDefaultState(), allExtensions: mockExtensions, platform: Remote }
   // rpc mock registered above
   const result = await handleInput(state, 'test')
 
@@ -56,7 +56,7 @@ test.skip('handles error during search', async () => {
     },
   })
 
-  const state = { ...createDefaultState(), platform: Remote, allExtensions: mockExtensions }
+  const state = { ...createDefaultState(), allExtensions: mockExtensions, platform: Remote }
   // error rpc mock registered above
   const result = await handleInput(state, 'test')
   expect(result.message).toBe('Failed to search for extensions: error')

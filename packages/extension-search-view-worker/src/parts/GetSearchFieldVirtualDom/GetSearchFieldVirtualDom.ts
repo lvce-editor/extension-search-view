@@ -16,38 +16,38 @@ export const getSearchFieldVirtualDom = (
   // TODO avoid mutation
   const dom = [
     {
-      type: VirtualDomElements.Div,
+      childCount: 2,
       className: ClassNames.SearchField,
       role: AriaRoles.None,
-      childCount: 2,
-    },
-    {
-      type: VirtualDomElements.Input,
-      inputType: 'search',
-      className: ClassNames.MultilineInputBox,
-      spellcheck: false,
-      autocapitalize: 'off',
-      autocorrect: 'off',
-      autocomplete: 'off',
-      placeholder,
-      name,
-      onInput,
-      onFocus,
-      childCount: 0,
-    },
-    {
       type: VirtualDomElements.Div,
-      className: ClassNames.SearchFieldButtons,
+    },
+    {
+      autocapitalize: 'off',
+      autocomplete: 'off',
+      autocorrect: 'off',
+      childCount: 0,
+      className: ClassNames.MultilineInputBox,
+      inputType: 'search',
+      name,
+      onFocus,
+      onInput,
+      placeholder,
+      spellcheck: false,
+      type: VirtualDomElements.Input,
+    },
+    {
       childCount: insideButtons.length,
+      className: ClassNames.SearchFieldButtons,
+      type: VirtualDomElements.Div,
     },
     ...insideButtons.flatMap(GetSearchFieldButtonVirtualDom.getSearchFieldButtonVirtualDom),
   ]
   if (outsideButtons.length > 0) {
     dom.unshift({
-      type: VirtualDomElements.Div,
+      childCount: 1 + outsideButtons.length,
       className: ClassNames.SearchFieldContainer,
       role: AriaRoles.None,
-      childCount: 1 + outsideButtons.length,
+      type: VirtualDomElements.Div,
     })
     dom.push(...outsideButtons.flatMap(GetSearchFieldButtonVirtualDom.getSearchFieldButtonVirtualDom))
   }

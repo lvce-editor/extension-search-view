@@ -7,10 +7,10 @@ import * as GetSearchFieldVirtualDom from '../GetSearchFieldVirtualDom/GetSearch
 import * as InputName from '../InputName/InputName.ts'
 
 const parentNode: VirtualDomNode = {
-  type: VirtualDomElements.Div,
-  className: ClassNames.ExtensionHeader,
   childCount: 1,
+  className: ClassNames.ExtensionHeader,
   onContextMenu: DomEventListenerFunctions.HandleHeaderContextMenu,
+  type: VirtualDomElements.Div,
 }
 
 export const getExtensionHeaderVirtualDom = (placeholder: string, actions: readonly InputAction[]): readonly VirtualDomNode[] => {

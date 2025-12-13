@@ -10,6 +10,12 @@ import * as RenderSearchValue from '../RenderSearchValue/RenderSearchValue.ts'
 
 export const getRenderer = (diffType: number): Renderer => {
   switch (diffType) {
+    case DiffType.RenderFocus:
+      return renderFocus
+    case DiffType.RenderFocusContext:
+      return renderFocusContext
+    case DiffType.RenderHeader:
+      return RenderHeader.renderHeader
     case DiffType.RenderItems:
       return renderItems2
     case DiffType.RenderMessage:
@@ -18,12 +24,6 @@ export const getRenderer = (diffType: number): Renderer => {
       return RenderScrollBar.renderScrollBar
     case DiffType.RenderSearchValue:
       return RenderSearchValue.renderSearchValue
-    case DiffType.RenderHeader:
-      return RenderHeader.renderHeader
-    case DiffType.RenderFocus:
-      return renderFocus
-    case DiffType.RenderFocusContext:
-      return renderFocusContext
     default:
       throw new Error('unknown renderer')
   }
