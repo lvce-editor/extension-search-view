@@ -122,11 +122,7 @@ test('handleContextMenu shows context menu with scrolled state', async () => {
   })
   const result = await HandleContextMenu.handleContextMenu(state, 0, 150, 100)
   expect(result).toBe(state)
-  expect(mockRpc.invocations.length).toBeGreaterThan(0)
-  expect(mockRpc.invocations[0][0]).toBe('ContextMenu.show2')
-  expect(mockRpc.invocations[0][1]).toBe(789)
-  expect(mockRpc.invocations[0][2]).toBe(MenuEntryId.ManageExtension)
-  expect(mockRpc.invocations[0][3]).toBe(150)
-  expect(mockRpc.invocations[0][4]).toBe(100)
-  expect(mockRpc.invocations[0][5]).toEqual({ menuId: MenuEntryId.ManageExtension })
+  expect(mockRpc.invocations).toEqual([
+    ['ContextMenu.show2', 789, MenuEntryId.ManageExtension, 150, 100, { menuId: MenuEntryId.ManageExtension }],
+  ])
 })
