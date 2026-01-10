@@ -1,7 +1,7 @@
 import { expect, test } from '@jest/globals'
+import { MenuEntryId } from '@lvce-editor/constants'
 import { RendererWorker } from '@lvce-editor/rpc-registry'
 import * as ContextMenu from '../src/parts/ContextMenu/ContextMenu.ts'
-import * as MenuEntryId from '../src/parts/MenuEntryId/MenuEntryId.ts'
 
 test('show function validates input parameters', async () => {
   const mockRpc = RendererWorker.registerMockRpc({
