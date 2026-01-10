@@ -1,9 +1,9 @@
 import { expect, test } from '@jest/globals'
+import { MenuEntryId } from '@lvce-editor/constants'
 import { RendererWorker } from '@lvce-editor/rpc-registry'
 import type { State } from '../src/parts/State/State.ts'
 import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import { handleClickFilter } from '../src/parts/HandleClickFilter/HandleClickFilter.ts'
-import * as MenuEntryId from '../src/parts/MenuEntryId/MenuEntryId.ts'
 
 test('returns state unchanged', async () => {
   const state: State = {
