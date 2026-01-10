@@ -80,3 +80,19 @@ test('copy', () => {
 test('copyExtensionId', () => {
   expect(ExtensionStrings.copyExtensionId()).toBe('Copy Extension Id')
 })
+
+test('enableWorkspace', () => {
+  expect(ExtensionStrings.enableWorkspace()).toBe('Enable Workspace')
+})
+
+test('disableWorkspace', () => {
+  expect(ExtensionStrings.disableWorkspace()).toBe('Disable Workspace')
+})
+
+test('category', () => {
+  expect(ExtensionStrings.category()).toBe('Category')
+})
+
+test('disabled', () => {
+  expect(ExtensionStrings.disabled()).toBe('Disabled')
+})
