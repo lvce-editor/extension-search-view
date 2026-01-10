@@ -19,7 +19,8 @@
     "rootDir": "src",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
+    "rewriteRelativeImportExtensions": true
   },
   "include": ["src", "test"]
 }
