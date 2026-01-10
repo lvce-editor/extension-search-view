@@ -36,35 +36,36 @@ test('creates basic search field virtual dom', () => {
   ])
 })
 
-test.skip('creates search field with inside buttons', () => {
+test('creates search field with inside buttons', () => {
   const insideButtons: readonly any[] = [{ id: 'button1' }]
   const result = GetSearchFieldVirtualDom.getSearchFieldVirtualDom('search', 'Search...', 'onInput()', insideButtons, [])
 
-  expect(result).toEqual([
-    {
-      childCount: 2,
-      className: ClassNames.SearchField,
-      role: AriaRoles.None,
-      type: VirtualDomElements.Div,
-    },
-    {
-      autocapitalize: 'off',
-      autocorrect: 'off',
-      childCount: 0,
-      className: ClassNames.MultilineInputBox,
-      name: 'search',
-      onFocus: '',
-      onInput: 'onInput()',
-      placeholder: 'Search...',
-      spellcheck: false,
-      type: VirtualDomElements.TextArea,
-    },
-    {
-      childCount: 1,
-      className: ClassNames.SearchFieldButtons,
-      type: VirtualDomElements.Div,
-    },
-  ])
+  expect(result[0]).toEqual({
+    childCount: 2,
+    className: ClassNames.SearchField,
+    role: AriaRoles.None,
+    type: VirtualDomElements.Div,
+  })
+  expect(result[1]).toEqual({
+    autocapitalize: 'off',
+    autocomplete: 'off',
+    autocorrect: 'off',
+    childCount: 0,
+    className: ClassNames.MultilineInputBox,
+    inputType: 'search',
+    name: 'search',
+    onFocus: '',
+    onInput: 'onInput()',
+    placeholder: 'Search...',
+    spellcheck: false,
+    type: VirtualDomElements.Input,
+  })
+  expect(result[2]).toEqual({
+    childCount: 1,
+    className: ClassNames.SearchFieldButtons,
+    type: VirtualDomElements.Div,
+  })
+  expect(result.length).toBeGreaterThan(2)
 })
 
 test('creates search field with outside buttons', () => {
