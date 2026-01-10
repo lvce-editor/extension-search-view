@@ -259,14 +259,17 @@ test('when parsedValue.id is set but does not match, returns false even if query
   expect(matchesParsedValue(extension, parsedValue)).toBe(false)
 })
 
-test.skip('category - match', () => {
-  const extension = { ...createExtension('Test Extension', 'test-extension'), categories: ['Themes'] }
+test('category - match when category matches', () => {
+  const extension: ExtensionListItem = {
+    ...createExtension('Test Extension', 'test-extension'),
+    categories: ['Themes'],
+  }
   const parsedValue: ParsedExtensionSearchValue = {
     builtin: false,
     category: 'Themes',
     disabled: false,
     enabled: true,
-    id: 'different-id',
+    id: '',
     installed: false,
     isLocal: false,
     outdated: false,
@@ -274,4 +277,253 @@ test.skip('category - match', () => {
     sort: 'name',
   }
   expect(matchesParsedValue(extension, parsedValue)).toBe(true)
+})
+
+test('category - match is case insensitive', () => {
+  const extension: ExtensionListItem = {
+    ...createExtension('Test Extension', 'test-extension'),
+    categories: ['Themes'],
+  }
+  const parsedValue: ParsedExtensionSearchValue = {
+    builtin: false,
+    category: 'themes',
+    disabled: false,
+    enabled: true,
+    id: '',
+    installed: false,
+    isLocal: false,
+    outdated: false,
+    query: 'test',
+    sort: 'name',
+  }
+  expect(matchesParsedValue(extension, parsedValue)).toBe(true)
+})
+
+test('category - match with uppercase category in extension', () => {
+  const extension: ExtensionListItem = {
+    ...createExtension('Test Extension', 'test-extension'),
+    categories: ['THEMES'],
+  }
+  const parsedValue: ParsedExtensionSearchValue = {
+    builtin: false,
+    category: 'themes',
+    disabled: false,
+    enabled: true,
+    id: '',
+    installed: false,
+    isLocal: false,
+    outdated: false,
+    query: 'test',
+    sort: 'name',
+  }
+  expect(matchesParsedValue(extension, parsedValue)).toBe(true)
+})
+
+test('category - does not match when category is not in categories array', () => {
+  const extension: ExtensionListItem = {
+    ...createExtension('Test Extension', 'test-extension'),
+    categories: ['Themes'],
+  }
+  const parsedValue: ParsedExtensionSearchValue = {
+    builtin: false,
+    category: 'Programming Languages',
+    disabled: false,
+    enabled: true,
+    id: '',
+    installed: false,
+    isLocal: false,
+    outdated: false,
+    query: 'xyz-no-match',
+    sort: 'name',
+  }
+  expect(matchesParsedValue(extension, parsedValue)).toBe(false)
+})
+
+test('category - does not match when categories array is empty', () => {
+  const extension: ExtensionListItem = {
+    ...createExtension('Test Extension', 'test-extension'),
+    categories: [],
+  }
+  const parsedValue: ParsedExtensionSearchValue = {
+    builtin: false,
+    category: 'Themes',
+    disabled: false,
+    enabled: true,
+    id: '',
+    installed: false,
+    isLocal: false,
+    outdated: false,
+    query: 'xyz-no-match',
+    sort: 'name',
+  }
+  expect(matchesParsedValue(extension, parsedValue)).toBe(false)
+})
+
+test('category - matches when category is in multiple categories', () => {
+  const extension: ExtensionListItem = {
+    ...createExtension('Test Extension', 'test-extension'),
+    categories: ['Themes', 'Other'],
+  }
+  const parsedValue: ParsedExtensionSearchValue = {
+    builtin: false,
+    category: 'Themes',
+    disabled: false,
+    enabled: true,
+    id: '',
+    installed: false,
+    isLocal: false,
+    outdated: false,
+    query: 'test',
+    sort: 'name',
+  }
+  expect(matchesParsedValue(extension, parsedValue)).toBe(true)
+})
+
+test('returns false when extension has no name and no id', () => {
+  const extension: ExtensionListItem = {
+    categories: [],
+    description: 'test-description',
+    icon: 'test-icon',
+    id: '',
+    name: '',
+    publisher: 'test-publisher',
+    uri: 'test-uri',
+  }
+  const parsedValue: ParsedExtensionSearchValue = {
+    builtin: false,
+    disabled: false,
+    enabled: true,
+    id: '',
+    installed: false,
+    isLocal: false,
+    outdated: false,
+    query: 'test',
+    sort: 'name',
+  }
+  expect(matchesParsedValue(extension, parsedValue)).toBe(false)
+})
+
+test('returns false when extension has no name, no id, and no matching category', () => {
+  const extension: ExtensionListItem = {
+    categories: ['Other'],
+    description: 'test-description',
+    icon: 'test-icon',
+    id: '',
+    name: '',
+    publisher: 'test-publisher',
+    uri: 'test-uri',
+  }
+  const parsedValue: ParsedExtensionSearchValue = {
+    builtin: false,
+    category: 'Themes',
+    disabled: false,
+    enabled: true,
+    id: '',
+    installed: false,
+    isLocal: false,
+    outdated: false,
+    query: 'test',
+    sort: 'name',
+  }
+  expect(matchesParsedValue(extension, parsedValue)).toBe(false)
+})
+
+test('category - throws when extension is null', () => {
+  const extension = null as unknown as ExtensionListItem
+  const parsedValue: ParsedExtensionSearchValue = {
+    builtin: false,
+    category: 'Themes',
+    disabled: false,
+    enabled: true,
+    id: '',
+    installed: false,
+    isLocal: false,
+    outdated: false,
+    query: '',
+    sort: 'name',
+  }
+  expect(() => matchesParsedValue(extension, parsedValue)).toThrow()
+})
+
+test('category - throws when extension is undefined', () => {
+  const extension = undefined as unknown as ExtensionListItem
+  const parsedValue: ParsedExtensionSearchValue = {
+    builtin: false,
+    category: 'Themes',
+    disabled: false,
+    enabled: true,
+    id: '',
+    installed: false,
+    isLocal: false,
+    outdated: false,
+    query: '',
+    sort: 'name',
+  }
+  expect(() => matchesParsedValue(extension, parsedValue)).toThrow()
+})
+
+test('category - returns false when extension is not an object', () => {
+  const extension = 'not-an-object' as unknown as ExtensionListItem
+  const parsedValue: ParsedExtensionSearchValue = {
+    builtin: false,
+    category: 'Themes',
+    disabled: false,
+    enabled: true,
+    id: '',
+    installed: false,
+    isLocal: false,
+    outdated: false,
+    query: 'test',
+    sort: 'name',
+  }
+  expect(matchesParsedValue(extension, parsedValue)).toBe(false)
+})
+
+test('category - returns false when extension does not have categories property', () => {
+  const extension = {
+    description: 'test-description',
+    icon: 'test-icon',
+    id: 'xyz-no-match-id',
+    name: 'xyz-no-match-name',
+    publisher: 'test-publisher',
+    uri: 'test-uri',
+  } as unknown as ExtensionListItem
+  const parsedValue: ParsedExtensionSearchValue = {
+    builtin: false,
+    category: 'Themes',
+    disabled: false,
+    enabled: true,
+    id: '',
+    installed: false,
+    isLocal: false,
+    outdated: false,
+    query: 'xyz-no-match-query',
+    sort: 'name',
+  }
+  expect(matchesParsedValue(extension, parsedValue)).toBe(false)
+})
+
+test('category - returns false when categories is not an array', () => {
+  const extension = {
+    categories: 'not-an-array',
+    description: 'test-description',
+    icon: 'test-icon',
+    id: 'xyz-no-match-id',
+    name: 'xyz-no-match-name',
+    publisher: 'test-publisher',
+    uri: 'test-uri',
+  } as unknown as ExtensionListItem
+  const parsedValue: ParsedExtensionSearchValue = {
+    builtin: false,
+    category: 'Themes',
+    disabled: false,
+    enabled: true,
+    id: '',
+    installed: false,
+    isLocal: false,
+    outdated: false,
+    query: 'xyz-no-match-query',
+    sort: 'name',
+  }
+  expect(matchesParsedValue(extension, parsedValue)).toBe(false)
 })
