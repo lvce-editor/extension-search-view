@@ -53,6 +53,14 @@ export const disable = (): string => {
   return I18nString.i18nString(UiStrings.Disable)
 }
 
+export const enableWorkspace = (): string => {
+  return I18nString.i18nString(UiStrings.EnableWorkspace)
+}
+
+export const disableWorkspace = (): string => {
+  return I18nString.i18nString(UiStrings.DisableWorkspace)
+}
+
 export const uninstall = (): string => {
   return I18nString.i18nString(UiStrings.Uninstall)
 }
