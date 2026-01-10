@@ -2,16 +2,14 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const skip = 1
 
-export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
+export const test: Test = async ({ Command, expect, ExtensionSearch, Locator }) => {
   // arrange
   await ExtensionSearch.open()
   const extensionsView = Locator('.Extensions')
   await expect(extensionsView).toBeVisible()
 
   // act
-  const filterButton = extensionsView.locator('button[title="Filter"]')
-  // @ts-ignore
-  await filterButton.click()
+  await Command.execute('Extensions.handleClickFilter')
 
   // assert
   const filterMenu = Locator('.Menu')
