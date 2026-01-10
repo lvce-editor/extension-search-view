@@ -1,5 +1,5 @@
 import { MenuEntryId } from '@lvce-editor/constants'
 
 export const getMenuIds = (): readonly number[] => {
-  return [MenuEntryId.ManageExtension]
+  return [MenuEntryId.ManageExtension, MenuEntryId.ExtensionSearchFilter]
 }
