@@ -17,6 +17,18 @@ export const getMenuEntries = (): readonly MenuEntry[] => {
       label: ExtensionStrings.disable(),
     },
     {
+      command: 'SearchExtensions.enableWorkspace',
+      flags: MenuItemFlags.None,
+      id: 'enableWorkspace',
+      label: ExtensionStrings.enableWorkspace(),
+    },
+    {
+      command: 'SearchExtensions.disableWorkspace',
+      flags: MenuItemFlags.None,
+      id: 'disableWorkspace',
+      label: ExtensionStrings.disableWorkspace(),
+    },
+    {
       command: 'SearchExtensions.installAnotherVersion',
       flags: MenuItemFlags.None,
       id: 'installAnotherVersion',
