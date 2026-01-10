@@ -11,22 +11,34 @@ export const getMenuEntries = (): readonly MenuEntry[] => {
       label: ExtensionStrings.enable(),
     },
     {
-      command: 'SearchExtensions.disable',
-      flags: MenuItemFlags.None,
-      id: 'disable',
-      label: ExtensionStrings.disable(),
-    },
-    {
       command: 'SearchExtensions.enableWorkspace',
       flags: MenuItemFlags.None,
       id: 'enableWorkspace',
       label: ExtensionStrings.enableWorkspace(),
     },
     {
+      command: '',
+      flags: MenuItemFlags.Separator,
+      id: 'separator1',
+      label: '',
+    },
+    {
+      command: 'SearchExtensions.disable',
+      flags: MenuItemFlags.None,
+      id: 'disable',
+      label: ExtensionStrings.disable(),
+    },
+    {
       command: 'SearchExtensions.disableWorkspace',
       flags: MenuItemFlags.None,
       id: 'disableWorkspace',
       label: ExtensionStrings.disableWorkspace(),
+    },
+    {
+      command: '',
+      flags: MenuItemFlags.Separator,
+      id: 'separator2',
+      label: '',
     },
     {
       command: 'SearchExtensions.installAnotherVersion',
