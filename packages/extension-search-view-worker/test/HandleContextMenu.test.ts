@@ -21,9 +21,7 @@ test('handleContextMenu shows context menu for valid index', async () => {
   })
   const result = await HandleContextMenu.handleContextMenu(state, 0, 100, 120)
   expect(result).toBe(state)
-  expect(mockRpc.invocations).toEqual([
-    ['ContextMenu.show2', 123, MenuEntryId.ManageExtension, 100, 120, { menuId: MenuEntryId.ManageExtension }],
-  ])
+  expect(mockRpc.invocations).toEqual([['ContextMenu.show2', 123, MenuEntryId.ManageExtension, 100, 120, { menuId: MenuEntryId.ManageExtension }]])
 })
 
 test('handleContextMenu returns state unchanged for negative index', async () => {
@@ -80,9 +78,7 @@ test('handleContextMenu returns state unchanged for index equal to items length'
   })
   const result = await HandleContextMenu.handleContextMenu(state, 0, 100, 200)
   expect(result).toBe(state)
-  expect(mockRpc.invocations).toEqual([
-    ['ContextMenu.show2', 123, MenuEntryId.ManageExtension, 100, 200, { menuId: MenuEntryId.ManageExtension }],
-  ])
+  expect(mockRpc.invocations).toEqual([['ContextMenu.show2', 123, MenuEntryId.ManageExtension, 100, 200, { menuId: MenuEntryId.ManageExtension }]])
 })
 
 test('handleContextMenu shows context menu for index 0', async () => {
@@ -101,9 +97,7 @@ test('handleContextMenu shows context menu for index 0', async () => {
   })
   const result = await HandleContextMenu.handleContextMenu(state, 0, 0, 15)
   expect(result).toBe(state)
-  expect(mockRpc.invocations).toEqual([
-    ['ContextMenu.show2', 456, MenuEntryId.ManageExtension, 0, 15, { menuId: MenuEntryId.ManageExtension }],
-  ])
+  expect(mockRpc.invocations).toEqual([['ContextMenu.show2', 456, MenuEntryId.ManageExtension, 0, 15, { menuId: MenuEntryId.ManageExtension }]])
 })
 
 test('handleContextMenu shows context menu with scrolled state', async () => {
@@ -122,7 +116,5 @@ test('handleContextMenu shows context menu with scrolled state', async () => {
   })
   const result = await HandleContextMenu.handleContextMenu(state, 0, 150, 100)
   expect(result).toBe(state)
-  expect(mockRpc.invocations).toEqual([
-    ['ContextMenu.show2', 789, MenuEntryId.ManageExtension, 150, 100, { menuId: MenuEntryId.ManageExtension }],
-  ])
+  expect(mockRpc.invocations).toEqual([['ContextMenu.show2', 789, MenuEntryId.ManageExtension, 150, 100, { menuId: MenuEntryId.ManageExtension }]])
 })
