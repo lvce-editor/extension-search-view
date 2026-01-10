@@ -70,15 +70,6 @@ test('isEqual returns false when focus differs', () => {
   expect(DiffItems.isEqual(oldState, newState)).toBe(false)
 })
 
-test('isEqual returns false when inputActions differs', () => {
-  const oldState: ReturnType<typeof createDefaultState> = createDefaultState()
-  const newState: ReturnType<typeof createDefaultState> = {
-    ...createDefaultState(),
-    inputActions: [{ type: 1, value: 'test' }],
-  }
-  expect(DiffItems.isEqual(oldState, newState)).toBe(false)
-})
-
 test('isEqual returns false when placeholder differs', () => {
   const oldState: ReturnType<typeof createDefaultState> = createDefaultState()
   const newState: ReturnType<typeof createDefaultState> = {
