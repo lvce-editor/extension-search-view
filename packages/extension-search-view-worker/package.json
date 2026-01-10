@@ -40,13 +40,7 @@
         "functions": 80,
         "lines": 80
       }
-    },
-    "collectCoverageFrom": [
-      "src/**/*.ts"
-    ],
-    "coveragePathIgnorePatterns": [
-      "node_modules"
-    ]
+    }
   },
   "devDependencies": {
     "@jest/globals": "^30.2.0",
