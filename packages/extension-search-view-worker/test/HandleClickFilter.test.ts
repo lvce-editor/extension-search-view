@@ -1,24 +1,47 @@
 import { expect, test } from '@jest/globals'
+import { RendererWorker } from '@lvce-editor/rpc-registry'
+import type { State } from '../src/parts/State/State.ts'
 import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import { handleClickFilter } from '../src/parts/HandleClickFilter/HandleClickFilter.ts'
+import * as MenuEntryId from '../src/parts/MenuEntryId/MenuEntryId.ts'
 
 test('returns state unchanged', async () => {
-  const state = createDefaultState()
+  const state: State = {
+    ...createDefaultState(),
+    uid: 123,
+    x: 100,
+    y: 200,
+  }
+  const mockRpc = RendererWorker.registerMockRpc({
+    'ContextMenu.show2'() {},
+  })
   const result = await handleClickFilter(state)
   expect(result).toBe(state)
+  expect(mockRpc.invocations).toEqual([
+    ['ContextMenu.show2', 123, MenuEntryId.ExtensionSearchFilter, 100, 200, { menuId: MenuEntryId.ExtensionSearchFilter }],
+  ])
 })
 
 test('returns state with modified searchValue unchanged', async () => {
-  const state = {
+  const state: State = {
     ...createDefaultState(),
     searchValue: 'test search',
+    uid: 456,
+    x: 50,
+    y: 75,
   }
+  const mockRpc = RendererWorker.registerMockRpc({
+    'ContextMenu.show2'() {},
+  })
   const result = await handleClickFilter(state)
   expect(result).toBe(state)
+  expect(mockRpc.invocations).toEqual([
+    ['ContextMenu.show2', 456, MenuEntryId.ExtensionSearchFilter, 50, 75, { menuId: MenuEntryId.ExtensionSearchFilter }],
+  ])
 })
 
 test('returns state with items unchanged', async () => {
-  const state = {
+  const state: State = {
     ...createDefaultState(),
     items: [
       {
@@ -31,7 +54,16 @@ test('returns state with items unchanged', async () => {
         uri: 'test-uri',
       },
     ],
+    uid: 789,
+    x: 0,
+    y: 0,
   }
+  const mockRpc = RendererWorker.registerMockRpc({
+    'ContextMenu.show2'() {},
+  })
   const result = await handleClickFilter(state)
   expect(result).toBe(state)
+  expect(mockRpc.invocations).toEqual([
+    ['ContextMenu.show2', 789, MenuEntryId.ExtensionSearchFilter, 0, 0, { menuId: MenuEntryId.ExtensionSearchFilter }],
+  ])
 })
