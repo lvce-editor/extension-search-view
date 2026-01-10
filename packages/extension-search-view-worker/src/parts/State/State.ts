@@ -28,6 +28,7 @@ export interface State {
   readonly scrollBarY: number
   readonly searchValue: string
   readonly size: number
+  readonly suggestOpen: boolean
   readonly uid: number
   readonly width: number
   readonly x: number

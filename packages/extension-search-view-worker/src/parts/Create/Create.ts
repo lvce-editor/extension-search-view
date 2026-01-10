@@ -29,6 +29,7 @@ export const create = (id: number, uri: string, x: number, y: number, width: num
     scrollBarY: 0,
     searchValue: '',
     size: 0,
+    suggestOpen: false,
     uid: id,
     width,
     x,

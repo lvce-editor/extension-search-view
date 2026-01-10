@@ -28,6 +28,7 @@ export const createDefaultState = (): State => {
     scrollBarY: 0,
     searchValue: '',
     size: 0,
+    suggestOpen: false,
     uid: 0,
     width: 0,
     x: 0,
