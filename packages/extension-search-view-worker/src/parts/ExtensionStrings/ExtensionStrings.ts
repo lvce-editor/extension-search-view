@@ -80,3 +80,11 @@ export const viewsAndMoreActions = (): string => {
 export const installed = (): string => {
   return I18nString.i18nString(UiStrings.Installed)
 }
+
+export const category = (): string => {
+  return I18nString.i18nString(UiStrings.Category)
+}
+
+export const disabled = (): string => {
+  return I18nString.i18nString(UiStrings.Disabled)
+}

@@ -19,6 +19,7 @@ import * as GetActions from '../GetActions/GetActions.ts'
 import * as GetKeyBindings from '../GetKeyBindings/GetKeyBindings.ts'
 import { getMenuEntries2 } from '../GetMenuEntries2/GetMenuEntries2.ts'
 import * as GetMenuEntries from '../GetMenuEntries/GetMenuEntries.ts'
+import * as GetMenuEntriesFilter from '../GetMenuEntriesFilter/GetMenuEntriesFilter.ts'
 import { getMenuIds } from '../GetMenuIds/GetMenuIds.ts'
 import * as HandleBlur from '../HandleBlur/HandleBlur.ts'
 import * as HandleClick from '../HandleClick/HandleClick.ts'
@@ -72,6 +73,7 @@ export const commandMap = {
   'SearchExtensions.getKeyBindings': GetKeyBindings.getKeyBindings,
   'SearchExtensions.getMenuEntries': GetMenuEntries.getMenuEntries,
   'SearchExtensions.getMenuEntries2': WrapCommand.wrapGetter(getMenuEntries2),
+  'SearchExtensions.getMenuEntriesFilter': GetMenuEntriesFilter.getMenuEntriesFilter,
   'SearchExtensions.getMenuIds': getMenuIds,
   'SearchExtensions.handleBlur': WrapCommand.wrapCommand(HandleBlur.handleBlur),
   'SearchExtensions.handleClick': WrapCommand.wrapCommand(HandleClick.handleClick),
