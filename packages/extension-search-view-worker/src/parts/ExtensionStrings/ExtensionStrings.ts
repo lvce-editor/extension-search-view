@@ -96,3 +96,43 @@ export const category = (): string => {
 export const disabled = (): string => {
   return I18nString.i18nString(UiStrings.Disabled)
 }
+
+export const featured = (): string => {
+  return I18nString.i18nString(UiStrings.Featured)
+}
+
+export const mcpServers = (): string => {
+  return I18nString.i18nString(UiStrings.McpServers)
+}
+
+export const mostPopular = (): string => {
+  return I18nString.i18nString(UiStrings.MostPopular)
+}
+
+export const recentlyPublished = (): string => {
+  return I18nString.i18nString(UiStrings.RecentlyPublished)
+}
+
+export const recommended = (): string => {
+  return I18nString.i18nString(UiStrings.Recommended)
+}
+
+export const updates = (): string => {
+  return I18nString.i18nString(UiStrings.Updates)
+}
+
+export const builtIn = (): string => {
+  return I18nString.i18nString(UiStrings.BuiltIn)
+}
+
+export const enabled = (): string => {
+  return I18nString.i18nString(UiStrings.Enabled)
+}
+
+export const workspaceUnsupported = (): string => {
+  return I18nString.i18nString(UiStrings.WorkspaceUnsupported)
+}
+
+export const sortBy = (): string => {
+  return I18nString.i18nString(UiStrings.SortBy)
+}
