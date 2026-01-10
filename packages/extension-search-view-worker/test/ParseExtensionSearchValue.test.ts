@@ -74,3 +74,9 @@ test('parseValue - @category - with quotes', () => {
     category: 'themes',
   })
 })
+
+test('parseValue - @category - with quotes without colon', () => {
+  expect(ParseExtensionSearchValue.parseValue('@category"themes"')).toMatchObject({
+    category: 'themes',
+  })
+})
