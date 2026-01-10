@@ -26,9 +26,12 @@ import * as HandleClick from '../HandleClick/HandleClick.ts'
 import * as HandleClickAt from '../HandleClickAt/HandleClickAt.ts'
 import * as HandleClickCurrent from '../HandleClickCurrent/HandleClickCurrent.ts'
 import * as HandleClickCurrentButKeepFocus from '../HandleClickCurrentButKeepFocus/HandleClickCurrentButKeepFocus.ts'
+import * as HandleClickFilter from '../HandleClickFilter/HandleClickFilter.ts'
 import * as HandleContextMenu from '../HandleContextMenu/HandleContextMenu.ts'
 import * as HandleDisable from '../HandleDisable/HandleDisable.ts'
+import * as HandleDisableWorkspace from '../HandleDisableWorkspace/HandleDisableWorkspace.ts'
 import * as HandleEnable from '../HandleEnable/HandleEnable.ts'
+import * as HandleEnableWorkspace from '../HandleEnableWorkspace/HandleEnableWorkspace.ts'
 import * as HandleFocus from '../HandleFocus/HandleFocus.ts'
 import { handleHeaderContextMenu } from '../HandleHeaderContextMenu/HandleHeaderContextMenu.ts'
 import * as HandleInput from '../HandleInput/HandleInput.ts'
@@ -60,7 +63,11 @@ export const commandMap = {
   'SearchExtensions.copyExtensionInfo': WrapCommand.wrapCommand(copyExtensionInfo),
   'SearchExtensions.create': Create.create,
   'SearchExtensions.diff2': Diff2.diff2,
+  'SearchExtensions.disable': WrapCommand.wrapCommand(HandleDisable.handleDisable),
+  'SearchExtensions.disableWorkspace': WrapCommand.wrapCommand(HandleDisableWorkspace.handleDisableWorkspace),
   'SearchExtensions.dispose': Dispose.dispose,
+  'SearchExtensions.enable': WrapCommand.wrapCommand(HandleEnable.handleEnable),
+  'SearchExtensions.enableWorkspace': WrapCommand.wrapCommand(HandleEnableWorkspace.handleEnableWorkspace),
   'SearchExtensions.focusFirst': WrapCommand.wrapCommand(FocusFirst.focusFirst),
   'SearchExtensions.focusIndex': WrapCommand.wrapCommand(FocusIndex.focusIndex),
   'SearchExtensions.focusLast': WrapCommand.wrapCommand(FocusLast.focusLast),
@@ -80,9 +87,12 @@ export const commandMap = {
   'SearchExtensions.handleClickAt': WrapCommand.wrapCommand(HandleClickAt.handleClickAt),
   'SearchExtensions.handleClickCurrent': WrapCommand.wrapCommand(HandleClickCurrent.handleClickCurrent),
   'SearchExtensions.handleClickCurrentButKeepFocus': WrapCommand.wrapCommand(HandleClickCurrentButKeepFocus.handleClickCurrentButKeepFocus),
+  'SearchExtensions.handleClickFilter': WrapCommand.wrapCommand(HandleClickFilter.handleClickFilter),
   'SearchExtensions.handleContextMenu': WrapCommand.wrapCommand(HandleContextMenu.handleContextMenu),
   'SearchExtensions.handleDisable': WrapCommand.wrapCommand(HandleDisable.handleDisable),
+  'SearchExtensions.handleDisableWorkspace': WrapCommand.wrapCommand(HandleDisableWorkspace.handleDisableWorkspace),
   'SearchExtensions.handleEnable': WrapCommand.wrapCommand(HandleEnable.handleEnable),
+  'SearchExtensions.handleEnableWorkspace': WrapCommand.wrapCommand(HandleEnableWorkspace.handleEnableWorkspace),
   'SearchExtensions.handleFocus': WrapCommand.wrapCommand(HandleFocus.handleFocus),
   'SearchExtensions.handleHeaderContextMenu': WrapCommand.wrapCommand(handleHeaderContextMenu),
   'SearchExtensions.handleInput': WrapCommand.wrapCommand(HandleInput.handleInput),
