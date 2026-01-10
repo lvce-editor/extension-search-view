@@ -49,10 +49,7 @@ test('resize calculates scroll bar when content exceeds viewport', async () => {
 
   const result = await resize(state, dimensions)
 
-  const contentHeight = 20 * 20 // 400
-  const listHeight = Math.min(400, 200) // 200
   const finalDeltaY = Math.max(400 - 200, 0) // 200
-  const numberOfVisible = Math.ceil(200 / 20) + 1 // 11
   const maxLineY = Math.min(11, 20) // 11
   const scrollBarHeight = Math.max(Math.round(200 ** 2 / 400), 20) // max(100, 20) = 100
   const scrollBarY = (0 / 200) * (200 - 40 - 100) // 0
@@ -82,10 +79,7 @@ test('resize handles empty items list', async () => {
 
   const result = await resize(state, dimensions)
 
-  const listHeight = 20 // itemHeight when itemsLength === 0
-  const contentHeight = 0
   const finalDeltaY = Math.max(0 - 200, 0) // 0
-  const numberOfVisible = Math.ceil(20 / 20) + 1 // 2
   const maxLineY = Math.min(2, 0) // 0
   const scrollBarHeight = 0 // size >= contentSize
   const scrollBarY = 0 // finalDeltaY === 0
@@ -114,7 +108,6 @@ test('resize uses minimum slider size when calculated size is too small', async 
 
   const result = await resize(state, dimensions)
 
-  const contentHeight = 100 * 20 // 2000
   const calculatedSize = Math.round(200 ** 2 / 2000) // 20
   const scrollBarHeight = Math.max(calculatedSize, 30) // 30
 
@@ -139,9 +132,7 @@ test('resize calculates scrollBarY correctly', async () => {
 
   const result = await resize(state, dimensions)
 
-  const contentHeight = 20 * 20 // 400
   const finalDeltaY = Math.max(400 - 200, 0) // 200
-  const scrollBarHeight = Math.max(Math.round(200 ** 2 / 400), 20) // 100
   // resize always uses 0 for deltaY when calculating scrollBarY
   const scrollBarY = (0 / 200) * (200 - 40 - 100) // 0
 
@@ -197,10 +188,8 @@ test('resize handles very large item lists', async () => {
 
   const result = await resize(state, dimensions)
 
-  const contentHeight = 1000 * 20 // 20000
   const finalDeltaY = Math.max(20_000 - 200, 0) // 19800
   const scrollBarHeight = Math.max(Math.round(200 ** 2 / 20_000), 20) // max(2, 20) = 20
-  const numberOfVisible = Math.ceil(200 / 20) + 1 // 11
   const maxLineY = Math.min(11, 1000) // 11
 
   expect(result.finalDeltaY).toBe(finalDeltaY)
@@ -226,10 +215,7 @@ test('resize handles small viewport', async () => {
 
   const result = await resize(state, dimensions)
 
-  const contentHeight = 10 * 20 // 200
-  const listHeight = Math.min(200, 60) // 60
   const finalDeltaY = Math.max(200 - 60, 0) // 140
-  const numberOfVisible = Math.ceil(60 / 20) + 1 // 4
   const maxLineY = Math.min(4, 10) // 4
   const scrollBarHeight = Math.max(Math.round(60 ** 2 / 200), 20) // max(18, 20) = 20
   const scrollBarY = (0 / 140) * (60 - 40 - 20) // 0
