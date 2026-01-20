@@ -17,7 +17,7 @@ export const handleChange = async (state: State, update: Partial<State>): Promis
     ...update,
   }
   try {
-    const value = fullNewState.searchValue
+    const value = fullNewState.searchValue.trim()
     const { inputSource } = fullNewState
     const hasValue = value.length > 0
     const inputActions = GetInputActions.getInputActions(hasValue)
