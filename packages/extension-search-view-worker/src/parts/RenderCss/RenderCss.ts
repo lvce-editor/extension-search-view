@@ -1,9 +1,6 @@
 import { ViewletCommand } from '@lvce-editor/constants'
 import type { State } from '../State/State.ts'
-
-const getCss = (state: State): string => {
-  return ''
-}
+import { getCss } from '../GetCss/GetCss.ts'
 
 export const renderCss = (newState: State): readonly any[] => {
   const { uid } = newState
