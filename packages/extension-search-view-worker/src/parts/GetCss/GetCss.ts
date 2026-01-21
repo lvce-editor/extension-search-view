@@ -1,9 +1,14 @@
 import type { State } from '../State/State.ts'
 
 export const getCss = (state: State): string => {
-  const { scrollBarHeight, scrollBarY } = state
+  const { deltaY, itemHeight, scrollBarHeight, scrollBarY } = state
+  const relative = deltaY % itemHeight
   return `.Extensions .ScrollBarThumb {
   height: ${scrollBarHeight}px;
   top: ${scrollBarY}px;
+}
+
+.Extensions {
+  top: -${relative}px;
 }`
 }
