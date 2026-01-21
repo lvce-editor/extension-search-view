@@ -41,7 +41,7 @@ test('sets main list item div with correct properties when focused', () => {
     className: MergeClassNames.mergeClassNames(ClassNames.ExtensionListItem, ClassNames.ExtensionActive),
     id: 'ExtensionActive',
     role: AriaRoles.ListItem,
-    top: 100,
+    // top: 100,
     type: VirtualDomElements.Div,
   })
 })
@@ -58,7 +58,7 @@ test('sets main list item div with correct properties when not focused', () => {
     className: ClassNames.ExtensionListItem,
     id: undefined,
     role: AriaRoles.ListItem,
-    top: 200,
+    // top: 200,
     type: VirtualDomElements.Div,
   })
 })
@@ -178,7 +178,7 @@ test('handles all properties correctly together', () => {
 
   expect(result[0].ariaPosInSet).toBe(7)
   expect(result[0].ariaSetSize).toBe(25)
-  expect(result[0].top).toBe(350)
+  // expect(result[0].top).toBe(350)
   expect(result[0].id).toBe('ExtensionActive')
   expect(result[0].className).toBe(MergeClassNames.mergeClassNames(ClassNames.ExtensionListItem, ClassNames.ExtensionActive))
   expect(result[1].src).toBe('icon.png')

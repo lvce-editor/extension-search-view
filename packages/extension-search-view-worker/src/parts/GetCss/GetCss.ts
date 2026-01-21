@@ -8,7 +8,7 @@ export const getCss = (state: State): string => {
   top: ${scrollBarY}px;
 }
 
-.Extensions {
+.Extensions .ListItems {
   top: -${relative}px;
 
 .ExtensionListItem {

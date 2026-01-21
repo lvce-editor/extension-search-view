@@ -51,7 +51,7 @@ const getId = (focused: boolean): string | undefined => {
 }
 
 export const getExtensionListItemVirtualDom = (extension: VisibleItem): readonly VirtualDomNode[] => {
-  const { description, focused, icon, name, posInSet, publisher, setSize, top } = extension
+  const { description, focused, icon, name, posInSet, publisher, setSize } = extension
   const dom: readonly VirtualDomNode[] = [
     {
       ariaPosInSet: posInSet,
@@ -61,7 +61,6 @@ export const getExtensionListItemVirtualDom = (extension: VisibleItem): readonly
       className: getClassName(focused),
       id: getId(focused),
       role: AriaRoles.ListItem,
-      top,
       type: VirtualDomElements.Div,
     },
     {
