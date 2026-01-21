@@ -5,4 +5,4 @@ import * as DiffType from '../DiffType/DiffType.ts'
 
 export const modules = [DiffItems.isEqual, DiffFocus.isEqual, DiffSearchValue.isEqual, DiffFocus.isEqual]
 
-export const numbers = [DiffType.RenderItems, DiffType.RenderFocus, DiffType.RenderSearchValue, DiffType.RenderFocusContext]
+export const numbers = [DiffType.RenderIncremental, DiffType.RenderFocus, DiffType.RenderSearchValue, DiffType.RenderFocusContext]
