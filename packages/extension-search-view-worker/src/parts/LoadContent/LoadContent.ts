@@ -18,6 +18,7 @@ export const loadContent = async (state: State, savedState: unknown): Promise<St
       ...state,
       allExtensions: normalized,
       deltaY,
+      initial: false,
       inputSource: InputSource.Script,
       size,
     },
