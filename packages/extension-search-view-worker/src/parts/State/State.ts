@@ -12,6 +12,7 @@ export interface State {
   readonly handleOffset: number
   readonly headerHeight: number
   readonly height: number
+  readonly initial: boolean
   readonly inputActions: readonly InputAction[]
   readonly inputSource: number
   readonly itemHeight: number
