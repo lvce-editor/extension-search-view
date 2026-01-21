@@ -1,5 +1,6 @@
 import type { Renderer } from '../Renderer/Renderer.ts'
 import * as DiffType from '../DiffType/DiffType.ts'
+import { renderCss } from '../RenderCss/RenderCss.ts'
 import { renderFocus } from '../RenderFocus/RenderFocus.ts'
 import { renderFocusContext } from '../RenderFocusContext/RenderFocusContext.ts'
 import * as RenderHeader from '../RenderHeader/RenderHeader.ts'
@@ -11,6 +12,8 @@ import * as RenderSearchValue from '../RenderSearchValue/RenderSearchValue.ts'
 
 export const getRenderer = (diffType: number): Renderer => {
   switch (diffType) {
+    case DiffType.RenderCss:
+      return renderCss
     case DiffType.RenderFocus:
       return renderFocus
     case DiffType.RenderFocusContext:
