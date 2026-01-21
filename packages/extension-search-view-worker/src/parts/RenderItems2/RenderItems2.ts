@@ -5,7 +5,7 @@ import { getExtensionsViewVirtualDom } from '../GetExtensionsViewVirtualDom/GetE
 export const renderItems2 = (newState: State): readonly any[] => {
   const { initial, uid } = newState
   if (initial) {
-    return [ViewletCommand.SetDom2, []]
+    return [ViewletCommand.SetDom2, uid, []]
   }
   const dom = getExtensionsViewVirtualDom(newState)
   return [ViewletCommand.SetDom2, uid, dom]
