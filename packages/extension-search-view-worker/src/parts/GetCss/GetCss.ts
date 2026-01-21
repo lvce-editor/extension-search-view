@@ -10,5 +10,9 @@ export const getCss = (state: State): string => {
 
 .Extensions {
   top: -${relative}px;
-}`
+
+.ExtensionListItem {
+  position: relative !important;
+}
+`
 }
