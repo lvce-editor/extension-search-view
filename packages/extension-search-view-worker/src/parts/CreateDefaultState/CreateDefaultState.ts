@@ -12,6 +12,7 @@ export const createDefaultState = (): State => {
     handleOffset: 0,
     headerHeight: 0,
     height: 100,
+    initial: false,
     inputActions: [],
     inputSource: 0,
     itemHeight: 20,

@@ -13,6 +13,7 @@ export const create = (id: number, uri: string, x: number, y: number, width: num
     handleOffset: 0,
     headerHeight: 41,
     height,
+    initial: true,
     inputActions: [],
     inputSource: 0,
     itemHeight: 72,
