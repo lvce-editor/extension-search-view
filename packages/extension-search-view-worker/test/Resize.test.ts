@@ -317,8 +317,8 @@ test('resize handles scrolled position with partial scroll', async () => {
   // maxLineY should be min(minLineY + numberOfVisible, total) = min(7 + 11, 30) = 18
   const minLineY = Math.floor(150 / 20) // 7
   const maxLineY = Math.min(minLineY + 11, 30) // 18
-  const scrollBarHeight = Math.max(Math.round(200 ** 2 / 600), 20) // max(66, 20) = 66
-  const scrollBarY = (150 / 400) * (200 - 40 - 66) // 34.875
+  const scrollBarHeight = Math.max(Math.round(200 ** 2 / 600), 20) // max(67, 20) = 67
+  const scrollBarY = (150 / 400) * (200 - 40 - 67) // 34.875
 
   expect(result.finalDeltaY).toBe(finalDeltaY)
   expect(result.maxLineY).toBe(maxLineY)
