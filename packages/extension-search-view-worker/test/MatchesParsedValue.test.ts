@@ -10,6 +10,7 @@ const createExtension = (name: string, id: string): ExtensionListItem => ({
   id,
   name,
   publisher: 'test-publisher',
+  updatedDate: 0,
   uri: 'test-uri',
 })
 
