@@ -26,6 +26,8 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   await expect(thirdItem).toBeVisible()
 
   // Verify that the list has multiple items (extensions are sorted)
+  // @ts-ignore
   const itemCount = await listItems.locator('.ExtensionListItem').count()
+  // @ts-ignore
   expect(itemCount).toBeGreaterThan(0)
 }
