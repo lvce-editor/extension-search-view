@@ -57,6 +57,8 @@ test('handleClickAt calculates correct index from coordinates', async () => {
     id: 'extension-1',
     name: 'Extension 1',
     publisher: 'publisher-1',
+    size: 1000,
+    updatedDate: 1000000,
     uri: 'uri-1',
   }
 
@@ -67,6 +69,8 @@ test('handleClickAt calculates correct index from coordinates', async () => {
     id: 'extension-2',
     name: 'Extension 2',
     publisher: 'publisher-2',
+    size: 2000,
+    updatedDate: 2000000,
     uri: 'uri-2',
   }
 
