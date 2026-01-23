@@ -13,6 +13,6 @@ export const test: Test = async ({ Command, expect, ExtensionSearch, Locator }) 
   await Command.execute('Extensions.clearSearchResults')
 
   // assert
-  const listItems = Locator('.Extensions .ListItems')
-  await expect(listItems).toHaveCount(0)
+  const input = Locator('.Extensions .MultilineInputBox')
+  await expect(input).toHaveValue('')
 }
