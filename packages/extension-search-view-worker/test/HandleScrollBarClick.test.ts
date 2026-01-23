@@ -46,7 +46,6 @@ test('should jump to top when clicking above scrollbar', () => {
 })
 
 test('should jump to bottom when clicking below scrollbar', () => {
-  let state = createDefaultState()
   const oldState: State = {
     ...createDefaultState(),
     deltaY: 100,
@@ -58,7 +57,7 @@ test('should jump to bottom when clicking below scrollbar', () => {
     scrollBarHeight: 40,
     y: 100,
   }
-  state = setDeltaY(oldState, 100)
+  const state = setDeltaY(oldState, 100)
 
   const contentHeight = 400 - 50
   const eventY = 100 + 50 + contentHeight - 10
@@ -70,7 +69,6 @@ test('should jump to bottom when clicking below scrollbar', () => {
 })
 
 test('should calculate appropriate position when clicking in middle area', () => {
-  let state = createDefaultState()
   const oldState: State = {
     ...createDefaultState(),
     deltaY: 100,
@@ -82,7 +80,7 @@ test('should calculate appropriate position when clicking in middle area', () =>
     scrollBarHeight: 40,
     y: 100,
   }
-  state = setDeltaY(oldState, 100)
+  const state = setDeltaY(oldState, 100)
 
   const contentHeight = 400 - 50
   const relativeY = 100
