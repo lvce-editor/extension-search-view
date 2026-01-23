@@ -20,7 +20,7 @@ test('copyExtensionInfo returns state unchanged when no focused item', async () 
     focusedIndex: -1,
     items: [],
   }
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ClipBoard.writeText'() {},
   })
   const result = await CopyExtensionInfo.copyExtensionInfo(state)
@@ -34,7 +34,7 @@ test('copyExtensionInfo copies extension info text to clipboard when focused ite
     focusedIndex: 0,
     items: [mockItem],
   }
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ClipBoard.writeText'() {},
   })
   const result = await CopyExtensionInfo.copyExtensionInfo(state)
@@ -62,7 +62,7 @@ test('copyExtensionInfo handles item with empty strings', async () => {
     focusedIndex: 0,
     items: [emptyItem],
   }
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ClipBoard.writeText'() {},
   })
   const result = await CopyExtensionInfo.copyExtensionInfo(state)

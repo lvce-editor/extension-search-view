@@ -7,7 +7,7 @@ interface MessagePort {
 }
 
 test('sendMessagePortToExtensionHostWorker calls RPC with correct parameters', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'SendMessagePortToExtensionHostWorker.sendMessagePortToExtensionHostWorker'() {},
   })
   const port: MessagePort = { postMessage: (): void => {} }

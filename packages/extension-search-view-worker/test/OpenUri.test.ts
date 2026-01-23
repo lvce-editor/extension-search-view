@@ -4,7 +4,7 @@ import * as OpenUri from '../src/parts/OpenUri/OpenUri.ts'
 
 test('openUri calls Main.openUri with correct parameters', async () => {
   const uri = 'https://example.com'
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'Main.openUri'() {},
   })
   await OpenUri.openUri(uri)

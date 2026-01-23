@@ -24,7 +24,7 @@ test('handleClick opens URI and updates state with focus', async () => {
     minLineY: 0,
   }
 
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'Main.openUri'() {},
   })
 
@@ -63,7 +63,7 @@ test('handleClick calculates actualIndex correctly with minLineY', async () => {
     minLineY: 1,
   }
 
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'Main.openUri'() {},
   })
 
@@ -92,7 +92,7 @@ test('handleClick returns state with focus List and focusedIndex -1 when actualI
     minLineY: 0,
   }
 
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'Main.openUri'() {},
   })
 
@@ -121,7 +121,7 @@ test('handleClick returns state with focus List and focusedIndex -1 when actualI
     minLineY: 0,
   }
 
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'Main.openUri'() {},
   })
 

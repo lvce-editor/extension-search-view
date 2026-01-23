@@ -12,7 +12,7 @@ test('returns state unchanged', async () => {
     x: 100,
     y: 200,
   }
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ContextMenu.show2'() {},
   })
   const result = await handleClickFilter(state)
@@ -30,7 +30,7 @@ test('returns state with modified searchValue unchanged', async () => {
     x: 50,
     y: 75,
   }
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ContextMenu.show2'() {},
   })
   const result = await handleClickFilter(state)
@@ -58,7 +58,7 @@ test('returns state with items unchanged', async () => {
     x: 0,
     y: 0,
   }
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ContextMenu.show2'() {},
   })
   const result = await handleClickFilter(state)

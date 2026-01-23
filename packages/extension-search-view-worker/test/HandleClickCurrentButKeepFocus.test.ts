@@ -23,7 +23,7 @@ test('handleClickCurrentButKeepFocus opens URI for focused extension', async () 
     minLineY: 0,
   }
 
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'Main.openUri'() {},
   })
 
@@ -62,7 +62,7 @@ test('handleClickCurrentButKeepFocus uses focusedIndex correctly', async () => {
     minLineY: 0,
   }
 
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'Main.openUri'() {},
   })
 

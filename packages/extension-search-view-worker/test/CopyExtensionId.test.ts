@@ -5,7 +5,7 @@ import { copyExtensionId } from '../src/parts/CopyExtensionId/CopyExtensionId.ts
 import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 
 test('copyExtensionId copies extension id to clipboard when item is focused', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ClipBoard.writeText'() {},
   })
   const state = createDefaultState()
@@ -29,7 +29,7 @@ test('copyExtensionId copies extension id to clipboard when item is focused', as
 })
 
 test('copyExtensionId returns state unchanged when no item is focused', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ClipBoard.writeText'() {},
   })
   const state = createDefaultState()
@@ -43,7 +43,7 @@ test('copyExtensionId returns state unchanged when no item is focused', async ()
 })
 
 test('copyExtensionId returns state unchanged when items array is empty', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ClipBoard.writeText'() {},
   })
   const state = createDefaultState()
