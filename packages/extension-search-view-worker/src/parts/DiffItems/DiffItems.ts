@@ -5,12 +5,10 @@ export const isEqual = (oldState: State, newState: State): boolean => {
     oldState.items === newState.items &&
     oldState.minLineY === newState.minLineY &&
     oldState.maxLineY === newState.maxLineY &&
-    oldState.deltaY === newState.deltaY &&
     oldState.focusedIndex === newState.focusedIndex &&
     oldState.message === newState.message &&
     oldState.focus === newState.focus &&
     oldState.inputActions === newState.inputActions &&
-    oldState.placeholder === newState.placeholder &&
-    oldState.scrollBarHeight === newState.scrollBarHeight
+    oldState.placeholder === newState.placeholder
   )
 }
