@@ -35,7 +35,7 @@ test('handleClickAt handles left click and opens URI', async () => {
     y: 100,
   }
 
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'Main.openUri'() {},
   })
 
@@ -80,7 +80,7 @@ test('handleClickAt calculates correct index from coordinates', async () => {
     y: 55,
   }
 
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'Main.openUri'() {},
   })
 

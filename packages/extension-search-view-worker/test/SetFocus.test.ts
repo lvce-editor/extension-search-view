@@ -3,7 +3,7 @@ import { RendererWorker } from '@lvce-editor/rpc-registry'
 import { setFocus } from '../src/parts/SetFocus/SetFocus.ts'
 
 test('setFocus calls RPC with correct parameters', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'Focus.setFocus'() {},
   })
   const focusId = 123

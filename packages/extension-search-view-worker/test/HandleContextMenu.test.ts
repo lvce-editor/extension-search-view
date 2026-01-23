@@ -16,7 +16,7 @@ test('handleContextMenu shows context menu for valid index', async () => {
     x: 50,
     y: 100,
   }
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ContextMenu.show2'() {},
   })
   const result = await HandleContextMenu.handleContextMenu(state, 0, 100, 120)
@@ -35,7 +35,7 @@ test('handleContextMenu returns state unchanged for negative index', async () =>
     x: 50,
     y: 100,
   }
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ContextMenu.show2'() {},
   })
   const result = await HandleContextMenu.handleContextMenu(state, 0, 100, 50)
@@ -54,7 +54,7 @@ test('handleContextMenu returns state unchanged for index greater than items len
     x: 50,
     y: 100,
   }
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ContextMenu.show2'() {},
   })
   const result = await HandleContextMenu.handleContextMenu(state, 0, 100, 300)
@@ -73,7 +73,7 @@ test('handleContextMenu returns state unchanged for index equal to items length'
     x: 50,
     y: 100,
   }
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ContextMenu.show2'() {},
   })
   const result = await HandleContextMenu.handleContextMenu(state, 0, 100, 200)
@@ -92,7 +92,7 @@ test('handleContextMenu shows context menu for index 0', async () => {
     x: 0,
     y: 0,
   }
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ContextMenu.show2'() {},
   })
   const result = await HandleContextMenu.handleContextMenu(state, 0, 0, 15)
@@ -111,7 +111,7 @@ test('handleContextMenu shows context menu with scrolled state', async () => {
     x: 100,
     y: 50,
   }
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ContextMenu.show2'() {},
   })
   const result = await HandleContextMenu.handleContextMenu(state, 0, 150, 100)
