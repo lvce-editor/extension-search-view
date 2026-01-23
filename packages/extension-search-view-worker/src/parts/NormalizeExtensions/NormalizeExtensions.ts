@@ -1,7 +1,7 @@
 import type { ExtensionListItem } from '../ExtensionListItem/ExtensionListItem.ts'
 import * as NormalizeExtensions from '../NormalizeExtension/NormalizeExtension.ts'
 
-export const normalizeExtension = (extensions: readonly any[], platform: number, assetDir: string): readonly ExtensionListItem[] => {
+export const normalizeExtensions = (extensions: readonly any[], platform: number, assetDir: string): readonly ExtensionListItem[] => {
   const normalized = []
   for (const extension of extensions) {
     normalized.push(NormalizeExtensions.normalizeExtension(extension, platform, assetDir))
