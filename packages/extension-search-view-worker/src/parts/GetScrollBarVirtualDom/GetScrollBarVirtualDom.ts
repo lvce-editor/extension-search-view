@@ -3,7 +3,6 @@ import { VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
-import * as Px from '../Px/Px.ts'
 
 export const getScrollBarVirtualDom = (scrollBarHeight: number, scrollBarTop: number): readonly VirtualDomNode[] => {
   const shouldShowScrollbar = scrollBarHeight > 0
@@ -11,8 +10,8 @@ export const getScrollBarVirtualDom = (scrollBarHeight: number, scrollBarTop: nu
     return []
   }
   // TODO move the dynamic css into a css adopted stylesheet
-  const heightString = Px.px(scrollBarHeight)
-  const translateString = Px.position(0, scrollBarTop)
+  // const heightString = Px.px(scrollBarHeight)
+  // const translateString = Px.position(0, scrollBarTop)
   return [
     {
       childCount: 1,
@@ -23,8 +22,8 @@ export const getScrollBarVirtualDom = (scrollBarHeight: number, scrollBarTop: nu
     {
       childCount: 0,
       className: ClassNames.ScrollBarThumb,
-      height: heightString,
-      translate: translateString,
+      // height: heightString,
+      // translate: translateString,
       type: VirtualDomElements.Div,
     },
   ]
