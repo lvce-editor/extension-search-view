@@ -36,7 +36,7 @@ test('returns state with modified searchValue unchanged', async () => {
   const result = await handleClickFilter(state)
   expect(result).toBe(state)
   expect(mockRpc.invocations).toEqual([
-    ['ContextMenu.show2', 456, MenuEntryId.ExtensionSearchFilter, 130, 175, { menuId: MenuEntryId.ExtensionSearchFilter }],
+    ['ContextMenu.show2', 456, MenuEntryId.ExtensionSearchFilter, 110, 445, { menuId: MenuEntryId.ExtensionSearchFilter }],
   ])
 })
 
