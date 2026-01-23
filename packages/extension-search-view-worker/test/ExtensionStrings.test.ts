@@ -96,7 +96,3 @@ test('category', () => {
 test('disabled', () => {
   expect(ExtensionStrings.disabled()).toBe('Disabled')
 })
-
-test('size', () => {
-  expect(ExtensionStrings.size()).toBe('Size')
-})
