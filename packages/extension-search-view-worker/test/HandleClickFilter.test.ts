@@ -51,6 +51,8 @@ test('returns state with items unchanged', async () => {
         id: 'test-extension',
         name: 'Test Extension',
         publisher: 'test-publisher',
+        size: 1000,
+        updatedDate: 1000000,
         uri: 'test-uri',
       },
     ],

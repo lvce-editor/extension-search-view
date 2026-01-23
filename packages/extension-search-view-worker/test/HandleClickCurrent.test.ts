@@ -44,6 +44,7 @@ test('handleClickCurrent uses focusedIndex correctly', async () => {
     id: 'extension-1',
     name: 'Extension 1',
     publisher: 'publisher-1',
+    size: 1000,
     updatedDate: 1000,
     uri: 'uri-1',
   }
@@ -55,6 +56,7 @@ test('handleClickCurrent uses focusedIndex correctly', async () => {
     id: 'extension-2',
     name: 'Extension 2',
     publisher: 'publisher-2',
+    size: 2000,
     updatedDate: 2000,
     uri: 'uri-2',
   }
