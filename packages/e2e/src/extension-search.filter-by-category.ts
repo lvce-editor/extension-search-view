@@ -2,14 +2,14 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const skip = 1
 
-export const test: Test = async ({ Command, expect, Locator, SideBar }) => {
+export const test: Test = async ({ expect, ExtensionSearch, Locator, SideBar }) => {
   // arrange
   await SideBar.open('Extensions')
   const extensionsView = Locator('.Extensions')
   await expect(extensionsView).toBeVisible()
 
   // act
-  await Command.execute('Extensions.handleInput', '@category:"themes"', 2)
+  await ExtensionSearch.handleInput('@category:"themes"')
 
   // assert
   const listItems = Locator('.Extensions .ListItems')
