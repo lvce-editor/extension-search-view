@@ -15,7 +15,7 @@ test('handleClick opens URI and updates state with focus', async () => {
     name: 'Test Extension',
     publisher: 'test-publisher',
     size: 1000,
-    updatedDate: 1000000,
+    updatedDate: 1_000_000,
     uri: 'test-uri',
   }
 
@@ -46,7 +46,7 @@ test('handleClick calculates actualIndex correctly with minLineY', async () => {
     name: 'Extension 1',
     publisher: 'publisher-1',
     size: 1000,
-    updatedDate: 1000000,
+    updatedDate: 1_000_000,
     uri: 'uri-1',
   }
 
@@ -58,7 +58,7 @@ test('handleClick calculates actualIndex correctly with minLineY', async () => {
     name: 'Extension 2',
     publisher: 'publisher-2',
     size: 2000,
-    updatedDate: 2000000,
+    updatedDate: 2_000_000,
     uri: 'uri-2',
   }
 
@@ -89,7 +89,7 @@ test('handleClick returns state with focus List and focusedIndex -1 when actualI
     name: 'Test Extension',
     publisher: 'test-publisher',
     size: 1000,
-    updatedDate: 1000000,
+    updatedDate: 1_000_000,
     uri: 'test-uri',
   }
 

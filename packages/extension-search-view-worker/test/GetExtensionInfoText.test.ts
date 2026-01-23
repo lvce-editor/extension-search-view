@@ -77,7 +77,7 @@ test('should maintain correct order of fields', () => {
     name: 'Extension A',
     publisher: 'Publisher A',
     size: 1000,
-    updatedDate: 1000000,
+    updatedDate: 1_000_000,
     uri: 'https://example.com',
   }
   const result = getExtensionInfoText(extension)
