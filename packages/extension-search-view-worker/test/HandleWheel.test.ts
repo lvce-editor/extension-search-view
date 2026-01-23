@@ -4,15 +4,16 @@ import { handleWheel } from '../src/parts/HandleWheel/HandleWheel.ts'
 import { setDeltaY } from '../src/parts/SetDeltaY/SetDeltaY.ts'
 
 test('handleWheel should update deltaY', () => {
-  let state = createDefaultState()
-  state = {
-    ...state,
-    finalDeltaY: 1000,
-    height: 400,
-    itemHeight: 40,
-    items: Array(25).fill(null),
-  }
-  state = setDeltaY(state, 10)
+  const state = setDeltaY(
+    {
+      ...createDefaultState(),
+      finalDeltaY: 1000,
+      height: 400,
+      itemHeight: 40,
+      items: Array(25).fill(null),
+    },
+    10,
+  )
   const deltaMode = 0
   const deltaY = 5
 
@@ -21,15 +22,16 @@ test('handleWheel should update deltaY', () => {
 })
 
 test('handleWheel should handle negative deltaY', () => {
-  let state = createDefaultState()
-  state = {
-    ...state,
-    finalDeltaY: 1000,
-    height: 400,
-    itemHeight: 40,
-    items: Array(25).fill(null),
-  }
-  state = setDeltaY(state, 10)
+  const state = setDeltaY(
+    {
+      ...createDefaultState(),
+      finalDeltaY: 1000,
+      height: 400,
+      itemHeight: 40,
+      items: Array(25).fill(null),
+    },
+    10,
+  )
   const deltaMode = 0
   const deltaY = -3
 
