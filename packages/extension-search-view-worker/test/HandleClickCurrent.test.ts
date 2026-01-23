@@ -13,6 +13,7 @@ test('handleClickCurrent opens URI for focused extension', async () => {
     id: 'test-extension-id',
     name: 'Test Extension',
     publisher: 'test-publisher',
+    size: 1000,
     updatedDate: 1000,
     uri: 'test-uri',
   }
