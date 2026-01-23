@@ -10,6 +10,8 @@ test('should return formatted info text with all fields', () => {
     id: 'test.extension',
     name: 'Test Extension',
     publisher: 'Test Publisher',
+    size: 1000,
+    updatedDate: 1000000,
     uri: 'https://example.com',
   }
   const result = getExtensionInfoText(extension)
@@ -31,6 +33,8 @@ test('should handle empty strings', () => {
     id: '',
     name: '',
     publisher: '',
+    size: 0,
+    updatedDate: 0,
     uri: '',
   }
   const result = getExtensionInfoText(extension)
@@ -52,6 +56,8 @@ test('should trim trailing whitespace from formatted rows', () => {
     id: '  test.extension  ',
     name: '  Test Extension  ',
     publisher: '  Test Publisher  ',
+    size: 1000,
+    updatedDate: 1000000,
     uri: 'https://example.com',
   }
   const result = getExtensionInfoText(extension)
