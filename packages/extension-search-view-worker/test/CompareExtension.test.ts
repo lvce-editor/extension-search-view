@@ -259,6 +259,7 @@ test('compareSize should sort extensions by size in descending order', () => {
     name: 'name-a',
     publisher: 'publisher-a',
     size: 1000,
+    updatedDate: 0,
     uri: 'uri-a',
   }
   const extensionB: ExtensionListItem = {
@@ -269,6 +270,7 @@ test('compareSize should sort extensions by size in descending order', () => {
     name: 'name-b',
     publisher: 'publisher-b',
     size: 5000,
+    updatedDate: 0,
     uri: 'uri-b',
   }
   const extensionC: ExtensionListItem = {
@@ -279,6 +281,7 @@ test('compareSize should sort extensions by size in descending order', () => {
     name: 'name-c',
     publisher: 'publisher-c',
     size: 2000,
+    updatedDate: 0,
     uri: 'uri-c',
   }
 
@@ -302,6 +305,7 @@ test('compareSize should return 0 when sizes are equal', () => {
     name: 'name-a',
     publisher: 'publisher-a',
     size: 1000,
+    updatedDate: 0,
     uri: 'uri-a',
   }
   const extensionB: ExtensionListItem = {
@@ -312,6 +316,7 @@ test('compareSize should return 0 when sizes are equal', () => {
     name: 'name-b',
     publisher: 'publisher-b',
     size: 1000,
+    updatedDate: 0,
     uri: 'uri-b',
   }
 
