@@ -2,7 +2,7 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const skip = 1
 
-export const test: Test = async ({ Command, expect, ExtensionSearch, Locator }) => {
+export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   // arrange
   await ExtensionSearch.open()
   const extensionsView = Locator('.Extensions')
@@ -10,7 +10,7 @@ export const test: Test = async ({ Command, expect, ExtensionSearch, Locator }) 
   await ExtensionSearch.handleInput('atom')
 
   // act
-  await Command.execute('Extensions.handleClick', -1)
+  await ExtensionSearch.handleClick(-1)
 
   // assert
   const listItems = Locator('.ListItems')
