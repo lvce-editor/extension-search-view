@@ -9,6 +9,8 @@ const mockItem: ExtensionListItem = {
   id: 'test-extension',
   name: 'Test Extension',
   publisher: 'Test Publisher',
+  size: 1000,
+  updatedDate: 1000000,
   uri: 'https://example.com',
 }
 
