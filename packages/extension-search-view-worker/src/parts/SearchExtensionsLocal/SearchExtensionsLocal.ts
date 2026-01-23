@@ -10,6 +10,6 @@ export const getExtensions = async (extensions: readonly ExtensionListItem[], pa
       filteredExtensions.push(extension)
     }
   }
-  const sortedExtensions = SortExtensions.sortExtensions(filteredExtensions)
+  const sortedExtensions = SortExtensions.sortExtensions(filteredExtensions, parsedValue)
   return sortedExtensions
 }

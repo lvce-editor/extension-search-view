@@ -12,7 +12,7 @@ export const loadContent = async (state: State, savedState: unknown): Promise<St
   // TODO just get local extensions on demand (not when query string is already different)
   const allExtensions = await GetAllExtensions.getAllExtensions(platform)
   const size = GetViewletSize.getViewletSize(width)
-  const normalized = NormalizeExtensions.normalizeExtension(allExtensions, platform, assetDir)
+  const normalized = NormalizeExtensions.normalizeExtensions(allExtensions, platform, assetDir)
   const updatedState = await HandleInput.handleInput(
     {
       ...state,

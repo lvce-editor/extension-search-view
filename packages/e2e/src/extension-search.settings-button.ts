@@ -12,6 +12,7 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   // act
   const settingsButton = Locator('.ExtensionSettingsButton').first()
   await expect(settingsButton).toBeVisible()
+  // @ts-ignore
   await settingsButton.click()
 
   // assert

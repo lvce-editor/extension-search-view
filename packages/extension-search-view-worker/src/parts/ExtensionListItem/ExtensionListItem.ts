@@ -5,5 +5,7 @@ export interface ExtensionListItem {
   readonly id: string
   readonly name: string
   readonly publisher: string
+  readonly size: number
+  readonly updatedDate: number
   readonly uri: string
 }
