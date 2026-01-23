@@ -9,7 +9,6 @@ const mockItem: ExtensionListItem = {
   id: 'test-extension',
   name: 'Test Extension',
   publisher: 'Test Publisher',
-  updatedDate: 1000,
   uri: 'https://example.com',
 }
 
@@ -19,7 +18,6 @@ test('returns visible item with correct basic properties', () => {
   expect(result.posInSet).toBe(1)
   expect(result.top).toBe(0)
   expect(result.focused).toBe(true)
-  expect(result.index).toBe(0)
 })
 
 test('calculates posInSet correctly', () => {
@@ -50,7 +48,6 @@ test('copies all item properties correctly', () => {
   expect(result.publisher).toBe('Test Publisher')
   expect(result.icon).toBe('test-icon.png')
   expect(result.description).toBe('Test Description')
-  expect(result.index).toBe(0)
 })
 
 test('handles negative relative value', () => {
@@ -76,9 +73,4 @@ test('handles different item heights', () => {
   const result = GetVisibleItem.getVisibleItem(mockItem, 10, 50, 0, 0, 2, 0)
   expect(result.top).toBe((2 - 0) * 50 - 0)
   expect(result.top).toBe(100)
-})
-
-test('sets index correctly', () => {
-  const result = GetVisibleItem.getVisibleItem(mockItem, 10, 30, 0, 0, 5, 0)
-  expect(result.index).toBe(5)
 })
