@@ -17,7 +17,7 @@ test('copyExtensionId copies extension id to clipboard when item is focused', as
     name: 'Test Extension',
     publisher: 'test-publisher',
     size: 1000,
-    updatedDate: 1000000,
+    updatedDate: 1_000_000,
     uri: 'test-uri',
   }
   const stateWithItem = {
