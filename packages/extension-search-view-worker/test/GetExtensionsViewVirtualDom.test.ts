@@ -16,6 +16,8 @@ const createMockExtensionListItem = (overrides?: Partial<ExtensionListItem>): Ex
     id: 'test-extension',
     name: 'Test Extension',
     publisher: 'Test Publisher',
+    size: 1000,
+    updatedDate: 1000,
     uri: 'https://example.com',
     ...overrides,
   }

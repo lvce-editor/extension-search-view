@@ -2,8 +2,8 @@ import { test, expect } from '@jest/globals'
 import { normalizeExtension } from '../src/parts/NormalizeExtensions/NormalizeExtensions.ts'
 
 test('normalizeExtension should normalize multiple extensions', () => {
-  const extension1 = { description: 'Desc 1', id: '1', name: 'Extension 1', publisher: 'Publisher 1' }
-  const extension2 = { description: 'Desc 2', id: '2', name: 'Extension 2', publisher: 'Publisher 2' }
+  const extension1 = { description: 'Desc 1', id: '1', name: 'Extension 1', publisher: 'Publisher 1', size: 1000, updatedDate: 1000 }
+  const extension2 = { description: 'Desc 2', id: '2', name: 'Extension 2', publisher: 'Publisher 2', size: 2000, updatedDate: 2000 }
 
   const result = normalizeExtension([extension1, extension2], 1, '/assets')
 
@@ -15,6 +15,8 @@ test('normalizeExtension should normalize multiple extensions', () => {
     id: '1',
     name: 'Extension 1',
     publisher: '1',
+    size: 1000,
+    updatedDate: 1000,
     uri: '',
   })
   expect(result[1]).toEqual({
@@ -24,6 +26,8 @@ test('normalizeExtension should normalize multiple extensions', () => {
     id: '2',
     name: 'Extension 2',
     publisher: '2',
+    size: 2000,
+    updatedDate: 2000,
     uri: '',
   })
 })

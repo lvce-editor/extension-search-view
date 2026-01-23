@@ -17,6 +17,7 @@ export const getVisibleItem = (
     focused: i === focusedIndex,
     icon,
     id,
+    index: i,
     name,
     posInSet: i + 1,
     publisher,
