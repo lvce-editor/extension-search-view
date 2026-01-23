@@ -10,12 +10,9 @@ const createExtension = (name: string, id: string): ExtensionListItem => ({
   id,
   name,
   publisher: 'test-publisher',
-<<<<<<< HEAD
   updatedDate: 0,
-=======
   size: 1000,
   updatedDate: 1_000_000,
->>>>>>> origin/main
   uri: 'test-uri',
 })
 

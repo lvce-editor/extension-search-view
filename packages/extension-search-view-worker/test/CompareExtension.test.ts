@@ -10,13 +10,8 @@ test('compareName should compare extensions by name only', () => {
     id: 'id-z',
     name: 'a',
     publisher: 'publisher-a',
-<<<<<<< HEAD
-    size: 0,
-    updatedDate: 0,
-=======
     size: 1000,
     updatedDate: 1_000_000,
->>>>>>> origin/main
     uri: 'uri-a',
   }
   const extensionB: ExtensionListItem = {
@@ -26,13 +21,8 @@ test('compareName should compare extensions by name only', () => {
     id: 'id-a',
     name: 'b',
     publisher: 'publisher-b',
-<<<<<<< HEAD
-    size: 0,
-    updatedDate: 0,
-=======
     size: 2000,
     updatedDate: 2_000_000,
->>>>>>> origin/main
     uri: 'uri-b',
   }
   const extensionC: ExtensionListItem = {
@@ -42,13 +32,8 @@ test('compareName should compare extensions by name only', () => {
     id: 'id-y',
     name: 'c',
     publisher: 'publisher-c',
-<<<<<<< HEAD
-    size: 0,
-    updatedDate: 0,
-=======
     size: 3000,
     updatedDate: 3_000_000,
->>>>>>> origin/main
     uri: 'uri-c',
   }
 
@@ -66,13 +51,8 @@ test('compareName should ignore id when comparing', () => {
     id: 'id-z',
     name: 'same',
     publisher: 'publisher-a',
-<<<<<<< HEAD
-    size: 0,
-    updatedDate: 0,
-=======
     size: 1000,
     updatedDate: 1_000_000,
->>>>>>> origin/main
     uri: 'uri-a',
   }
   const extensionB: ExtensionListItem = {
@@ -82,13 +62,8 @@ test('compareName should ignore id when comparing', () => {
     id: 'id-a',
     name: 'same',
     publisher: 'publisher-b',
-<<<<<<< HEAD
-    size: 0,
-    updatedDate: 0,
-=======
     size: 2000,
     updatedDate: 2_000_000,
->>>>>>> origin/main
     uri: 'uri-b',
   }
 
@@ -104,13 +79,8 @@ test('compareId should compare extensions by id only', () => {
     id: 'a',
     name: 'name-z',
     publisher: 'publisher-a',
-<<<<<<< HEAD
-    size: 0,
-    updatedDate: 0,
-=======
     size: 1000,
     updatedDate: 1_000_000,
->>>>>>> origin/main
     uri: 'uri-a',
   }
   const extensionB: ExtensionListItem = {
@@ -120,13 +90,8 @@ test('compareId should compare extensions by id only', () => {
     id: 'b',
     name: 'name-a',
     publisher: 'publisher-b',
-<<<<<<< HEAD
-    size: 0,
-    updatedDate: 0,
-=======
     size: 2000,
     updatedDate: 2_000_000,
->>>>>>> origin/main
     uri: 'uri-b',
   }
   const extensionC: ExtensionListItem = {
@@ -136,13 +101,8 @@ test('compareId should compare extensions by id only', () => {
     id: 'c',
     name: 'name-y',
     publisher: 'publisher-c',
-<<<<<<< HEAD
-    size: 0,
-    updatedDate: 0,
-=======
     size: 3000,
     updatedDate: 3_000_000,
->>>>>>> origin/main
     uri: 'uri-c',
   }
 
@@ -160,13 +120,8 @@ test('compareId should ignore name when comparing', () => {
     id: 'same',
     name: 'name-z',
     publisher: 'publisher-a',
-<<<<<<< HEAD
-    size: 0,
-    updatedDate: 0,
-=======
     size: 1000,
     updatedDate: 1_000_000,
->>>>>>> origin/main
     uri: 'uri-a',
   }
   const extensionB: ExtensionListItem = {
@@ -176,13 +131,8 @@ test('compareId should ignore name when comparing', () => {
     id: 'same',
     name: 'name-a',
     publisher: 'publisher-b',
-<<<<<<< HEAD
-    size: 0,
-    updatedDate: 0,
-=======
     size: 2000,
     updatedDate: 2_000_000,
->>>>>>> origin/main
     uri: 'uri-b',
   }
 
@@ -198,13 +148,8 @@ test('compareExtension should compare extensions by name first', () => {
     id: 'id-1',
     name: 'a',
     publisher: 'publisher-a',
-<<<<<<< HEAD
-    size: 0,
-    updatedDate: 0,
-=======
     size: 1000,
     updatedDate: 1_000_000,
->>>>>>> origin/main
     uri: 'uri-a',
   }
   const extensionB: ExtensionListItem = {
@@ -214,13 +159,8 @@ test('compareExtension should compare extensions by name first', () => {
     id: 'id-2',
     name: 'b',
     publisher: 'publisher-b',
-<<<<<<< HEAD
-    size: 0,
-    updatedDate: 0,
-=======
     size: 2000,
     updatedDate: 2_000_000,
->>>>>>> origin/main
     uri: 'uri-b',
   }
   const extensionC: ExtensionListItem = {
@@ -230,13 +170,8 @@ test('compareExtension should compare extensions by name first', () => {
     id: 'id-3',
     name: 'c',
     publisher: 'publisher-c',
-<<<<<<< HEAD
-    size: 0,
-    updatedDate: 0,
-=======
     size: 3000,
     updatedDate: 3_000_000,
->>>>>>> origin/main
     uri: 'uri-c',
   }
 
@@ -254,13 +189,8 @@ test('compareExtension should compare extensions by id when names are equal', ()
     id: 'a',
     name: 'same',
     publisher: 'publisher-a',
-<<<<<<< HEAD
-    size: 0,
-    updatedDate: 0,
-=======
     size: 1000,
     updatedDate: 1_000_000,
->>>>>>> origin/main
     uri: 'uri-a',
   }
   const extensionB: ExtensionListItem = {
@@ -270,13 +200,8 @@ test('compareExtension should compare extensions by id when names are equal', ()
     id: 'b',
     name: 'same',
     publisher: 'publisher-b',
-<<<<<<< HEAD
-    size: 0,
-    updatedDate: 0,
-=======
     size: 2000,
     updatedDate: 2_000_000,
->>>>>>> origin/main
     uri: 'uri-b',
   }
   const extensionC: ExtensionListItem = {
@@ -286,13 +211,8 @@ test('compareExtension should compare extensions by id when names are equal', ()
     id: 'c',
     name: 'same',
     publisher: 'publisher-c',
-<<<<<<< HEAD
-    size: 0,
-    updatedDate: 0,
-=======
     size: 3000,
     updatedDate: 3_000_000,
->>>>>>> origin/main
     uri: 'uri-c',
   }
 
@@ -310,13 +230,8 @@ test('compareExtension should return 0 when both name and id are equal', () => {
     id: 'same-id',
     name: 'same-name',
     publisher: 'publisher-a',
-<<<<<<< HEAD
-    size: 0,
-    updatedDate: 0,
-=======
     size: 1000,
     updatedDate: 1_000_000,
->>>>>>> origin/main
     uri: 'uri-a',
   }
   const extensionB: ExtensionListItem = {
@@ -326,13 +241,8 @@ test('compareExtension should return 0 when both name and id are equal', () => {
     id: 'same-id',
     name: 'same-name',
     publisher: 'publisher-b',
-<<<<<<< HEAD
-    size: 0,
-    updatedDate: 0,
-=======
     size: 2000,
     updatedDate: 2_000_000,
->>>>>>> origin/main
     uri: 'uri-b',
   }
 
@@ -349,7 +259,6 @@ test('compareSize should sort extensions by size in descending order', () => {
     name: 'name-a',
     publisher: 'publisher-a',
     size: 1000,
-    updatedDate: 0,
     uri: 'uri-a',
   }
   const extensionB: ExtensionListItem = {
@@ -360,7 +269,6 @@ test('compareSize should sort extensions by size in descending order', () => {
     name: 'name-b',
     publisher: 'publisher-b',
     size: 5000,
-    updatedDate: 0,
     uri: 'uri-b',
   }
   const extensionC: ExtensionListItem = {
@@ -371,7 +279,6 @@ test('compareSize should sort extensions by size in descending order', () => {
     name: 'name-c',
     publisher: 'publisher-c',
     size: 2000,
-    updatedDate: 0,
     uri: 'uri-c',
   }
 
@@ -395,7 +302,6 @@ test('compareSize should return 0 when sizes are equal', () => {
     name: 'name-a',
     publisher: 'publisher-a',
     size: 1000,
-    updatedDate: 0,
     uri: 'uri-a',
   }
   const extensionB: ExtensionListItem = {
@@ -406,7 +312,6 @@ test('compareSize should return 0 when sizes are equal', () => {
     name: 'name-b',
     publisher: 'publisher-b',
     size: 1000,
-    updatedDate: 0,
     uri: 'uri-b',
   }
 
@@ -422,8 +327,6 @@ test('compareSize should handle zero size', () => {
     id: 'id-a',
     name: 'name-a',
     publisher: 'publisher-a',
-    size: 0,
-    updatedDate: 0,
     uri: 'uri-a',
   }
   const extensionB: ExtensionListItem = {
@@ -434,7 +337,6 @@ test('compareSize should handle zero size', () => {
     name: 'name-b',
     publisher: 'publisher-b',
     size: 1000,
-    updatedDate: 0,
     uri: 'uri-b',
   }
 
@@ -461,7 +363,6 @@ test('compareSize should handle negative sizes (edge case)', () => {
     id: 'id-b',
     name: 'name-b',
     publisher: 'publisher-b',
-    size: 0,
     uri: 'uri-b',
   }
   const extensionC: ExtensionListItem = {
@@ -490,7 +391,6 @@ test('compareSize should ignore other properties when comparing', () => {
     name: 'name-z',
     publisher: 'publisher-a',
     size: 1000,
-    updatedDate: 0,
     uri: 'uri-a',
   }
   const extensionB: ExtensionListItem = {
@@ -501,7 +401,6 @@ test('compareSize should ignore other properties when comparing', () => {
     name: 'name-a',
     publisher: 'publisher-b',
     size: 1000,
-    updatedDate: 0,
     uri: 'uri-b',
   }
 
@@ -518,7 +417,6 @@ test('compareUpdatedDate should sort by updated date descending', () => {
     id: 'id-a',
     name: 'name-a',
     publisher: 'publisher-a',
-    size: 0,
     updatedDate: 1000,
     uri: 'uri-a',
   }
@@ -529,7 +427,6 @@ test('compareUpdatedDate should sort by updated date descending', () => {
     id: 'id-b',
     name: 'name-b',
     publisher: 'publisher-b',
-    size: 0,
     updatedDate: 2000,
     uri: 'uri-b',
   }
@@ -540,7 +437,6 @@ test('compareUpdatedDate should sort by updated date descending', () => {
     id: 'id-c',
     name: 'name-c',
     publisher: 'publisher-c',
-    size: 0,
     updatedDate: 3000,
     uri: 'uri-c',
   }
