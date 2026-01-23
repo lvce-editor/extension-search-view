@@ -10,6 +10,7 @@ const mockItem1: ExtensionListItem = {
   id: 'test-extension-1',
   name: 'Test Extension 1',
   publisher: 'Test Publisher',
+  updatedDate: 1000,
   uri: 'https://example.com/1',
 }
 
@@ -20,6 +21,7 @@ const mockItem2: ExtensionListItem = {
   id: 'test-extension-2',
   name: 'Test Extension 2',
   publisher: 'Test Publisher',
+  updatedDate: 2000,
   uri: 'https://example.com/2',
 }
 
@@ -30,6 +32,7 @@ const mockItem3: ExtensionListItem = {
   id: 'test-extension-3',
   name: 'Test Extension 3',
   publisher: 'Test Publisher',
+  updatedDate: 3000,
   uri: 'https://example.com/3',
 }
 

@@ -13,6 +13,7 @@ test('handleClickCurrent opens URI for focused extension', async () => {
     id: 'test-extension-id',
     name: 'Test Extension',
     publisher: 'test-publisher',
+    updatedDate: 1000,
     uri: 'test-uri',
   }
 
@@ -42,6 +43,7 @@ test('handleClickCurrent uses focusedIndex correctly', async () => {
     id: 'extension-1',
     name: 'Extension 1',
     publisher: 'publisher-1',
+    updatedDate: 1000,
     uri: 'uri-1',
   }
 
@@ -52,6 +54,7 @@ test('handleClickCurrent uses focusedIndex correctly', async () => {
     id: 'extension-2',
     name: 'Extension 2',
     publisher: 'publisher-2',
+    updatedDate: 2000,
     uri: 'uri-2',
   }
 

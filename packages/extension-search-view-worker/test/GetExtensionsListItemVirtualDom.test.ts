@@ -13,6 +13,7 @@ const createMockVisibleItem = (overrides?: Partial<VisibleItem>): VisibleItem =>
     focused: false,
     icon: 'test-icon.png',
     id: 'test-extension',
+    index: 0,
     name: 'Test Extension',
     posInSet: 1,
     publisher: 'Test Publisher',
@@ -26,7 +27,7 @@ test('creates virtual dom with correct structure', () => {
   const item = createMockVisibleItem()
   const result = GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom(item)
 
-  expect(result).toHaveLength(11)
+  expect(result).toHaveLength(13)
 })
 
 test('sets main list item div with correct properties when focused', () => {
@@ -37,7 +38,7 @@ test('sets main list item div with correct properties when focused', () => {
     ariaPosInSet: 3,
     ariaRoleDescription: AriaRoleDescription.Extension,
     ariaSetSize: 20,
-    childCount: 2,
+    childCount: 3,
     className: MergeClassNames.mergeClassNames(ClassNames.ExtensionListItem, ClassNames.ExtensionActive),
     id: 'ExtensionActive',
     role: AriaRoles.ListItem,
@@ -54,7 +55,7 @@ test('sets main list item div with correct properties when not focused', () => {
     ariaPosInSet: 5,
     ariaRoleDescription: AriaRoleDescription.Extension,
     ariaSetSize: 15,
-    childCount: 2,
+    childCount: 3,
     className: ClassNames.ExtensionListItem,
     id: undefined,
     role: AriaRoles.ListItem,
@@ -157,7 +158,7 @@ test('sets actions div with correct className', () => {
   const result = GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom(item)
 
   expect(result[10]).toEqual({
-    childCount: 0,
+    childCount: 1,
     className: ClassNames.ExtensionActions,
     type: VirtualDomElements.Div,
   })
@@ -185,4 +186,40 @@ test('handles all properties correctly together', () => {
   expect(result[4]).toEqual(text('Extension Name'))
   expect(result[6]).toEqual(text('Extension Description'))
   expect(result[9]).toEqual(text('Publisher Name'))
+})
+
+test('sets actions div with correct childCount', () => {
+  const item = createMockVisibleItem()
+  const result = GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom(item)
+
+  expect(result[10]).toEqual({
+    childCount: 1,
+    className: ClassNames.ExtensionActions,
+    type: VirtualDomElements.Div,
+  })
+})
+
+test('sets settings button with correct properties', () => {
+  const item = createMockVisibleItem({ index: 5 })
+  const result = GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom(item)
+
+  expect(result[11]).toEqual({
+    childCount: 1,
+    className: ClassNames.ExtensionSettingsButton,
+    index: 5,
+    onClick: 18, // HandleSettingsButtonClick
+    type: VirtualDomElements.Button,
+  })
+})
+
+test('sets settings icon with correct className', () => {
+  const item = createMockVisibleItem()
+  const result = GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom(item)
+
+  expect(result[12]).toEqual({
+    childCount: 0,
+    className: 'MaskIcon MaskIconSettings',
+    role: 'none',
+    type: VirtualDomElements.Div,
+  })
 })
