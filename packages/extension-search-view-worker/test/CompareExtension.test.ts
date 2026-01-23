@@ -327,6 +327,8 @@ test('compareSize should handle zero size', () => {
     id: 'id-a',
     name: 'name-a',
     publisher: 'publisher-a',
+    size: 0,
+    updatedDate: 0,
     uri: 'uri-a',
   }
   const extensionB: ExtensionListItem = {
@@ -337,6 +339,7 @@ test('compareSize should handle zero size', () => {
     name: 'name-b',
     publisher: 'publisher-b',
     size: 1000,
+    updatedDate: 0,
     uri: 'uri-b',
   }
 
@@ -354,6 +357,7 @@ test('compareSize should handle negative sizes (edge case)', () => {
     name: 'name-a',
     publisher: 'publisher-a',
     size: -100,
+    updatedDate: 0,
     uri: 'uri-a',
   }
   const extensionB: ExtensionListItem = {
@@ -363,6 +367,8 @@ test('compareSize should handle negative sizes (edge case)', () => {
     id: 'id-b',
     name: 'name-b',
     publisher: 'publisher-b',
+    size: 0,
+    updatedDate: 0,
     uri: 'uri-b',
   }
   const extensionC: ExtensionListItem = {
@@ -373,6 +379,7 @@ test('compareSize should handle negative sizes (edge case)', () => {
     name: 'name-c',
     publisher: 'publisher-c',
     size: 100,
+    updatedDate: 0,
     uri: 'uri-c',
   }
 
@@ -391,6 +398,7 @@ test('compareSize should ignore other properties when comparing', () => {
     name: 'name-z',
     publisher: 'publisher-a',
     size: 1000,
+    updatedDate: 0,
     uri: 'uri-a',
   }
   const extensionB: ExtensionListItem = {
@@ -401,6 +409,7 @@ test('compareSize should ignore other properties when comparing', () => {
     name: 'name-a',
     publisher: 'publisher-b',
     size: 1000,
+    updatedDate: 0,
     uri: 'uri-b',
   }
 
@@ -417,6 +426,7 @@ test('compareUpdatedDate should sort by updated date descending', () => {
     id: 'id-a',
     name: 'name-a',
     publisher: 'publisher-a',
+    size: 0,
     updatedDate: 1000,
     uri: 'uri-a',
   }
@@ -427,6 +437,7 @@ test('compareUpdatedDate should sort by updated date descending', () => {
     id: 'id-b',
     name: 'name-b',
     publisher: 'publisher-b',
+    size: 0,
     updatedDate: 2000,
     uri: 'uri-b',
   }
@@ -437,6 +448,7 @@ test('compareUpdatedDate should sort by updated date descending', () => {
     id: 'id-c',
     name: 'name-c',
     publisher: 'publisher-c',
+    size: 0,
     updatedDate: 3000,
     uri: 'uri-c',
   }
