@@ -18,7 +18,7 @@ test('returns state unchanged', async () => {
   const result = await handleClickFilter(state)
   expect(result).toBe(state)
   expect(mockRpc.invocations).toEqual([
-    ['ContextMenu.show2', 123, MenuEntryId.ExtensionSearchFilter, 180, 300, { menuId: MenuEntryId.ExtensionSearchFilter }],
+    ['ContextMenu.show2', 123, MenuEntryId.ExtensionSearchFilter, 160, 570, { menuId: MenuEntryId.ExtensionSearchFilter }],
   ])
 })
 
