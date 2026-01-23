@@ -20,6 +20,8 @@ test('handleClickAt handles left click and opens URI', async () => {
     id: 'test-extension-id',
     name: 'Test Extension',
     publisher: 'test-publisher',
+    size: 1000,
+    updatedDate: 1_000_000,
     uri: 'test-uri',
   }
 
@@ -55,6 +57,8 @@ test('handleClickAt calculates correct index from coordinates', async () => {
     id: 'extension-1',
     name: 'Extension 1',
     publisher: 'publisher-1',
+    size: 1000,
+    updatedDate: 1_000_000,
     uri: 'uri-1',
   }
 
@@ -65,6 +69,8 @@ test('handleClickAt calculates correct index from coordinates', async () => {
     id: 'extension-2',
     name: 'Extension 2',
     publisher: 'publisher-2',
+    size: 2000,
+    updatedDate: 2_000_000,
     uri: 'uri-2',
   }
 

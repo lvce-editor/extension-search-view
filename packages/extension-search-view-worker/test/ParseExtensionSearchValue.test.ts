@@ -80,3 +80,22 @@ test('parseValue - @category - with quotes without colon', () => {
     category: 'themes',
   })
 })
+
+test('parseValue - @sort:size', () => {
+  expect(ParseExtensionSearchValue.parseValue('@sort:size')).toMatchObject({
+    sort: 'size',
+  })
+})
+
+test('parseValue - @sort:installs', () => {
+  expect(ParseExtensionSearchValue.parseValue('@sort:installs')).toMatchObject({
+    sort: 'installs',
+  })
+})
+
+test('parseValue - @sort:size with query', () => {
+  expect(ParseExtensionSearchValue.parseValue('@sort:size theme')).toMatchObject({
+    query: ' theme',
+    sort: 'size',
+  })
+})

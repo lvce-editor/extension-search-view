@@ -35,6 +35,20 @@ export const getId = (extension: any): string => {
   return extension.id
 }
 
+export const getSize = (extension: any): number => {
+  if (!extension || extension.size === 0 || typeof extension.size !== 'number') {
+    return 0
+  }
+  return extension.size
+}
+
+export const getUpdatedDate = (extension: any): number => {
+  if (!extension || !extension.updatedDate || typeof extension.updatedDate !== 'number') {
+    return 0
+  }
+  return extension.updatedDate
+}
+
 const isString = (item: unknown): item is string => {
   return typeof item === 'string'
 }

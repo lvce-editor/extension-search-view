@@ -14,6 +14,8 @@ const mockExtensions = [
     id: 'test-extension',
     name: 'Test Extension',
     publisher: 'test-publisher',
+    size: 1000,
+    updatedDate: 1_000_000,
     uri: 'test-uri',
   },
 ]
