@@ -4,7 +4,6 @@ import * as ClassNames from '../src/parts/ClassNames/ClassNames.ts'
 import * as DomEventListenerFunctions from '../src/parts/DomEventListenerFunctions/DomEventListenerFunctions.ts'
 import * as GetScrollBarVirtualDom from '../src/parts/GetScrollBarVirtualDom/GetScrollBarVirtualDom.ts'
 import * as MergeClassNames from '../src/parts/MergeClassNames/MergeClassNames.ts'
-import * as Px from '../src/parts/Px/Px.ts'
 
 test('returns empty array when scrollBarHeight is 0', () => {
   const result = GetScrollBarVirtualDom.getScrollBarVirtualDom(0, 0)
@@ -30,8 +29,6 @@ test('returns scrollbar virtual dom when scrollBarHeight is positive', () => {
   expect(result[1]).toEqual({
     childCount: 0,
     className: ClassNames.ScrollBarThumb,
-    height: Px.px(scrollBarHeight),
-    translate: Px.position(0, scrollBarTop),
     type: VirtualDomElements.Div,
   })
 })
@@ -40,6 +37,10 @@ test('returns scrollbar virtual dom with correct height and position', () => {
   const scrollBarHeight = 200
   const scrollBarTop = 150
   const result = GetScrollBarVirtualDom.getScrollBarVirtualDom(scrollBarHeight, scrollBarTop)
-  expect(result[1].height).toBe('200px')
-  expect(result[1].translate).toBe('0px 150px')
+  expect(result).toHaveLength(2)
+  expect(result[1]).toEqual({
+    childCount: 0,
+    className: ClassNames.ScrollBarThumb,
+    type: VirtualDomElements.Div,
+  })
 })
