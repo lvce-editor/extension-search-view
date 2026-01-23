@@ -88,6 +88,8 @@ test('handleClick returns state with focus List and focusedIndex -1 when actualI
     id: 'test-extension-id',
     name: 'Test Extension',
     publisher: 'test-publisher',
+    size: 1000,
+    updatedDate: 1000000,
     uri: 'test-uri',
   }
 
