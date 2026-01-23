@@ -2,7 +2,7 @@ import type { ExtensionListItem } from '../ExtensionListItem/ExtensionListItem.t
 import type { ParsedExtensionSearchValue } from '../ParsedExtensionSearchValue/ParsedExtensionSearchValue.ts'
 import * as CompareExtension from '../CompareExtension/CompareExtension.ts'
 
-const getCompareFn = (sort: string) => {
+const getCompareFn = (sort: string): ((a: ExtensionListItem, b: ExtensionListItem) => number) => {
   if (sort === 'size') {
     return CompareExtension.compareSize
   }
