@@ -8,6 +8,8 @@ test('normalizeExtension returns correct ExtensionListItem structure', () => {
     id: 'test-id',
     name: 'Test Extension',
     publisher: 'Test Publisher',
+    size: 1000,
+    updatedDate: 1000,
   }
 
   const result = NormalizeExtension.normalizeExtension(extension, 1, '/test/assets')
@@ -19,6 +21,8 @@ test('normalizeExtension returns correct ExtensionListItem structure', () => {
     id: 'test-id',
     name: 'Test Extension',
     publisher: 'test-id',
+    size: 1000,
+    updatedDate: 1000,
     uri: '',
   })
 })
@@ -38,6 +42,8 @@ test('normalizeExtension handles extension with missing fields', () => {
     id: 'test-id',
     name: 'Test Extension',
     publisher: 'test-id',
+    size: 0,
+    updatedDate: 0,
     uri: '',
   })
 })
@@ -49,6 +55,8 @@ test('normalizeExtension handles different platform values', () => {
     id: 'test-id',
     name: 'Test Extension',
     publisher: 'Test Publisher',
+    size: 1000,
+    updatedDate: 1000,
   }
 
   const result = NormalizeExtension.normalizeExtension(extension, 2, '/test/assets')
@@ -60,6 +68,8 @@ test('normalizeExtension handles different platform values', () => {
     id: 'test-id',
     name: 'Test Extension',
     publisher: 'test-id',
+    size: 1000,
+    updatedDate: 1000,
     uri: '',
   })
 })

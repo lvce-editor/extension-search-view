@@ -10,7 +10,12 @@ const createExtension = (name: string, id: string): ExtensionListItem => ({
   id,
   name,
   publisher: 'test-publisher',
+<<<<<<< HEAD
   updatedDate: 0,
+=======
+  size: 1000,
+  updatedDate: 1_000_000,
+>>>>>>> origin/main
   uri: 'test-uri',
 })
 
@@ -96,6 +101,8 @@ test('matches partial id in middle of id when extension has no name', () => {
     id: 'my-awesome-extension',
     name: '',
     publisher: 'test-publisher',
+    size: 1000,
+    updatedDate: 1_000_000,
     uri: 'test-uri',
   }
   const parsedValue = createParsedValue('awesome')
@@ -146,6 +153,8 @@ test('matches extension with special characters in id when extension has no name
     id: 'test-extension-v2',
     name: '',
     publisher: 'test-publisher',
+    size: 1000,
+    updatedDate: 1_000_000,
     uri: 'test-uri',
   }
   const parsedValue = createParsedValue('v2')
@@ -172,6 +181,8 @@ test('matches full id when extension has no name', () => {
     id: 'test-extension',
     name: '',
     publisher: 'test-publisher',
+    size: 1000,
+    updatedDate: 1_000_000,
     uri: 'test-uri',
   }
   const parsedValue = createParsedValue('test-extension')
@@ -204,6 +215,8 @@ test('matches with numbers in id when extension has no name', () => {
     id: 'extension-2024',
     name: '',
     publisher: 'test-publisher',
+    size: 1000,
+    updatedDate: 1_000_000,
     uri: 'test-uri',
   }
   const parsedValue = createParsedValue('2024')
@@ -388,6 +401,8 @@ test('returns false when extension has no name and no id', () => {
     id: '',
     name: '',
     publisher: 'test-publisher',
+    size: 1000,
+    updatedDate: 1_000_000,
     uri: 'test-uri',
   }
   const parsedValue: ParsedExtensionSearchValue = {
@@ -412,6 +427,8 @@ test('returns false when extension has no name, no id, and no matching category'
     id: '',
     name: '',
     publisher: 'test-publisher',
+    size: 1000,
+    updatedDate: 1_000_000,
     uri: 'test-uri',
   }
   const parsedValue: ParsedExtensionSearchValue = {

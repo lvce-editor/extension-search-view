@@ -10,6 +10,8 @@ export const normalizeExtension = (extension: unknown, platform: number, assetDi
     id: ExtensionDisplay.getId(extension),
     name: ExtensionDisplay.getName(extension),
     publisher: getPublisher(extension),
+    size: ExtensionDisplay.getSize(extension),
+    updatedDate: ExtensionDisplay.getUpdatedDate(extension),
     uri: '',
   }
 }

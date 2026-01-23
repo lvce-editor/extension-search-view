@@ -15,3 +15,4 @@ export const HandleTouchStart = 14
 export const HandleWheel = 15
 export const HandleHeaderContextMenu = 16
 export const HandleBlur = 17
+export const HandleSettingsButtonClick = 18

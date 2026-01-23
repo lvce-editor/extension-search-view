@@ -75,3 +75,27 @@ test('returns n/a when no id available', () => {
   const extension = {}
   expect(ExtensionDisplay.getId(extension)).toBe('n/a')
 })
+
+test('returns size when available', () => {
+  const extension = { size: 1000 }
+  expect(ExtensionDisplay.getSize(extension)).toBe(1000)
+})
+
+test('returns 0 when no size available', () => {
+  const extension = {}
+  expect(ExtensionDisplay.getSize(extension)).toBe(0)
+})
+
+test('returns 0 when extension is null', () => {
+  expect(ExtensionDisplay.getSize(null)).toBe(0)
+})
+
+test('returns 0 when size is not a number', () => {
+  const extension = { size: 'not a number' }
+  expect(ExtensionDisplay.getSize(extension)).toBe(0)
+})
+
+test('returns 0 when size is undefined', () => {
+  const extension = { size: undefined }
+  expect(ExtensionDisplay.getSize(extension)).toBe(0)
+})

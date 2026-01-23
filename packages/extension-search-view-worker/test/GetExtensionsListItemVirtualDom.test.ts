@@ -13,6 +13,7 @@ const createMockVisibleItem = (overrides?: Partial<VisibleItem>): VisibleItem =>
     focused: false,
     icon: 'test-icon.png',
     id: 'test-extension',
+    index: 0,
     name: 'Test Extension',
     posInSet: 1,
     publisher: 'Test Publisher',
