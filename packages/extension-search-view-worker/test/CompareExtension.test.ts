@@ -189,6 +189,8 @@ test('compareExtension should compare extensions by id when names are equal', ()
     id: 'a',
     name: 'same',
     publisher: 'publisher-a',
+    size: 1000,
+    updatedDate: 1000000,
     uri: 'uri-a',
   }
   const extensionB: ExtensionListItem = {
@@ -198,6 +200,8 @@ test('compareExtension should compare extensions by id when names are equal', ()
     id: 'b',
     name: 'same',
     publisher: 'publisher-b',
+    size: 2000,
+    updatedDate: 2000000,
     uri: 'uri-b',
   }
   const extensionC: ExtensionListItem = {
@@ -207,6 +211,8 @@ test('compareExtension should compare extensions by id when names are equal', ()
     id: 'c',
     name: 'same',
     publisher: 'publisher-c',
+    size: 3000,
+    updatedDate: 3000000,
     uri: 'uri-c',
   }
 
@@ -224,6 +230,8 @@ test('compareExtension should return 0 when both name and id are equal', () => {
     id: 'same-id',
     name: 'same-name',
     publisher: 'publisher-a',
+    size: 1000,
+    updatedDate: 1000000,
     uri: 'uri-a',
   }
   const extensionB: ExtensionListItem = {
@@ -233,6 +241,8 @@ test('compareExtension should return 0 when both name and id are equal', () => {
     id: 'same-id',
     name: 'same-name',
     publisher: 'publisher-b',
+    size: 2000,
+    updatedDate: 2000000,
     uri: 'uri-b',
   }
 
