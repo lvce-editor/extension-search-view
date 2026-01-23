@@ -11,6 +11,8 @@ const mockItem: ExtensionListItem = {
   id: 'test.extension',
   name: 'Test Extension',
   publisher: 'Test Publisher',
+  size: 1000,
+  updatedDate: 1000000,
   uri: 'https://example.com',
 }
 
@@ -55,6 +57,8 @@ test('copyExtensionInfo handles item with empty strings', async () => {
     id: '',
     name: '',
     publisher: '',
+    size: 0,
+    updatedDate: 0,
     uri: '',
   }
   const state = {
