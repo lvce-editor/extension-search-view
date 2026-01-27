@@ -9,11 +9,22 @@ export const getCss = (state: State): string => {
   translate: 0 ${roundedScrollBarY}px;
 }
 
-.Extensions .ListItems {
-  translate: 0 ${relative}px;
+
+/* TODO: avoid using negative margin. find a better way*/
+.ExtensionListItem:nth-child(1) {
+  margin-top: ${relative}px;
+}
 
 .ExtensionListItem {
   position: relative !important;
+  flex-shrink: 0;
+}
+
+.Extensions .ListItems {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow-y: hidden;
 }
 `
 }
