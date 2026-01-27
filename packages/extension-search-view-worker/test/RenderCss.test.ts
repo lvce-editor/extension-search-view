@@ -20,11 +20,22 @@ test('returns SetCss command with correct uid and css', () => {
   translate: 0 0px;
 }
 
-.Extensions .ListItems {
-  translate: 0 0px;
+
+/* TODO: avoid using negative margin. find a better way*/
+.ExtensionListItem:nth-child(1) {
+  margin-top: 0px;
+}
 
 .ExtensionListItem {
   position: relative !important;
+  flex-shrink: 0;
+}
+
+.Extensions .ListItems {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow-y: hidden;
 }
 `,
   ])
@@ -48,11 +59,22 @@ test('returns SetCss command with different uid', () => {
   translate: 0 0px;
 }
 
-.Extensions .ListItems {
-  translate: 0 0px;
+
+/* TODO: avoid using negative margin. find a better way*/
+.ExtensionListItem:nth-child(1) {
+  margin-top: 0px;
+}
 
 .ExtensionListItem {
   position: relative !important;
+  flex-shrink: 0;
+}
+
+.Extensions .ListItems {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow-y: hidden;
 }
 `,
   ])
@@ -76,11 +98,22 @@ test('returns SetCss command with non-zero deltaY', () => {
   translate: 0 10px;
 }
 
-.Extensions .ListItems {
-  translate: 0 -2px;
+
+/* TODO: avoid using negative margin. find a better way*/
+.ExtensionListItem:nth-child(1) {
+  margin-top: -2px;
+}
 
 .ExtensionListItem {
   position: relative !important;
+  flex-shrink: 0;
+}
+
+.Extensions .ListItems {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow-y: hidden;
 }
 `,
   ])
@@ -104,11 +137,22 @@ test('returns SetCss command with different scrollBarY', () => {
   translate: 0 26px;
 }
 
-.Extensions .ListItems {
-  translate: 0 0px;
+
+/* TODO: avoid using negative margin. find a better way*/
+.ExtensionListItem:nth-child(1) {
+  margin-top: 0px;
+}
 
 .ExtensionListItem {
   position: relative !important;
+  flex-shrink: 0;
+}
+
+.Extensions .ListItems {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow-y: hidden;
 }
 `,
   ])
@@ -132,11 +176,22 @@ test('returns SetCss command with negative deltaY', () => {
   translate: 0 5px;
 }
 
-.Extensions .ListItems {
-  translate: 0 6px;
+
+/* TODO: avoid using negative margin. find a better way*/
+.ExtensionListItem:nth-child(1) {
+  margin-top: 6px;
+}
 
 .ExtensionListItem {
   position: relative !important;
+  flex-shrink: 0;
+}
+
+.Extensions .ListItems {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow-y: hidden;
 }
 `,
   ])
