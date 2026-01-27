@@ -24,7 +24,7 @@ test('returns CSS with correct list items translate', () => {
     scrollBarY: 50,
   }
   const result = GetCss.getCss(state)
-  expect(result).toContain('translate: 0 -15px;')
+  expect(result).toContain('margin-top: -15px;')
 })
 
 test('returns CSS with correct list items translate when deltaY is multiple of itemHeight', () => {
@@ -36,7 +36,7 @@ test('returns CSS with correct list items translate when deltaY is multiple of i
     scrollBarY: 50,
   }
   const result = GetCss.getCss(state)
-  expect(result).toContain('translate: 0 0px;')
+  expect(result).toContain('margin-top: 0px;')
 })
 
 test('returns CSS with rounded scrollBarY', () => {
