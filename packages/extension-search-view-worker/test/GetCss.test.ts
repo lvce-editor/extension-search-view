@@ -74,7 +74,7 @@ test('returns CSS with large values', () => {
   const result = GetCss.getCss(state)
   expect(result).toContain('height: 500px;')
   expect(result).toContain('translate: 0 250px;')
-  expect(result).toContain('translate: 0 0px;')
+  expect(result).toContain('margin-top: 0px;')
 })
 
 test('returns CSS with fractional deltaY', () => {
@@ -86,7 +86,7 @@ test('returns CSS with fractional deltaY', () => {
     scrollBarY: 50,
   }
   const result = GetCss.getCss(state)
-  expect(result).toContain('translate: 0 -12.5px;')
+  expect(result).toContain('margin-top: -12.5px;')
 })
 
 test('returns CSS with zero values', () => {
