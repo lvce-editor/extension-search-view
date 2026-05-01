@@ -2,7 +2,7 @@ import type { MenuEntry } from '../MenuEntry/MenuEntry.ts'
 import * as ExtensionStrings from '../ExtensionStrings/ExtensionStrings.ts'
 import * as MenuItemFlags from '../MenuItemFlags/MenuItemFlags.ts'
 
-export const getMenuEntries = (): readonly MenuEntry[] => {
+export const getMenuEntriesList = (): readonly MenuEntry[] => {
   return [
     {
       command: 'SearchExtensions.enable',

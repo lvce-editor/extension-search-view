@@ -1,7 +1,7 @@
 import { expect, test } from '@jest/globals'
 import { MenuEntryId } from '@lvce-editor/constants'
 import { getMenuEntries2 } from '../src/parts/GetMenuEntries2/GetMenuEntries2.ts'
-import { getMenuEntries } from '../src/parts/GetMenuEntries/GetMenuEntries.ts'
+import { getMenuEntriesList } from '../src/parts/GetMenuEntries/GetMenuEntries.ts'
 import { getMenuEntriesFilter } from '../src/parts/GetMenuEntriesFilter/GetMenuEntriesFilter.ts'
 
 test('returns filter menu entries when menuId is ExtensionSearchFilter', () => {
@@ -85,5 +85,5 @@ test('returns default menu entries when menuId is not ExtensionSearchFilter', ()
     menuId: MenuEntryId.ManageExtension as 8,
   }
   const result = getMenuEntries2(state, props)
-  expect(result).toEqual(getMenuEntries())
+  expect(result).toEqual(getMenuEntriesList())
 })
