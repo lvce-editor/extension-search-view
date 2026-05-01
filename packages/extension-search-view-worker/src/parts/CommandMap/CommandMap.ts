@@ -78,7 +78,7 @@ export const commandMap = {
   'SearchExtensions.getActions': GetActions.getActions,
   'SearchExtensions.getCommandIds': getCommandIds,
   'SearchExtensions.getKeyBindings': GetKeyBindings.getKeyBindings,
-  'SearchExtensions.getMenuEntries': GetMenuEntries.getMenuEntries,
+  'SearchExtensions.getMenuEntries': GetMenuEntries.getMenuEntriesList,
   'SearchExtensions.getMenuEntries2': WrapCommand.wrapGetter(getMenuEntries2),
   'SearchExtensions.getMenuEntriesFilter': GetMenuEntriesFilter.getMenuEntriesFilter,
   'SearchExtensions.getMenuIds': getMenuIds,
