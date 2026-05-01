@@ -62,6 +62,8 @@ import * as SetDeltaY from '../SetDeltaY/SetDeltaY.ts'
 import * as ToggleSuggest from '../ToggleSuggest/ToggleSuggest.ts'
 
 export const commandMap = {
+  'Extensions.copyExtensionId': WrapCommand.wrapCommand(copyExtensionId),
+  'Extensions.copyExtensionInfo': WrapCommand.wrapCommand(copyExtensionInfo),
   'SearchExtensions.clearSearchResults': WrapCommand.wrapCommand(ClearSearchResults.clearSearchResults),
   'SearchExtensions.closeSuggest': WrapCommand.wrapCommand(CloseSuggest.closeSuggest),
   'SearchExtensions.copyExtensionId': WrapCommand.wrapCommand(copyExtensionId),
@@ -83,8 +85,6 @@ export const commandMap = {
   'SearchExtensions.getActions': GetActions.getActions,
   'SearchExtensions.getCommandIds': getCommandIds,
   'SearchExtensions.getKeyBindings': GetKeyBindings.getKeyBindings,
-  'Extensions.copyExtensionId': WrapCommand.wrapCommand(copyExtensionId),
-  'Extensions.copyExtensionInfo': WrapCommand.wrapCommand(copyExtensionInfo),
   'SearchExtensions.getMenuEntries': GetMenuEntries.getMenuEntriesList,
   'SearchExtensions.getMenuEntries2': WrapCommand.wrapGetter(getMenuEntries2),
   'SearchExtensions.getMenuEntriesFilter': GetMenuEntriesFilter.getMenuEntriesFilter,
