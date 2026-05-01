@@ -5,7 +5,11 @@ import { copyExtensionId } from '../CopyExtensionId/CopyExtensionId.ts'
 import { copyExtensionInfo } from '../CopyExtensionInfo/CopyExtensionInfo.ts'
 import * as Create from '../Create/Create.ts'
 import * as Diff2 from '../Diff2/Diff2.ts'
+import * as Disable from '../Disable/Disable.ts'
+import * as DisableWorkspace from '../DisableWorkspace/DisableWorkspace.ts'
 import * as Dispose from '../Dispose/Dispose.ts'
+import * as Enable from '../Enable/Enable.ts'
+import * as EnableWorkspace from '../EnableWorkspace/EnableWorkspace.ts'
 import * as WrapCommand from '../ExtensionSearchViewStates/ExtensionSearchViewStates.ts'
 import { getCommandIds } from '../ExtensionSearchViewStates/ExtensionSearchViewStates.ts'
 import * as FocusFirst from '../FocusFirst/FocusFirst.ts'
@@ -42,6 +46,7 @@ import * as HandleScrollBarMove from '../HandleScrollBarMove/HandleScrollBarMove
 import * as HandleUninstall from '../HandleUninstall/HandleUninstall.ts'
 import * as HandleWheel from '../HandleWheel/HandleWheel.ts'
 import * as Initialize from '../Initialize/Initialize.ts'
+import * as InstallAnotherVersion from '../InstallAnotherVersion/InstallAnotherVersion.ts'
 import * as LoadContent from '../LoadContent/LoadContent.ts'
 import * as OpenSuggest from '../OpenSuggest/OpenSuggest.ts'
 import * as Render3 from '../Render3/Render3.ts'
@@ -57,17 +62,19 @@ import * as SetDeltaY from '../SetDeltaY/SetDeltaY.ts'
 import * as ToggleSuggest from '../ToggleSuggest/ToggleSuggest.ts'
 
 export const commandMap = {
+  'Extensions.copyExtensionId': WrapCommand.wrapCommand(copyExtensionId),
+  'Extensions.copyExtensionInfo': WrapCommand.wrapCommand(copyExtensionInfo),
   'SearchExtensions.clearSearchResults': WrapCommand.wrapCommand(ClearSearchResults.clearSearchResults),
   'SearchExtensions.closeSuggest': WrapCommand.wrapCommand(CloseSuggest.closeSuggest),
   'SearchExtensions.copyExtensionId': WrapCommand.wrapCommand(copyExtensionId),
   'SearchExtensions.copyExtensionInfo': WrapCommand.wrapCommand(copyExtensionInfo),
   'SearchExtensions.create': Create.create,
   'SearchExtensions.diff2': Diff2.diff2,
-  'SearchExtensions.disable': WrapCommand.wrapCommand(HandleDisable.handleDisable),
-  'SearchExtensions.disableWorkspace': WrapCommand.wrapCommand(HandleDisableWorkspace.handleDisableWorkspace),
+  'SearchExtensions.disable': WrapCommand.wrapCommand(Disable.disable),
+  'SearchExtensions.disableWorkspace': WrapCommand.wrapCommand(DisableWorkspace.disableWorkspace),
   'SearchExtensions.dispose': Dispose.dispose,
-  'SearchExtensions.enable': WrapCommand.wrapCommand(HandleEnable.handleEnable),
-  'SearchExtensions.enableWorkspace': WrapCommand.wrapCommand(HandleEnableWorkspace.handleEnableWorkspace),
+  'SearchExtensions.enable': WrapCommand.wrapCommand(Enable.enable),
+  'SearchExtensions.enableWorkspace': WrapCommand.wrapCommand(EnableWorkspace.enableWorkspace),
   'SearchExtensions.focusFirst': WrapCommand.wrapCommand(FocusFirst.focusFirst),
   'SearchExtensions.focusIndex': WrapCommand.wrapCommand(FocusIndex.focusIndex),
   'SearchExtensions.focusLast': WrapCommand.wrapCommand(FocusLast.focusLast),
@@ -78,7 +85,7 @@ export const commandMap = {
   'SearchExtensions.getActions': GetActions.getActions,
   'SearchExtensions.getCommandIds': getCommandIds,
   'SearchExtensions.getKeyBindings': GetKeyBindings.getKeyBindings,
-  'SearchExtensions.getMenuEntries': GetMenuEntries.getMenuEntries,
+  'SearchExtensions.getMenuEntries': GetMenuEntries.getMenuEntriesList,
   'SearchExtensions.getMenuEntries2': WrapCommand.wrapGetter(getMenuEntries2),
   'SearchExtensions.getMenuEntriesFilter': GetMenuEntriesFilter.getMenuEntriesFilter,
   'SearchExtensions.getMenuIds': getMenuIds,
@@ -104,6 +111,7 @@ export const commandMap = {
   'SearchExtensions.handleUninstall': WrapCommand.wrapCommand(HandleUninstall.handleUninstall),
   'SearchExtensions.handleWheel': WrapCommand.wrapCommand(HandleWheel.handleWheel),
   'SearchExtensions.initialize': Initialize.initialize,
+  'SearchExtensions.installAnotherVersion': WrapCommand.wrapCommand(InstallAnotherVersion.installAnotherVersion),
   'SearchExtensions.loadContent': WrapCommand.wrapCommand(LoadContent.loadContent),
   'SearchExtensions.openSuggest': WrapCommand.wrapCommand(OpenSuggest.openSuggest),
   'SearchExtensions.render3': Render3.render3,
