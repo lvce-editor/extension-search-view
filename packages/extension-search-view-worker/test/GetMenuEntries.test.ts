@@ -1,11 +1,11 @@
 import { expect, test } from '@jest/globals'
 import { commandMap } from '../src/parts/CommandMap/CommandMap.ts'
-import { getMenuEntries } from '../src/parts/GetMenuEntries/GetMenuEntries.ts'
+import { getMenuEntriesList } from '../src/parts/GetMenuEntries/GetMenuEntries.ts'
 
 test('getMenuEntries commands exist in commandMap', () => {
-  const missingCommands = getMenuEntries()
-    .filter((menuEntry) => menuEntry.command !== '')
-    .map((menuEntry) => menuEntry.command)
-    .filter((command) => !(command in commandMap))
+  const missingCommands = getMenuEntriesList()
+    .filter((menuEntry): boolean => menuEntry.command !== '')
+    .map((menuEntry): string => menuEntry.command)
+    .filter((command): boolean => !(command in commandMap))
   expect(missingCommands).toEqual([])
 })
