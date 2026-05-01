@@ -5,7 +5,12 @@
     "checkJs": true,
     "module": "nodenext",
     "types": [],
+<<<<<<< Updated upstream
     "moduleResolution": "nodenext",
+=======
+    "ignoreDeprecations": "6.0",
+    "moduleResolution": "node",
+>>>>>>> Stashed changes
     "rootDir": ".",
     "allowJs": true,
     "skipLibCheck": true,

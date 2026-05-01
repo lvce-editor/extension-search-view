@@ -42,6 +42,7 @@ import * as HandleScrollBarMove from '../HandleScrollBarMove/HandleScrollBarMove
 import * as HandleUninstall from '../HandleUninstall/HandleUninstall.ts'
 import * as HandleWheel from '../HandleWheel/HandleWheel.ts'
 import * as Initialize from '../Initialize/Initialize.ts'
+import * as InstallAnotherVersion from '../InstallAnotherVersion/InstallAnotherVersion.ts'
 import * as LoadContent from '../LoadContent/LoadContent.ts'
 import * as OpenSuggest from '../OpenSuggest/OpenSuggest.ts'
 import * as Render3 from '../Render3/Render3.ts'
@@ -57,6 +58,8 @@ import * as SetDeltaY from '../SetDeltaY/SetDeltaY.ts'
 import * as ToggleSuggest from '../ToggleSuggest/ToggleSuggest.ts'
 
 export const commandMap = {
+  'Extensions.copyExtensionId': WrapCommand.wrapCommand(copyExtensionId),
+  'Extensions.copyExtensionInfo': WrapCommand.wrapCommand(copyExtensionInfo),
   'SearchExtensions.clearSearchResults': WrapCommand.wrapCommand(ClearSearchResults.clearSearchResults),
   'SearchExtensions.closeSuggest': WrapCommand.wrapCommand(CloseSuggest.closeSuggest),
   'SearchExtensions.copyExtensionId': WrapCommand.wrapCommand(copyExtensionId),
@@ -104,6 +107,7 @@ export const commandMap = {
   'SearchExtensions.handleUninstall': WrapCommand.wrapCommand(HandleUninstall.handleUninstall),
   'SearchExtensions.handleWheel': WrapCommand.wrapCommand(HandleWheel.handleWheel),
   'SearchExtensions.initialize': Initialize.initialize,
+  'SearchExtensions.installAnotherVersion': WrapCommand.wrapCommand(InstallAnotherVersion.installAnotherVersion),
   'SearchExtensions.loadContent': WrapCommand.wrapCommand(LoadContent.loadContent),
   'SearchExtensions.openSuggest': WrapCommand.wrapCommand(OpenSuggest.openSuggest),
   'SearchExtensions.render3': Render3.render3,
