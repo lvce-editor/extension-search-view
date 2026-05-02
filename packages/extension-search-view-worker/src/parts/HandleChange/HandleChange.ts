@@ -76,7 +76,7 @@ export const handleChange = async (state: State, update: Partial<State>): Promis
     await ErrorHandling.handleError(error)
     return {
       ...fullNewState,
-      message: `${error}`,
+      message: error instanceof Error ? error.message : `${error}`,
     }
   }
 }

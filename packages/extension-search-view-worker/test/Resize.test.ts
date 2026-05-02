@@ -285,7 +285,7 @@ test('resize handles scrolled position at maximum', async () => {
   const minLineY = Math.floor(200 / 20) // 10
   const maxLineY = Math.min(minLineY + 11, 20) // 20
   const scrollBarHeight = Math.max(Math.round(200 ** 2 / 400), 20) // max(100, 20) = 100
-  const scrollBarY = (200 / 200) * (200 - 40 - 100) // 60
+  const scrollBarY = 200 - 40 - 100 // 60
 
   expect(result.finalDeltaY).toBe(finalDeltaY)
   expect(result.maxLineY).toBe(maxLineY)
