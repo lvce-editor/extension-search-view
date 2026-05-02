@@ -146,7 +146,7 @@ test('sortExtensions should handle undefined parsedValue', () => {
     createExtension({ id: 'id-b', name: 'b' }),
   ]
 
-  const result = SortExtensions.sortExtensions(extensions, undefined)
+  const result = SortExtensions.sortExtensions(extensions)
   expect(result).toEqual([
     createExtension({ id: 'id-a', name: 'a' }),
     createExtension({ id: 'id-b', name: 'b' }),

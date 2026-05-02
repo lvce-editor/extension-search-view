@@ -3,7 +3,7 @@ import type { ExtensionListItem } from '../src/parts/ExtensionListItem/Extension
 import { compareExtension, compareId, compareName, compareSize, compareUpdatedDate } from '../src/parts/CompareExtension/CompareExtension.ts'
 
 test('compareName should compare extensions by name only', () => {
-  const extensionA: ExtensionListItem = {
+  const alphaExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-a',
     icon: 'icon-a',
@@ -14,7 +14,7 @@ test('compareName should compare extensions by name only', () => {
     updatedDate: 1_000_000,
     uri: 'uri-a',
   }
-  const extensionB: ExtensionListItem = {
+  const betaExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-b',
     icon: 'icon-b',
@@ -25,7 +25,7 @@ test('compareName should compare extensions by name only', () => {
     updatedDate: 2_000_000,
     uri: 'uri-b',
   }
-  const extensionC: ExtensionListItem = {
+  const gammaExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-c',
     icon: 'icon-c',
@@ -37,14 +37,14 @@ test('compareName should compare extensions by name only', () => {
     uri: 'uri-c',
   }
 
-  expect(compareName(extensionA, extensionB)).toBeLessThan(0)
-  expect(compareName(extensionB, extensionA)).toBeGreaterThan(0)
-  expect(compareName(extensionA, extensionA)).toBe(0)
-  expect(compareName(extensionB, extensionC)).toBeLessThan(0)
+  expect(compareName(alphaExtension, betaExtension)).toBeLessThan(0)
+  expect(compareName(betaExtension, alphaExtension)).toBeGreaterThan(0)
+  expect(compareName(alphaExtension, alphaExtension)).toBe(0)
+  expect(compareName(betaExtension, gammaExtension)).toBeLessThan(0)
 })
 
 test('compareName should ignore id when comparing', () => {
-  const extensionA: ExtensionListItem = {
+  const firstExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-a',
     icon: 'icon-a',
@@ -55,7 +55,7 @@ test('compareName should ignore id when comparing', () => {
     updatedDate: 1_000_000,
     uri: 'uri-a',
   }
-  const extensionB: ExtensionListItem = {
+  const secondExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-b',
     icon: 'icon-b',
@@ -67,12 +67,12 @@ test('compareName should ignore id when comparing', () => {
     uri: 'uri-b',
   }
 
-  expect(compareName(extensionA, extensionB)).toBe(0)
-  expect(compareName(extensionB, extensionA)).toBe(0)
+  expect(compareName(firstExtension, secondExtension)).toBe(0)
+  expect(compareName(secondExtension, firstExtension)).toBe(0)
 })
 
 test('compareId should compare extensions by id only', () => {
-  const extensionA: ExtensionListItem = {
+  const alphaExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-a',
     icon: 'icon-a',
@@ -83,7 +83,7 @@ test('compareId should compare extensions by id only', () => {
     updatedDate: 1_000_000,
     uri: 'uri-a',
   }
-  const extensionB: ExtensionListItem = {
+  const betaExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-b',
     icon: 'icon-b',
@@ -94,7 +94,7 @@ test('compareId should compare extensions by id only', () => {
     updatedDate: 2_000_000,
     uri: 'uri-b',
   }
-  const extensionC: ExtensionListItem = {
+  const gammaExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-c',
     icon: 'icon-c',
@@ -106,14 +106,14 @@ test('compareId should compare extensions by id only', () => {
     uri: 'uri-c',
   }
 
-  expect(compareId(extensionA, extensionB)).toBeLessThan(0)
-  expect(compareId(extensionB, extensionA)).toBeGreaterThan(0)
-  expect(compareId(extensionA, extensionA)).toBe(0)
-  expect(compareId(extensionB, extensionC)).toBeLessThan(0)
+  expect(compareId(alphaExtension, betaExtension)).toBeLessThan(0)
+  expect(compareId(betaExtension, alphaExtension)).toBeGreaterThan(0)
+  expect(compareId(alphaExtension, alphaExtension)).toBe(0)
+  expect(compareId(betaExtension, gammaExtension)).toBeLessThan(0)
 })
 
 test('compareId should ignore name when comparing', () => {
-  const extensionA: ExtensionListItem = {
+  const firstExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-a',
     icon: 'icon-a',
@@ -124,7 +124,7 @@ test('compareId should ignore name when comparing', () => {
     updatedDate: 1_000_000,
     uri: 'uri-a',
   }
-  const extensionB: ExtensionListItem = {
+  const secondExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-b',
     icon: 'icon-b',
@@ -136,12 +136,12 @@ test('compareId should ignore name when comparing', () => {
     uri: 'uri-b',
   }
 
-  expect(compareId(extensionA, extensionB)).toBe(0)
-  expect(compareId(extensionB, extensionA)).toBe(0)
+  expect(compareId(firstExtension, secondExtension)).toBe(0)
+  expect(compareId(secondExtension, firstExtension)).toBe(0)
 })
 
 test('compareExtension should compare extensions by name first', () => {
-  const extensionA: ExtensionListItem = {
+  const alphaExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-a',
     icon: 'icon-a',
@@ -152,7 +152,7 @@ test('compareExtension should compare extensions by name first', () => {
     updatedDate: 1_000_000,
     uri: 'uri-a',
   }
-  const extensionB: ExtensionListItem = {
+  const betaExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-b',
     icon: 'icon-b',
@@ -163,7 +163,7 @@ test('compareExtension should compare extensions by name first', () => {
     updatedDate: 2_000_000,
     uri: 'uri-b',
   }
-  const extensionC: ExtensionListItem = {
+  const gammaExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-c',
     icon: 'icon-c',
@@ -175,14 +175,14 @@ test('compareExtension should compare extensions by name first', () => {
     uri: 'uri-c',
   }
 
-  expect(compareExtension(extensionA, extensionB)).toBeLessThan(0)
-  expect(compareExtension(extensionB, extensionA)).toBeGreaterThan(0)
-  expect(compareExtension(extensionA, extensionA)).toBe(0)
-  expect(compareExtension(extensionB, extensionC)).toBeLessThan(0)
+  expect(compareExtension(alphaExtension, betaExtension)).toBeLessThan(0)
+  expect(compareExtension(betaExtension, alphaExtension)).toBeGreaterThan(0)
+  expect(compareExtension(alphaExtension, alphaExtension)).toBe(0)
+  expect(compareExtension(betaExtension, gammaExtension)).toBeLessThan(0)
 })
 
 test('compareExtension should compare extensions by id when names are equal', () => {
-  const extensionA: ExtensionListItem = {
+  const alphaExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-a',
     icon: 'icon-a',
@@ -193,7 +193,7 @@ test('compareExtension should compare extensions by id when names are equal', ()
     updatedDate: 1_000_000,
     uri: 'uri-a',
   }
-  const extensionB: ExtensionListItem = {
+  const betaExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-b',
     icon: 'icon-b',
@@ -204,7 +204,7 @@ test('compareExtension should compare extensions by id when names are equal', ()
     updatedDate: 2_000_000,
     uri: 'uri-b',
   }
-  const extensionC: ExtensionListItem = {
+  const gammaExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-c',
     icon: 'icon-c',
@@ -216,14 +216,14 @@ test('compareExtension should compare extensions by id when names are equal', ()
     uri: 'uri-c',
   }
 
-  expect(compareExtension(extensionA, extensionB)).toBeLessThan(0)
-  expect(compareExtension(extensionB, extensionA)).toBeGreaterThan(0)
-  expect(compareExtension(extensionA, extensionA)).toBe(0)
-  expect(compareExtension(extensionB, extensionC)).toBeLessThan(0)
+  expect(compareExtension(alphaExtension, betaExtension)).toBeLessThan(0)
+  expect(compareExtension(betaExtension, alphaExtension)).toBeGreaterThan(0)
+  expect(compareExtension(alphaExtension, alphaExtension)).toBe(0)
+  expect(compareExtension(betaExtension, gammaExtension)).toBeLessThan(0)
 })
 
 test('compareExtension should return 0 when both name and id are equal', () => {
-  const extensionA: ExtensionListItem = {
+  const firstExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-a',
     icon: 'icon-a',
@@ -234,7 +234,7 @@ test('compareExtension should return 0 when both name and id are equal', () => {
     updatedDate: 1_000_000,
     uri: 'uri-a',
   }
-  const extensionB: ExtensionListItem = {
+  const secondExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-b',
     icon: 'icon-b',
@@ -246,12 +246,12 @@ test('compareExtension should return 0 when both name and id are equal', () => {
     uri: 'uri-b',
   }
 
-  expect(compareExtension(extensionA, extensionB)).toBe(0)
-  expect(compareExtension(extensionB, extensionA)).toBe(0)
+  expect(compareExtension(firstExtension, secondExtension)).toBe(0)
+  expect(compareExtension(secondExtension, firstExtension)).toBe(0)
 })
 
 test('compareSize should sort extensions by size in descending order', () => {
-  const extensionA: ExtensionListItem = {
+  const smallExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-a',
     icon: 'icon-a',
@@ -262,7 +262,7 @@ test('compareSize should sort extensions by size in descending order', () => {
     updatedDate: 0,
     uri: 'uri-a',
   }
-  const extensionB: ExtensionListItem = {
+  const largeExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-b',
     icon: 'icon-b',
@@ -273,7 +273,7 @@ test('compareSize should sort extensions by size in descending order', () => {
     updatedDate: 0,
     uri: 'uri-b',
   }
-  const extensionC: ExtensionListItem = {
+  const mediumExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-c',
     icon: 'icon-c',
@@ -286,18 +286,18 @@ test('compareSize should sort extensions by size in descending order', () => {
   }
 
   // B (5000) should come before C (2000) which should come before A (1000)
-  expect(compareSize(extensionB, extensionC)).toBeLessThan(0)
-  expect(compareSize(extensionC, extensionA)).toBeLessThan(0)
-  expect(compareSize(extensionB, extensionA)).toBeLessThan(0)
+  expect(compareSize(largeExtension, mediumExtension)).toBeLessThan(0)
+  expect(compareSize(mediumExtension, smallExtension)).toBeLessThan(0)
+  expect(compareSize(largeExtension, smallExtension)).toBeLessThan(0)
 
   // Reverse order should be positive
-  expect(compareSize(extensionC, extensionB)).toBeGreaterThan(0)
-  expect(compareSize(extensionA, extensionC)).toBeGreaterThan(0)
-  expect(compareSize(extensionA, extensionB)).toBeGreaterThan(0)
+  expect(compareSize(mediumExtension, largeExtension)).toBeGreaterThan(0)
+  expect(compareSize(smallExtension, mediumExtension)).toBeGreaterThan(0)
+  expect(compareSize(smallExtension, largeExtension)).toBeGreaterThan(0)
 })
 
 test('compareSize should return 0 when sizes are equal', () => {
-  const extensionA: ExtensionListItem = {
+  const firstExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-a',
     icon: 'icon-a',
@@ -308,7 +308,7 @@ test('compareSize should return 0 when sizes are equal', () => {
     updatedDate: 0,
     uri: 'uri-a',
   }
-  const extensionB: ExtensionListItem = {
+  const secondExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-b',
     icon: 'icon-b',
@@ -320,12 +320,12 @@ test('compareSize should return 0 when sizes are equal', () => {
     uri: 'uri-b',
   }
 
-  expect(compareSize(extensionA, extensionB)).toBe(0)
-  expect(compareSize(extensionB, extensionA)).toBe(0)
+  expect(compareSize(firstExtension, secondExtension)).toBe(0)
+  expect(compareSize(secondExtension, firstExtension)).toBe(0)
 })
 
 test('compareSize should handle zero size', () => {
-  const extensionA: ExtensionListItem = {
+  const zeroSizeExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-a',
     icon: 'icon-a',
@@ -336,7 +336,7 @@ test('compareSize should handle zero size', () => {
     updatedDate: 0,
     uri: 'uri-a',
   }
-  const extensionB: ExtensionListItem = {
+  const positiveSizeExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-b',
     icon: 'icon-b',
@@ -349,12 +349,12 @@ test('compareSize should handle zero size', () => {
   }
 
   // Zero size should come after positive size (descending order)
-  expect(compareSize(extensionB, extensionA)).toBeLessThan(0)
-  expect(compareSize(extensionA, extensionB)).toBeGreaterThan(0)
+  expect(compareSize(positiveSizeExtension, zeroSizeExtension)).toBeLessThan(0)
+  expect(compareSize(zeroSizeExtension, positiveSizeExtension)).toBeGreaterThan(0)
 })
 
 test('compareSize should handle negative sizes (edge case)', () => {
-  const extensionA: ExtensionListItem = {
+  const negativeExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-a',
     icon: 'icon-a',
@@ -365,7 +365,7 @@ test('compareSize should handle negative sizes (edge case)', () => {
     updatedDate: 0,
     uri: 'uri-a',
   }
-  const extensionB: ExtensionListItem = {
+  const zeroExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-b',
     icon: 'icon-b',
@@ -376,7 +376,7 @@ test('compareSize should handle negative sizes (edge case)', () => {
     updatedDate: 0,
     uri: 'uri-b',
   }
-  const extensionC: ExtensionListItem = {
+  const positiveExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-c',
     icon: 'icon-c',
@@ -389,13 +389,13 @@ test('compareSize should handle negative sizes (edge case)', () => {
   }
 
   // C (100) > B (0) > A (-100) in descending order
-  expect(compareSize(extensionC, extensionB)).toBeLessThan(0)
-  expect(compareSize(extensionB, extensionA)).toBeLessThan(0)
-  expect(compareSize(extensionC, extensionA)).toBeLessThan(0)
+  expect(compareSize(positiveExtension, zeroExtension)).toBeLessThan(0)
+  expect(compareSize(zeroExtension, negativeExtension)).toBeLessThan(0)
+  expect(compareSize(positiveExtension, negativeExtension)).toBeLessThan(0)
 })
 
 test('compareSize should ignore other properties when comparing', () => {
-  const extensionA: ExtensionListItem = {
+  const firstExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-a',
     icon: 'icon-a',
@@ -406,7 +406,7 @@ test('compareSize should ignore other properties when comparing', () => {
     updatedDate: 0,
     uri: 'uri-a',
   }
-  const extensionB: ExtensionListItem = {
+  const secondExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-b',
     icon: 'icon-b',
@@ -419,12 +419,12 @@ test('compareSize should ignore other properties when comparing', () => {
   }
 
   // Same size should return 0 regardless of other properties
-  expect(compareSize(extensionA, extensionB)).toBe(0)
-  expect(compareSize(extensionB, extensionA)).toBe(0)
+  expect(compareSize(firstExtension, secondExtension)).toBe(0)
+  expect(compareSize(secondExtension, firstExtension)).toBe(0)
 })
 
 test('compareUpdatedDate should sort by updated date descending', () => {
-  const extensionA: ExtensionListItem = {
+  const oldestExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-a',
     icon: 'icon-a',
@@ -435,7 +435,7 @@ test('compareUpdatedDate should sort by updated date descending', () => {
     updatedDate: 1000,
     uri: 'uri-a',
   }
-  const extensionB: ExtensionListItem = {
+  const newerExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-b',
     icon: 'icon-b',
@@ -446,7 +446,7 @@ test('compareUpdatedDate should sort by updated date descending', () => {
     updatedDate: 2000,
     uri: 'uri-b',
   }
-  const extensionC: ExtensionListItem = {
+  const newestExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-c',
     icon: 'icon-c',
@@ -459,15 +459,15 @@ test('compareUpdatedDate should sort by updated date descending', () => {
   }
 
   // Newer dates should come first (descending order)
-  expect(compareUpdatedDate(extensionA, extensionB)).toBeGreaterThan(0)
-  expect(compareUpdatedDate(extensionB, extensionA)).toBeLessThan(0)
-  expect(compareUpdatedDate(extensionA, extensionA)).toBe(0)
-  expect(compareUpdatedDate(extensionB, extensionC)).toBeGreaterThan(0)
-  expect(compareUpdatedDate(extensionC, extensionB)).toBeLessThan(0)
+  expect(compareUpdatedDate(oldestExtension, newerExtension)).toBeGreaterThan(0)
+  expect(compareUpdatedDate(newerExtension, oldestExtension)).toBeLessThan(0)
+  expect(compareUpdatedDate(oldestExtension, oldestExtension)).toBe(0)
+  expect(compareUpdatedDate(newerExtension, newestExtension)).toBeGreaterThan(0)
+  expect(compareUpdatedDate(newestExtension, newerExtension)).toBeLessThan(0)
 })
 
 test('compareUpdatedDate should ignore other properties when comparing', () => {
-  const extensionA: ExtensionListItem = {
+  const firstExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-a',
     icon: 'icon-a',
@@ -478,7 +478,7 @@ test('compareUpdatedDate should ignore other properties when comparing', () => {
     updatedDate: 1000,
     uri: 'uri-a',
   }
-  const extensionB: ExtensionListItem = {
+  const secondExtension: ExtensionListItem = {
     categories: [],
     description: 'desc-b',
     icon: 'icon-b',
@@ -491,6 +491,6 @@ test('compareUpdatedDate should ignore other properties when comparing', () => {
   }
 
   // Same updatedDate should return 0 regardless of other properties
-  expect(compareUpdatedDate(extensionA, extensionB)).toBe(0)
-  expect(compareUpdatedDate(extensionB, extensionA)).toBe(0)
+  expect(compareUpdatedDate(firstExtension, secondExtension)).toBe(0)
+  expect(compareUpdatedDate(secondExtension, firstExtension)).toBe(0)
 })
