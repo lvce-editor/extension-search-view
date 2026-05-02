@@ -41,7 +41,7 @@ test('handles error during search', async () => {
   const invalidExtensions = [
     {
       ...mockExtensions[0],
-      get name() {
+      get name(): string {
         throw new Error('error')
       },
     },
