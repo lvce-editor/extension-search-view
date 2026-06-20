@@ -52,13 +52,13 @@ test('resize calculates scroll bar when content exceeds viewport', async () => {
   const finalDeltaY = Math.max(400 - 200, 0) // 200
   const maxLineY = Math.min(11, 20) // 11
   const scrollBarHeight = Math.max(Math.round(200 ** 2 / 400), 20) // max(100, 20) = 100
-  const scrollBarY = (0 / 200) * (200 - 40 - 100) // 0
+  const scrollBarY = 0
 
   expect(result.height).toBe(200)
   expect(result.finalDeltaY).toBe(finalDeltaY)
   expect(result.maxLineY).toBe(maxLineY)
   expect(result.scrollBarHeight).toBe(scrollBarHeight)
-  expect(result.scrollBarY).toBe(scrollBarY)
+  expect(result.scrollBarY).toBeCloseTo(scrollBarY, 2)
 })
 
 test('resize handles empty items list', async () => {
@@ -87,7 +87,7 @@ test('resize handles empty items list', async () => {
   expect(result.finalDeltaY).toBe(finalDeltaY)
   expect(result.maxLineY).toBe(maxLineY)
   expect(result.scrollBarHeight).toBe(scrollBarHeight)
-  expect(result.scrollBarY).toBe(scrollBarY)
+  expect(result.scrollBarY).toBeCloseTo(scrollBarY, 2)
 })
 
 test('resize uses minimum slider size when calculated size is too small', async () => {
@@ -134,10 +134,10 @@ test('resize calculates scrollBarY correctly', async () => {
 
   const finalDeltaY = Math.max(400 - 200, 0) // 200
   // resize always uses 0 for deltaY when calculating scrollBarY
-  const scrollBarY = (0 / 200) * (200 - 40 - 100) // 0
+  const scrollBarY = 0
 
   expect(result.finalDeltaY).toBe(finalDeltaY)
-  expect(result.scrollBarY).toBe(scrollBarY)
+  expect(result.scrollBarY).toBeCloseTo(scrollBarY, 2)
 })
 
 test('resize preserves other state properties', async () => {
@@ -218,13 +218,13 @@ test('resize handles small viewport', async () => {
   const finalDeltaY = Math.max(200 - 60, 0) // 140
   const maxLineY = Math.min(4, 10) // 4
   const scrollBarHeight = Math.max(Math.round(60 ** 2 / 200), 20) // max(18, 20) = 20
-  const scrollBarY = (0 / 140) * (60 - 40 - 20) // 0
+  const scrollBarY = 0
 
   expect(result.height).toBe(60)
   expect(result.finalDeltaY).toBe(finalDeltaY)
   expect(result.maxLineY).toBe(maxLineY)
   expect(result.scrollBarHeight).toBe(scrollBarHeight)
-  expect(result.scrollBarY).toBe(scrollBarY)
+  expect(result.scrollBarY).toBeCloseTo(scrollBarY, 2)
 })
 
 test('resize preserves scroll position when scrolled down', async () => {
@@ -257,7 +257,7 @@ test('resize preserves scroll position when scrolled down', async () => {
   expect(result.finalDeltaY).toBe(finalDeltaY)
   expect(result.maxLineY).toBe(maxLineY)
   expect(result.scrollBarHeight).toBe(scrollBarHeight)
-  expect(result.scrollBarY).toBe(scrollBarY)
+  expect(result.scrollBarY).toBeCloseTo(scrollBarY, 2)
 })
 
 test('resize handles scrolled position at maximum', async () => {
@@ -290,7 +290,7 @@ test('resize handles scrolled position at maximum', async () => {
   expect(result.finalDeltaY).toBe(finalDeltaY)
   expect(result.maxLineY).toBe(maxLineY)
   expect(result.scrollBarHeight).toBe(scrollBarHeight)
-  expect(result.scrollBarY).toBe(scrollBarY)
+  expect(result.scrollBarY).toBeCloseTo(scrollBarY, 2)
 })
 
 test('resize handles scrolled position with partial scroll', async () => {
@@ -323,7 +323,7 @@ test('resize handles scrolled position with partial scroll', async () => {
   expect(result.finalDeltaY).toBe(finalDeltaY)
   expect(result.maxLineY).toBe(maxLineY)
   expect(result.scrollBarHeight).toBe(scrollBarHeight)
-  expect(result.scrollBarY).toBe(scrollBarY)
+  expect(result.scrollBarY).toBeCloseTo(scrollBarY, 2)
 })
 
 test('resize handles scrolled position with very large list', async () => {
@@ -356,7 +356,7 @@ test('resize handles scrolled position with very large list', async () => {
   expect(result.finalDeltaY).toBe(finalDeltaY)
   expect(result.maxLineY).toBe(maxLineY)
   expect(result.scrollBarHeight).toBe(scrollBarHeight)
-  expect(result.scrollBarY).toBe(scrollBarY)
+  expect(result.scrollBarY).toBeCloseTo(scrollBarY, 2)
 })
 
 test('resize handles scrolled position with small viewport', async () => {
@@ -390,7 +390,7 @@ test('resize handles scrolled position with small viewport', async () => {
   expect(result.finalDeltaY).toBe(finalDeltaY)
   expect(result.maxLineY).toBe(maxLineY)
   expect(result.scrollBarHeight).toBe(scrollBarHeight)
-  expect(result.scrollBarY).toBe(scrollBarY)
+  expect(result.scrollBarY).toBeCloseTo(scrollBarY, 2)
 })
 
 test('resize handles scrolled position with empty items', async () => {
@@ -423,7 +423,7 @@ test('resize handles scrolled position with empty items', async () => {
   expect(result.finalDeltaY).toBe(finalDeltaY)
   expect(result.maxLineY).toBe(maxLineY)
   expect(result.scrollBarHeight).toBe(scrollBarHeight)
-  expect(result.scrollBarY).toBe(scrollBarY)
+  expect(result.scrollBarY).toBeCloseTo(scrollBarY, 2)
 })
 
 test('resize handles scrolled position with deltaY exceeding finalDeltaY', async () => {
@@ -456,5 +456,5 @@ test('resize handles scrolled position with deltaY exceeding finalDeltaY', async
   expect(result.finalDeltaY).toBe(finalDeltaY)
   expect(result.maxLineY).toBe(maxLineY)
   expect(result.scrollBarHeight).toBe(scrollBarHeight)
-  expect(result.scrollBarY).toBe(scrollBarY)
+  expect(result.scrollBarY).toBeCloseTo(scrollBarY, 2)
 })

@@ -24,7 +24,7 @@ test('returns commands array when diffResult contains RenderSearchValue', () => 
   const diffResult: readonly number[] = [DiffType.RenderSearchValue]
   const result = Render3.render3(uid, diffResult)
   expect(Array.isArray(result)).toBe(true)
-  expect(result.length).toBe(1)
+  expect(result).toHaveLength(1)
 })
 
 test('returns commands array when diffResult contains multiple render types', () => {
@@ -39,7 +39,7 @@ test('returns commands array when diffResult contains multiple render types', ()
   const diffResult: readonly number[] = [DiffType.RenderSearchValue, DiffType.RenderMessage]
   const result = Render3.render3(uid, diffResult)
   expect(Array.isArray(result)).toBe(true)
-  expect(result.length).toBe(2)
+  expect(result).toHaveLength(2)
 })
 
 test('updates ExtensionSearchViewStates with newState', () => {
