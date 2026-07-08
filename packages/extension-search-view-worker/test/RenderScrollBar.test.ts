@@ -24,3 +24,17 @@ test('renders scrollbar with scroll position', () => {
   expect(result[2]).toBe('25px')
   expect(result[3]).toBe(ClassNames.ScrollBarThumb)
 })
+
+test('uses list height when rendering scrollbar', () => {
+  const state = {
+    ...createDefaultState(),
+    deltaY: 240,
+    finalDeltaY: 240,
+    headerHeight: 40,
+    height: 200,
+    itemHeight: 20,
+    items: Array(20).fill(null),
+  }
+  const result = RenderScrollBar.renderScrollBar(state)
+  expect(result).toEqual([RenderMethod.SetScrollBar, '0px 96px', '64px', ClassNames.ScrollBarThumb])
+})

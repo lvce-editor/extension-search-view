@@ -7,11 +7,12 @@ import * as RenderMethod from '../RenderMethod/RenderMethod.ts'
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
 
 export const renderScrollBar = (newState: State): readonly any[] => {
-  const listHeight = GetListHeight.getListHeight(newState.items.length, newState.itemHeight, newState.height)
+  const availableHeight = newState.height - newState.headerHeight
+  const listHeight = GetListHeight.getListHeight(newState.items.length, newState.itemHeight, availableHeight)
   const total = newState.items.length
   const contentHeight = total * newState.itemHeight
   const scrollBarHeight = GetScrollBarSize.getScrollBarSize(listHeight, contentHeight, newState.minimumSliderSize)
-  const scrollBarY = ScrollBarFunctions.getScrollBarY(newState.deltaY, newState.finalDeltaY, newState.height - newState.headerHeight, scrollBarHeight)
+  const scrollBarY = ScrollBarFunctions.getScrollBarY(newState.deltaY, newState.finalDeltaY, listHeight, scrollBarHeight)
   const roundedScrollBarY = Math.round(scrollBarY)
   const heightString = Px.px(scrollBarHeight)
   const translateString = Px.position(0, roundedScrollBarY)
