@@ -25,10 +25,10 @@ test('resize updates dimensions and calculates scroll bar properties', async () 
   expect(result.width).toBe(300)
   expect(result.x).toBe(10)
   expect(result.y).toBe(20)
-  expect(result.finalDeltaY).toBe(0) // contentHeight (200) - height (200) = 0
-  expect(result.maxLineY).toBe(10) // min(numberOfVisible, total) = min(11, 10) = 10
-  expect(result.scrollBarHeight).toBe(0) // size >= contentSize, so 0
-  expect(result.scrollBarY).toBe(0) // finalDeltaY === 0, so 0
+  expect(result.finalDeltaY).toBe(40) // contentHeight (200) - listHeight (160) = 40
+  expect(result.maxLineY).toBe(9) // min(numberOfVisible, total) = min(9, 10) = 9
+  expect(result.scrollBarHeight).toBe(128)
+  expect(result.scrollBarY).toBe(0)
 })
 
 test('resize calculates scroll bar when content exceeds viewport', async () => {
@@ -49,9 +49,9 @@ test('resize calculates scroll bar when content exceeds viewport', async () => {
 
   const result = await resize(state, dimensions)
 
-  const finalDeltaY = Math.max(400 - 200, 0) // 200
-  const maxLineY = Math.min(11, 20) // 11
-  const scrollBarHeight = Math.max(Math.round(200 ** 2 / 400), 20) // max(100, 20) = 100
+  const finalDeltaY = Math.max(400 - 160, 0) // 240
+  const maxLineY = Math.min(9, 20) // 9
+  const scrollBarHeight = Math.max(Math.round(160 ** 2 / 400), 20) // max(64, 20) = 64
   const scrollBarY = 0
 
   expect(result.height).toBe(200)
@@ -132,7 +132,7 @@ test('resize calculates scrollBarY correctly', async () => {
 
   const result = await resize(state, dimensions)
 
-  const finalDeltaY = Math.max(400 - 200, 0) // 200
+  const finalDeltaY = Math.max(400 - 160, 0) // 240
   // resize always uses 0 for deltaY when calculating scrollBarY
   const scrollBarY = 0
 
@@ -188,9 +188,9 @@ test('resize handles very large item lists', async () => {
 
   const result = await resize(state, dimensions)
 
-  const finalDeltaY = Math.max(20_000 - 200, 0) // 19800
-  const scrollBarHeight = Math.max(Math.round(200 ** 2 / 20_000), 20) // max(2, 20) = 20
-  const maxLineY = Math.min(11, 1000) // 11
+  const finalDeltaY = Math.max(20_000 - 160, 0) // 19840
+  const scrollBarHeight = Math.max(Math.round(160 ** 2 / 20_000), 20) // max(1, 20) = 20
+  const maxLineY = Math.min(9, 1000) // 9
 
   expect(result.finalDeltaY).toBe(finalDeltaY)
   expect(result.maxLineY).toBe(maxLineY)
@@ -215,9 +215,9 @@ test('resize handles small viewport', async () => {
 
   const result = await resize(state, dimensions)
 
-  const finalDeltaY = Math.max(200 - 60, 0) // 140
-  const maxLineY = Math.min(4, 10) // 4
-  const scrollBarHeight = Math.max(Math.round(60 ** 2 / 200), 20) // max(18, 20) = 20
+  const finalDeltaY = Math.max(200 - 20, 0) // 180
+  const maxLineY = Math.min(2, 10) // 2
+  const scrollBarHeight = Math.max(Math.round(20 ** 2 / 200), 20) // max(2, 20) = 20
   const scrollBarY = 0
 
   expect(result.height).toBe(60)
@@ -246,13 +246,13 @@ test('resize preserves scroll position when scrolled down', async () => {
 
   const result = await resize(state, dimensions)
 
-  const finalDeltaY = Math.max(400 - 200, 0) // 200
+  const finalDeltaY = Math.max(400 - 160, 0) // 240
   // minLineY should be calculated from deltaY (100 / 20 = 5)
-  // maxLineY should be min(minLineY + numberOfVisible, total) = min(5 + 11, 20) = 16
+  // maxLineY should be min(minLineY + numberOfVisible, total) = min(5 + 9, 20) = 14
   const minLineY = Math.floor(100 / 20) // 5
-  const maxLineY = Math.min(minLineY + 11, 20) // 16
-  const scrollBarHeight = Math.max(Math.round(200 ** 2 / 400), 20) // max(100, 20) = 100
-  const scrollBarY = (100 / 200) * (200 - 40 - 100) // 30
+  const maxLineY = Math.min(minLineY + 9, 20) // 14
+  const scrollBarHeight = Math.max(Math.round(160 ** 2 / 400), 20) // max(64, 20) = 64
+  const scrollBarY = (100 / 240) * (160 - 64) // 40
 
   expect(result.finalDeltaY).toBe(finalDeltaY)
   expect(result.maxLineY).toBe(maxLineY)
@@ -263,7 +263,7 @@ test('resize preserves scroll position when scrolled down', async () => {
 test('resize handles scrolled position at maximum', async () => {
   const state = {
     ...createDefaultState(),
-    deltaY: 200, // scrolled to the bottom
+    deltaY: 240, // scrolled to the bottom
     headerHeight: 40,
     itemHeight: 20,
     items: Array(20).fill(null),
@@ -279,13 +279,13 @@ test('resize handles scrolled position at maximum', async () => {
 
   const result = await resize(state, dimensions)
 
-  const finalDeltaY = Math.max(400 - 200, 0) // 200
-  // minLineY should be calculated from deltaY (200 / 20 = 10)
-  // maxLineY should be min(minLineY + numberOfVisible, total) = min(10 + 11, 20) = 20
-  const minLineY = Math.floor(200 / 20) // 10
-  const maxLineY = Math.min(minLineY + 11, 20) // 20
-  const scrollBarHeight = Math.max(Math.round(200 ** 2 / 400), 20) // max(100, 20) = 100
-  const scrollBarY = 200 - 40 - 100 // 60
+  const finalDeltaY = Math.max(400 - 160, 0) // 240
+  // minLineY should be calculated from deltaY (240 / 20 = 12)
+  // maxLineY should be min(minLineY + numberOfVisible, total) = min(12 + 9, 20) = 20
+  const minLineY = Math.floor(240 / 20) // 12
+  const maxLineY = Math.min(minLineY + 9, 20) // 20
+  const scrollBarHeight = Math.max(Math.round(160 ** 2 / 400), 20) // max(64, 20) = 64
+  const scrollBarY = 160 - 64 // 96
 
   expect(result.finalDeltaY).toBe(finalDeltaY)
   expect(result.maxLineY).toBe(maxLineY)
@@ -312,13 +312,13 @@ test('resize handles scrolled position with partial scroll', async () => {
 
   const result = await resize(state, dimensions)
 
-  const finalDeltaY = Math.max(600 - 200, 0) // 400
+  const finalDeltaY = Math.max(600 - 160, 0) // 440
   // minLineY should be calculated from deltaY (150 / 20 = 7.5, floored to 7)
-  // maxLineY should be min(minLineY + numberOfVisible, total) = min(7 + 11, 30) = 18
+  // maxLineY should be min(minLineY + numberOfVisible, total) = min(7 + 9, 30) = 16
   const minLineY = Math.floor(150 / 20) // 7
-  const maxLineY = Math.min(minLineY + 11, 30) // 18
-  const scrollBarHeight = Math.max(Math.round(200 ** 2 / 600), 20) // max(67, 20) = 67
-  const scrollBarY = (150 / 400) * (200 - 40 - 67) // 34.875
+  const maxLineY = Math.min(minLineY + 9, 30) // 16
+  const scrollBarHeight = Math.max(Math.round(160 ** 2 / 600), 20) // max(43, 20) = 43
+  const scrollBarY = (150 / 440) * (160 - 43) // 39.886
 
   expect(result.finalDeltaY).toBe(finalDeltaY)
   expect(result.maxLineY).toBe(maxLineY)
@@ -345,13 +345,13 @@ test('resize handles scrolled position with very large list', async () => {
 
   const result = await resize(state, dimensions)
 
-  const finalDeltaY = Math.max(20_000 - 200, 0) // 19800
+  const finalDeltaY = Math.max(20_000 - 160, 0) // 19840
   // minLineY should be calculated from deltaY (5000 / 20 = 250)
-  // maxLineY should be min(minLineY + numberOfVisible, total) = min(250 + 11, 1000) = 261
+  // maxLineY should be min(minLineY + numberOfVisible, total) = min(250 + 9, 1000) = 259
   const minLineY = Math.floor(5000 / 20) // 250
-  const maxLineY = Math.min(minLineY + 11, 1000) // 261
-  const scrollBarHeight = Math.max(Math.round(200 ** 2 / 20_000), 20) // max(2, 20) = 20
-  const scrollBarY = (5000 / 19_800) * (200 - 40 - 20) // 45.45
+  const maxLineY = Math.min(minLineY + 9, 1000) // 259
+  const scrollBarHeight = Math.max(Math.round(160 ** 2 / 20_000), 20) // max(1, 20) = 20
+  const scrollBarY = (5000 / 19_840) * (160 - 20) // 35.28
 
   expect(result.finalDeltaY).toBe(finalDeltaY)
   expect(result.maxLineY).toBe(maxLineY)
@@ -378,13 +378,13 @@ test('resize handles scrolled position with small viewport', async () => {
 
   const result = await resize(state, dimensions)
 
-  const finalDeltaY = Math.max(400 - 60, 0) // 340
+  const finalDeltaY = Math.max(400 - 20, 0) // 380
   // minLineY should be calculated from deltaY (100 / 20 = 5)
-  // maxLineY should be min(minLineY + numberOfVisible, total) = min(5 + 4, 20) = 9
+  // maxLineY should be min(minLineY + numberOfVisible, total) = min(5 + 2, 20) = 7
   const minLineY = Math.floor(100 / 20) // 5
-  const maxLineY = Math.min(minLineY + 4, 20) // 9
-  const scrollBarHeight = Math.max(Math.round(60 ** 2 / 400), 20) // max(9, 20) = 20
-  const scrollBarY = (100 / 340) * (60 - 40 - 20) // 5.88
+  const maxLineY = Math.min(minLineY + 2, 20) // 7
+  const scrollBarHeight = Math.max(Math.round(20 ** 2 / 400), 20) // max(1, 20) = 20
+  const scrollBarY = 0
 
   expect(result.height).toBe(60)
   expect(result.finalDeltaY).toBe(finalDeltaY)
@@ -445,13 +445,13 @@ test('resize handles scrolled position with deltaY exceeding finalDeltaY', async
 
   const result = await resize(state, dimensions)
 
-  const finalDeltaY = Math.max(400 - 200, 0) // 200
+  const finalDeltaY = Math.max(400 - 160, 0) // 240
   // minLineY should be calculated from deltaY (300 / 20 = 15)
-  // maxLineY should be min(minLineY + numberOfVisible, total) = min(15 + 11, 20) = 20
+  // maxLineY should be min(minLineY + numberOfVisible, total) = min(15 + 9, 20) = 20
   const minLineY = Math.floor(300 / 20) // 15
-  const maxLineY = Math.min(minLineY + 11, 20) // 20
-  const scrollBarHeight = Math.max(Math.round(200 ** 2 / 400), 20) // max(100, 20) = 100
-  const scrollBarY = (300 / 200) * (200 - 40 - 100) // 90
+  const maxLineY = Math.min(minLineY + 9, 20) // 20
+  const scrollBarHeight = Math.max(Math.round(160 ** 2 / 400), 20) // max(64, 20) = 64
+  const scrollBarY = (300 / 240) * (160 - 64) // 120
 
   expect(result.finalDeltaY).toBe(finalDeltaY)
   expect(result.maxLineY).toBe(maxLineY)

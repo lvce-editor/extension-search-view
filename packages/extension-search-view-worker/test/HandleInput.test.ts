@@ -18,6 +18,14 @@ const mockExtensions = [
   },
 ]
 
+const createMockExtensions = (count: number): readonly any[] => {
+  return Array.from({ length: count }, (_, index) => ({
+    ...mockExtensions[0],
+    id: `test-extension-${index}`,
+    name: `Test Extension ${index}`,
+  }))
+}
+
 test('handles empty search results', async () => {
   const state = { ...createDefaultState(), allExtensions: mockExtensions, platform: Remote }
   const result = await handleInput(state, 'nonexistent')
@@ -35,6 +43,24 @@ test('handles successful search', async () => {
   expect(result.message).toBe('')
   expect(result.searchValue).toBe('test')
   expect(result.placeholder).toBe(ViewletExtensionsStrings.searchExtensionsInMarketPlace())
+})
+
+test('uses list height when calculating scroll range', async () => {
+  const state = {
+    ...createDefaultState(),
+    allExtensions: createMockExtensions(20),
+    headerHeight: 40,
+    height: 200,
+    itemHeight: 20,
+    minimumSliderSize: 20,
+    platform: Remote,
+  }
+
+  const result = await handleInput(state, 'test')
+
+  expect(result.finalDeltaY).toBe(240)
+  expect(result.maxLineY).toBe(9)
+  expect(result.scrollBarHeight).toBe(64)
 })
 
 test('handles error during search', async () => {

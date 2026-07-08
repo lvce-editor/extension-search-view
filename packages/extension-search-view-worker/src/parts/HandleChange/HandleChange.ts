@@ -44,13 +44,14 @@ export const handleChange = async (state: State, update: Partial<State>): Promis
       }
     }
     const total = items.length
-    const listHeight = GetListHeight.getListHeight(total, itemHeight, height)
+    const availableHeight = height - headerHeight
+    const listHeight = GetListHeight.getListHeight(total, itemHeight, availableHeight)
     const contentHeight = total * itemHeight
-    const scrollBarHeight = GetScrollBarSize.getScrollBarSize(height, contentHeight, minimumSliderSize)
+    const scrollBarHeight = GetScrollBarSize.getScrollBarSize(listHeight, contentHeight, minimumSliderSize)
     const numberOfVisible = GetNumberOfVisibleItems.getNumberOfVisibleItems(listHeight, itemHeight)
     const maxLineY = Math.min(numberOfVisible, total)
     const finalDeltaY = GetFinalDeltaY.getFinalDeltaY(listHeight, itemHeight, total)
-    const scrollBarY = ScrollBarFunctions.getScrollBarY(0, finalDeltaY, height - headerHeight, scrollBarHeight)
+    const scrollBarY = ScrollBarFunctions.getScrollBarY(0, finalDeltaY, listHeight, scrollBarHeight)
 
     return {
       ...state,

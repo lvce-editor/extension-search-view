@@ -10,14 +10,15 @@ export const resize = async (state: State, dimensions: Dimensions): Promise<Stat
   const { deltaY, headerHeight, itemHeight, items, minimumSliderSize } = state
   const { height, width, x, y } = dimensions
   const total = items.length
-  const listHeight = GetListHeight.getListHeight(total, itemHeight, height)
+  const availableHeight = height - headerHeight
+  const listHeight = GetListHeight.getListHeight(total, itemHeight, availableHeight)
   const contentHeight = total * itemHeight
-  const scrollBarHeight = GetScrollBarSize.getScrollBarSize(height, contentHeight, minimumSliderSize)
+  const scrollBarHeight = GetScrollBarSize.getScrollBarSize(listHeight, contentHeight, minimumSliderSize)
   const numberOfVisible = GetNumberOfVisibleItems.getNumberOfVisibleItems(listHeight, itemHeight)
   const minLineY = Math.floor(deltaY / itemHeight)
   const maxLineY = Math.min(minLineY + numberOfVisible, total)
   const finalDeltaY = GetFinalDeltaY.getFinalDeltaY(listHeight, itemHeight, total)
-  const scrollBarY = ScrollBarFunctions.getScrollBarY(deltaY, finalDeltaY, height - headerHeight, scrollBarHeight)
+  const scrollBarY = ScrollBarFunctions.getScrollBarY(deltaY, finalDeltaY, listHeight, scrollBarHeight)
   return {
     ...state,
     finalDeltaY,
