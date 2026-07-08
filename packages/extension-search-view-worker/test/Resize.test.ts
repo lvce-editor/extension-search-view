@@ -446,15 +446,45 @@ test('resize handles scrolled position with deltaY exceeding finalDeltaY', async
   const result = await resize(state, dimensions)
 
   const finalDeltaY = Math.max(400 - 160, 0) // 240
-  // minLineY should be calculated from deltaY (300 / 20 = 15)
-  // maxLineY should be min(minLineY + numberOfVisible, total) = min(15 + 9, 20) = 20
-  const minLineY = Math.floor(300 / 20) // 15
-  const maxLineY = Math.min(minLineY + 9, 20) // 20
+  // deltaY should be clamped to finalDeltaY, then minLineY should be calculated from clamped deltaY (240 / 20 = 12)
+  // maxLineY should be min(minLineY + numberOfVisible, total) = min(12 + 9, 20) = 20
+  const maxLineY = Math.min(12 + 9, 20) // 20
   const scrollBarHeight = Math.max(Math.round(160 ** 2 / 400), 20) // max(64, 20) = 64
-  const scrollBarY = (300 / 240) * (160 - 64) // 120
+  const scrollBarY = 160 - 64 // 96
 
+  expect(result.deltaY).toBe(finalDeltaY)
   expect(result.finalDeltaY).toBe(finalDeltaY)
+  expect(result.minLineY).toBe(12)
   expect(result.maxLineY).toBe(maxLineY)
   expect(result.scrollBarHeight).toBe(scrollBarHeight)
   expect(result.scrollBarY).toBeCloseTo(scrollBarY, 2)
+})
+
+test('resize clamps scroll position when viewport grows to fit all items', async () => {
+  const state = {
+    ...createDefaultState(),
+    deltaY: 40,
+    headerHeight: 40,
+    itemHeight: 20,
+    items: Array(10).fill(null),
+    maxLineY: 10,
+    minimumSliderSize: 20,
+    minLineY: 2,
+  }
+
+  const dimensions: Dimensions = {
+    height: 260,
+    width: 300,
+    x: 0,
+    y: 0,
+  }
+
+  const result = await resize(state, dimensions)
+
+  expect(result.deltaY).toBe(0)
+  expect(result.finalDeltaY).toBe(0)
+  expect(result.minLineY).toBe(0)
+  expect(result.maxLineY).toBe(10)
+  expect(result.scrollBarHeight).toBe(0)
+  expect(result.scrollBarY).toBe(0)
 })

@@ -1,5 +1,6 @@
 import type { Dimensions } from '../Dimensions/Dimensions.ts'
 import type { State } from '../State/State.ts'
+import * as Clamp from '../Clamp/Clamp.ts'
 import * as GetFinalDeltaY from '../GetFinalDeltaY/GetFinalDeltaY.ts'
 import * as GetListHeight from '../GetListHeight/GetListHeight.ts'
 import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOfVisibleItems.ts'
@@ -15,12 +16,14 @@ export const resize = async (state: State, dimensions: Dimensions): Promise<Stat
   const contentHeight = total * itemHeight
   const scrollBarHeight = GetScrollBarSize.getScrollBarSize(listHeight, contentHeight, minimumSliderSize)
   const numberOfVisible = GetNumberOfVisibleItems.getNumberOfVisibleItems(listHeight, itemHeight)
-  const minLineY = Math.floor(deltaY / itemHeight)
-  const maxLineY = Math.min(minLineY + numberOfVisible, total)
   const finalDeltaY = GetFinalDeltaY.getFinalDeltaY(listHeight, itemHeight, total)
-  const scrollBarY = ScrollBarFunctions.getScrollBarY(deltaY, finalDeltaY, listHeight, scrollBarHeight)
+  const newDeltaY = Clamp.clamp(deltaY, 0, finalDeltaY)
+  const minLineY = Math.floor(newDeltaY / itemHeight)
+  const maxLineY = Math.min(minLineY + numberOfVisible, total)
+  const scrollBarY = ScrollBarFunctions.getScrollBarY(newDeltaY, finalDeltaY, listHeight, scrollBarHeight)
   return {
     ...state,
+    deltaY: newDeltaY,
     finalDeltaY,
     height,
     maxLineY,
