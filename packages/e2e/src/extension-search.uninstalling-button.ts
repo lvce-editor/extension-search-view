@@ -8,7 +8,7 @@ export const test: Test = async ({ Command, expect, Extension, ExtensionSearch, 
   await ExtensionSearch.open()
   await ExtensionSearch.handleInput(extensionId)
 
-  await Command.execute('SearchExtensions.setExtensionStatus', extensionId, 'uninstalling')
+  await Command.execute('Extensions.setExtensionStatus', extensionId, 'uninstalling')
 
   const button = Locator('.ExtensionListItem .ExtensionActionButton').first()
   await expect(button).toHaveText('Uninstalling')

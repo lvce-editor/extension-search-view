@@ -7,7 +7,7 @@ export const test: Test = async ({ Command, expect, ExtensionSearch, Locator }) 
   await ExtensionSearch.open()
   await ExtensionSearch.handleInput(extensionId)
 
-  await Command.execute('SearchExtensions.setExtensionStatus', extensionId, 'enabled')
+  await Command.execute('Extensions.setExtensionStatus', extensionId, 'enabled')
 
   const buttons = Locator('.ExtensionListItem .ExtensionActionButton')
   await expect(buttons).toHaveCount(1)
