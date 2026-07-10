@@ -7,6 +7,8 @@ export default [
   {
     rules: {
       '@cspell/spellchecker': 'off',
+      'github-actions/action-versions': 'off',
+      'github-actions/no-e2e-in-release': 'off',
     },
   },
 ]
