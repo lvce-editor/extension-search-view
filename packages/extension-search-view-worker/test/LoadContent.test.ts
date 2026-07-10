@@ -1,4 +1,4 @@
-import { expect, test } from '@jest/globals'
+import { afterEach, expect, test } from '@jest/globals'
 import { ExtensionHost, RendererWorker } from '@lvce-editor/rpc-registry'
 import type { State } from '../src/parts/State/State.ts'
 import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
@@ -14,6 +14,26 @@ const mockExtensions = [
     publisher: 'test-publisher',
   },
 ]
+
+const originalNavigatorDescriptor = Object.getOwnPropertyDescriptor(globalThis, 'navigator')
+
+const setNavigator = (userAgent: string): void => {
+  Object.defineProperty(globalThis, 'navigator', {
+    configurable: true,
+    value: {
+      userAgent,
+    },
+  })
+}
+
+afterEach(() => {
+  if (originalNavigatorDescriptor) {
+    Object.defineProperty(globalThis, 'navigator', originalNavigatorDescriptor)
+    return
+  }
+  // @ts-expect-error
+  delete globalThis.navigator
+})
 
 test('loadContent with default state and null savedState', async () => {
   RendererWorker.registerMockRpc({
@@ -173,4 +193,44 @@ test('loadContent preserves state properties', async () => {
   expect(result.height).toBe(200)
   expect(result.itemHeight).toBe(30)
   expect(result.platform).toBe(Remote)
+})
+
+test('loadContent uses increased scroll sensitivity in Firefox', async () => {
+  setNavigator('Mozilla/5.0 (X11; Linux x86_64; rv:140.0) Gecko/20100101 Firefox/140.0')
+  RendererWorker.registerMockRpc({
+    'ExtensionManagement.getAllExtensions'() {
+      return mockExtensions
+    },
+  })
+
+  const result = await loadContent(
+    {
+      ...createDefaultState(),
+      platform: Remote,
+      width: 500,
+    },
+    null,
+  )
+
+  expect(result.scrollSensitivity).toBe(2.5)
+})
+
+test('loadContent uses normal scroll sensitivity in Chrome', async () => {
+  setNavigator('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/138.0.0.0 Safari/537.36')
+  RendererWorker.registerMockRpc({
+    'ExtensionManagement.getAllExtensions'() {
+      return mockExtensions
+    },
+  })
+
+  const result = await loadContent(
+    {
+      ...createDefaultState(),
+      platform: Remote,
+      width: 500,
+    },
+    null,
+  )
+
+  expect(result.scrollSensitivity).toBe(1)
 })

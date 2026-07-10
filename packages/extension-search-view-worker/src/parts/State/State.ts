@@ -27,6 +27,7 @@ export interface State {
   readonly scrollBarActive: boolean
   readonly scrollBarHeight: number
   readonly scrollBarY: number
+  readonly scrollSensitivity: number
   readonly searchValue: string
   readonly size: number
   readonly suggestOpen: boolean

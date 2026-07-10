@@ -27,6 +27,7 @@ export const createDefaultState = (): State => {
     scrollBarActive: false,
     scrollBarHeight: 0,
     scrollBarY: 0,
+    scrollSensitivity: 1,
     searchValue: '',
     size: 0,
     suggestOpen: false,
