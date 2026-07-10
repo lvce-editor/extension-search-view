@@ -101,6 +101,10 @@ export const installed = (): string => {
   return I18nString.i18nString(UiStrings.Installed)
 }
 
+export const marketplace = (): string => {
+  return I18nString.i18nString(UiStrings.Marketplace)
+}
+
 export const category = (): string => {
   return I18nString.i18nString(UiStrings.Category)
 }
@@ -143,6 +147,10 @@ export const enabled = (): string => {
 
 export const workspaceUnsupported = (): string => {
   return I18nString.i18nString(UiStrings.WorkspaceUnsupported)
+}
+
+export const deprecated = (): string => {
+  return I18nString.i18nString(UiStrings.Deprecated)
 }
 
 export const sortBy = (): string => {

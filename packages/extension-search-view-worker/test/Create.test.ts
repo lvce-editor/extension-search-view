@@ -11,8 +11,9 @@ test('create stores state with correct values', () => {
   const height = 600
   const platform = 1
   const assetDir = '/test/assets'
+  const parentUid = 456
 
-  Create.create(id, uri, x, y, width, height, platform, assetDir)
+  Create.create(id, uri, x, y, width, height, platform, assetDir, parentUid)
 
   const result = ExtensionSearchViewStates.get(id)
   expect(result).toBeDefined()
@@ -43,6 +44,7 @@ test('create stores state with correct values', () => {
   expect(result?.newState.minimumSliderSize).toBe(0)
   expect(result?.newState.minLineY).toBe(0)
   expect(result?.newState.negativeMargin).toBe(0)
+  expect(result?.newState.parentUid).toBe(parentUid)
   expect(result?.newState.scrollBarHeight).toBe(0)
   expect(result?.newState.scrollBarY).toBe(0)
   expect(result?.newState.size).toBe(0)
