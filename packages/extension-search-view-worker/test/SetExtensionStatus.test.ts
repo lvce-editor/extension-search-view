@@ -41,6 +41,19 @@ test('updates disabled state', () => {
   expect(enabled.items[0].disabled).toBe(false)
 })
 
+test('can override builtin state for tests', () => {
+  const builtinExtension = { ...extension, builtin: true }
+  const state = {
+    ...CreateDefaultState.createDefaultState(),
+    allExtensions: [builtinExtension],
+    items: [builtinExtension],
+  }
+
+  const result = SetExtensionStatus.setExtensionStatus(state, 'test.extension', 'enabled', false)
+
+  expect(result.items[0].builtin).toBe(false)
+})
+
 test('rejects invalid status', () => {
   const state = CreateDefaultState.createDefaultState()
   expect(() => SetExtensionStatus.setExtensionStatus(state, 'test.extension', 'unknown')).toThrow(new TypeError('Invalid extension status: unknown'))

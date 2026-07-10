@@ -5,10 +5,12 @@ export const skip = 0
 export const test: Test = async ({ Command, expect, ExtensionSearch, Locator }) => {
   const extensionId = 'builtin.theme-atom-one-dark'
   await ExtensionSearch.open()
-  await ExtensionSearch.handleInput(extensionId)
+  await ExtensionSearch.handleInput(`@id:${extensionId}`)
 
   await Command.execute('Extensions.setExtensionStatus', extensionId, 'enabled')
 
+  const actionContainers = Locator('.ExtensionListItem .ExtensionActions')
+  await expect(actionContainers).toHaveCount(1)
   const buttons = Locator('.ExtensionListItem .ExtensionActionButton')
   await expect(buttons).toHaveCount(1)
   await expect(buttons.first()).toHaveText('Disable')
