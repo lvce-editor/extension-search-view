@@ -11,6 +11,8 @@ export const test: Test = async ({ Command, expect, ExtensionSearch, Locator }) 
   await Command.execute('Extensions.handleInput', 'atom', 1, 4)
   const extensionItems = Locator('.ExtensionListItem')
   await expect(extensionItems).toHaveCount(1)
+  const input = Locator('.MultilineInputBox')
+  await expect(input).toBeFocused()
 
   // act
   await Command.execute('Extensions.handleClick', -1)
@@ -18,5 +20,6 @@ export const test: Test = async ({ Command, expect, ExtensionSearch, Locator }) 
   // assert
   const listItems = Locator('.ListItems')
   await expect(listItems).toBeVisible()
+  await expect(listItems).toBeFocused()
   await expect(listItems).toHaveClass('FocusOutline')
 }
