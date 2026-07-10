@@ -16,3 +16,7 @@ export const HandleWheel = 15
 export const HandleHeaderContextMenu = 16
 export const HandleBlur = 17
 export const HandleSettingsButtonClick = 18
+export const HandleInstall = 19
+export const HandleUninstall = 20
+export const HandleEnable = 21
+export const HandleDisable = 22

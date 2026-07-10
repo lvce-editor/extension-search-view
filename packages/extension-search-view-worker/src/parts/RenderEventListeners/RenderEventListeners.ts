@@ -59,5 +59,21 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
       name: DomEventListenerFunctions.HandleBlur,
       params: ['handleBlur'],
     },
+    {
+      name: DomEventListenerFunctions.HandleInstall,
+      params: ['handleInstall', EventExpression.TargetName],
+    },
+    {
+      name: DomEventListenerFunctions.HandleUninstall,
+      params: ['handleUninstall', EventExpression.TargetName],
+    },
+    {
+      name: DomEventListenerFunctions.HandleEnable,
+      params: ['handleEnable', EventExpression.TargetName],
+    },
+    {
+      name: DomEventListenerFunctions.HandleDisable,
+      params: ['handleDisable', EventExpression.TargetName],
+    },
   ]
 }
