@@ -28,6 +28,7 @@ export const create = (id: number, uri: string, x: number, y: number, width: num
     scrollBarActive: false,
     scrollBarHeight: 0,
     scrollBarY: 0,
+    scrollSensitivity: 1,
     searchValue: '',
     size: 0,
     suggestOpen: false,

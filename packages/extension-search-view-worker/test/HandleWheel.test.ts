@@ -38,3 +38,21 @@ test('handleWheel should handle negative deltaY', () => {
   const result = handleWheel(state, deltaMode, deltaY)
   expect(result.deltaY).toBe(7)
 })
+
+test('handleWheel should apply scroll sensitivity', () => {
+  const state = setDeltaY(
+    {
+      ...createDefaultState(),
+      finalDeltaY: 1000,
+      height: 400,
+      itemHeight: 40,
+      items: Array(25).fill(null),
+      scrollSensitivity: 2.5,
+    },
+    10,
+  )
+
+  const result = handleWheel(state, 0, 4)
+
+  expect(result.deltaY).toBe(20)
+})
