@@ -1,5 +1,5 @@
 import * as config from '@lvce-editor/eslint-config'
-import * as actions from '@lvce-editor/eslint-plugin-github-actions'
+import * as actions from '@lvce-editor/eslint-plugin-github-actions/dist/index.js'
 
 export default [
   ...config.default,
@@ -7,8 +7,12 @@ export default [
   {
     rules: {
       '@cspell/spellchecker': 'off',
-      'github-actions/action-versions': 'off',
-      'github-actions/no-e2e-in-release': 'off',
+    },
+  },
+  {
+    files: ['packages/e2e/**/*.ts'],
+    rules: {
+      '@typescript-eslint/prefer-readonly-parameter-types': 'off',
     },
   },
 ]
