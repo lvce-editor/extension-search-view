@@ -8,6 +8,31 @@ test('returns array of key bindings', () => {
   const keyBindings = GetKeyBindings.getKeyBindings()
   expect(keyBindings).toEqual([
     {
+      command: 'Extensions.closeSuggest',
+      key: KeyCode.Escape,
+      when: WhenExpression.FocusExtensionsInput,
+    },
+    {
+      command: 'Extensions.acceptCompletion',
+      key: KeyCode.Enter,
+      when: WhenExpression.FocusExtensionsInput,
+    },
+    {
+      command: 'Extensions.selectPreviousCompletion',
+      key: KeyCode.UpArrow,
+      when: WhenExpression.FocusExtensionsInput,
+    },
+    {
+      command: 'Extensions.selectNextCompletion',
+      key: KeyCode.DownArrow,
+      when: WhenExpression.FocusExtensionsInput,
+    },
+    {
+      command: 'Extensions.toggleSuggest',
+      key: KeyModifier.CtrlCmd | KeyCode.Space,
+      when: WhenExpression.FocusExtensionsInput,
+    },
+    {
       command: 'Extensions.focusFirst',
       key: KeyCode.Home,
       when: WhenExpression.FocusExtensions,

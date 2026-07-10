@@ -1,1 +1,16 @@
-export const Suggestions = ['@builtin', '@disabled', '@enabled', '@installed', '@outdated', '@sort:installs', '@id:', '@category']
+export const Suggestions = [
+  '@builtin',
+  '@category:',
+  '@disabled',
+  '@enabled',
+  '@featured',
+  '@id:',
+  '@installed',
+  '@mcpservers',
+  '@mostpopular',
+  '@outdated',
+  '@recentlypublished',
+  '@recommended',
+  '@sort:installs',
+  '@workspaceunsupported',
+]

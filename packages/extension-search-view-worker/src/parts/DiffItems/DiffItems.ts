@@ -2,6 +2,8 @@ import type { State } from '../State/State.ts'
 
 export const isEqual = (oldState: State, newState: State): boolean => {
   return (
+    oldState.completionFocusedIndex === newState.completionFocusedIndex &&
+    oldState.completionItems === newState.completionItems &&
     oldState.items === newState.items &&
     oldState.minLineY === newState.minLineY &&
     oldState.maxLineY === newState.maxLineY &&
@@ -9,6 +11,7 @@ export const isEqual = (oldState: State, newState: State): boolean => {
     oldState.message === newState.message &&
     oldState.focus === newState.focus &&
     oldState.inputActions === newState.inputActions &&
-    oldState.placeholder === newState.placeholder
+    oldState.placeholder === newState.placeholder &&
+    oldState.suggestOpen === newState.suggestOpen
   )
 }

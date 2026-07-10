@@ -12,6 +12,19 @@ test('handleClickAt returns state unchanged for non-left click', async () => {
   expect(result).toBe(state)
 })
 
+test('handleClickAt accepts completion by name', async () => {
+  const state = {
+    ...createDefaultState(),
+    completionItems: [{ highlights: [0, 1], label: '@enabled' }],
+    cursorOffset: 1,
+    searchValue: '@',
+    suggestOpen: true,
+  }
+  const result = await handleClickAt(state, MouseEventType.LeftClick, 0, 0, '@enabled')
+  expect(result.searchValue).toBe('@enabled')
+  expect(result.suggestOpen).toBe(false)
+})
+
 test('handleClickAt handles left click and opens URI', async () => {
   const mockExtension: ExtensionListItem = {
     categories: [],

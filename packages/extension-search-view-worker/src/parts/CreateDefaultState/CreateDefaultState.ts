@@ -4,6 +4,9 @@ export const createDefaultState = (): State => {
   return {
     allExtensions: [],
     assetDir: '',
+    completionFocusedIndex: 0,
+    completionItems: [],
+    cursorOffset: 0,
     deltaY: 0,
     finalDeltaY: 0,
     focus: 0,

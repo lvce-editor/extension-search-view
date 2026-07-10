@@ -1,4 +1,5 @@
 export const Enter = 3
+export const Escape = 8
 export const Space = 9
 export const PageUp = 10
 export const PageDown = 11

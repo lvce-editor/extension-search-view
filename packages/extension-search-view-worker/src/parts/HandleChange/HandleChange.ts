@@ -17,8 +17,8 @@ export const handleChange = async (state: State, update: Partial<State>): Promis
     ...update,
   }
   try {
-    const value = fullNewState.searchValue.trim()
-    const { inputSource } = fullNewState
+    const { inputSource, searchValue } = fullNewState
+    const value = searchValue.trim()
     const hasValue = value.length > 0
     const inputActions = GetInputActions.getInputActions(hasValue)
     const { allExtensions, assetDir, headerHeight, height, itemHeight, minimumSliderSize, platform } = state
@@ -27,7 +27,7 @@ export const handleChange = async (state: State, update: Partial<State>): Promis
     const items = await SearchExtensions.searchExtensions(allExtensions, value, platform, assetDir)
     if (items.length === 0) {
       return {
-        ...state,
+        ...fullNewState,
         allExtensions,
         deltaY: 0,
         finalDeltaY: 0,
@@ -40,7 +40,7 @@ export const handleChange = async (state: State, update: Partial<State>): Promis
         minLineY: 0,
         placeholder: ViewletExtensionsStrings.searchExtensionsInMarketPlace(),
         scrollBarHeight: 0,
-        searchValue: value,
+        searchValue,
       }
     }
     const total = items.length
@@ -54,7 +54,7 @@ export const handleChange = async (state: State, update: Partial<State>): Promis
     const scrollBarY = ScrollBarFunctions.getScrollBarY(0, finalDeltaY, listHeight, scrollBarHeight)
 
     return {
-      ...state,
+      ...fullNewState,
       allExtensions,
       deltaY: 0,
       finalDeltaY,
@@ -67,7 +67,7 @@ export const handleChange = async (state: State, update: Partial<State>): Promis
       placeholder: ViewletExtensionsStrings.searchExtensionsInMarketPlace(),
       scrollBarHeight,
       scrollBarY,
-      searchValue: value,
+      searchValue,
     }
 
     // TODO handle out of order responses (a bit complicated)

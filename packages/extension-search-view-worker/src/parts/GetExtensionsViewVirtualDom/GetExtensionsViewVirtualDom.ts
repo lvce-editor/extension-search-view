@@ -34,7 +34,8 @@ const getContentVirtualDom = (
 
 export const getExtensionsViewVirtualDom = (state: State): readonly VirtualDomNode[] => {
   const visibleExtensions = GetVisibleExtensions.getVisible(state)
-  const { focusedIndex, inputActions, message, placeholder, scrollBarHeight, scrollBarY } = state
+  const { completionFocusedIndex, completionItems, focusedIndex, inputActions, message, placeholder, scrollBarHeight, scrollBarY, suggestOpen } =
+    state
 
   const focusOutline = focusedIndex === -1 && state.focus === FocusId.List
   return [
@@ -46,7 +47,7 @@ export const getExtensionsViewVirtualDom = (state: State): readonly VirtualDomNo
       role: AriaRoles.None,
       type: VirtualDomElements.Div,
     },
-    ...getExtensionHeaderVirtualDom(placeholder, inputActions),
+    ...getExtensionHeaderVirtualDom(placeholder, inputActions, completionItems, completionFocusedIndex, suggestOpen),
     ...getContentVirtualDom(visibleExtensions, message, scrollBarHeight, scrollBarY, focusOutline),
   ]
 }

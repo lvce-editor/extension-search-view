@@ -1,0 +1,9 @@
+import type { State } from '../State/State.ts'
+import * as FocusId from '../FocusId/FocusId.ts'
+
+export const handleInputFocus = (state: State): State => {
+  return {
+    ...state,
+    focus: FocusId.Input,
+  }
+}

@@ -21,6 +21,8 @@ test('should return correct virtual DOM structure', () => {
       type: 4,
     },
     {
+      ariaAutoComplete: 'list',
+      ariaExpanded: false,
       autocapitalize: 'off',
       autocomplete: 'off',
       autocorrect: 'off',
@@ -28,9 +30,11 @@ test('should return correct virtual DOM structure', () => {
       className: 'MultilineInputBox',
       inputType: 'search',
       name: 'extensions',
-      onFocus: '',
+      onBlur: 24,
+      onFocus: 23,
       onInput: 4,
       placeholder: 'Search extensions...',
+      role: 'combobox',
       spellcheck: false,
       type: VirtualDomElements.Input,
     },
@@ -40,4 +44,21 @@ test('should return correct virtual DOM structure', () => {
       type: 4,
     },
   ])
+})
+
+test('renders open completion popup and input accessibility state', () => {
+  const result = GetExtensionHeaderVirtualDom.getExtensionHeaderVirtualDom(
+    'Search extensions...',
+    [],
+    [{ highlights: [0, 1], label: '@builtin' }],
+    0,
+    true,
+  )
+  expect(result[0].childCount).toBe(2)
+  expect(result[2]).toMatchObject({
+    ariaActivedescendant: 'ExtensionSearchCompletion-0',
+    ariaControls: 'ExtensionSearchCompletions',
+    ariaExpanded: true,
+  })
+  expect(result.some((node) => node.className === 'ExtensionSearchCompletionWidget')).toBe(true)
 })

@@ -11,7 +11,9 @@ export const getSearchFieldVirtualDom = (
   onInput: string | number,
   insideButtons: readonly InputAction[],
   outsideButtons: readonly InputAction[],
-  onFocus = '',
+  onFocus: string | number = '',
+  onBlur: string | number = '',
+  inputProperties: Partial<VirtualDomNode> = {},
 ): readonly VirtualDomNode[] => {
   // TODO avoid mutation
   const dom = [
@@ -29,11 +31,13 @@ export const getSearchFieldVirtualDom = (
       className: ClassNames.MultilineInputBox,
       inputType: 'search',
       name,
+      ...(onBlur && { onBlur }),
       onFocus,
       onInput,
       placeholder,
       spellcheck: false,
       type: VirtualDomElements.Input,
+      ...inputProperties,
     },
     {
       childCount: insideButtons.length,

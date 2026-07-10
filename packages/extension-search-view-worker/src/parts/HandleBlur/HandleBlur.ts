@@ -5,5 +5,6 @@ export const handleBlur = (state: State): State => {
   return {
     ...state,
     focus: FocusId.None,
+    suggestOpen: false,
   }
 }

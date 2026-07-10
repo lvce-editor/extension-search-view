@@ -1,9 +1,13 @@
+import type { CompletionItem } from '../CompletionItem/CompletionItem.ts'
 import type { ExtensionListItem } from '../ExtensionListItem/ExtensionListItem.ts'
 import type { InputAction } from '../InputAction/InputAction.ts'
 
 export interface State {
   readonly allExtensions: readonly ExtensionListItem[]
   readonly assetDir: string
+  readonly completionFocusedIndex: number
+  readonly completionItems: readonly CompletionItem[]
+  readonly cursorOffset: number
   readonly deltaY: number
   readonly finalDeltaY: number
   readonly focus: number
