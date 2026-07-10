@@ -13,7 +13,7 @@ export const test: Test = async ({ Command, expect, ExtensionSearch, Locator }) 
   await expect(extensionItems).toHaveCount(1)
 
   // act
-  await ExtensionSearch.handleClick(-1)
+  await Command.execute('Extensions.handleClick', -1)
 
   // assert
   const listItems = Locator('.ListItems')
