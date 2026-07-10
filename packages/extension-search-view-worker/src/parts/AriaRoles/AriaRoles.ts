@@ -1,5 +1,8 @@
 export const CheckBox = 'checkbox'
+export const ComboBox = 'combobox'
 export const List = 'list'
+export const ListBox = 'listbox'
 export const ListItem = 'listitem'
 export const None = 'none'
+export const Option = 'option'
 export const ToolBar = 'toolbar'

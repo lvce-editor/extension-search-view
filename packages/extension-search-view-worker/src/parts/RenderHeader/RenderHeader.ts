@@ -4,6 +4,12 @@ import * as GetInputActions from '../GetInputActions/GetInputActions.ts'
 
 export const renderHeader = (newState: State): readonly any[] => {
   const actions = GetInputActions.getInputActions(newState.searchValue.length > 0)
-  const dom = GetExtensionHeaderVirtualDom.getExtensionHeaderVirtualDom(newState.placeholder, actions)
+  const dom = GetExtensionHeaderVirtualDom.getExtensionHeaderVirtualDom(
+    newState.placeholder,
+    actions,
+    newState.completionItems,
+    newState.completionFocusedIndex,
+    newState.suggestOpen,
+  )
   return ['setHeaderDom', dom]
 }

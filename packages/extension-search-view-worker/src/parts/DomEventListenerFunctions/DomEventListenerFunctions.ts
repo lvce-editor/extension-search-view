@@ -20,3 +20,5 @@ export const HandleInstall = 19
 export const HandleUninstall = 20
 export const HandleEnable = 21
 export const HandleDisable = 22
+export const HandleInputFocus = 23
+export const HandleInputBlur = 24

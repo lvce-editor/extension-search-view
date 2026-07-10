@@ -4,7 +4,7 @@ import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaul
 import { toggleSuggest } from '../src/parts/ToggleSuggest/ToggleSuggest.ts'
 
 test('toggleSuggest', () => {
-  const state: State = { ...createDefaultState(), suggestOpen: false }
+  const state: State = { ...createDefaultState(), cursorOffset: 1, searchValue: '@', suggestOpen: false }
   const result = toggleSuggest(state)
   expect(result.suggestOpen).toBe(true)
   const result2 = toggleSuggest(result)

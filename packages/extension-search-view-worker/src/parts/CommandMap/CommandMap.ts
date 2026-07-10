@@ -1,4 +1,5 @@
 import { terminate } from '@lvce-editor/viewlet-registry'
+import * as AcceptCompletion from '../AcceptCompletion/AcceptCompletion.ts'
 import * as ClearSearchResults from '../ClearSearchResults/ClearSearchResults.ts'
 import * as CloseSuggest from '../CloseSuggest/CloseSuggest.ts'
 import { copyExtensionId } from '../CopyExtensionId/CopyExtensionId.ts'
@@ -39,6 +40,7 @@ import * as HandleEnableWorkspace from '../HandleEnableWorkspace/HandleEnableWor
 import * as HandleFocus from '../HandleFocus/HandleFocus.ts'
 import { handleHeaderContextMenu } from '../HandleHeaderContextMenu/HandleHeaderContextMenu.ts'
 import * as HandleInput from '../HandleInput/HandleInput.ts'
+import * as HandleInputFocus from '../HandleInputFocus/HandleInputFocus.ts'
 import * as HandleInstall from '../HandleInstall/HandleInstall.ts'
 import * as HandleScrollBarCaptureLost from '../HandleScrollBarCaptureLost/HandleScrollBarCaptureLost.ts'
 import * as HandleScrollBarClick from '../HandleScrollBarClick/HandleScrollBarClick.ts'
@@ -59,6 +61,8 @@ import * as SaveState from '../SaveState/SaveState.ts'
 import * as ScrollDown from '../ScrollDown/ScrollDown.ts'
 import * as SearchExtensions from '../SearchExtensions/SearchExtensions.ts'
 import * as SelectIndex from '../SelectIndex/SelectIndex.ts'
+import * as SelectNextCompletion from '../SelectNextCompletion/SelectNextCompletion.ts'
+import * as SelectPreviousCompletion from '../SelectPreviousCompletion/SelectPreviousCompletion.ts'
 import * as SetDeltaY from '../SetDeltaY/SetDeltaY.ts'
 import * as SetExtensionStatus from '../SetExtensionStatus/SetExtensionStatus.ts'
 import * as ToggleSuggest from '../ToggleSuggest/ToggleSuggest.ts'
@@ -66,6 +70,7 @@ import * as ToggleSuggest from '../ToggleSuggest/ToggleSuggest.ts'
 export const commandMap = {
   'Extensions.copyExtensionId': WrapCommand.wrapCommand(copyExtensionId),
   'Extensions.copyExtensionInfo': WrapCommand.wrapCommand(copyExtensionInfo),
+  'SearchExtensions.acceptCompletion': WrapCommand.wrapCommand(AcceptCompletion.acceptCompletion),
   'SearchExtensions.clearSearchResults': WrapCommand.wrapCommand(ClearSearchResults.clearSearchResults),
   'SearchExtensions.closeSuggest': WrapCommand.wrapCommand(CloseSuggest.closeSuggest),
   'SearchExtensions.copyExtensionId': WrapCommand.wrapCommand(copyExtensionId),
@@ -105,6 +110,7 @@ export const commandMap = {
   'SearchExtensions.handleFocus': WrapCommand.wrapCommand(HandleFocus.handleFocus),
   'SearchExtensions.handleHeaderContextMenu': WrapCommand.wrapCommand(handleHeaderContextMenu),
   'SearchExtensions.handleInput': WrapCommand.wrapCommand(HandleInput.handleInput),
+  'SearchExtensions.handleInputFocus': WrapCommand.wrapCommand(HandleInputFocus.handleInputFocus),
   'SearchExtensions.handleInstall': WrapCommand.wrapCommand(HandleInstall.handleInstall),
   'SearchExtensions.handleScrollBarCaptureLost': WrapCommand.wrapCommand(HandleScrollBarCaptureLost.handleScrollBarCaptureLost),
   'SearchExtensions.handleScrollBarClick': WrapCommand.wrapCommand(HandleScrollBarClick.handleScrollBarClick),
@@ -126,6 +132,8 @@ export const commandMap = {
   'SearchExtensions.scrollDown': WrapCommand.wrapCommand(ScrollDown.scrollDown),
   'SearchExtensions.searchExtensions': SearchExtensions.searchExtensions,
   'SearchExtensions.selectIndex': WrapCommand.wrapCommand(SelectIndex.selectIndex),
+  'SearchExtensions.selectNextCompletion': WrapCommand.wrapCommand(SelectNextCompletion.selectNextCompletion),
+  'SearchExtensions.selectPreviousCompletion': WrapCommand.wrapCommand(SelectPreviousCompletion.selectPreviousCompletion),
   'SearchExtensions.setDeltaY': WrapCommand.wrapCommand(SetDeltaY.setDeltaY),
   'SearchExtensions.setExtensionStatus': WrapCommand.wrapCommand(SetExtensionStatus.setExtensionStatus),
   'SearchExtensions.terminate': terminate,

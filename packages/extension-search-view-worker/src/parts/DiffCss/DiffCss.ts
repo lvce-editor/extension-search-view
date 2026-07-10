@@ -2,9 +2,11 @@ import type { State } from '../State/State.ts'
 
 export const isEqual = (oldState: State, newState: State): boolean => {
   return (
+    oldState.cursorOffset === newState.cursorOffset &&
     oldState.scrollBarHeight === newState.scrollBarHeight &&
     oldState.scrollBarY === newState.scrollBarY &&
     oldState.initial === newState.initial &&
-    oldState.deltaY === newState.deltaY
+    oldState.deltaY === newState.deltaY &&
+    oldState.width === newState.width
   )
 }

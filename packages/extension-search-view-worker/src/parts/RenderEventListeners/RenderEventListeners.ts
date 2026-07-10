@@ -17,7 +17,7 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
     },
     {
       name: DomEventListenerFunctions.HandlePointerDown,
-      params: ['handleClickAt', EventExpression.Button, EventExpression.ClientX, EventExpression.ClientY],
+      params: ['handleClickAt', EventExpression.Button, EventExpression.ClientX, EventExpression.ClientY, EventExpression.TargetName],
       preventDefault: true,
     },
     {
@@ -41,7 +41,7 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
     },
     {
       name: DomEventListenerFunctions.HandleExtensionsInput,
-      params: ['handleInput', EventExpression.TargetValue, InputSource.User],
+      params: ['handleInput', EventExpression.TargetValue, InputSource.User, EventExpression.TargetSelectionStart],
     },
     {
       name: DomEventListenerFunctions.HandleClearSearchResults,
@@ -74,6 +74,14 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
     {
       name: DomEventListenerFunctions.HandleDisable,
       params: ['handleDisable', EventExpression.TargetName],
+    },
+    {
+      name: DomEventListenerFunctions.HandleInputFocus,
+      params: ['handleInputFocus'],
+    },
+    {
+      name: DomEventListenerFunctions.HandleInputBlur,
+      params: ['handleBlur'],
     },
   ]
 }

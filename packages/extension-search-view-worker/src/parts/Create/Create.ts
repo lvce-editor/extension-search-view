@@ -15,6 +15,9 @@ export const create = (
   const state: State = {
     allExtensions: [],
     assetDir,
+    completionFocusedIndex: 0,
+    completionItems: [],
+    cursorOffset: 0,
     deltaY: 0,
     finalDeltaY: 0,
     focus: 0,

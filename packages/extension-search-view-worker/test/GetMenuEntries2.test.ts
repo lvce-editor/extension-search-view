@@ -8,6 +8,9 @@ test('returns filter menu entries when menuId is ExtensionSearchFilter', () => {
   const state = {
     allExtensions: [],
     assetDir: '',
+    completionFocusedIndex: 0,
+    completionItems: [],
+    cursorOffset: 0,
     deltaY: 0,
     finalDeltaY: 0,
     focus: 0,
@@ -52,6 +55,9 @@ test('returns default menu entries when menuId is not ExtensionSearchFilter', ()
   const state = {
     allExtensions: [],
     assetDir: '',
+    completionFocusedIndex: 0,
+    completionItems: [],
+    cursorOffset: 0,
     deltaY: 0,
     finalDeltaY: 0,
     focus: 0,

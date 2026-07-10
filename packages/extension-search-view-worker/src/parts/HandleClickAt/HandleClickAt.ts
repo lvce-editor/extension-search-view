@@ -2,8 +2,12 @@ import { MouseEventType } from '@lvce-editor/virtual-dom-worker'
 import type { State } from '../State/State.ts'
 import * as GetListIndex from '../GetListIndex/GetListIndex.ts'
 import { handleClick } from '../HandleClick/HandleClick.ts'
+import { handleCompletionPointerDown } from '../HandleCompletionPointerDown/HandleCompletionPointerDown.ts'
 
-export const handleClickAt = async (state: State, button: number, eventX: number, eventY: number): Promise<State> => {
+export const handleClickAt = async (state: State, button: number, eventX: number, eventY: number, name = ''): Promise<State> => {
+  if (name.startsWith('@')) {
+    return handleCompletionPointerDown(state, name)
+  }
   if (button !== MouseEventType.LeftClick) {
     return state
   }

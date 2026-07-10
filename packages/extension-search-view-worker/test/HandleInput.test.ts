@@ -45,6 +45,29 @@ test('handles successful search', async () => {
   expect(result.placeholder).toBe(ViewletExtensionsStrings.searchExtensionsInMarketPlace())
 })
 
+test('opens completions for at sign', async () => {
+  const state = { ...createDefaultState(), allExtensions: mockExtensions, platform: Remote }
+  const result = await handleInput(state, '@', 1, 1)
+
+  expect(result.suggestOpen).toBe(true)
+  expect(result.completionItems).toHaveLength(14)
+  expect(result.cursorOffset).toBe(1)
+})
+
+test('fuzzy filters completions while typing', async () => {
+  const state = { ...createDefaultState(), allExtensions: mockExtensions, platform: Remote }
+  const result = await handleInput(state, '@bti', 1, 4)
+
+  expect(result.completionItems).toEqual([{ highlights: [0, 2, 5, 7], label: '@builtin' }])
+})
+
+test('does not open completions for scripted input', async () => {
+  const state = { ...createDefaultState(), allExtensions: mockExtensions, platform: Remote }
+  const result = await handleInput(state, '@', 2)
+
+  expect(result.suggestOpen).toBe(false)
+})
+
 test('uses list height when calculating scroll range', async () => {
   const state = {
     ...createDefaultState(),
