@@ -15,3 +15,15 @@ test('isEqual returns false when search value changes', () => {
   }
   expect(DiffTitle.isEqual(oldState, newState)).toBe(false)
 })
+
+test('isEqual returns true when there is no parent view', () => {
+  const oldState = {
+    ...createDefaultState(),
+    parentUid: undefined,
+  }
+  const newState = {
+    ...oldState,
+    searchValue: '@deprecated',
+  }
+  expect(DiffTitle.isEqual(oldState, newState)).toBe(true)
+})
