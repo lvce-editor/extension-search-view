@@ -1,7 +1,17 @@
 import type { State } from '../State/State.ts'
 import * as ExtensionSearchViewStates from '../ExtensionSearchViewStates/ExtensionSearchViewStates.ts'
 
-export const create = (id: number, uri: string, x: number, y: number, width: number, height: number, platform: number, assetDir: string): void => {
+export const create = (
+  id: number,
+  uri: string,
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+  platform: number,
+  assetDir: string,
+  parentUid?: number,
+): void => {
   const state: State = {
     allExtensions: [],
     assetDir,
@@ -23,6 +33,7 @@ export const create = (id: number, uri: string, x: number, y: number, width: num
     minimumSliderSize: 0,
     minLineY: 0,
     negativeMargin: 0,
+    parentUid,
     placeholder: '',
     platform,
     scrollBarActive: false,

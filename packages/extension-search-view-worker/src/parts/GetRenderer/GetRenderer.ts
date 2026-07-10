@@ -9,6 +9,7 @@ import { renderItems2 } from '../RenderItems2/RenderItems2.ts'
 import * as RenderMessage from '../RenderMessage/RenderMessage.ts'
 import * as RenderScrollBar from '../RenderScrollBar/RenderScrollBar.ts'
 import * as RenderSearchValue from '../RenderSearchValue/RenderSearchValue.ts'
+import * as RenderTitleCommand from '../RenderTitleCommand/RenderTitleCommand.ts'
 
 export const getRenderer = (diffType: number): Renderer => {
   switch (diffType) {
@@ -30,6 +31,8 @@ export const getRenderer = (diffType: number): Renderer => {
       return RenderScrollBar.renderScrollBar
     case DiffType.RenderSearchValue:
       return RenderSearchValue.renderSearchValue
+    case DiffType.RenderTitle:
+      return RenderTitleCommand.renderTitleCommand
     default:
       throw new Error('unknown renderer')
   }

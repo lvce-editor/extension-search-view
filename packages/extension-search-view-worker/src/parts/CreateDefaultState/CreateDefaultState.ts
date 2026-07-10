@@ -22,6 +22,7 @@ export const createDefaultState = (): State => {
     minimumSliderSize: 20,
     minLineY: 0,
     negativeMargin: 0,
+    parentUid: 0,
     placeholder: '',
     platform: 0,
     scrollBarActive: false,

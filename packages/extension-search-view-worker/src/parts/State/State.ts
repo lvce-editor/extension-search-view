@@ -22,6 +22,7 @@ export interface State {
   readonly minimumSliderSize: number
   readonly minLineY: number
   readonly negativeMargin: number
+  readonly parentUid?: number
   readonly placeholder: string
   readonly platform: number
   readonly scrollBarActive: boolean
