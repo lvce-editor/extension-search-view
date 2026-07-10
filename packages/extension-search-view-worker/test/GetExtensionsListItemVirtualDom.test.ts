@@ -9,6 +9,7 @@ import * as MergeClassNames from '../src/parts/MergeClassNames/MergeClassNames.t
 
 const createMockVisibleItem = (overrides?: Partial<VisibleItem>): VisibleItem => {
   return {
+    builtin: true,
     description: 'Test Description',
     focused: false,
     icon: 'test-icon.png',
@@ -27,7 +28,7 @@ test('creates virtual dom with correct structure', () => {
   const item = createMockVisibleItem()
   const result = GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom(item)
 
-  expect(result).toHaveLength(11)
+  expect(result).toHaveLength(13)
 })
 
 test('sets main list item div with correct properties when focused', () => {
@@ -158,7 +159,7 @@ test('sets actions div with correct className', () => {
   const result = GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom(item)
 
   expect(result[10]).toEqual({
-    childCount: 0,
+    childCount: 1,
     className: ClassNames.ExtensionActions,
     type: VirtualDomElements.Div,
   })

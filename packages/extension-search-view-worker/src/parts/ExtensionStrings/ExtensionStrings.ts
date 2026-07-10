@@ -65,6 +65,18 @@ export const uninstall = (): string => {
   return I18nString.i18nString(UiStrings.Uninstall)
 }
 
+export const install = (): string => {
+  return I18nString.i18nString(UiStrings.Install)
+}
+
+export const installing = (): string => {
+  return I18nString.i18nString(UiStrings.Installing)
+}
+
+export const uninstalling = (): string => {
+  return I18nString.i18nString(UiStrings.Uninstalling)
+}
+
 export const installAnotherVersion = (): string => {
   return I18nString.i18nString(UiStrings.InstallAnotherVersion)
 }

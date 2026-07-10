@@ -1,5 +1,17 @@
 import { getExtensionIcon } from '../GetExtensionIcon/GetExtensionIcon.ts'
 
+export const getBuiltin = (extension: any): boolean => {
+  return extension?.builtin === true
+}
+
+export const getDisabled = (extension: any): boolean => {
+  return extension?.disabled === true
+}
+
+export const getStatus = (extension: any): string | undefined => {
+  return typeof extension?.status === 'string' ? extension.status : undefined
+}
+
 export const getIcon = (extension: any, platform: number, assetDir: string): string => {
   return getExtensionIcon(extension, platform, assetDir)
 }

@@ -9,24 +9,30 @@ test('normalizeExtension should normalize multiple extensions', () => {
 
   expect(result).toHaveLength(2)
   expect(result[0]).toEqual({
+    builtin: false,
     categories: [],
     description: 'Desc 1',
+    disabled: false,
     icon: '/assets/icons/extensionDefaultIcon.png',
     id: '1',
     name: 'Extension 1',
     publisher: '1',
     size: 1000,
+    status: undefined,
     updatedDate: 1000,
     uri: '',
   })
   expect(result[1]).toEqual({
+    builtin: false,
     categories: [],
     description: 'Desc 2',
+    disabled: false,
     icon: '/assets/icons/extensionDefaultIcon.png',
     id: '2',
     name: 'Extension 2',
     publisher: '2',
     size: 2000,
+    status: undefined,
     updatedDate: 2000,
     uri: '',
   })

@@ -1,7 +1,9 @@
+import { RendererWorker } from '@lvce-editor/rpc-registry'
 import type { State } from '../State/State.ts'
+import * as ExtensionStatus from '../ExtensionStatus/ExtensionStatus.ts'
+import * as SetExtensionStatus from '../SetExtensionStatus/SetExtensionStatus.ts'
 
-// TODO show error / warning  when installment fails / times out
-export const handleInstall = async (state: State, id: any): Promise<State> => {
-  return state
-  // TODO
+export const handleInstall = async (state: State, id: string): Promise<State> => {
+  await RendererWorker.installExtension(id)
+  return SetExtensionStatus.setExtensionStatus(state, id, ExtensionStatus.Enabled)
 }
