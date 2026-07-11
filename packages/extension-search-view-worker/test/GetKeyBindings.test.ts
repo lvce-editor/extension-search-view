@@ -28,7 +28,7 @@ test('returns array of key bindings', () => {
       when: WhenExpression.FocusExtensionsInput,
     },
     {
-      command: 'Extensions.toggleSuggest',
+      command: 'Extensions.openSuggest',
       key: KeyModifier.CtrlCmd | KeyCode.Space,
       when: WhenExpression.FocusExtensionsInput,
     },
