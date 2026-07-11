@@ -37,7 +37,7 @@ test('handleClick opens URI and updates state with focus', async () => {
   expect(result.focusedIndex).toBe(0)
 })
 
-test('handleClick calculates actualIndex correctly with minLineY', async () => {
+test('handleClick calculates actualIndex correctly with minLineY and preserves scroll position', async () => {
   const mockExtension1: ExtensionListItem = {
     categories: [],
     description: 'desc-1',
@@ -64,9 +64,12 @@ test('handleClick calculates actualIndex correctly with minLineY', async () => {
 
   const state = {
     ...createDefaultState(),
+    deltaY: 20,
     focusedIndex: 0,
     items: [mockExtension1, mockExtension2],
+    maxLineY: 2,
     minLineY: 1,
+    scrollBarY: 10,
   }
 
   using mockRpc = RendererWorker.registerMockRpc({
@@ -78,6 +81,10 @@ test('handleClick calculates actualIndex correctly with minLineY', async () => {
   expect(mockRpc.invocations).toEqual([['Main.openUri', 'extension-detail://extension-2', undefined, undefined]])
   expect(result.focusedIndex).toBe(1)
   expect(result.focus).toBe(FocusId.List)
+  expect(result.deltaY).toBe(20)
+  expect(result.minLineY).toBe(1)
+  expect(result.maxLineY).toBe(2)
+  expect(result.scrollBarY).toBe(10)
 })
 
 test('handleClick returns state with focus List and focusedIndex -1 when actualIndex is negative', async () => {
