@@ -5,8 +5,8 @@ export const skip = 0
 export const test: Test = async ({ expect, Extension, ExtensionSearch, Locator }) => {
   // arrange
   await ExtensionSearch.open()
-  const extensionsView = Locator('.Extensions')
-  await expect(extensionsView).toBeVisible()
+  const firstExtension = Locator('.Extensions .ExtensionListItem').first()
+  await expect(firstExtension).toBeVisible()
 
   // act
   const extensionUri = new URL('../fixtures/dynamic-extension', import.meta.url).href
