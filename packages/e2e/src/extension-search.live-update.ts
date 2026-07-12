@@ -5,7 +5,7 @@ export const skip = 0
 export const test: Test = async ({ expect, Extension, ExtensionSearch, Locator }) => {
   // arrange
   await ExtensionSearch.open()
-  await ExtensionSearch.handleInput('live marker 7349')
+  await ExtensionSearch.handleInput('not-found')
   const listItems = Locator('.Extensions .ListItems')
   await expect(listItems).toHaveCount(0)
 
@@ -14,7 +14,7 @@ export const test: Test = async ({ expect, Extension, ExtensionSearch, Locator }
     JSON.stringify({
       description: 'Added dynamically while the extension search view is open',
       id: 'test.dynamic-extension',
-      name: 'Dynamic Live Marker 7349',
+      name: 'Dynamic not-found Extension',
     }),
   )
   const extensionUri = `data:application/json,${manifest}#`
@@ -23,5 +23,5 @@ export const test: Test = async ({ expect, Extension, ExtensionSearch, Locator }
   // assert
   await expect(listItems).toHaveCount(1)
   const extensionName = listItems.locator('.ExtensionListItemName')
-  await expect(extensionName).toHaveText('Dynamic Live Marker 7349')
+  await expect(extensionName).toHaveText('Dynamic not-found Extension')
 }
