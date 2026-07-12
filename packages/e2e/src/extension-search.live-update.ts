@@ -5,7 +5,7 @@ export const skip = 0
 export const test: Test = async ({ expect, Extension, ExtensionSearch, Locator }) => {
   // arrange
   await ExtensionSearch.open()
-  await ExtensionSearch.handleInput('@id:test.dynamic-extension')
+  await ExtensionSearch.handleInput('live marker 7349')
   const listItems = Locator('.Extensions .ListItems')
   await expect(listItems).toHaveCount(0)
 
@@ -16,5 +16,5 @@ export const test: Test = async ({ expect, Extension, ExtensionSearch, Locator }
   // assert
   await expect(listItems).toHaveCount(1)
   const extensionName = listItems.locator('.ExtensionListItemName')
-  await expect(extensionName).toHaveText('Dynamic Extension')
+  await expect(extensionName).toHaveText('Dynamic Live Marker 7349')
 }
