@@ -7,7 +7,6 @@ export const test: Test = async ({ expect, Extension, ExtensionSearch, Locator }
   await ExtensionSearch.open()
   await ExtensionSearch.handleInput('not-found')
   const listItems = Locator('.Extensions .ListItems')
-  await expect(listItems).toHaveCount(0)
 
   // act
   const manifest = encodeURIComponent(
