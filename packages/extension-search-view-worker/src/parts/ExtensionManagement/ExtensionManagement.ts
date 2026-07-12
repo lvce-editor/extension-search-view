@@ -1,10 +1,10 @@
-import { RendererWorker } from '@lvce-editor/rpc-registry'
+import { ExtensionManagementWorker, RendererWorker } from '@lvce-editor/rpc-registry'
 import * as ExtensionHostWorker from '../ExtensionHostWorker/ExtensionHostWorker.ts'
 import * as PlatformType from '../PlatformType/PlatformType.ts'
 
 const getDynamicWebExtensions = async (): Promise<readonly any[]> => {
   try {
-    return await ExtensionHostWorker.invoke('Extensions.getDynamicWebExtensions')
+    return await ExtensionManagementWorker.invoke('Extensions.getDynamicWebExtensions')
   } catch {
     return []
   }

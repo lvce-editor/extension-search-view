@@ -1,5 +1,5 @@
 import { expect, test } from '@jest/globals'
-import { ExtensionHost, RendererWorker } from '@lvce-editor/rpc-registry'
+import { ExtensionHost, ExtensionManagementWorker, RendererWorker } from '@lvce-editor/rpc-registry'
 import * as GetAllExtensions from '../src/parts/GetAllExtensions/GetAllExtensions.ts'
 import { Electron, Remote, Web } from '../src/parts/PlatformType/PlatformType.ts'
 
@@ -17,11 +17,13 @@ test('returns extensions for Web platform', async () => {
 
 test('includes dynamically added extensions for Web platform', async () => {
   ExtensionHost.registerMockRpc({
-    'Extensions.getDynamicWebExtensions'() {
-      return [{ id: 'dynamic-extension', name: 'Dynamic Extension', publisher: 'test-publisher' }]
-    },
     'Extensions.getExtensions'() {
       return mockExtensions
+    },
+  })
+  ExtensionManagementWorker.registerMockRpc({
+    'Extensions.getDynamicWebExtensions'() {
+      return [{ id: 'dynamic-extension', name: 'Dynamic Extension', publisher: 'test-publisher' }]
     },
   })
 
