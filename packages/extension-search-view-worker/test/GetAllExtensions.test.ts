@@ -1,5 +1,5 @@
 import { expect, test } from '@jest/globals'
-import { ExtensionHost, RendererWorker } from '@lvce-editor/rpc-registry'
+import { ExtensionHost, ExtensionManagementWorker, RendererWorker } from '@lvce-editor/rpc-registry'
 import * as GetAllExtensions from '../src/parts/GetAllExtensions/GetAllExtensions.ts'
 import { Electron, Remote, Web } from '../src/parts/PlatformType/PlatformType.ts'
 
@@ -13,6 +13,23 @@ test('returns extensions for Web platform', async () => {
   })
   const result = await GetAllExtensions.getAllExtensions(Web)
   expect(result).toEqual(mockExtensions)
+})
+
+test('includes dynamically added extensions for Web platform', async () => {
+  ExtensionHost.registerMockRpc({
+    'Extensions.getExtensions'() {
+      return mockExtensions
+    },
+  })
+  ExtensionManagementWorker.registerMockRpc({
+    'Extensions.getDynamicWebExtensions'() {
+      return [{ id: 'dynamic-extension', name: 'Dynamic Extension', publisher: 'test-publisher' }]
+    },
+  })
+
+  const result = await GetAllExtensions.getAllExtensions(Web)
+
+  expect(result).toEqual([...mockExtensions, { id: 'dynamic-extension', name: 'Dynamic Extension', publisher: 'test-publisher' }])
 })
 
 test('returns empty array for Web platform when error occurs', async () => {
@@ -31,14 +48,41 @@ test('returns extensions for Remote platform', async () => {
       return mockExtensions
     },
   })
+  ExtensionManagementWorker.registerMockRpc({
+    'Extensions.getDynamicWebExtensions'() {
+      return []
+    },
+  })
   const result = await GetAllExtensions.getAllExtensions(Remote)
   expect(result).toEqual(mockExtensions)
+})
+
+test('includes dynamically added extensions for Remote platform', async () => {
+  RendererWorker.registerMockRpc({
+    'ExtensionManagement.getAllExtensions'() {
+      return mockExtensions
+    },
+  })
+  ExtensionManagementWorker.registerMockRpc({
+    'Extensions.getDynamicWebExtensions'() {
+      return [{ id: 'dynamic-extension', name: 'Dynamic Extension', publisher: 'test-publisher' }]
+    },
+  })
+
+  const result = await GetAllExtensions.getAllExtensions(Remote)
+
+  expect(result).toEqual([...mockExtensions, { id: 'dynamic-extension', name: 'Dynamic Extension', publisher: 'test-publisher' }])
 })
 
 test('returns extensions for Electron platform', async () => {
   RendererWorker.registerMockRpc({
     'ExtensionManagement.getAllExtensions'() {
       return mockExtensions
+    },
+  })
+  ExtensionManagementWorker.registerMockRpc({
+    'Extensions.getDynamicWebExtensions'() {
+      return []
     },
   })
   const result = await GetAllExtensions.getAllExtensions(Electron)

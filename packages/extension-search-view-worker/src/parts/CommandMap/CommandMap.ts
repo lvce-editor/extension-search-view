@@ -37,6 +37,7 @@ import * as HandleDisable from '../HandleDisable/HandleDisable.ts'
 import * as HandleDisableWorkspace from '../HandleDisableWorkspace/HandleDisableWorkspace.ts'
 import * as HandleEnable from '../HandleEnable/HandleEnable.ts'
 import * as HandleEnableWorkspace from '../HandleEnableWorkspace/HandleEnableWorkspace.ts'
+import * as HandleExtensionsChanged from '../HandleExtensionsChanged/HandleExtensionsChanged.ts'
 import * as HandleFocus from '../HandleFocus/HandleFocus.ts'
 import { handleHeaderContextMenu } from '../HandleHeaderContextMenu/HandleHeaderContextMenu.ts'
 import * as HandleInput from '../HandleInput/HandleInput.ts'
@@ -107,6 +108,7 @@ export const commandMap = {
   'SearchExtensions.handleDisableWorkspace': WrapCommand.wrapCommand(HandleDisableWorkspace.handleDisableWorkspace),
   'SearchExtensions.handleEnable': WrapCommand.wrapCommand(HandleEnable.handleEnable),
   'SearchExtensions.handleEnableWorkspace': WrapCommand.wrapCommand(HandleEnableWorkspace.handleEnableWorkspace),
+  'SearchExtensions.handleExtensionsChanged': WrapCommand.wrapCommand(HandleExtensionsChanged.handleExtensionsChanged),
   'SearchExtensions.handleFocus': WrapCommand.wrapCommand(HandleFocus.handleFocus),
   'SearchExtensions.handleHeaderContextMenu': WrapCommand.wrapCommand(handleHeaderContextMenu),
   'SearchExtensions.handleInput': WrapCommand.wrapCommand(HandleInput.handleInput),
