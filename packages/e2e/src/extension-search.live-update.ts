@@ -9,14 +9,7 @@ export const test: Test = async ({ expect, Extension, ExtensionSearch, Locator }
   const listItems = Locator('.Extensions .ListItems')
 
   // act
-  const manifest = encodeURIComponent(
-    JSON.stringify({
-      description: 'Added dynamically while the extension search view is open',
-      id: 'test.dynamic-extension',
-      name: 'Dynamic not-found Extension',
-    }),
-  )
-  const extensionUri = `data:application/json,${manifest}#`
+  const extensionUri = new URL('../fixtures/dynamic-extension', import.meta.url).href
   await Extension.addWebExtension(extensionUri)
 
   // assert
