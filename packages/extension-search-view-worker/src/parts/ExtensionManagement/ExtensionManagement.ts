@@ -19,6 +19,10 @@ export const getAllExtensions = async (platform: number): Promise<readonly any[]
       return []
     }
   }
-  // @ts-ignore todo
-  return RendererWorker.invoke('ExtensionManagement.getAllExtensions')
+  const [extensions, dynamicExtensions] = await Promise.all([
+    // @ts-ignore todo
+    RendererWorker.invoke('ExtensionManagement.getAllExtensions'),
+    getDynamicWebExtensions(),
+  ])
+  return [...extensions, ...dynamicExtensions]
 }

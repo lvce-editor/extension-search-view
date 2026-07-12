@@ -48,14 +48,41 @@ test('returns extensions for Remote platform', async () => {
       return mockExtensions
     },
   })
+  ExtensionManagementWorker.registerMockRpc({
+    'Extensions.getDynamicWebExtensions'() {
+      return []
+    },
+  })
   const result = await GetAllExtensions.getAllExtensions(Remote)
   expect(result).toEqual(mockExtensions)
+})
+
+test('includes dynamically added extensions for Remote platform', async () => {
+  RendererWorker.registerMockRpc({
+    'ExtensionManagement.getAllExtensions'() {
+      return mockExtensions
+    },
+  })
+  ExtensionManagementWorker.registerMockRpc({
+    'Extensions.getDynamicWebExtensions'() {
+      return [{ id: 'dynamic-extension', name: 'Dynamic Extension', publisher: 'test-publisher' }]
+    },
+  })
+
+  const result = await GetAllExtensions.getAllExtensions(Remote)
+
+  expect(result).toEqual([...mockExtensions, { id: 'dynamic-extension', name: 'Dynamic Extension', publisher: 'test-publisher' }])
 })
 
 test('returns extensions for Electron platform', async () => {
   RendererWorker.registerMockRpc({
     'ExtensionManagement.getAllExtensions'() {
       return mockExtensions
+    },
+  })
+  ExtensionManagementWorker.registerMockRpc({
+    'Extensions.getDynamicWebExtensions'() {
+      return []
     },
   })
   const result = await GetAllExtensions.getAllExtensions(Electron)
