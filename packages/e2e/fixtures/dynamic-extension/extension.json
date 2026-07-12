@@ -1,5 +1,5 @@
 {
   "id": "test.dynamic-extension",
-  "name": "Dynamic not-found Extension",
+  "name": "Dynamic Extension",
   "description": "Added dynamically while the extension search view is open"
 }

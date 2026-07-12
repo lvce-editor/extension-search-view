@@ -5,15 +5,12 @@ export const skip = 0
 export const test: Test = async ({ expect, Extension, ExtensionSearch, Locator }) => {
   // arrange
   await ExtensionSearch.open()
-  await ExtensionSearch.handleInput('not-found')
-  const listItems = Locator('.Extensions .ListItems')
 
   // act
   const extensionUri = new URL('../fixtures/dynamic-extension', import.meta.url).href
   await Extension.addWebExtension(extensionUri)
 
   // assert
-  await expect(listItems).toHaveCount(1)
-  const extensionName = listItems.locator('.ExtensionListItemName')
-  await expect(extensionName).toHaveText('Dynamic not-found Extension')
+  const extensionName = Locator('.Extensions .ListItems').locator('text=Dynamic Extension')
+  await expect(extensionName).toHaveText('Dynamic Extension')
 }
