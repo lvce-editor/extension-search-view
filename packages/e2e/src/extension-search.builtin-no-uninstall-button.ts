@@ -5,6 +5,8 @@ export const skip = 0
 export const test: Test = async ({ Command, expect, ExtensionSearch, Locator }) => {
   const extensionId = 'builtin.theme-atom-one-dark'
   await ExtensionSearch.open()
+  const extensionsView = Locator('.Extensions')
+  await expect(extensionsView).toBeVisible()
   await ExtensionSearch.clearSearchResults()
   const query = `@id:${extensionId}`
   await Command.execute('Extensions.handleInput', query, 1, query.length)
