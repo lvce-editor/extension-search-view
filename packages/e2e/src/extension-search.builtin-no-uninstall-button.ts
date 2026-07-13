@@ -7,7 +7,6 @@ export const test: Test = async ({ Command, expect, ExtensionSearch, Locator }) 
   await ExtensionSearch.open()
   const extensionItems = Locator('.ExtensionListItem')
   await expect(extensionItems).toHaveCount(10)
-  await ExtensionSearch.clearSearchResults()
   const query = `@id:${extensionId}`
   await Command.execute('Extensions.handleInput', query, 1, query.length)
   await expect(extensionItems).toHaveCount(1)
