@@ -1,6 +1,7 @@
 import type { AsyncCommandContext } from '@lvce-editor/viewlet-registry'
 import type { State } from '../State/State.ts'
 import * as ErrorHandling from '../ErrorHandling/ErrorHandling.ts'
+import * as ExtensionLoading from '../ExtensionLoading/ExtensionLoading.ts'
 import * as ViewletExtensionsStrings from '../ExtensionStrings/ExtensionStrings.ts'
 import * as FocusId from '../FocusId/FocusId.ts'
 import * as GetFinalDeltaY from '../GetFinalDeltaY/GetFinalDeltaY.ts'
@@ -60,14 +61,22 @@ const getSearchResult = async (state: State): Promise<SearchResult> => {
   }
 }
 
-export const handleChangeWithContext = async (context: AsyncCommandContext<State>, update: Partial<State>): Promise<void> => {
+export const handleChangeWithContext = async (
+  context: AsyncCommandContext<State>,
+  update: Partial<State>,
+  waitForExtensions = true,
+): Promise<void> => {
   const { uid } = context.getState()
+  if (waitForExtensions) {
+    await ExtensionLoading.wait(uid)
+  }
   const requestVersion = ++requestVersionGenerator.value
   requestVersions.set(uid, requestVersion)
-  const requestState = await context.updateState((state) => ({
-    ...state,
+  const requestState: State = {
+    ...context.getState(),
     ...update,
-  }))
+    initial: false,
+  }
   try {
     const result = await getSearchResult(requestState)
     await context.updateState((state) => {
@@ -76,6 +85,8 @@ export const handleChangeWithContext = async (context: AsyncCommandContext<State
       }
       return {
         ...state,
+        ...update,
+        initial: false,
         ...result,
       }
     })
@@ -87,6 +98,8 @@ export const handleChangeWithContext = async (context: AsyncCommandContext<State
       }
       return {
         ...state,
+        ...update,
+        initial: false,
         message: error instanceof Error ? error.message : String(error),
       }
     })

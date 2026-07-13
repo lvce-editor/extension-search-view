@@ -1,5 +1,6 @@
 import type { AsyncCommandContext } from '@lvce-editor/viewlet-registry'
 import type { State } from '../State/State.ts'
+import * as ExtensionLoading from '../ExtensionLoading/ExtensionLoading.ts'
 import * as GetAllExtensions from '../GetAllExtensions/GetAllExtensions.ts'
 import * as GetViewletSize from '../GetViewletSize/GetViewletSize.ts'
 import * as HandleChange from '../HandleChange/HandleChange.ts'
@@ -10,27 +11,37 @@ import * as NormalizeExtensions from '../NormalizeExtensions/NormalizeExtensions
 import * as RestoreState from '../RestoreState/RestoreState.ts'
 
 export const loadContentWithContext = async (context: AsyncCommandContext<State>, savedState: unknown): Promise<void> => {
-  const initialState = context.getState()
-  const { assetDir, platform, width } = initialState
-  const { deltaY, searchValue: restoredSearchValue } = RestoreState.restoreState(savedState)
-  const allExtensions = await GetAllExtensions.getAllExtensions(platform)
-  const size = GetViewletSize.getViewletSize(width)
-  const normalized = NormalizeExtensions.normalizeExtensions(allExtensions, platform, assetDir)
-  const scrollSensitivity = IsFirefox.getIsFirefox() ? 2.5 : 1
-  await context.updateState((state) => {
-    const shouldRestoreSearch = state.initial && state.searchValue === initialState.searchValue
-    return {
+  const { uid } = context.getState()
+  try {
+    const initialState = context.getState()
+    const { assetDir, platform, width } = initialState
+    const { deltaY, searchValue: restoredSearchValue } = RestoreState.restoreState(savedState)
+    const size = GetViewletSize.getViewletSize(width)
+    const scrollSensitivity = IsFirefox.getIsFirefox() ? 2.5 : 1
+    await context.updateState((state) => {
+      if (!state.initial) {
+        return state
+      }
+      return {
+        ...state,
+        deltaY,
+        initial: false,
+        inputSource: InputSource.Script,
+        scrollSensitivity,
+        searchValue: restoredSearchValue,
+        size,
+      }
+    })
+    const allExtensions = await GetAllExtensions.getAllExtensions(platform)
+    const normalized = NormalizeExtensions.normalizeExtensions(allExtensions, platform, assetDir)
+    await context.updateState((state) => ({
       ...state,
       allExtensions: normalized,
-      deltaY: shouldRestoreSearch ? deltaY : state.deltaY,
-      initial: false,
-      inputSource: shouldRestoreSearch ? InputSource.Script : state.inputSource,
-      scrollSensitivity,
-      searchValue: shouldRestoreSearch ? restoredSearchValue : state.searchValue,
-      size,
-    }
-  })
-  await HandleChange.handleChangeWithContext(context, {})
+    }))
+    await HandleChange.handleChangeWithContext(context, {}, false)
+  } finally {
+    ExtensionLoading.finish(uid)
+  }
 }
 
 export const loadContent = async (state: State, savedState: unknown): Promise<State> => {
