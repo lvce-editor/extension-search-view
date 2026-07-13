@@ -1,3 +1,4 @@
+import type { AsyncCommandContext } from '@lvce-editor/viewlet-registry'
 import type { State } from '../State/State.ts'
 import * as ErrorHandling from '../ErrorHandling/ErrorHandling.ts'
 import * as ViewletExtensionsStrings from '../ExtensionStrings/ExtensionStrings.ts'
@@ -10,6 +11,92 @@ import * as GetScrollBarSize from '../GetScrollBarSize/GetScrollBarSize.ts'
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
 import * as SearchExtensions from '../SearchExtensions/SearchExtensions.ts'
 
+type SearchResult = Pick<
+  State,
+  'deltaY' | 'finalDeltaY' | 'focus' | 'inputActions' | 'items' | 'maxLineY' | 'message' | 'minLineY' | 'placeholder' | 'scrollBarHeight'
+> &
+  Partial<Pick<State, 'scrollBarY'>>
+
+const requestVersions = new Map<number, number>()
+const requestVersionGenerator = { value: 0 }
+
+const getSearchResult = async (state: State): Promise<SearchResult> => {
+  const { allExtensions, assetDir, headerHeight, height, itemHeight, minimumSliderSize, platform, searchValue } = state
+  const value = searchValue.trim()
+  const inputActions = GetInputActions.getInputActions(value.length > 0)
+  const items = await SearchExtensions.searchExtensions(allExtensions, value, platform, assetDir)
+  if (items.length === 0) {
+    return {
+      deltaY: 0,
+      finalDeltaY: 0,
+      focus: FocusId.Input,
+      inputActions,
+      items,
+      maxLineY: 0,
+      message: ViewletExtensionsStrings.noExtensionsFound(),
+      minLineY: 0,
+      placeholder: ViewletExtensionsStrings.searchExtensionsInMarketPlace(),
+      scrollBarHeight: 0,
+    }
+  }
+  const total = items.length
+  const listHeight = GetListHeight.getListHeight(total, itemHeight, height - headerHeight)
+  const scrollBarHeight = GetScrollBarSize.getScrollBarSize(listHeight, total * itemHeight, minimumSliderSize)
+  const maxLineY = Math.min(GetNumberOfVisibleItems.getNumberOfVisibleItems(listHeight, itemHeight), total)
+  const finalDeltaY = GetFinalDeltaY.getFinalDeltaY(listHeight, itemHeight, total)
+  const scrollBarY = ScrollBarFunctions.getScrollBarY(0, finalDeltaY, listHeight, scrollBarHeight)
+  return {
+    deltaY: 0,
+    finalDeltaY,
+    focus: state.focus,
+    inputActions,
+    items,
+    maxLineY,
+    message: '',
+    minLineY: 0,
+    placeholder: ViewletExtensionsStrings.searchExtensionsInMarketPlace(),
+    scrollBarHeight,
+    scrollBarY,
+  }
+}
+
+export const handleChangeWithContext = async (context: AsyncCommandContext<State>, update: Partial<State>): Promise<void> => {
+  const { uid } = context.getState()
+  const requestVersion = ++requestVersionGenerator.value
+  requestVersions.set(uid, requestVersion)
+  const requestState = await context.updateState((state) => ({
+    ...state,
+    ...update,
+  }))
+  try {
+    const result = await getSearchResult(requestState)
+    await context.updateState((state) => {
+      if (requestVersions.get(state.uid) !== requestVersion) {
+        return state
+      }
+      return {
+        ...state,
+        ...result,
+      }
+    })
+  } catch (error) {
+    await ErrorHandling.handleError(error)
+    await context.updateState((state) => {
+      if (requestVersions.get(state.uid) !== requestVersion) {
+        return state
+      }
+      return {
+        ...state,
+        message: error instanceof Error ? error.message : String(error),
+      }
+    })
+  } finally {
+    if (requestVersions.get(uid) === requestVersion) {
+      requestVersions.delete(uid)
+    }
+  }
+}
+
 // TODO debounce
 export const handleChange = async (state: State, update: Partial<State>): Promise<State> => {
   const fullNewState: State = {
@@ -17,61 +104,11 @@ export const handleChange = async (state: State, update: Partial<State>): Promis
     ...update,
   }
   try {
-    const { inputSource, searchValue } = fullNewState
-    const value = searchValue.trim()
-    const hasValue = value.length > 0
-    const inputActions = GetInputActions.getInputActions(hasValue)
-    const { allExtensions, assetDir, headerHeight, height, itemHeight, minimumSliderSize, platform } = state
-    // TODO cancel ongoing requests
-    // TODO handle errors
-    const items = await SearchExtensions.searchExtensions(allExtensions, value, platform, assetDir)
-    if (items.length === 0) {
-      return {
-        ...fullNewState,
-        allExtensions,
-        deltaY: 0,
-        finalDeltaY: 0,
-        focus: FocusId.Input,
-        inputActions,
-        inputSource,
-        items,
-        maxLineY: 0,
-        message: ViewletExtensionsStrings.noExtensionsFound(),
-        minLineY: 0,
-        placeholder: ViewletExtensionsStrings.searchExtensionsInMarketPlace(),
-        scrollBarHeight: 0,
-        searchValue,
-      }
-    }
-    const total = items.length
-    const availableHeight = height - headerHeight
-    const listHeight = GetListHeight.getListHeight(total, itemHeight, availableHeight)
-    const contentHeight = total * itemHeight
-    const scrollBarHeight = GetScrollBarSize.getScrollBarSize(listHeight, contentHeight, minimumSliderSize)
-    const numberOfVisible = GetNumberOfVisibleItems.getNumberOfVisibleItems(listHeight, itemHeight)
-    const maxLineY = Math.min(numberOfVisible, total)
-    const finalDeltaY = GetFinalDeltaY.getFinalDeltaY(listHeight, itemHeight, total)
-    const scrollBarY = ScrollBarFunctions.getScrollBarY(0, finalDeltaY, listHeight, scrollBarHeight)
-
+    const result = await getSearchResult(fullNewState)
     return {
       ...fullNewState,
-      allExtensions,
-      deltaY: 0,
-      finalDeltaY,
-      inputActions,
-      inputSource,
-      items,
-      maxLineY,
-      message: '',
-      minLineY: 0,
-      placeholder: ViewletExtensionsStrings.searchExtensionsInMarketPlace(),
-      scrollBarHeight,
-      scrollBarY,
-      searchValue,
+      ...result,
     }
-
-    // TODO handle out of order responses (a bit complicated)
-    // for now just assume everything comes back in order
   } catch (error) {
     // TODO send error to error worker
     await ErrorHandling.handleError(error)

@@ -2,8 +2,10 @@ import { afterEach, expect, test } from '@jest/globals'
 import { ExtensionHost, RendererWorker } from '@lvce-editor/rpc-registry'
 import type { State } from '../src/parts/State/State.ts'
 import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
+import * as ExtensionSearchViewStates from '../src/parts/ExtensionSearchViewStates/ExtensionSearchViewStates.ts'
+import { handleInputWithContext } from '../src/parts/HandleInput/HandleInput.ts'
 import * as InputSource from '../src/parts/InputSource/InputSource.ts'
-import { loadContent } from '../src/parts/LoadContent/LoadContent.ts'
+import { loadContent, loadContentWithContext } from '../src/parts/LoadContent/LoadContent.ts'
 import { Electron, Remote, Web } from '../src/parts/PlatformType/PlatformType.ts'
 
 const mockExtensions = [
@@ -233,4 +235,37 @@ test('loadContent uses normal scroll sensitivity in Chrome', async () => {
   )
 
   expect(result.scrollSensitivity).toBe(1)
+})
+
+test('loadContent preserves input made while extensions are loading', async () => {
+  const { promise: extensionsRequested, resolve: notifyExtensionsRequested } = Promise.withResolvers<void>()
+  const { promise: extensions, resolve: resolveExtensions } = Promise.withResolvers<typeof mockExtensions>()
+  using mockRpc = RendererWorker.registerMockRpc({
+    'ExtensionManagement.getAllExtensions'(): Promise<typeof mockExtensions> {
+      notifyExtensionsRequested()
+      return extensions
+    },
+  })
+  const state: State = {
+    ...createDefaultState(),
+    initial: true,
+    platform: Remote,
+    uid: 1,
+    width: 500,
+  }
+  ExtensionSearchViewStates.set(state.uid, state, state)
+  const loadCommand = ExtensionSearchViewStates.wrapAsyncCommand(loadContentWithContext)
+  const inputCommand = ExtensionSearchViewStates.wrapAsyncCommand(handleInputWithContext)
+
+  const pendingLoad = loadCommand(state.uid, null)
+  await extensionsRequested
+  await inputCommand(state.uid, '@', InputSource.User, 1)
+  resolveExtensions(mockExtensions)
+  await pendingLoad
+
+  const { newState } = ExtensionSearchViewStates.get(state.uid)
+  expect(newState.searchValue).toBe('@')
+  expect(newState.suggestOpen).toBe(true)
+  expect(newState.allExtensions).toHaveLength(1)
+  expect(mockRpc.invocations).toEqual([['ExtensionManagement.getAllExtensions']])
 })
