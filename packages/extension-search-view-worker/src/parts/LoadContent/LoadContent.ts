@@ -12,6 +12,7 @@ import * as RestoreState from '../RestoreState/RestoreState.ts'
 
 export const loadContentWithContext = async (context: AsyncCommandContext<State>, savedState: unknown): Promise<void> => {
   const { uid } = context.getState()
+  const loadToken = ExtensionLoading.getToken(uid)
   try {
     const initialState = context.getState()
     const { assetDir, platform, width } = initialState
@@ -40,7 +41,7 @@ export const loadContentWithContext = async (context: AsyncCommandContext<State>
     }))
     await HandleChange.handleChangeWithContext(context, {}, false)
   } finally {
-    ExtensionLoading.finish(uid)
+    ExtensionLoading.finish(uid, loadToken)
   }
 }
 
