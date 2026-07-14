@@ -8,6 +8,9 @@ export const handleClickAt = async (state: State, button: number, eventX: number
   if (name.startsWith('@')) {
     return handleCompletionPointerDown(state, name)
   }
+  if (name) {
+    return state
+  }
   if (button !== MouseEventType.LeftClick) {
     return state
   }
