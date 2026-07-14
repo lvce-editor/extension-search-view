@@ -25,6 +25,39 @@ test('handleClickAt accepts completion by name', async () => {
   expect(result.suggestOpen).toBe(false)
 })
 
+test('handleClickAt does not open extension details when clicking an action button', async () => {
+  const mockExtension: ExtensionListItem = {
+    categories: [],
+    description: 'test-description',
+    icon: 'test-icon',
+    id: 'test-extension-id',
+    name: 'Test Extension',
+    publisher: 'test-publisher',
+    size: 1000,
+    updatedDate: 1_000_000,
+    uri: 'test-uri',
+  }
+
+  const state = {
+    ...createDefaultState(),
+    deltaY: 0,
+    headerHeight: 0,
+    itemHeight: 30,
+    items: [mockExtension],
+    x: 50,
+    y: 100,
+  }
+
+  using mockRpc = RendererWorker.registerMockRpc({
+    'Main.openUri'() {},
+  })
+
+  const result = await handleClickAt(state, MouseEventType.LeftClick, 50, 115, 'test-extension-id')
+
+  expect(mockRpc.invocations).toEqual([])
+  expect(result).toBe(state)
+})
+
 test('handleClickAt handles left click and opens URI', async () => {
   const mockExtension: ExtensionListItem = {
     categories: [],
