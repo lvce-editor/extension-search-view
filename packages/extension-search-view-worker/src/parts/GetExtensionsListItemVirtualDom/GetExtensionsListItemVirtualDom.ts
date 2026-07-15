@@ -5,6 +5,7 @@ import * as AriaRoleDescription from '../AriaRoleDescription/AriaRoleDescription
 import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as GetExtensionActionsVirtualDom from '../GetExtensionActionsVirtualDom/GetExtensionActionsVirtualDom.ts'
+import { getExtensionStatisticsVirtualDom } from '../GetExtensionStatisticsVirtualDom/GetExtensionStatisticsVirtualDom.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 import { text } from '../VirtualDomHelpers/VirtualDomHelpers.ts'
 
@@ -26,7 +27,7 @@ const listItemDescription: VirtualDomNode = {
 }
 
 const listItemFooter: VirtualDomNode = {
-  childCount: 2,
+  childCount: 3,
   className: ClassNames.ExtensionListItemFooter,
   type: VirtualDomElements.Div,
 }
@@ -52,7 +53,21 @@ const getId = (focused: boolean): string | undefined => {
 }
 
 export const getExtensionListItemVirtualDom = (extension: VisibleItem): readonly VirtualDomNode[] => {
-  const { builtin = false, description, disabled = false, focused, icon, id, name, posInSet, publisher, setSize, status } = extension
+  const {
+    builtin = false,
+    description,
+    disabled = false,
+    downloadCount = 'n/a',
+    focused,
+    icon,
+    id,
+    name,
+    posInSet,
+    publisher,
+    rating = 'n/a',
+    setSize,
+    status,
+  } = extension
   const actionsDom = GetExtensionActionsVirtualDom.getExtensionActionsVirtualDom(id, builtin, disabled, status)
   const dom: readonly VirtualDomNode[] = [
     {
@@ -80,6 +95,7 @@ export const getExtensionListItemVirtualDom = (extension: VisibleItem): readonly
     listItemFooter,
     listItemAuthorName,
     text(publisher),
+    ...getExtensionStatisticsVirtualDom(downloadCount, rating),
     ...actionsDom,
   ]
   return dom

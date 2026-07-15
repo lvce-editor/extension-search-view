@@ -1,0 +1,7 @@
+{
+  "id": "test.extension-marketplace-metadata",
+  "name": "Marketplace Metadata",
+  "description": "Extension with marketplace metadata",
+  "downloadCount": 12345,
+  "rating": 4.75
+}

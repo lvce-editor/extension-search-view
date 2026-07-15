@@ -1,5 +1,8 @@
 import { getExtensionIcon } from '../GetExtensionIcon/GetExtensionIcon.ts'
 
+export * from '../GetDownloadCount/GetDownloadCount.ts'
+export * from '../GetRating/GetRating.ts'
+
 export const getBuiltin = (extension: any): boolean => {
   return extension?.builtin === true
 }
