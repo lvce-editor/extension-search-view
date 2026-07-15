@@ -1,10 +1,11 @@
 import type { Test } from '@lvce-editor/test-with-playwright'
 
-export const skip = 1
+export const skip = 0
 
 export const test: Test = async ({ Command, expect, ExtensionSearch, Locator }) => {
   // arrange
   await ExtensionSearch.open()
+  await ExtensionSearch.clearSearchResults()
   const extensionsView = Locator('.Extensions')
   await expect(extensionsView).toBeVisible()
 
@@ -44,4 +45,11 @@ export const test: Test = async ({ Command, expect, ExtensionSearch, Locator }) 
   // separator at index 13
   const menuItem15 = menuItems.nth(14)
   await expect(menuItem15).toHaveText('Sort By')
+
+  // act
+  await Command.execute('Menu.selectIndex', 0, 2)
+
+  // assert
+  const input = extensionsView.locator('.MultilineInputBox')
+  await expect(input).toHaveValue('@most-popular')
 }

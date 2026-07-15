@@ -99,3 +99,9 @@ test('parseValue - @sort:size with query', () => {
     sort: 'size',
   })
 })
+
+test('parseValue - @most-popular', () => {
+  expect(ParseExtensionSearchValue.parseValue('@most-popular')).toMatchObject({
+    query: '',
+  })
+})

@@ -1,7 +1,7 @@
 import type { ParsedExtensionSearchValue } from '../ParsedExtensionSearchValue/ParsedExtensionSearchValue.ts'
 import * as ExtensionFilterParameter from '../ExtensionFilterParameter/ExtensionFilterParameter.ts'
 
-const RE_PARAM = /@\w+(?::\w+)?/g
+const RE_PARAM = /@[\w-]+(?::\w+)?/g
 
 const deserializeCategory = (value: string): string => {
   if (value.startsWith(':"') && value.endsWith('"')) {
