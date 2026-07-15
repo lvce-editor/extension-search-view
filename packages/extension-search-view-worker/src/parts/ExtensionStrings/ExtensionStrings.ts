@@ -21,8 +21,16 @@ export const description = (): string => {
   return I18nString.i18nString(UiStrings.Description)
 }
 
+export const downloads = (): string => {
+  return I18nString.i18nString(UiStrings.Downloads)
+}
+
 export const publisher = (): string => {
   return I18nString.i18nString(UiStrings.Publisher)
+}
+
+export const rating = (): string => {
+  return I18nString.i18nString(UiStrings.Rating)
 }
 
 export const marketplaceLink = (): string => {
