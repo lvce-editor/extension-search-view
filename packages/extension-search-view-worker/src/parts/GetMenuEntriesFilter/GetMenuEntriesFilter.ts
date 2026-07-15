@@ -17,7 +17,7 @@ export const getMenuEntriesFilter = (): readonly MenuEntry[] => {
       label: ExtensionStrings.mcpServers(),
     },
     {
-      command: 'SearchExtensions.filterByMostPopular',
+      command: 'Extensions.filterByMostPopular',
       flags: MenuItemFlags.None,
       id: 'filterByMostPopular',
       label: ExtensionStrings.mostPopular(),

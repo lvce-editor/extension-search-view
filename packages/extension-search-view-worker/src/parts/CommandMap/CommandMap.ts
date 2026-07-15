@@ -13,6 +13,7 @@ import * as Enable from '../Enable/Enable.ts'
 import * as EnableWorkspace from '../EnableWorkspace/EnableWorkspace.ts'
 import * as WrapCommand from '../ExtensionSearchViewStates/ExtensionSearchViewStates.ts'
 import { getCommandIds } from '../ExtensionSearchViewStates/ExtensionSearchViewStates.ts'
+import * as FilterByMostPopular from '../FilterByMostPopular/FilterByMostPopular.ts'
 import * as FocusFirst from '../FocusFirst/FocusFirst.ts'
 import * as FocusIndex from '../FocusIndex/FocusIndex.ts'
 import * as FocusLast from '../FocusLast/FocusLast.ts'
@@ -82,6 +83,7 @@ export const commandMap = {
   'SearchExtensions.dispose': Dispose.dispose,
   'SearchExtensions.enable': WrapCommand.wrapCommand(Enable.enable),
   'SearchExtensions.enableWorkspace': WrapCommand.wrapCommand(EnableWorkspace.enableWorkspace),
+  'SearchExtensions.filterByMostPopular': WrapCommand.wrapAsyncCommand(FilterByMostPopular.filterByMostPopularWithContext),
   'SearchExtensions.focusFirst': WrapCommand.wrapCommand(FocusFirst.focusFirst),
   'SearchExtensions.focusIndex': WrapCommand.wrapCommand(FocusIndex.focusIndex),
   'SearchExtensions.focusLast': WrapCommand.wrapCommand(FocusLast.focusLast),
