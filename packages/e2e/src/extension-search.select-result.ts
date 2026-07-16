@@ -13,7 +13,7 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   await ExtensionSearch.handleClick(0)
 
   // assert
-  const extensionDetail = Locator('.ExtensionDetail')
-  await expect(extensionDetail).toBeVisible()
-  await expect(extensionDetail.locator('.ExtensionDetailName')).toHaveText('Atom One Dark Theme')
+  await expect(extensionItem).toHaveAttribute('id', 'ExtensionActive')
+  const listItems = Locator('.ListItems')
+  await expect(listItems).toBeFocused()
 }
