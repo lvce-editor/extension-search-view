@@ -12,6 +12,7 @@ export const handleContextMenu = async (state: State, button: number, eventX: nu
   }
 
   await ContextMenu.show2(uid, MenuEntryId.ManageExtension, eventX, eventY, {
+    builtin: items[index]?.builtin === true,
     menuId: MenuEntryId.ManageExtension,
   })
   return state

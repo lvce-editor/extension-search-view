@@ -11,6 +11,6 @@ export const getMenuEntries2 = (state: State, props: ContextMenuProps): readonly
     case MenuEntryId.ExtensionSearchFilter:
       return getMenuEntriesFilter()
     default:
-      return getMenuEntriesList()
+      return getMenuEntriesList(props.builtin)
   }
 }
