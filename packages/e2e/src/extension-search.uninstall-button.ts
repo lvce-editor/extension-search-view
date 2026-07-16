@@ -10,6 +10,7 @@ export const test: Test = async ({ Command, expect, ExtensionSearch, Locator }) 
   await Command.execute('Extensions.setExtensionStatus', extensionId, 'enabled', false)
 
   const buttons = Locator('.ExtensionListItem .ExtensionActionButton')
+  await expect(buttons).toHaveCount(2)
   const uninstallButton = buttons.nth(1)
   await expect(uninstallButton).toHaveText('Uninstall')
 }
