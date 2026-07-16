@@ -21,7 +21,43 @@ test('handleContextMenu shows context menu for valid index', async () => {
   })
   const result = await HandleContextMenu.handleContextMenu(state, 0, 100, 120)
   expect(result).toBe(state)
-  expect(mockRpc.invocations).toEqual([['ContextMenu.show2', 123, MenuEntryId.ManageExtension, 100, 120, { menuId: MenuEntryId.ManageExtension }]])
+  expect(mockRpc.invocations).toEqual([
+    ['ContextMenu.show2', 123, MenuEntryId.ManageExtension, 100, 120, { builtin: false, menuId: MenuEntryId.ManageExtension }],
+  ])
+})
+
+test('handleContextMenu includes builtin status', async () => {
+  const state: State = {
+    ...createDefaultState(),
+    deltaY: 0,
+    headerHeight: 0,
+    itemHeight: 20,
+    items: [
+      {
+        builtin: true,
+        categories: [],
+        description: 'Test Description',
+        icon: 'test-icon.png',
+        id: 'test-extension',
+        name: 'Test Extension',
+        publisher: 'Test Publisher',
+        size: 1000,
+        updatedDate: 1000,
+        uri: 'https://example.com',
+      },
+    ],
+    uid: 123,
+    x: 50,
+    y: 100,
+  }
+  using mockRpc = RendererWorker.registerMockRpc({
+    'ContextMenu.show2'() {},
+  })
+  const result = await HandleContextMenu.handleContextMenu(state, 0, 100, 110)
+  expect(result).toBe(state)
+  expect(mockRpc.invocations).toEqual([
+    ['ContextMenu.show2', 123, MenuEntryId.ManageExtension, 100, 110, { builtin: true, menuId: MenuEntryId.ManageExtension }],
+  ])
 })
 
 test('handleContextMenu returns state unchanged for negative index', async () => {
@@ -78,7 +114,9 @@ test('handleContextMenu returns state unchanged for index equal to items length'
   })
   const result = await HandleContextMenu.handleContextMenu(state, 0, 100, 200)
   expect(result).toBe(state)
-  expect(mockRpc.invocations).toEqual([['ContextMenu.show2', 123, MenuEntryId.ManageExtension, 100, 200, { menuId: MenuEntryId.ManageExtension }]])
+  expect(mockRpc.invocations).toEqual([
+    ['ContextMenu.show2', 123, MenuEntryId.ManageExtension, 100, 200, { builtin: false, menuId: MenuEntryId.ManageExtension }],
+  ])
 })
 
 test('handleContextMenu shows context menu for index 0', async () => {
@@ -97,7 +135,9 @@ test('handleContextMenu shows context menu for index 0', async () => {
   })
   const result = await HandleContextMenu.handleContextMenu(state, 0, 0, 15)
   expect(result).toBe(state)
-  expect(mockRpc.invocations).toEqual([['ContextMenu.show2', 456, MenuEntryId.ManageExtension, 0, 15, { menuId: MenuEntryId.ManageExtension }]])
+  expect(mockRpc.invocations).toEqual([
+    ['ContextMenu.show2', 456, MenuEntryId.ManageExtension, 0, 15, { builtin: false, menuId: MenuEntryId.ManageExtension }],
+  ])
 })
 
 test('handleContextMenu shows context menu with scrolled state', async () => {
@@ -116,5 +156,7 @@ test('handleContextMenu shows context menu with scrolled state', async () => {
   })
   const result = await HandleContextMenu.handleContextMenu(state, 0, 150, 100)
   expect(result).toBe(state)
-  expect(mockRpc.invocations).toEqual([['ContextMenu.show2', 789, MenuEntryId.ManageExtension, 150, 100, { menuId: MenuEntryId.ManageExtension }]])
+  expect(mockRpc.invocations).toEqual([
+    ['ContextMenu.show2', 789, MenuEntryId.ManageExtension, 150, 100, { builtin: false, menuId: MenuEntryId.ManageExtension }],
+  ])
 })

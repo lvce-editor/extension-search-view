@@ -5,6 +5,7 @@ export interface ContextMenuPropsBase {
 }
 
 export interface ContextMenuPropsExplorer extends ContextMenuPropsBase {
+  readonly builtin: boolean
   readonly menuId: typeof MenuEntryId.ManageExtension
 }
 

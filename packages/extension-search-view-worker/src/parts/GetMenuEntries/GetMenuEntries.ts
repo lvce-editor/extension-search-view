@@ -2,7 +2,7 @@ import type { MenuEntry } from '../MenuEntry/MenuEntry.ts'
 import * as ExtensionStrings from '../ExtensionStrings/ExtensionStrings.ts'
 import * as MenuItemFlags from '../MenuItemFlags/MenuItemFlags.ts'
 
-export const getMenuEntriesList = (): readonly MenuEntry[] => {
+export const getMenuEntriesList = (builtin: boolean): readonly MenuEntry[] => {
   return [
     {
       command: 'SearchExtensions.enable',
@@ -42,7 +42,7 @@ export const getMenuEntriesList = (): readonly MenuEntry[] => {
     },
     {
       command: 'SearchExtensions.installAnotherVersion',
-      flags: MenuItemFlags.None,
+      flags: builtin ? MenuItemFlags.Disabled : MenuItemFlags.None,
       id: 'installAnotherVersion',
       label: ExtensionStrings.installAnotherVersion(),
     },
