@@ -36,6 +36,24 @@ export const getCss = (state: State): string => {
   z-index: 1;
 }
 
+.ExtensionListItemFooter {
+  justify-content: flex-end;
+  padding-right: 2px;
+}
+
+.ExtensionListItemAuthorName {
+  flex: 1;
+}
+
+.ExtensionActions {
+  display: flex;
+  gap: 6px;
+}
+
+.ExtensionActionButton {
+  padding: 0 5px;
+}
+
 .ExtensionSearchCompletionWidget {
   position: absolute;
   left: ${completionLeft}px;
