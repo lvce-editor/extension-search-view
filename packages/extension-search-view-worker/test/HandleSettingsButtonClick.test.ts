@@ -16,11 +16,13 @@ test('handleSettingsButtonClick shows context menu with builtin status', async (
         builtin: true,
         categories: [],
         description: 'Test Description 1',
+        disabled: true,
         icon: 'test-icon-1.png',
         id: 'test-extension-1',
         name: 'Test Extension 1',
         publisher: 'Test Publisher 1',
         size: 1000,
+        status: 'disabled',
         updatedDate: 1000,
         uri: 'https://example.com/1',
       },
@@ -52,7 +54,7 @@ test('handleSettingsButtonClick shows context menu with builtin status', async (
       MenuEntryId.ManageExtension,
       expect.any(Number),
       expect.any(Number),
-      { builtin: true, menuId: MenuEntryId.ManageExtension },
+      { builtin: true, disabled: true, menuId: MenuEntryId.ManageExtension, status: 'disabled' },
     ],
   ])
 })
@@ -165,7 +167,7 @@ test('handleSettingsButtonClick calculates correct menu position', async () => {
       MenuEntryId.ManageExtension,
       expect.any(Number),
       expect.any(Number),
-      { builtin: false, menuId: MenuEntryId.ManageExtension },
+      { builtin: false, disabled: false, menuId: MenuEntryId.ManageExtension, status: undefined },
     ],
   ])
 })
