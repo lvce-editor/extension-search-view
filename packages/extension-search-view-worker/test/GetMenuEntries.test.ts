@@ -20,3 +20,27 @@ test('disables install another version for builtin extensions', () => {
   const menuEntry = getMenuEntriesList(true).find((entry) => entry.id === 'installAnotherVersion')
   expect(menuEntry?.flags).toBe(MenuItemFlags.Disabled)
 })
+
+test('disables enable actions for enabled extensions', () => {
+  const menuEntries = getMenuEntriesList(false, false, 'enabled')
+  expect(menuEntries.find((entry) => entry.id === 'enable')?.flags).toBe(MenuItemFlags.Disabled)
+  expect(menuEntries.find((entry) => entry.id === 'enableWorkspace')?.flags).toBe(MenuItemFlags.Disabled)
+  expect(menuEntries.find((entry) => entry.id === 'disable')?.flags).toBe(MenuItemFlags.None)
+  expect(menuEntries.find((entry) => entry.id === 'disableWorkspace')?.flags).toBe(MenuItemFlags.None)
+})
+
+test('disables disable actions for disabled extensions', () => {
+  const menuEntries = getMenuEntriesList(false, true, 'disabled')
+  expect(menuEntries.find((entry) => entry.id === 'enable')?.flags).toBe(MenuItemFlags.None)
+  expect(menuEntries.find((entry) => entry.id === 'enableWorkspace')?.flags).toBe(MenuItemFlags.None)
+  expect(menuEntries.find((entry) => entry.id === 'disable')?.flags).toBe(MenuItemFlags.Disabled)
+  expect(menuEntries.find((entry) => entry.id === 'disableWorkspace')?.flags).toBe(MenuItemFlags.Disabled)
+})
+
+test.each(['installing', 'not-installed', 'uninstalling'])('disables enablement actions for %s extensions', (status) => {
+  const menuEntries = getMenuEntriesList(false, false, status)
+  expect(menuEntries.find((entry) => entry.id === 'enable')?.flags).toBe(MenuItemFlags.Disabled)
+  expect(menuEntries.find((entry) => entry.id === 'enableWorkspace')?.flags).toBe(MenuItemFlags.Disabled)
+  expect(menuEntries.find((entry) => entry.id === 'disable')?.flags).toBe(MenuItemFlags.Disabled)
+  expect(menuEntries.find((entry) => entry.id === 'disableWorkspace')?.flags).toBe(MenuItemFlags.Disabled)
+})

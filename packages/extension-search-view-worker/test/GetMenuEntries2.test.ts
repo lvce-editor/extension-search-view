@@ -18,18 +18,22 @@ test('returns default menu entries when menuId is not ExtensionSearchFilter', ()
   const state = createDefaultState()
   const props = {
     builtin: false,
+    disabled: false,
     menuId: MenuEntryId.ManageExtension as 8,
+    status: 'enabled',
   }
   const result = getMenuEntries2(state, props)
-  expect(result).toEqual(getMenuEntriesList(false))
+  expect(result).toEqual(getMenuEntriesList(false, false, 'enabled'))
 })
 
 test('returns menu entries for builtin extensions', () => {
   const state = createDefaultState()
   const props = {
     builtin: true,
+    disabled: true,
     menuId: MenuEntryId.ManageExtension as 8,
+    status: 'disabled',
   }
   const result = getMenuEntries2(state, props)
-  expect(result).toEqual(getMenuEntriesList(true))
+  expect(result).toEqual(getMenuEntriesList(true, true, 'disabled'))
 })
