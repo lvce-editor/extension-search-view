@@ -34,10 +34,20 @@ const getContentVirtualDom = (
 
 export const getExtensionsViewVirtualDom = (state: State): readonly VirtualDomNode[] => {
   const visibleExtensions = GetVisibleExtensions.getVisible(state)
-  const { completionFocusedIndex, completionItems, focusedIndex, inputActions, message, placeholder, scrollBarHeight, scrollBarY, suggestOpen } =
-    state
+  const {
+    completionFocusedIndex,
+    completionItems,
+    focus,
+    focusedIndex,
+    inputActions,
+    message,
+    placeholder,
+    scrollBarHeight,
+    scrollBarY,
+    suggestOpen,
+  } = state
 
-  const focusOutline = focusedIndex === -1 && state.focus === FocusId.List
+  const focusOutline = focusedIndex === -1 && focus === FocusId.List
   return [
     {
       ariaBusy: false,
