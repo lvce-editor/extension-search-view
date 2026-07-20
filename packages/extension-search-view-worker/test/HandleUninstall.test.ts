@@ -15,3 +15,23 @@ test('handleUninstall uninstalls extension and updates status', async () => {
   expect(mockRpc.invocations).toEqual([['ExtensionManagement.uninstall', 'test-id']])
   expect(result.items[0].status).toBe('not-installed')
 })
+
+test('handleUninstall shows an error dialog and preserves status when uninstall fails', async () => {
+  const error = new Error('Failed to uninstall extension')
+  using mockRpc = RendererWorker.registerMockRpc({
+    'ErrorHandling.showErrorDialog'() {},
+    'ExtensionManagement.uninstall'() {
+      throw error
+    },
+  })
+  const extension = { id: 'test-id', status: 'enabled' } as any
+  const state = { ...CreateDefaultState.createDefaultState(), allExtensions: [extension], items: [extension] }
+
+  const result = await HandleUninstall.handleUninstall(state, 'test-id')
+
+  expect(mockRpc.invocations).toEqual([
+    ['ExtensionManagement.uninstall', 'test-id'],
+    ['ErrorHandling.showErrorDialog', error],
+  ])
+  expect(result).toBe(state)
+})
