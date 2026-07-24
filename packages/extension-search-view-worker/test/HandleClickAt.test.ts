@@ -21,7 +21,7 @@ test('handleClickAt accepts completion by name', async () => {
     suggestOpen: true,
   }
   const result = await handleClickAt(state, MouseEventType.LeftClick, 0, 0, '@enabled')
-  expect(result.searchValue).toBe('@enabled')
+  expect(result.searchValue).toBe('@enabled ')
   expect(result.suggestOpen).toBe(false)
 })
 
