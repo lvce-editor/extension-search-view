@@ -38,11 +38,12 @@ const listItemAuthorName: VirtualDomNode = {
   type: VirtualDomElements.Div,
 }
 
-const getClassName = (focused: boolean): string => {
-  if (focused) {
-    return MergeClassNames.mergeClassNames(ClassNames.ExtensionListItem, ClassNames.ExtensionActive)
-  }
-  return ClassNames.ExtensionListItem
+const getClassName = (focused: boolean, disabled: boolean): string => {
+  return MergeClassNames.mergeClassNames(
+    ClassNames.ExtensionListItem,
+    focused ? ClassNames.ExtensionActive : '',
+    disabled ? ClassNames.ExtensionListItemDisabled : '',
+  )
 }
 
 const getId = (focused: boolean): string | undefined => {
@@ -75,7 +76,7 @@ export const getExtensionListItemVirtualDom = (extension: VisibleItem): readonly
       ariaRoleDescription: AriaRoleDescription.Extension,
       ariaSetSize: setSize,
       childCount: 2,
-      className: getClassName(focused),
+      className: getClassName(focused, disabled),
       id: getId(focused),
       role: AriaRoles.ListItem,
       type: VirtualDomElements.Div,

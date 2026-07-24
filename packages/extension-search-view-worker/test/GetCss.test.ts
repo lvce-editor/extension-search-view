@@ -120,3 +120,11 @@ test('returns CSS with VS Code-style extension action layout', () => {
   padding: 0 5px;
 }`)
 })
+
+test('returns CSS with a dimmed background for disabled extension list items', () => {
+  const result = GetCss.getCss(createDefaultState())
+
+  expect(result).toContain(`.ExtensionListItemDisabled:not(.ExtensionActive) {
+  background: color-mix(in srgb, var(--SideBarBackground, rgb(30, 35, 36)) 95%, black);
+}`)
+})
