@@ -67,6 +67,22 @@ test('sets main list item div with correct properties when not focused', () => {
   })
 })
 
+test('adds disabled class to disabled list item', () => {
+  const item = createMockVisibleItem({ disabled: true })
+  const result = GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom(item)
+
+  expect(result[0].className).toBe(MergeClassNames.mergeClassNames(ClassNames.ExtensionListItem, ClassNames.ExtensionListItemDisabled))
+})
+
+test('adds active and disabled classes to focused disabled list item', () => {
+  const item = createMockVisibleItem({ disabled: true, focused: true })
+  const result = GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom(item)
+
+  expect(result[0].className).toBe(
+    MergeClassNames.mergeClassNames(ClassNames.ExtensionListItem, ClassNames.ExtensionActive, ClassNames.ExtensionListItemDisabled),
+  )
+})
+
 test('sets icon img with correct properties', () => {
   const item = createMockVisibleItem({ icon: 'custom-icon.png' })
   const result = GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom(item)

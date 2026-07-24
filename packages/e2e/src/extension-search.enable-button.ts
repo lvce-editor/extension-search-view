@@ -9,6 +9,9 @@ export const test: Test = async ({ Command, expect, ExtensionSearch, Locator }) 
 
   await Command.execute('Extensions.setExtensionStatus', extensionId, 'disabled', false)
 
+  const listItem = Locator('.ExtensionListItemDisabled')
+  await expect(listItem).toBeVisible()
+
   const buttons = Locator('.ExtensionListItem .ExtensionActionButton')
   await expect(buttons.first()).toHaveText('Enable')
 }
