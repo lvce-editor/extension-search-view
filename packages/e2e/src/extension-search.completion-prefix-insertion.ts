@@ -8,5 +8,5 @@ export const test: Test = async ({ Command, expect, ExtensionSearch, Locator }) 
   await Command.execute('Extensions.handleInput', 'theme @', 1, 7)
   await Command.execute('Extensions.handleClickAt', 0, 0, 0, '@builtin')
   const input = Locator('.Extensions .MultilineInputBox')
-  await expect(input).toHaveValue('theme @builtin')
+  await expect(input).toHaveValue('theme @builtin ')
 }

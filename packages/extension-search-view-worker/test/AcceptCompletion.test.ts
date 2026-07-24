@@ -11,15 +11,27 @@ test('accepts focused completion', async () => {
     suggestOpen: true,
   }
   const result = await acceptCompletion(state)
-  expect(result.searchValue).toBe('@installed')
-  expect(result.cursorOffset).toBe(10)
+  expect(result.searchValue).toBe('@installed ')
+  expect(result.cursorOffset).toBe(11)
   expect(result.suggestOpen).toBe(false)
 })
 
 test('accepts explicit completion', async () => {
   const state = { ...createDefaultState(), cursorOffset: 1, searchValue: '@', suggestOpen: true }
   const result = await acceptCompletion(state, '@builtin')
-  expect(result.searchValue).toBe('@builtin')
+  expect(result.searchValue).toBe('@builtin ')
+})
+
+test('does not add duplicate whitespace', async () => {
+  const state = { ...createDefaultState(), cursorOffset: 5, searchValue: '@buil other', suggestOpen: true }
+  const result = await acceptCompletion(state, '@builtin')
+  expect(result.searchValue).toBe('@builtin other')
+})
+
+test('does not add whitespace after a parameter prefix', async () => {
+  const state = { ...createDefaultState(), cursorOffset: 4, searchValue: '@cat', suggestOpen: true }
+  const result = await acceptCompletion(state, '@category:')
+  expect(result.searchValue).toBe('@category:')
 })
 
 test('replaces active token and preserves surrounding text', async () => {
