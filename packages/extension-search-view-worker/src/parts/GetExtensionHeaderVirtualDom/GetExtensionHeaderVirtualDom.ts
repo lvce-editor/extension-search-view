@@ -9,6 +9,17 @@ import { getCompletionWidgetVirtualDom } from '../GetCompletionWidgetVirtualDom/
 import * as GetSearchFieldVirtualDom from '../GetSearchFieldVirtualDom/GetSearchFieldVirtualDom.ts'
 import * as InputName from '../InputName/InputName.ts'
 
+const getCompletionVirtualDom = (
+  completionItems: readonly CompletionItem[],
+  completionFocusedIndex: number,
+  suggestOpen: boolean,
+): readonly VirtualDomNode[] => {
+  if (!suggestOpen) {
+    return []
+  }
+  return getCompletionWidgetVirtualDom(completionItems, completionFocusedIndex)
+}
+
 export const getExtensionHeaderVirtualDom = (
   placeholder: string,
   actions: readonly InputAction[],
@@ -29,6 +40,7 @@ export const getExtensionHeaderVirtualDom = (
         ariaExpanded: false,
         role: AriaRoles.ComboBox,
       }
+  const completionDom = getCompletionVirtualDom(completionItems, completionFocusedIndex, suggestOpen)
   return [
     {
       childCount: suggestOpen ? 2 : 1,
@@ -46,6 +58,6 @@ export const getExtensionHeaderVirtualDom = (
       DomEventListenerFunctions.HandleInputBlur,
       inputProperties,
     ),
-    ...(suggestOpen ? getCompletionWidgetVirtualDom(completionItems, completionFocusedIndex) : []),
+    ...completionDom,
   ]
 }
