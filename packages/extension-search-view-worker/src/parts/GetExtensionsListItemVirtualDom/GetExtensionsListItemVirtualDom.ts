@@ -26,10 +26,12 @@ const listItemDescription: VirtualDomNode = {
   type: VirtualDomElements.Div,
 }
 
-const listItemFooter: VirtualDomNode = {
-  childCount: 3,
-  className: ClassNames.ExtensionListItemFooter,
-  type: VirtualDomElements.Div,
+const getListItemFooter = (hasStatistics: boolean): VirtualDomNode => {
+  return {
+    childCount: hasStatistics ? 3 : 2,
+    className: ClassNames.ExtensionListItemFooter,
+    type: VirtualDomElements.Div,
+  }
 }
 
 const listItemAuthorName: VirtualDomNode = {
@@ -53,6 +55,13 @@ const getId = (focused: boolean): string | undefined => {
   return undefined
 }
 
+const getStatisticsVirtualDom = (hasStatistics: boolean, downloadCount: string, rating: string): readonly VirtualDomNode[] => {
+  if (!hasStatistics) {
+    return []
+  }
+  return getExtensionStatisticsVirtualDom(downloadCount, rating)
+}
+
 export const getExtensionListItemVirtualDom = (extension: VisibleItem): readonly VirtualDomNode[] => {
   const {
     builtin = false,
@@ -70,6 +79,7 @@ export const getExtensionListItemVirtualDom = (extension: VisibleItem): readonly
     status,
   } = extension
   const actionsDom = GetExtensionActionsVirtualDom.getExtensionActionsVirtualDom(id, builtin, disabled, status)
+  const hasStatistics = !builtin
   const dom: readonly VirtualDomNode[] = [
     {
       ariaPosInSet: posInSet,
@@ -93,10 +103,10 @@ export const getExtensionListItemVirtualDom = (extension: VisibleItem): readonly
     text(name),
     listItemDescription,
     text(description),
-    listItemFooter,
+    getListItemFooter(hasStatistics),
     listItemAuthorName,
     text(publisher),
-    ...getExtensionStatisticsVirtualDom(downloadCount, rating),
+    ...getStatisticsVirtualDom(hasStatistics, downloadCount, rating),
     ...actionsDom,
   ]
   return dom
