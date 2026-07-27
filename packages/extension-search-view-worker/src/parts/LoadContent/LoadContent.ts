@@ -33,7 +33,7 @@ export const loadContentWithContext = async (context: AsyncCommandContext<State>
         size,
       }
     })
-    const allExtensions = await GetAllExtensions.getAllExtensions(platform)
+    const allExtensions = await GetAllExtensions.getAllExtensions(assetDir, platform)
     const normalized = NormalizeExtensions.normalizeExtensions(allExtensions, platform, assetDir)
     await context.updateState((state) => ({
       ...state,
@@ -49,7 +49,7 @@ export const loadContent = async (state: State, savedState: unknown): Promise<St
   const { assetDir, platform, width } = state
   const { deltaY, searchValue } = RestoreState.restoreState(savedState)
   // TODO just get local extensions on demand (not when query string is already different)
-  const allExtensions = await GetAllExtensions.getAllExtensions(platform)
+  const allExtensions = await GetAllExtensions.getAllExtensions(assetDir, platform)
   const size = GetViewletSize.getViewletSize(width)
   const normalized = NormalizeExtensions.normalizeExtensions(allExtensions, platform, assetDir)
   const scrollSensitivity = IsFirefox.getIsFirefox() ? 2.5 : 1
