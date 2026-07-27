@@ -1,16 +1,13 @@
-import { RendererWorker } from '@lvce-editor/rpc-registry'
-import * as ExtensionHostWorker from '../ExtensionHostWorker/ExtensionHostWorker.ts'
+import { ExtensionManagementWorker } from '@lvce-editor/rpc-registry'
 import * as PlatformType from '../PlatformType/PlatformType.ts'
 
-export const getAllExtensions = async (platform: number): Promise<readonly any[]> => {
-  if (platform === PlatformType.Web) {
-    try {
-      const extensions = await ExtensionHostWorker.invoke('Extensions.getExtensions')
-      return extensions
-    } catch {
+export const getAllExtensions = async (assetDir: string, platform: number): Promise<readonly any[]> => {
+  try {
+    return await ExtensionManagementWorker.invoke('Extensions.getAllExtensions', assetDir, platform)
+  } catch (error) {
+    if (platform === PlatformType.Web) {
       return []
     }
+    throw error
   }
-  // @ts-ignore todo
-  return RendererWorker.invoke('ExtensionManagement.getAllExtensions')
 }
