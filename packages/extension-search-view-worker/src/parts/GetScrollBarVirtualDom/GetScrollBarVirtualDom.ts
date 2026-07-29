@@ -4,6 +4,13 @@ import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 
+const scrollBarNode: VirtualDomNode = {
+  childCount: 1,
+  className: MergeClassNames.mergeClassNames(ClassNames.ScrollBar, ClassNames.ScrollBarSmall),
+  onPointerDown: DomEventListenerFunctions.HandleScrollBarPointerDown, // TODO support pointercapture event
+  type: VirtualDomElements.Div,
+}
+
 const scrollBarThumbNode: VirtualDomNode = {
   childCount: 0,
   className: ClassNames.ScrollBarThumb,
@@ -15,13 +22,5 @@ export const getScrollBarVirtualDom = (scrollBarHeight: number, scrollBarTop: nu
   if (!shouldShowScrollbar) {
     return []
   }
-  return [
-    {
-      childCount: 1,
-      className: MergeClassNames.mergeClassNames(ClassNames.ScrollBar, ClassNames.ScrollBarSmall),
-      onPointerDown: DomEventListenerFunctions.HandleScrollBarPointerDown, // TODO support pointercapture event
-      type: VirtualDomElements.Div,
-    },
-    scrollBarThumbNode,
-  ]
+  return [scrollBarNode, scrollBarThumbNode]
 }
