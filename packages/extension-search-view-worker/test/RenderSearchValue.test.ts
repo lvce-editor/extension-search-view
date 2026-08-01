@@ -5,14 +5,16 @@ import * as RenderSearchValue from '../src/parts/RenderSearchValue/RenderSearchV
 
 test('returns method call array with empty search value', () => {
   const state = createDefaultState()
+  const { searchValue, uid } = state
   const result = RenderSearchValue.renderSearchValue(state)
-  expect(result).toEqual(['Viewlet.setValueByName', state.uid, InputName.Extensions, state.searchValue])
+  expect(result).toEqual(['Viewlet.setValueByName', uid, InputName.Extensions, searchValue])
 })
 
 test('returns method call array with search value', () => {
   const state = { ...createDefaultState(), searchValue: 'test query' }
+  const { uid } = state
   const result = RenderSearchValue.renderSearchValue(state)
-  expect(result).toEqual(['Viewlet.setValueByName', state.uid, InputName.Extensions, 'test query'])
+  expect(result).toEqual(['Viewlet.setValueByName', uid, InputName.Extensions, 'test query'])
 })
 
 test('returns method call array with different uid', () => {
