@@ -2,8 +2,10 @@ import { defineConfig } from 'eslint/config'
 import * as config from '@lvce-editor/eslint-config'
 
 export default defineConfig([
+  ...config.recommendedE2e,
   ...config.default,
   ...config.recommendedVirtualDom,
+  ...config.recommendedRegex,
   ...config.recommendedActions,
   {
     rules: {
@@ -29,7 +31,6 @@ export default defineConfig([
       'virtual-dom/no-inline-event-handlers': 'off',
       'virtual-dom/prefer-constants': 'off',
       'virtual-dom/prefer-merge-class-names': 'off',
-      'virtual-dom/prefer-state-destructuring': 'off',
     },
   },
 ])

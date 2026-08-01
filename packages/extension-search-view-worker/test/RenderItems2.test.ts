@@ -5,8 +5,9 @@ import { renderItems2 } from '../src/parts/RenderItems2/RenderItems2.ts'
 
 test('renderItems2 returns Viewlet.setDom2 command with uid and virtual dom', () => {
   const state: State = createDefaultState()
+  const { uid } = state
   const result = renderItems2(state)
-  expect(result).toEqual(['Viewlet.setDom2', state.uid, expect.any(Array)])
+  expect(result).toEqual(['Viewlet.setDom2', uid, expect.any(Array)])
 })
 
 test('renderItems2 returns correct uid when state has custom uid', () => {

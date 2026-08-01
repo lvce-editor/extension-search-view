@@ -5,8 +5,10 @@ import * as AriaRoleDescription from '../AriaRoleDescription/AriaRoleDescription
 import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as GetExtensionActionsVirtualDom from '../GetExtensionActionsVirtualDom/GetExtensionActionsVirtualDom.ts'
-import { getExtensionStatisticsVirtualDom } from '../GetExtensionStatisticsVirtualDom/GetExtensionStatisticsVirtualDom.ts'
-import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
+import { getExtensionListItemClassName } from '../GetExtensionListItemClassName/GetExtensionListItemClassName.ts'
+import { getExtensionListItemFooter } from '../GetExtensionListItemFooter/GetExtensionListItemFooter.ts'
+import { getExtensionListItemId } from '../GetExtensionListItemId/GetExtensionListItemId.ts'
+import { getExtensionListItemStatisticsVirtualDom } from '../GetExtensionListItemStatisticsVirtualDom/GetExtensionListItemStatisticsVirtualDom.ts'
 import { text } from '../VirtualDomHelpers/VirtualDomHelpers.ts'
 
 const listItemDetail: VirtualDomNode = {
@@ -26,40 +28,10 @@ const listItemDescription: VirtualDomNode = {
   type: VirtualDomElements.Div,
 }
 
-const getListItemFooter = (hasStatistics: boolean): VirtualDomNode => {
-  return {
-    childCount: hasStatistics ? 3 : 2,
-    className: ClassNames.ExtensionListItemFooter,
-    type: VirtualDomElements.Div,
-  }
-}
-
 const listItemAuthorName: VirtualDomNode = {
   childCount: 1,
   className: ClassNames.ExtensionListItemAuthorName,
   type: VirtualDomElements.Div,
-}
-
-const getClassName = (focused: boolean, disabled: boolean): string => {
-  return MergeClassNames.mergeClassNames(
-    ClassNames.ExtensionListItem,
-    focused ? ClassNames.ExtensionActive : '',
-    disabled ? ClassNames.ExtensionListItemDisabled : '',
-  )
-}
-
-const getId = (focused: boolean): string | undefined => {
-  if (focused) {
-    return `ExtensionActive`
-  }
-  return undefined
-}
-
-const getStatisticsVirtualDom = (hasStatistics: boolean, downloadCount: string, rating: string): readonly VirtualDomNode[] => {
-  if (!hasStatistics) {
-    return []
-  }
-  return getExtensionStatisticsVirtualDom(downloadCount, rating)
 }
 
 export const getExtensionListItemVirtualDom = (extension: VisibleItem): readonly VirtualDomNode[] => {
@@ -86,8 +58,8 @@ export const getExtensionListItemVirtualDom = (extension: VisibleItem): readonly
       ariaRoleDescription: AriaRoleDescription.Extension,
       ariaSetSize: setSize,
       childCount: 2,
-      className: getClassName(focused, disabled),
-      id: getId(focused),
+      className: getExtensionListItemClassName(focused, disabled),
+      id: getExtensionListItemId(focused),
       role: AriaRoles.ListItem,
       type: VirtualDomElements.Div,
     },
@@ -103,10 +75,10 @@ export const getExtensionListItemVirtualDom = (extension: VisibleItem): readonly
     text(name),
     listItemDescription,
     text(description),
-    getListItemFooter(hasStatistics),
+    getExtensionListItemFooter(hasStatistics),
     listItemAuthorName,
     text(publisher),
-    ...getStatisticsVirtualDom(hasStatistics, downloadCount, rating),
+    ...getExtensionListItemStatisticsVirtualDom(hasStatistics, downloadCount, rating),
     ...actionsDom,
   ]
   return dom
