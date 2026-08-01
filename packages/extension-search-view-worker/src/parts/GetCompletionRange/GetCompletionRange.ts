@@ -1,7 +1,9 @@
 import type { CompletionRange } from '../CompletionRange/CompletionRange.ts'
 
+const RE_WHITESPACE = /\s/
+
 const isWhiteSpace = (character: string): boolean => {
-  return /\s/.test(character)
+  return RE_WHITESPACE.test(character)
 }
 
 export const getCompletionRange = (value: string, cursorOffset: number): CompletionRange | undefined => {

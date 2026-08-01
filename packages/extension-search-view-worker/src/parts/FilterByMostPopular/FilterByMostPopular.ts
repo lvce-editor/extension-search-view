@@ -4,8 +4,10 @@ import * as ExtensionFilterParameter from '../ExtensionFilterParameter/Extension
 import * as HandleInput from '../HandleInput/HandleInput.ts'
 import * as InputSource from '../InputSource/InputSource.ts'
 
+const RE_WHITESPACE_SEQUENCE = /\s+/
+
 const addFilter = (searchValue: string, filter: string): string => {
-  const values = searchValue.trim().split(/\s+/)
+  const values = searchValue.trim().split(RE_WHITESPACE_SEQUENCE)
   if (values.includes(filter)) {
     return searchValue
   }

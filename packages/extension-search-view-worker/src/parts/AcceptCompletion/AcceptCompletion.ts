@@ -5,8 +5,10 @@ import { getCompletionRange } from '../GetCompletionRange/GetCompletionRange.ts'
 import * as HandleChange from '../HandleChange/HandleChange.ts'
 import * as InputSource from '../InputSource/InputSource.ts'
 
+const RE_WHITESPACE = /\s/
+
 const getCompletionText = (searchValue: string, completion: string, rangeEnd: number): string => {
-  const hasTrailingWhitespace = /\s/.test(searchValue[rangeEnd] || '')
+  const hasTrailingWhitespace = RE_WHITESPACE.test(searchValue[rangeEnd] || '')
   return completion.endsWith(':') || hasTrailingWhitespace ? completion : `${completion} `
 }
 
