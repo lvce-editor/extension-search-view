@@ -1,10 +1,10 @@
 import * as config from '@lvce-editor/eslint-config'
-import * as actions from '@lvce-editor/eslint-plugin-github-actions/dist/index.js'
 
 export default [
   ...config.default,
   ...config.recommendedVirtualDom,
-  ...actions.default,
+  ...config.recommendedRegex,
+  ...config.recommendedActions,
   {
     rules: {
       '@cspell/spellchecker': 'off',
