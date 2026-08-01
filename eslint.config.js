@@ -4,6 +4,7 @@ import * as config from '@lvce-editor/eslint-config'
 export default defineConfig([
   ...config.recommendedE2e,
   ...config.default,
+  ...config.recommendedTsconfig,
   ...config.recommendedVirtualDom,
   ...config.recommendedRegex,
   ...config.recommendedActions,
