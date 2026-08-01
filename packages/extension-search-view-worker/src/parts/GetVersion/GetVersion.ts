@@ -1,5 +1,11 @@
-export const getVersion = (extension: any): string => {
-  if (!extension || !extension.version) {
+export const getVersion = (extension: unknown): string => {
+  if (
+    extension === null ||
+    typeof extension !== 'object' ||
+    !('version' in extension) ||
+    typeof extension.version !== 'string' ||
+    !extension.version
+  ) {
     return 'n/a'
   }
   return extension.version

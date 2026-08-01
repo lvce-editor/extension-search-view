@@ -17,6 +17,8 @@ test('returns n/a for invalid inputs', () => {
   expect(GetPublisher.getPublisher(null)).toBe('n/a')
   expect(GetPublisher.getPublisher(undefined)).toBe('n/a')
   expect(GetPublisher.getPublisher({})).toBe('n/a')
+  expect(GetPublisher.getPublisher(1)).toBe('n/a')
   expect(GetPublisher.getPublisher({ id: null })).toBe('n/a')
+  expect(GetPublisher.getPublisher({ id: 1 })).toBe('n/a')
   expect(GetPublisher.getPublisher({ id: undefined })).toBe('n/a')
 })

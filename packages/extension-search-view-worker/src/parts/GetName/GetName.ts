@@ -1,8 +1,11 @@
-export const getName = (extension: any): string => {
-  if (extension && extension.name) {
+export const getName = (extension: unknown): string => {
+  if (extension === null || typeof extension !== 'object') {
+    return 'n/a'
+  }
+  if ('name' in extension && typeof extension.name === 'string' && extension.name) {
     return extension.name
   }
-  if (extension && extension.id) {
+  if ('id' in extension && typeof extension.id === 'string' && extension.id) {
     return extension.id
   }
   return 'n/a'

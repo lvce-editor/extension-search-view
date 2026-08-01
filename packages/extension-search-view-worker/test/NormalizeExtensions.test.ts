@@ -46,3 +46,25 @@ test('normalizeExtension should handle empty array', () => {
   const result = normalizeExtensions([], 1, '/assets')
   expect(result).toEqual([])
 })
+
+test('normalizeExtension should handle invalid extension values', () => {
+  const result = normalizeExtensions([null, 1, 'invalid'], 1, '/assets')
+  const expected = {
+    builtin: false,
+    categories: [],
+    description: 'n/a',
+    disabled: false,
+    downloadCount: 'n/a',
+    icon: '/assets/icons/extensionDefaultIcon.png',
+    id: 'n/a',
+    name: 'n/a',
+    publisher: 'n/a',
+    rating: 'n/a',
+    size: 0,
+    status: undefined,
+    updatedDate: 0,
+    uri: '',
+  }
+
+  expect(result).toEqual([expected, expected, expected])
+})

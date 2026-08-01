@@ -3,7 +3,10 @@ import type { ParsedExtensionSearchValue } from '../ParsedExtensionSearchValue/P
 import * as MatchesParsedValue from '../MatchesParsedValue/MatchesParsedValue.ts'
 import * as SortExtensions from '../SortExtensions/SortExtensions.ts'
 
-export const getExtensions = async (extensions: readonly ExtensionListItem[], parsedValue: ParsedExtensionSearchValue): Promise<readonly any[]> => {
+export const getExtensions = async (
+  extensions: readonly ExtensionListItem[],
+  parsedValue: ParsedExtensionSearchValue,
+): Promise<readonly ExtensionListItem[]> => {
   const filteredExtensions = []
   for (const extension of extensions) {
     if (MatchesParsedValue.matchesParsedValue(extension, parsedValue)) {
