@@ -1,7 +1,7 @@
 import { isString } from '../IsString/IsString.ts'
 
-export const getCategories = (extension: any): readonly string[] => {
-  if (!extension || !extension.categories || !Array.isArray(extension.categories)) {
+export const getCategories = (extension: unknown): readonly string[] => {
+  if (extension === null || typeof extension !== 'object' || !('categories' in extension) || !Array.isArray(extension.categories)) {
     return []
   }
   return extension.categories.filter(isString)
