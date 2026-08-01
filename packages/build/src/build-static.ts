@@ -37,10 +37,6 @@ const extensionSearchViewWorkerUrl = \`${remoteUrl}\``
   const newContent = content.includes(occurrence) ? content.replace(occurrence, replacement) : content
   await writeFile(rendererWorkerPath, newContent)
 
-  const testWorkerSourcePath = join(root, 'node_modules', '@lvce-editor', 'test-worker', 'dist', 'testWorkerMain.js')
-  const testWorkerTargetPath = join(root, 'dist', commitHash, 'packages', 'test-worker', 'dist', 'testWorkerMain.js')
-  await cp(testWorkerSourcePath, testWorkerTargetPath)
-
   await cp(join(root, 'dist'), join(root, '.tmp', 'static'), { recursive: true })
 }
 
