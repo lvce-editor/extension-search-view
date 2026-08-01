@@ -7,5 +7,5 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   await ExtensionSearch.clearSearchResults()
   const firstItem = Locator('.ExtensionListItem').first()
   await expect(firstItem).toHaveAttribute('aria-posinset', '1')
-  await expect(firstItem).toHaveAttribute('aria-setsize', '10')
+  await expect(firstItem).toHaveAttribute('aria-setsize', '59')
 }

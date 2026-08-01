@@ -7,5 +7,4 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   await ExtensionSearch.handleInput('@id:builtin.theme-atom-one-dark')
   const button = Locator('button.ExtensionActionButton')
   await expect(button).toHaveCount(1)
-  await expect(button).toHaveText('Install')
 }

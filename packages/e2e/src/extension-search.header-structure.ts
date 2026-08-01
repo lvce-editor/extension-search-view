@@ -4,6 +4,7 @@ export const skip = 0
 
 export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   await ExtensionSearch.open()
-  const input = Locator('.Extensions .MultilineInputBox')
-  await expect(input).toHaveAttribute('autocorrect', 'off')
+  const header = Locator('.Extensions .ExtensionHeader')
+  await expect(header).toHaveCount(1)
+  await expect(header.locator('.SearchField')).toHaveCount(1)
 }
