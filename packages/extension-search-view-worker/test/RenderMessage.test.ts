@@ -5,6 +5,7 @@ import * as RenderMethod from '../src/parts/RenderMethod/RenderMethod.ts'
 
 test('renderMessage returns array with SetMessage method and state message', () => {
   const state = createDefaultState()
+  const { message } = state
   const result = renderMessage(state)
-  expect(result).toEqual([RenderMethod.SetMessage, state.message])
+  expect(result).toEqual([RenderMethod.SetMessage, message])
 })

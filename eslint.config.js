@@ -1,10 +1,11 @@
 import * as config from '@lvce-editor/eslint-config'
-import * as actions from '@lvce-editor/eslint-plugin-github-actions/dist/index.js'
 
 export default [
+  ...config.recommendedE2e,
   ...config.default,
   ...config.recommendedVirtualDom,
-  ...actions.default,
+  ...config.recommendedRegex,
+  ...config.recommendedActions,
   {
     rules: {
       '@cspell/spellchecker': 'off',
@@ -29,7 +30,6 @@ export default [
       'virtual-dom/no-inline-event-handlers': 'off',
       'virtual-dom/prefer-constants': 'off',
       'virtual-dom/prefer-merge-class-names': 'off',
-      'virtual-dom/prefer-state-destructuring': 'off',
     },
   },
 ]

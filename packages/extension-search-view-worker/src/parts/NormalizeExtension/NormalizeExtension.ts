@@ -1,22 +1,33 @@
 import type { ExtensionListItem } from '../ExtensionListItem/ExtensionListItem.ts'
-import * as ExtensionDisplay from '../ExtensionDisplay/ExtensionDisplay.ts'
+import { getBuiltin } from '../GetBuiltin/GetBuiltin.ts'
+import { getCategories } from '../GetCategories/GetCategories.ts'
+import { getDescription } from '../GetDescription/GetDescription.ts'
+import { getDisabled } from '../GetDisabled/GetDisabled.ts'
+import { getDownloadCount } from '../GetDownloadCount/GetDownloadCount.ts'
+import { getIcon } from '../GetIcon/GetIcon.ts'
+import { getId } from '../GetId/GetId.ts'
+import { getName } from '../GetName/GetName.ts'
 import { getPublisher } from '../GetPublisher/GetPublisher.ts'
+import { getRating } from '../GetRating/GetRating.ts'
+import { getSize } from '../GetSize/GetSize.ts'
+import { getStatus } from '../GetStatus/GetStatus.ts'
+import { getUpdatedDate } from '../GetUpdatedDate/GetUpdatedDate.ts'
 
 export const normalizeExtension = (extension: unknown, platform: number, assetDir: string): ExtensionListItem => {
   return {
-    builtin: ExtensionDisplay.getBuiltin(extension),
-    categories: ExtensionDisplay.getCategories(extension),
-    description: ExtensionDisplay.getDescription(extension),
-    disabled: ExtensionDisplay.getDisabled(extension),
-    downloadCount: ExtensionDisplay.getDownloadCount(extension),
-    icon: ExtensionDisplay.getIcon(extension, platform, assetDir),
-    id: ExtensionDisplay.getId(extension),
-    name: ExtensionDisplay.getName(extension),
+    builtin: getBuiltin(extension),
+    categories: getCategories(extension),
+    description: getDescription(extension),
+    disabled: getDisabled(extension),
+    downloadCount: getDownloadCount(extension),
+    icon: getIcon(extension, platform, assetDir),
+    id: getId(extension),
+    name: getName(extension),
     publisher: getPublisher(extension),
-    rating: ExtensionDisplay.getRating(extension),
-    size: ExtensionDisplay.getSize(extension),
-    status: ExtensionDisplay.getStatus(extension),
-    updatedDate: ExtensionDisplay.getUpdatedDate(extension),
+    rating: getRating(extension),
+    size: getSize(extension),
+    status: getStatus(extension),
+    updatedDate: getUpdatedDate(extension),
     uri: '',
   }
 }

@@ -1,6 +1,7 @@
 import type { ParsedExtensionSearchValue } from '../ParsedExtensionSearchValue/ParsedExtensionSearchValue.ts'
 import * as ExtensionFilterParameter from '../ExtensionFilterParameter/ExtensionFilterParameter.ts'
 
+const RE_LEADING_COLON = /^:/
 const RE_PARAM = /@[\w-]+(?::\w+)?/g
 
 const deserializeCategory = (value: string): string => {
@@ -50,7 +51,7 @@ export const parseValue = (value: string): ParsedExtensionSearchValue => {
         sort = 'installs'
       } else {
         // Handle cases like @sort:installs or @sortsize (without colon)
-        sort = sortValue.replace(/^:/, '')
+        sort = sortValue.replace(RE_LEADING_COLON, '')
       }
     }
     if (match.startsWith(ExtensionFilterParameter.Id)) {

@@ -31,11 +31,12 @@ test('does not add the most popular filter more than once', async () => {
 
 test('updates the registered extension search state', async () => {
   const state = { ...createDefaultState(), searchValue: 'theme', uid: 123 }
-  ExtensionSearchViewStates.set(state.uid, state, state)
+  const { uid } = state
+  ExtensionSearchViewStates.set(uid, state, state)
   const command = ExtensionSearchViewStates.wrapAsyncCommand(filterByMostPopularWithContext)
 
-  await command(state.uid)
+  await command(uid)
 
-  const { newState } = ExtensionSearchViewStates.get(state.uid)
+  const { newState } = ExtensionSearchViewStates.get(uid)
   expect(newState.searchValue).toBe('theme @most-popular')
 })
