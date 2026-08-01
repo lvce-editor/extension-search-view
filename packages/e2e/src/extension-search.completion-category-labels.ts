@@ -2,10 +2,10 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const skip = 0
 
-export const test: Test = async ({ Command, expect, ExtensionSearch, Locator }) => {
+export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   await ExtensionSearch.open()
   await ExtensionSearch.clearSearchResults()
-  await Command.execute('Extensions.handleInput', '@category:', 1, 10)
+  await ExtensionSearch.handleInput('@category:', 1, 10)
   const items = Locator('.ExtensionSearchCompletionItem')
   const firstItem = items.nth(0)
   const extensionPacksItem = items.nth(6)

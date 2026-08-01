@@ -2,7 +2,7 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const skip = 0
 
-export const test: Test = async ({ Command, expect, ExtensionSearch, Locator }) => {
+export const test: Test = async ({ ContextMenu, expect, ExtensionSearch, Locator }) => {
   // arrange
   await ExtensionSearch.open()
   await ExtensionSearch.clearSearchResults()
@@ -10,7 +10,7 @@ export const test: Test = async ({ Command, expect, ExtensionSearch, Locator }) 
   await expect(extensionsView).toBeVisible()
 
   // act
-  await Command.execute('Extensions.handleClickFilter')
+  await ExtensionSearch.handleClickFilter()
 
   // assert
   const filterMenu = Locator('.Menu')
@@ -45,7 +45,7 @@ export const test: Test = async ({ Command, expect, ExtensionSearch, Locator }) 
   await expect(menuItem13).toHaveText('Sort By')
 
   // act
-  await Command.execute('Menu.selectIndex', 0, 2)
+  await ContextMenu.selectIndex(0, 2)
 
   // assert
   const input = extensionsView.locator('.MultilineInputBox')

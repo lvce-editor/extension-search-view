@@ -2,11 +2,11 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const skip = 0
 
-export const test: Test = async ({ Command, expect, ExtensionSearch, Locator }) => {
+export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   await ExtensionSearch.open()
   await ExtensionSearch.clearSearchResults()
-  await Command.execute('Extensions.handleInput', '@buil', 1, 5)
+  await ExtensionSearch.handleInput('@buil', 1, 5)
   const input = Locator('.Extensions .MultilineInputBox')
-  await Command.execute('Extensions.acceptCompletion')
+  await ExtensionSearch.acceptCompletion()
   await expect(input).toHaveValue('@builtin ')
 }
