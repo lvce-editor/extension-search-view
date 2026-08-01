@@ -4,6 +4,9 @@ import { pathToFileURL } from 'node:url'
 import { root } from './root.ts'
 
 const main = async (): Promise<void> => {
+  const postInstallPath = join(root, 'packages', 'server', 'src', 'postinstall.js')
+  await import(pathToFileURL(postInstallPath).toString())
+
   const sharedProcessPath = join(root, 'node_modules', '@lvce-editor', 'shared-process', 'index.js')
 
   const sharedProcessUrl = pathToFileURL(sharedProcessPath).toString()
