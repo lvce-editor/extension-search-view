@@ -32,7 +32,7 @@ test('handleClick opens URI and updates state with focus', async () => {
 
   const result = await handleClick(state, 0)
 
-  expect(mockRpc.invocations).toEqual([['Main.openUri', 'extension-detail://test-extension-id', undefined, undefined]])
+  expect(mockRpc.invocations).toEqual([['Main.openUri', { uri: 'extension-detail://test-extension-id', focus: undefined }]])
   expect(result.focus).toBe(FocusId.List)
   expect(result.focusedIndex).toBe(0)
 })
@@ -78,7 +78,7 @@ test('handleClick calculates actualIndex correctly with minLineY and preserves s
 
   const result = await handleClick(state, 0)
 
-  expect(mockRpc.invocations).toEqual([['Main.openUri', 'extension-detail://extension-2', undefined, undefined]])
+  expect(mockRpc.invocations).toEqual([['Main.openUri', { uri: 'extension-detail://extension-2', focus: undefined }]])
   expect(result.focusedIndex).toBe(1)
   expect(result.focus).toBe(FocusId.List)
   expect(result.deltaY).toBe(20)
