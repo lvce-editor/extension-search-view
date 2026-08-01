@@ -35,3 +35,7 @@ test('returns correct path for web extension', () => {
 test('returns an empty url for an invalid extension', () => {
   expect(GetRemoteUrl.getRemoteUrl(null, PlatformType.Web, '/test/assets')).toBe('')
 })
+
+test('returns empty path for unknown platform', () => {
+  expect(GetRemoteUrl.getRemoteUrl({}, 999, '/test/assets')).toBe('')
+})
