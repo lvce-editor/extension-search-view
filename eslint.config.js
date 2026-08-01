@@ -3,6 +3,7 @@ import * as actions from '@lvce-editor/eslint-plugin-github-actions/dist/index.j
 
 export default [
   ...config.default,
+  ...config.recommendedTsconfig,
   ...config.recommendedVirtualDom,
   ...actions.default,
   {
