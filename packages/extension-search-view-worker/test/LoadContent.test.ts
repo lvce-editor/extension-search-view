@@ -255,18 +255,19 @@ test('loadContent preserves input made while extensions are loading', async () =
     uid: 1,
     width: 500,
   }
-  ExtensionLoading.create(state.uid)
-  ExtensionSearchViewStates.set(state.uid, state, state)
+  const { uid } = state
+  ExtensionLoading.create(uid)
+  ExtensionSearchViewStates.set(uid, state, state)
   const loadCommand = ExtensionSearchViewStates.wrapAsyncCommand(loadContentWithContext)
   const inputCommand = ExtensionSearchViewStates.wrapAsyncCommand(handleInputWithContext)
 
-  const pendingLoad = loadCommand(state.uid, null)
+  const pendingLoad = loadCommand(uid, null)
   await extensionsRequested
-  const pendingInput = inputCommand(state.uid, '@', InputSource.User, 1)
+  const pendingInput = inputCommand(uid, '@', InputSource.User, 1)
   resolveExtensions(mockExtensions)
   await Promise.all([pendingLoad, pendingInput])
 
-  const { newState } = ExtensionSearchViewStates.get(state.uid)
+  const { newState } = ExtensionSearchViewStates.get(uid)
   expect(newState.searchValue).toBe('@')
   expect(newState.suggestOpen).toBe(true)
   expect(newState.allExtensions).toHaveLength(1)
@@ -286,16 +287,17 @@ test('loadContent preserves input made before loading starts', async () => {
     uid: 3,
     width: 500,
   }
-  ExtensionLoading.create(state.uid)
-  ExtensionSearchViewStates.set(state.uid, state, state)
+  const { uid } = state
+  ExtensionLoading.create(uid)
+  ExtensionSearchViewStates.set(uid, state, state)
   const loadCommand = ExtensionSearchViewStates.wrapAsyncCommand(loadContentWithContext)
   const inputCommand = ExtensionSearchViewStates.wrapAsyncCommand(handleInputWithContext)
 
-  const pendingInput = inputCommand(state.uid, '@', InputSource.User, 1)
-  const pendingLoad = loadCommand(state.uid, { searchValue: 'saved search' })
+  const pendingInput = inputCommand(uid, '@', InputSource.User, 1)
+  const pendingLoad = loadCommand(uid, { searchValue: 'saved search' })
   await Promise.all([pendingInput, pendingLoad])
 
-  const { newState } = ExtensionSearchViewStates.get(state.uid)
+  const { newState } = ExtensionSearchViewStates.get(uid)
   expect(newState.searchValue).toBe('@')
   expect(newState.suggestOpen).toBe(true)
   expect(newState.allExtensions).toHaveLength(1)
@@ -318,18 +320,19 @@ test('loadContent does not restore saved search after clear while extensions are
     uid: 2,
     width: 500,
   }
-  ExtensionLoading.create(state.uid)
-  ExtensionSearchViewStates.set(state.uid, state, state)
+  const { uid } = state
+  ExtensionLoading.create(uid)
+  ExtensionSearchViewStates.set(uid, state, state)
   const loadCommand = ExtensionSearchViewStates.wrapAsyncCommand(loadContentWithContext)
   const clearCommand = ExtensionSearchViewStates.wrapAsyncCommand(clearSearchResultsWithContext)
 
-  const pendingLoad = loadCommand(state.uid, { searchValue: 'saved search' })
+  const pendingLoad = loadCommand(uid, { searchValue: 'saved search' })
   await extensionsRequested
-  const pendingClear = clearCommand(state.uid)
+  const pendingClear = clearCommand(uid)
   resolveExtensions(mockExtensions)
   await Promise.all([pendingLoad, pendingClear])
 
-  const { newState } = ExtensionSearchViewStates.get(state.uid)
+  const { newState } = ExtensionSearchViewStates.get(uid)
   expect(newState.searchValue).toBe('')
   expect(newState.allExtensions).toHaveLength(1)
   expect(mockRpc.invocations).toEqual([['Extensions.getAllExtensions', '', Remote]])

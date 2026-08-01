@@ -160,11 +160,12 @@ test('resize preserves other state properties', async () => {
   }
 
   const result = await resize(state, dimensions)
+  const { items } = state
 
   expect(result.focus).toBe(1)
   expect(result.focusedIndex).toBe(5)
   expect(result.searchValue).toBe('test')
-  expect(result.items).toEqual(state.items)
+  expect(result.items).toEqual(items)
   expect(result.headerHeight).toBe(40)
   expect(result.itemHeight).toBe(20)
   expect(result.minimumSliderSize).toBe(20)

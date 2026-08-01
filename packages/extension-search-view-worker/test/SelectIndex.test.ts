@@ -10,43 +10,75 @@ test('selectIndex sets focusedIndex to the provided index', () => {
 
 test('selectIndex does not mutate the original state', () => {
   const state = createDefaultState()
-  const originalFocusedIndex = state.focusedIndex
+  const { focusedIndex: originalFocusedIndex } = state
   selectIndex(state, 10)
-  expect(state.focusedIndex).toBe(originalFocusedIndex)
+  const { focusedIndex } = state
+  expect(focusedIndex).toBe(originalFocusedIndex)
 })
 
 test('selectIndex preserves all other state properties', () => {
   const state = createDefaultState()
+  const {
+    allExtensions,
+    assetDir,
+    deltaY,
+    finalDeltaY,
+    focus,
+    focused,
+    handleOffset,
+    headerHeight,
+    height,
+    inputActions,
+    inputSource,
+    itemHeight,
+    items,
+    maxLineY,
+    message,
+    minimumSliderSize,
+    minLineY,
+    negativeMargin,
+    placeholder,
+    platform,
+    scrollBarActive,
+    scrollBarHeight,
+    scrollBarY,
+    searchValue,
+    size,
+    uid,
+    width,
+    x,
+    y,
+  } = state
   const result = selectIndex(state, 3)
-  expect(result.allExtensions).toBe(state.allExtensions)
-  expect(result.assetDir).toBe(state.assetDir)
-  expect(result.deltaY).toBe(state.deltaY)
-  expect(result.finalDeltaY).toBe(state.finalDeltaY)
-  expect(result.focus).toBe(state.focus)
-  expect(result.focused).toBe(state.focused)
-  expect(result.handleOffset).toBe(state.handleOffset)
-  expect(result.headerHeight).toBe(state.headerHeight)
-  expect(result.height).toBe(state.height)
-  expect(result.inputActions).toBe(state.inputActions)
-  expect(result.inputSource).toBe(state.inputSource)
-  expect(result.itemHeight).toBe(state.itemHeight)
-  expect(result.items).toBe(state.items)
-  expect(result.maxLineY).toBe(state.maxLineY)
-  expect(result.message).toBe(state.message)
-  expect(result.minimumSliderSize).toBe(state.minimumSliderSize)
-  expect(result.minLineY).toBe(state.minLineY)
-  expect(result.negativeMargin).toBe(state.negativeMargin)
-  expect(result.placeholder).toBe(state.placeholder)
-  expect(result.platform).toBe(state.platform)
-  expect(result.scrollBarActive).toBe(state.scrollBarActive)
-  expect(result.scrollBarHeight).toBe(state.scrollBarHeight)
-  expect(result.scrollBarY).toBe(state.scrollBarY)
-  expect(result.searchValue).toBe(state.searchValue)
-  expect(result.size).toBe(state.size)
-  expect(result.uid).toBe(state.uid)
-  expect(result.width).toBe(state.width)
-  expect(result.x).toBe(state.x)
-  expect(result.y).toBe(state.y)
+  expect(result.allExtensions).toBe(allExtensions)
+  expect(result.assetDir).toBe(assetDir)
+  expect(result.deltaY).toBe(deltaY)
+  expect(result.finalDeltaY).toBe(finalDeltaY)
+  expect(result.focus).toBe(focus)
+  expect(result.focused).toBe(focused)
+  expect(result.handleOffset).toBe(handleOffset)
+  expect(result.headerHeight).toBe(headerHeight)
+  expect(result.height).toBe(height)
+  expect(result.inputActions).toBe(inputActions)
+  expect(result.inputSource).toBe(inputSource)
+  expect(result.itemHeight).toBe(itemHeight)
+  expect(result.items).toBe(items)
+  expect(result.maxLineY).toBe(maxLineY)
+  expect(result.message).toBe(message)
+  expect(result.minimumSliderSize).toBe(minimumSliderSize)
+  expect(result.minLineY).toBe(minLineY)
+  expect(result.negativeMargin).toBe(negativeMargin)
+  expect(result.placeholder).toBe(placeholder)
+  expect(result.platform).toBe(platform)
+  expect(result.scrollBarActive).toBe(scrollBarActive)
+  expect(result.scrollBarHeight).toBe(scrollBarHeight)
+  expect(result.scrollBarY).toBe(scrollBarY)
+  expect(result.searchValue).toBe(searchValue)
+  expect(result.size).toBe(size)
+  expect(result.uid).toBe(uid)
+  expect(result.width).toBe(width)
+  expect(result.x).toBe(x)
+  expect(result.y).toBe(y)
 })
 
 test('selectIndex handles index 0', () => {
