@@ -2,7 +2,7 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const skip = 0
 
-export const test: Test = async ({ Command, expect, ExtensionSearch, Locator }) => {
+export const test: Test = async ({ expect, ExtensionSearch, Layout, Locator }) => {
   // arrange
   await ExtensionSearch.open()
   await ExtensionSearch.handleInput('atom')
@@ -11,7 +11,7 @@ export const test: Test = async ({ Command, expect, ExtensionSearch, Locator }) 
   await expect(listItems).toHaveCount(1)
 
   // act
-  await Command.execute('Layout.handleExtensionsChanged')
+  await Layout.handleExtensionsChanged()
 
   // assert
   await expect(input).toHaveValue('atom')

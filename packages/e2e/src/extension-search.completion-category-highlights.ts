@@ -2,10 +2,10 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const skip = 0
 
-export const test: Test = async ({ Command, expect, ExtensionSearch, Locator }) => {
+export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   await ExtensionSearch.open()
   await ExtensionSearch.clearSearchResults()
-  await Command.execute('Extensions.handleInput', '@category:azr', 1, 13)
+  await ExtensionSearch.handleInput('@category:azr', 1, 13)
   const highlights = Locator('.ExtensionSearchCompletionHighlight')
   await expect(highlights).toHaveCount(3)
   const prefixHighlight = highlights.nth(0)

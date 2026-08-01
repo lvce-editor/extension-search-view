@@ -2,20 +2,20 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const skip = 0
 
-export const test: Test = async ({ Command, expect, ExtensionSearch, Locator }) => {
+export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   // arrange
   await ExtensionSearch.open()
   await ExtensionSearch.clearSearchResults()
   const extensionsView = Locator('.Extensions')
   await expect(extensionsView).toBeVisible()
-  await Command.execute('Extensions.handleInput', 'atom', 1, 4)
+  await ExtensionSearch.handleInput('atom', 1, 4)
   const extensionItems = Locator('.ExtensionListItem')
   await expect(extensionItems).toHaveCount(1)
   const input = Locator('.MultilineInputBox')
   await expect(input).toBeFocused()
 
   // act
-  await Command.execute('Extensions.handleClick', -1)
+  await ExtensionSearch.handleClick(-1)
 
   // assert
   const listItems = Locator('.ListItems')
