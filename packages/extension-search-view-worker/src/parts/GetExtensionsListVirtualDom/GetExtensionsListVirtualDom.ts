@@ -8,13 +8,17 @@ import * as ExtensionStrings from '../ExtensionStrings/ExtensionStrings.ts'
 import * as GetExtensionsListItemVirtualDom from '../GetExtensionsListItemVirtualDom/GetExtensionsListItemVirtualDom.ts'
 import * as TabIndex from '../TabIndex/TabIndex.ts'
 
-export const getExtensionsListVirtualDom = (visibleExtensions: readonly VisibleItem[], focusOutline: boolean): readonly VirtualDomNode[] => {
+const getListClassName = (focusOutline: boolean): string => {
   const className = focusOutline ? mergeClassNames(ClassNames.ListItems, ClassNames.FocusOutline) : ClassNames.ListItems
+  return className
+}
+
+export const getExtensionsListVirtualDom = (visibleExtensions: readonly VisibleItem[], focusOutline: boolean): readonly VirtualDomNode[] => {
   const dom: readonly VirtualDomNode[] = [
     {
       ariaLabel: ExtensionStrings.extensions(),
       childCount: visibleExtensions.length,
-      className,
+      className: getListClassName(focusOutline),
       onBlur: DomEventListenerFunctions.HandleBlur,
       onContextmenu: DomEventListenerFunctions.HandleContextMenu,
       onContextMenu: DomEventListenerFunctions.HandleContextMenu,
