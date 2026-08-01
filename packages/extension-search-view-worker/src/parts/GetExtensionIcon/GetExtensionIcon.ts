@@ -1,19 +1,21 @@
 import * as GetRemoteUrl from '../GetRemoteUrl/GetRemoteUrl.ts'
 import * as Icon from '../Icon/Icon.ts'
 
-const isLanguageBasicsExtension = (extension: any): boolean => {
-  return extension.name && extension.name.startsWith('Language Basics')
+const isLanguageBasicsExtension = (extension: object): boolean => {
+  return 'name' in extension && typeof extension.name === 'string' && extension.name.startsWith('Language Basics')
 }
 
-const isThemeExtension = (extension: any): string => {
-  return extension.name && extension.name.endsWith(' Theme')
+const isThemeExtension = (extension: object): boolean => {
+  return 'name' in extension && typeof extension.name === 'string' && extension.name.endsWith(' Theme')
 }
 
-export const getExtensionIcon = (extension: any, platform: number, assetDir: string): string => {
-  if (!extension) {
+export const getExtensionIcon = (extension: unknown, platform: number, assetDir: string): string => {
+  if (extension === null || typeof extension !== 'object') {
     return Icon.getExtensionDefaultIcon(assetDir)
   }
-  if (!extension.path || !extension.icon) {
+  const hasIcon = 'icon' in extension && typeof extension.icon === 'string' && extension.icon
+  const hasPath = 'path' in extension && typeof extension.path === 'string' && extension.path
+  if (!hasPath || !hasIcon) {
     if (isLanguageBasicsExtension(extension)) {
       return Icon.getExtensionLanguageBasicsIcon(assetDir)
     }

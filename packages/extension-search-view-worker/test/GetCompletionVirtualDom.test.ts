@@ -16,6 +16,11 @@ test('renders highlighted completion label', () => {
   ])
 })
 
+test('renders unhighlighted completion label', () => {
+  const result = getCompletionLabelVirtualDom('@builtin', [])
+  expect(result).toEqual([{ childCount: 0, text: '@builtin', type: VirtualDomElements.Text }])
+})
+
 test('renders completion item accessibility and focus', () => {
   const result = getCompletionItemVirtualDom({ highlights: [0, 1], label: '@builtin' }, 0, 0)
   expect(result[0]).toMatchObject({
