@@ -15,3 +15,9 @@ test('renderItems2 returns correct uid when state has custom uid', () => {
   const result = renderItems2(state)
   expect(result).toEqual(['Viewlet.setDom2', 123, expect.any(Array)])
 })
+
+test('renderItems2 renders empty dom for initial state', () => {
+  const state: State = { ...createDefaultState(), initial: true, uid: 123 }
+  const result = renderItems2(state)
+  expect(result).toEqual(['Viewlet.setDom2', 123, []])
+})
