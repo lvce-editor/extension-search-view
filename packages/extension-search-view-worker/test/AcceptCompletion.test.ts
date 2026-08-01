@@ -61,12 +61,13 @@ test('accepts focused completion with context', async () => {
     suggestOpen: true,
     uid: 1,
   }
-  ExtensionSearchViewStates.set(state.uid, state, state)
+  const { uid } = state
+  ExtensionSearchViewStates.set(uid, state, state)
   const command = ExtensionSearchViewStates.wrapAsyncCommand(acceptCompletionWithContext)
 
-  await command(state.uid)
+  await command(uid)
 
-  const { newState } = ExtensionSearchViewStates.get(state.uid)
+  const { newState } = ExtensionSearchViewStates.get(uid)
   expect(newState.searchValue).toBe('@installed ')
   expect(newState.cursorOffset).toBe(11)
   expect(newState.suggestOpen).toBe(false)
@@ -74,12 +75,13 @@ test('accepts focused completion with context', async () => {
 
 test('does nothing with context without a completion', async () => {
   const state = { ...createDefaultState(), uid: 2 }
-  ExtensionSearchViewStates.set(state.uid, state, state)
+  const { uid } = state
+  ExtensionSearchViewStates.set(uid, state, state)
   const command = ExtensionSearchViewStates.wrapAsyncCommand(acceptCompletionWithContext)
 
-  await command(state.uid)
+  await command(uid)
 
-  const { newState } = ExtensionSearchViewStates.get(state.uid)
+  const { newState } = ExtensionSearchViewStates.get(uid)
   expect(newState).toBe(state)
 })
 
@@ -90,11 +92,12 @@ test('does nothing with context without an active completion range', async () =>
     searchValue: 'theme',
     uid: 3,
   }
-  ExtensionSearchViewStates.set(state.uid, state, state)
+  const { uid } = state
+  ExtensionSearchViewStates.set(uid, state, state)
   const command = ExtensionSearchViewStates.wrapAsyncCommand(acceptCompletionWithContext)
 
-  await command(state.uid)
+  await command(uid)
 
-  const { newState } = ExtensionSearchViewStates.get(state.uid)
+  const { newState } = ExtensionSearchViewStates.get(uid)
   expect(newState).toBe(state)
 })
