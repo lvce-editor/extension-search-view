@@ -31,3 +31,7 @@ test('returns correct path for web extension', () => {
   const assetDir = '/test/assets'
   expect(GetRemoteUrl.getRemoteUrl(extension, PlatformType.Web, assetDir)).toBe('/test/assets/some-extension/icon.png')
 })
+
+test('returns empty path for unknown platform', () => {
+  expect(GetRemoteUrl.getRemoteUrl({}, 999, '/test/assets')).toBe('')
+})
