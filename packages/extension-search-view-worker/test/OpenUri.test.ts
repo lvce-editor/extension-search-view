@@ -8,5 +8,5 @@ test('openUri calls Main.openUri with correct parameters', async () => {
     'Main.openUri'() {},
   })
   await OpenUri.openUri(uri)
-  expect(mockRpc.invocations).toEqual([['Main.openUri', { uri, focus: undefined }]])
+  expect(mockRpc.invocations).toEqual([['Main.openUri', { focus: undefined, uri }]])
 })
