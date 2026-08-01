@@ -1,6 +1,7 @@
 import { cp, readFile, readdir, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
+import { patchExtensionDetailWorker } from './patchExtensionDetailWorker.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -11,9 +12,8 @@ export const getRemoteUrl = (path) => {
   return `/remote/${url}`
 }
 
-const nodeModulesPath = join(root, 'node_modules')
-
-const serverStaticPath = join(nodeModulesPath, '@lvce-editor', 'static-server', 'static')
+const staticServerPackagePath = dirname(fileURLToPath(import.meta.resolve('@lvce-editor/static-server/package.json')))
+const serverStaticPath = join(staticServerPackagePath, 'static')
 
 const RE_COMMIT_HASH = /^[a-z\d]+$/
 const isCommitHash = (dirent) => {
@@ -207,9 +207,19 @@ const dirents = await readdir(serverStaticPath)
 const commitHash = dirents.find(isCommitHash) || ''
 const rendererWorkerMainPath = join(serverStaticPath, commitHash, 'packages', 'renderer-worker', 'dist', 'rendererWorkerMain.js')
 const testWorkerMainPath = join(serverStaticPath, commitHash, 'packages', 'test-worker', 'dist', 'testWorkerMain.js')
+const extensionDetailViewWorkerTargetPath = join(
+  serverStaticPath,
+  commitHash,
+  'packages',
+  'extension-detail-view-worker',
+  'dist',
+  'extensionDetailViewWorkerMain.js',
+)
 
 const testWorkerContent = await readFile(testWorkerMainPath, 'utf-8')
 await writeFile(testWorkerMainPath, patchTestWorker(testWorkerContent))
+const extensionDetailViewWorkerContent = await readFile(extensionDetailViewWorkerTargetPath, 'utf-8')
+await writeFile(extensionDetailViewWorkerTargetPath, patchExtensionDetailWorker(extensionDetailViewWorkerContent))
 
 const content = await readFile(rendererWorkerMainPath, 'utf-8')
 
