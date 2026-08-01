@@ -10,6 +10,7 @@ import { renderItems2 } from '../src/parts/RenderItems2/RenderItems2.ts'
 import * as RenderMessage from '../src/parts/RenderMessage/RenderMessage.ts'
 import * as RenderScrollBar from '../src/parts/RenderScrollBar/RenderScrollBar.ts'
 import * as RenderSearchValue from '../src/parts/RenderSearchValue/RenderSearchValue.ts'
+import * as RenderTitleCommand from '../src/parts/RenderTitleCommand/RenderTitleCommand.ts'
 
 test('returns renderHeader renderer for RenderHeader diff type', () => {
   const renderer = GetRenderer.getRenderer(DiffType.RenderHeader)
@@ -54,6 +55,11 @@ test('returns renderCss renderer for RenderCss diff type', () => {
 test('returns renderIncremental renderer for RenderIncremental diff type', () => {
   const renderer = GetRenderer.getRenderer(DiffType.RenderIncremental)
   expect(renderer).toBe(renderIncremental)
+})
+
+test('returns renderTitleCommand renderer for RenderTitle diff type', () => {
+  const renderer = GetRenderer.getRenderer(DiffType.RenderTitle)
+  expect(renderer).toBe(RenderTitleCommand.renderTitleCommand)
 })
 
 test('throws error for unknown diff type', () => {
