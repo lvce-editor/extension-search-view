@@ -5,7 +5,7 @@ import type { State } from '../src/parts/State/State.ts'
 import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import * as HandleSettingsButtonClick from '../src/parts/HandleSettingsButtonClick/HandleSettingsButtonClick.ts'
 
-test('handleSettingsButtonClick shows context menu for valid index', async () => {
+test('handleSettingsButtonClick shows context menu with builtin status', async () => {
   const state: State = {
     ...createDefaultState(),
     deltaY: 0,
@@ -13,13 +13,16 @@ test('handleSettingsButtonClick shows context menu for valid index', async () =>
     itemHeight: 30,
     items: [
       {
+        builtin: true,
         categories: [],
         description: 'Test Description 1',
+        disabled: true,
         icon: 'test-icon-1.png',
         id: 'test-extension-1',
         name: 'Test Extension 1',
         publisher: 'Test Publisher 1',
         size: 1000,
+        status: 'disabled',
         updatedDate: 1000,
         uri: 'https://example.com/1',
       },
@@ -45,7 +48,14 @@ test('handleSettingsButtonClick shows context menu for valid index', async () =>
   const result = await HandleSettingsButtonClick.handleSettingsButtonClick(state, 0)
   expect(result).toBe(state)
   expect(mockRpc.invocations).toEqual([
-    ['ContextMenu.show2', 1, MenuEntryId.ManageExtension, expect.any(Number), expect.any(Number), { menuId: MenuEntryId.ManageExtension }],
+    [
+      'ContextMenu.show2',
+      1,
+      MenuEntryId.ManageExtension,
+      expect.any(Number),
+      expect.any(Number),
+      { builtin: true, disabled: true, menuId: MenuEntryId.ManageExtension, status: 'disabled' },
+    ],
   ])
 })
 
@@ -151,6 +161,13 @@ test('handleSettingsButtonClick calculates correct menu position', async () => {
   await HandleSettingsButtonClick.handleSettingsButtonClick(state, 1)
 
   expect(mockRpc.invocations).toEqual([
-    ['ContextMenu.show2', 1, MenuEntryId.ManageExtension, expect.any(Number), expect.any(Number), { menuId: MenuEntryId.ManageExtension }],
+    [
+      'ContextMenu.show2',
+      1,
+      MenuEntryId.ManageExtension,
+      expect.any(Number),
+      expect.any(Number),
+      { builtin: false, disabled: false, menuId: MenuEntryId.ManageExtension, status: undefined },
+    ],
   ])
 })

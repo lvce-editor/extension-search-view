@@ -3,6 +3,7 @@ import { VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
 import type { InputAction } from '../InputAction/InputAction.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
+import * as TabIndex from '../TabIndex/TabIndex.ts'
 
 const disabledClassName = MergeClassNames.mergeClassNames(ClassNames.SearchFieldButton, ClassNames.SearchFieldButtonDisabled)
 
@@ -20,7 +21,7 @@ export const getSearchFieldButtonVirtualDom = (button: InputAction): readonly Vi
       childCount: 1,
       className: getClassName(enabled),
       onClick,
-      tabIndex: 0,
+      tabIndex: TabIndex.Focusable,
       title,
       type: VirtualDomElements.Button,
     },

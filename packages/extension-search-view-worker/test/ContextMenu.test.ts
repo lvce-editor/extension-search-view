@@ -8,7 +8,19 @@ test('show2 function calls RendererWorker.showContextMenu2 with correct paramete
     'ContextMenu.show2'() {},
   })
   await ContextMenu.show2(123, MenuEntryId.ManageExtension, 100, 200, {
+    builtin: false,
+    disabled: false,
     menuId: MenuEntryId.ManageExtension,
+    status: 'enabled',
   })
-  expect(mockRpc.invocations).toEqual([['ContextMenu.show2', 123, MenuEntryId.ManageExtension, 100, 200, { menuId: MenuEntryId.ManageExtension }]])
+  expect(mockRpc.invocations).toEqual([
+    [
+      'ContextMenu.show2',
+      123,
+      MenuEntryId.ManageExtension,
+      100,
+      200,
+      { builtin: false, disabled: false, menuId: MenuEntryId.ManageExtension, status: 'enabled' },
+    ],
+  ])
 })

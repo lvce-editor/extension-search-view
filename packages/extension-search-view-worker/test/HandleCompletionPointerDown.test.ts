@@ -11,7 +11,7 @@ test('accepts pointer completion', async () => {
     suggestOpen: true,
   }
   const result = await handleCompletionPointerDown(state, '@enabled')
-  expect(result.searchValue).toBe('@enabled')
+  expect(result.searchValue).toBe('@enabled ')
   expect(result.suggestOpen).toBe(false)
 })
 

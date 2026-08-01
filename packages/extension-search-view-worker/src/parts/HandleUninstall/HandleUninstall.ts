@@ -4,6 +4,11 @@ import * as ExtensionStatus from '../ExtensionStatus/ExtensionStatus.ts'
 import * as SetExtensionStatus from '../SetExtensionStatus/SetExtensionStatus.ts'
 
 export const handleUninstall = async (state: State, id: string): Promise<State> => {
-  await RendererWorker.uninstallExtension(id)
-  return SetExtensionStatus.setExtensionStatus(state, id, ExtensionStatus.NotInstalled)
+  try {
+    await RendererWorker.uninstallExtension(id)
+    return SetExtensionStatus.setExtensionStatus(state, id, ExtensionStatus.NotInstalled)
+  } catch (error) {
+    await RendererWorker.showErrorDialog(error)
+    return state
+  }
 }

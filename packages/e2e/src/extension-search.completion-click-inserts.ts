@@ -8,5 +8,5 @@ export const test: Test = async ({ Command, expect, ExtensionSearch, Locator }) 
   await Command.execute('Extensions.handleInput', '@en', 1, 3)
   await Command.execute('Extensions.handleClickAt', 0, 0, 0, '@enabled')
   const input = Locator('.Extensions .MultilineInputBox')
-  await expect(input).toHaveValue('@enabled')
+  await expect(input).toHaveValue('@enabled ')
 }

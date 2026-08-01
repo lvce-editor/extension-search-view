@@ -13,6 +13,7 @@ import * as Enable from '../Enable/Enable.ts'
 import * as EnableWorkspace from '../EnableWorkspace/EnableWorkspace.ts'
 import * as WrapCommand from '../ExtensionSearchViewStates/ExtensionSearchViewStates.ts'
 import { getCommandIds } from '../ExtensionSearchViewStates/ExtensionSearchViewStates.ts'
+import * as FilterByMostPopular from '../FilterByMostPopular/FilterByMostPopular.ts'
 import * as FocusFirst from '../FocusFirst/FocusFirst.ts'
 import * as FocusIndex from '../FocusIndex/FocusIndex.ts'
 import * as FocusLast from '../FocusLast/FocusLast.ts'
@@ -71,8 +72,8 @@ import * as ToggleSuggest from '../ToggleSuggest/ToggleSuggest.ts'
 export const commandMap = {
   'Extensions.copyExtensionId': WrapCommand.wrapCommand(copyExtensionId),
   'Extensions.copyExtensionInfo': WrapCommand.wrapCommand(copyExtensionInfo),
-  'SearchExtensions.acceptCompletion': WrapCommand.wrapCommand(AcceptCompletion.acceptCompletion),
-  'SearchExtensions.clearSearchResults': WrapCommand.wrapCommand(ClearSearchResults.clearSearchResults),
+  'SearchExtensions.acceptCompletion': WrapCommand.wrapAsyncCommand(AcceptCompletion.acceptCompletionWithContext),
+  'SearchExtensions.clearSearchResults': WrapCommand.wrapAsyncCommand(ClearSearchResults.clearSearchResultsWithContext),
   'SearchExtensions.closeSuggest': WrapCommand.wrapCommand(CloseSuggest.closeSuggest),
   'SearchExtensions.copyExtensionId': WrapCommand.wrapCommand(copyExtensionId),
   'SearchExtensions.copyExtensionInfo': WrapCommand.wrapCommand(copyExtensionInfo),
@@ -83,6 +84,7 @@ export const commandMap = {
   'SearchExtensions.dispose': Dispose.dispose,
   'SearchExtensions.enable': WrapCommand.wrapCommand(Enable.enable),
   'SearchExtensions.enableWorkspace': WrapCommand.wrapCommand(EnableWorkspace.enableWorkspace),
+  'SearchExtensions.filterByMostPopular': WrapCommand.wrapAsyncCommand(FilterByMostPopular.filterByMostPopularWithContext),
   'SearchExtensions.focusFirst': WrapCommand.wrapCommand(FocusFirst.focusFirst),
   'SearchExtensions.focusIndex': WrapCommand.wrapCommand(FocusIndex.focusIndex),
   'SearchExtensions.focusLast': WrapCommand.wrapCommand(FocusLast.focusLast),
@@ -111,7 +113,7 @@ export const commandMap = {
   'SearchExtensions.handleExtensionsChanged': WrapCommand.wrapCommand(HandleExtensionsChanged.handleExtensionsChanged),
   'SearchExtensions.handleFocus': WrapCommand.wrapCommand(HandleFocus.handleFocus),
   'SearchExtensions.handleHeaderContextMenu': WrapCommand.wrapCommand(handleHeaderContextMenu),
-  'SearchExtensions.handleInput': WrapCommand.wrapCommand(HandleInput.handleInput),
+  'SearchExtensions.handleInput': WrapCommand.wrapAsyncCommand(HandleInput.handleInputWithContext),
   'SearchExtensions.handleInputFocus': WrapCommand.wrapCommand(HandleInputFocus.handleInputFocus),
   'SearchExtensions.handleInstall': WrapCommand.wrapCommand(HandleInstall.handleInstall),
   'SearchExtensions.handleScrollBarCaptureLost': WrapCommand.wrapCommand(HandleScrollBarCaptureLost.handleScrollBarCaptureLost),
@@ -123,7 +125,7 @@ export const commandMap = {
   'SearchExtensions.handleWheel': WrapCommand.wrapCommand(HandleWheel.handleWheel),
   'SearchExtensions.initialize': Initialize.initialize,
   'SearchExtensions.installAnotherVersion': WrapCommand.wrapCommand(InstallAnotherVersion.installAnotherVersion),
-  'SearchExtensions.loadContent': WrapCommand.wrapCommand(LoadContent.loadContent),
+  'SearchExtensions.loadContent': WrapCommand.wrapAsyncCommand(LoadContent.loadContentWithContext),
   'SearchExtensions.openSuggest': WrapCommand.wrapCommand(OpenSuggest.openSuggest),
   'SearchExtensions.render3': Render3.render3,
   'SearchExtensions.renderActions': RenderActions.renderActions,

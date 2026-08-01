@@ -5,7 +5,7 @@ import * as NormalizeExtensions from '../NormalizeExtensions/NormalizeExtensions
 
 export const handleExtensionsChanged = async (state: State): Promise<State> => {
   const { assetDir, platform } = state
-  const allExtensions = await GetAllExtensions.getAllExtensions(platform)
+  const allExtensions = await GetAllExtensions.getAllExtensions(assetDir, platform)
   const normalized = NormalizeExtensions.normalizeExtensions(allExtensions, platform, assetDir)
   return HandleChange.handleChange(
     {

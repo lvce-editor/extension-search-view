@@ -19,10 +19,12 @@ test('normalizeExtension returns correct ExtensionListItem structure', () => {
     categories: [],
     description: 'Test Description',
     disabled: false,
+    downloadCount: 'n/a',
     icon: '/test/assets/icons/extensionDefaultIcon.png',
     id: 'test-id',
     name: 'Test Extension',
     publisher: 'test-id',
+    rating: 'n/a',
     size: 1000,
     status: undefined,
     updatedDate: 1000,
@@ -43,10 +45,12 @@ test('normalizeExtension handles extension with missing fields', () => {
     categories: [],
     description: 'n/a',
     disabled: false,
+    downloadCount: 'n/a',
     icon: '/test/assets/icons/extensionDefaultIcon.png',
     id: 'test-id',
     name: 'Test Extension',
     publisher: 'test-id',
+    rating: 'n/a',
     size: 0,
     status: undefined,
     updatedDate: 0,
@@ -72,10 +76,12 @@ test('normalizeExtension handles different platform values', () => {
     categories: [],
     description: 'Test Description',
     disabled: false,
+    downloadCount: 'n/a',
     icon: '/test/assets/icons/extensionDefaultIcon.png',
     id: 'test-id',
     name: 'Test Extension',
     publisher: 'test-id',
+    rating: 'n/a',
     size: 1000,
     status: undefined,
     updatedDate: 1000,
@@ -96,4 +102,17 @@ test('normalizeExtension preserves builtin and disabled state', () => {
   expect(result.builtin).toBe(true)
   expect(result.disabled).toBe(true)
   expect(result.status).toBe('uninstalling')
+})
+
+test('normalizeExtension includes marketplace statistics', () => {
+  const extension = {
+    downloadCount: 12_345,
+    id: 'test.marketplace-extension',
+    rating: 4.25,
+  }
+
+  const result = NormalizeExtension.normalizeExtension(extension, 1, '/test/assets')
+
+  expect(result.downloadCount).toBe('12,345')
+  expect(result.rating).toBe('4.3')
 })

@@ -7,7 +7,7 @@ export const Suggestions = [
   '@id:',
   '@installed',
   '@mcpservers',
-  '@mostpopular',
+  '@most-popular',
   '@outdated',
   '@recentlypublished',
   '@recommended',

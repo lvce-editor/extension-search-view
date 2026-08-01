@@ -4,7 +4,7 @@ import { pathToFileURL } from 'node:url'
 import { root } from './root.ts'
 
 const main = async (): Promise<void> => {
-  const sharedProcessPath = join(root, 'packages', 'server', 'node_modules', '@lvce-editor', 'shared-process', 'index.js')
+  const sharedProcessPath = join(root, 'node_modules', '@lvce-editor', 'shared-process', 'index.js')
 
   const sharedProcessUrl = pathToFileURL(sharedProcessPath).toString()
 
@@ -31,10 +31,10 @@ const main = async (): Promise<void> => {
   const occurrence = `// const extensionSearchViewWorkerUrl = \`\${assetDir}/packages/extension-search-view-worker/dist/extensionSearchViewWorkerMain.js\`
 const extensionSearchViewWorkerUrl = \`${remoteUrl}\``
   const replacement = `const extensionSearchViewWorkerUrl = \`\${assetDir}/packages/extension-search-view-worker/dist/extensionSearchViewWorkerMain.js\``
-  if (!content.includes(occurrence)) {
+  if (!content.includes(occurrence) && !content.includes(replacement)) {
     throw new Error('occurrence not found')
   }
-  const newContent = content.replace(occurrence, replacement)
+  const newContent = content.includes(occurrence) ? content.replace(occurrence, replacement) : content
   await writeFile(rendererWorkerPath, newContent)
 
   await cp(join(root, 'dist'), join(root, '.tmp', 'static'), { recursive: true })

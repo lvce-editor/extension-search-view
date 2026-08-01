@@ -2,17 +2,20 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const skip = 0
 
-export const test: Test = async ({ expect, Extension, ExtensionSearch, Locator }) => {
+export const test: Test = async ({ Command, expect, ExtensionSearch, Locator }) => {
   // arrange
   await ExtensionSearch.open()
-  const firstExtension = Locator('.Extensions .ExtensionListItem').first()
-  await expect(firstExtension).toBeVisible()
+  await ExtensionSearch.handleInput('atom')
+  const input = Locator('.Extensions .MultilineInputBox')
+  const listItems = Locator('.Extensions .ListItems')
+  await expect(listItems).toHaveCount(1)
 
   // act
-  const extensionUri = new URL('../fixtures/dynamic-extension', import.meta.url).href
-  await Extension.addWebExtension(extensionUri)
+  await Command.execute('Layout.handleExtensionsChanged')
 
   // assert
-  const extensionName = Locator('.Extensions .ListItems').locator('text=Dynamic Extension')
-  await expect(extensionName).toHaveText('Dynamic Extension')
+  await expect(input).toHaveValue('atom')
+  await expect(listItems).toHaveCount(1)
+  const firstItem = listItems.locator('.ExtensionListItem')
+  await expect(firstItem).toBeVisible()
 }

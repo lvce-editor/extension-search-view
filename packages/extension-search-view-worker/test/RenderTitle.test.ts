@@ -12,7 +12,7 @@ test.each([
   ['@outdated', 'Extensions: Updates'],
   ['@featured', 'Extensions: Featured'],
   ['@mcpservers', 'Extensions: MCP Servers'],
-  ['@mostpopular', 'Extensions: Most Popular'],
+  ['@most-popular', 'Extensions: Most Popular'],
   ['@recentlypublished', 'Extensions: Recently Published'],
   ['@recommended', 'Extensions: Recommended'],
   ['@workspaceunsupported', 'Extensions: Workspace Unsupported'],

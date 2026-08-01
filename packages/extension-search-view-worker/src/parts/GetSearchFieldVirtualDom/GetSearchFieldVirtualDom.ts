@@ -5,6 +5,13 @@ import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as GetSearchFieldButtonVirtualDom from '../GetSearchFieldButtonVirtualDom/GetSearchFieldButtonVirtualDom.ts'
 
+const searchFieldNode: VirtualDomNode = {
+  childCount: 2,
+  className: ClassNames.SearchField,
+  role: AriaRoles.None,
+  type: VirtualDomElements.Div,
+}
+
 export const getSearchFieldVirtualDom = (
   name: string,
   placeholder: string,
@@ -17,12 +24,7 @@ export const getSearchFieldVirtualDom = (
 ): readonly VirtualDomNode[] => {
   // TODO avoid mutation
   const dom = [
-    {
-      childCount: 2,
-      className: ClassNames.SearchField,
-      role: AriaRoles.None,
-      type: VirtualDomElements.Div,
-    },
+    searchFieldNode,
     {
       autocapitalize: 'off',
       autocomplete: 'off',

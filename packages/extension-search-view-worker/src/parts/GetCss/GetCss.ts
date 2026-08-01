@@ -23,6 +23,10 @@ export const getCss = (state: State): string => {
   flex-shrink: 0;
 }
 
+.ExtensionListItemDisabled:not(.ExtensionActive) {
+  background: color-mix(in srgb, var(--SideBarBackground, rgb(30, 35, 36)) 95%, black);
+}
+
 .Extensions .ListItems {
   display: flex;
   flex-direction: column;
@@ -34,6 +38,24 @@ export const getCss = (state: State): string => {
   contain: layout style;
   position: relative;
   z-index: 1;
+}
+
+.ExtensionListItemFooter {
+  justify-content: flex-end;
+  padding-right: 2px;
+}
+
+.ExtensionListItemAuthorName {
+  flex: 1;
+}
+
+.ExtensionActions {
+  display: flex;
+  gap: 6px;
+}
+
+.ExtensionActionButton {
+  padding: 0 5px;
 }
 
 .ExtensionSearchCompletionWidget {

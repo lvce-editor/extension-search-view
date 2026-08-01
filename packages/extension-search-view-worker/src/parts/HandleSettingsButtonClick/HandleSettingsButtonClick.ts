@@ -16,7 +16,10 @@ export const handleSettingsButtonClick = async (state: State, index: number): Pr
   const menuY = itemY + itemHeight - 10 // Position at the bottom of the extension item
 
   await ContextMenu.show2(uid, MenuEntryId.ManageExtension, menuX, menuY, {
+    builtin: items[actualIndex].builtin === true,
+    disabled: items[actualIndex].disabled === true,
     menuId: MenuEntryId.ManageExtension,
+    status: items[actualIndex].status,
   })
   return state
 }

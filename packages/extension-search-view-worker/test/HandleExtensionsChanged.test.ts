@@ -1,13 +1,15 @@
 import { expect, test } from '@jest/globals'
-import { RendererWorker } from '@lvce-editor/rpc-registry'
+import { ExtensionManagementWorker } from '@lvce-editor/rpc-registry'
 import type { State } from '../src/parts/State/State.ts'
 import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import { handleExtensionsChanged } from '../src/parts/HandleExtensionsChanged/HandleExtensionsChanged.ts'
 import { Remote } from '../src/parts/PlatformType/PlatformType.ts'
 
 test('handleExtensionsChanged reloads extensions and reapplies the current search', async () => {
-  RendererWorker.registerMockRpc({
-    'ExtensionManagement.getAllExtensions'() {
+  ExtensionManagementWorker.registerMockRpc({
+    'Extensions.getAllExtensions'(assetDir: string, platform: number) {
+      expect(assetDir).toBe('/assets')
+      expect(platform).toBe(Remote)
       return [
         {
           description: 'Added dynamically',

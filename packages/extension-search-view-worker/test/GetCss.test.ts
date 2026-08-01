@@ -101,3 +101,30 @@ test('returns CSS with zero values', () => {
   expect(result).toContain('height: 0px;')
   expect(result).toContain('translate: 0 0px;')
 })
+
+test('returns CSS with VS Code-style extension action layout', () => {
+  const result = GetCss.getCss(createDefaultState())
+
+  expect(result).toContain(`.ExtensionListItemFooter {
+  justify-content: flex-end;
+  padding-right: 2px;
+}`)
+  expect(result).toContain(`.ExtensionListItemAuthorName {
+  flex: 1;
+}`)
+  expect(result).toContain(`.ExtensionActions {
+  display: flex;
+  gap: 6px;
+}`)
+  expect(result).toContain(`.ExtensionActionButton {
+  padding: 0 5px;
+}`)
+})
+
+test('returns CSS with a dimmed background for disabled extension list items', () => {
+  const result = GetCss.getCss(createDefaultState())
+
+  expect(result).toContain(`.ExtensionListItemDisabled:not(.ExtensionActive) {
+  background: color-mix(in srgb, var(--SideBarBackground, rgb(30, 35, 36)) 95%, black);
+}`)
+})

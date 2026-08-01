@@ -3,6 +3,7 @@ import * as actions from '@lvce-editor/eslint-plugin-github-actions/dist/index.j
 
 export default [
   ...config.default,
+  ...config.recommendedVirtualDom,
   ...actions.default,
   {
     rules: {
@@ -13,6 +14,22 @@ export default [
     files: ['packages/e2e/**/*.ts'],
     rules: {
       '@typescript-eslint/prefer-readonly-parameter-types': 'off',
+    },
+  },
+  {
+    files: ['packages/extension-search-view-worker/src/parts/**/*.ts'],
+    ignores: ['packages/extension-search-view-worker/src/parts/**/*VirtualDom/**/*.ts'],
+    rules: {
+      'virtual-dom/prefer-state-destructuring': 'off',
+    },
+  },
+  {
+    files: ['packages/extension-search-view-worker/test/**/*.ts'],
+    rules: {
+      'virtual-dom/no-inline-event-handlers': 'off',
+      'virtual-dom/prefer-constants': 'off',
+      'virtual-dom/prefer-merge-class-names': 'off',
+      'virtual-dom/prefer-state-destructuring': 'off',
     },
   },
 ]

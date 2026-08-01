@@ -6,6 +6,7 @@ import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
 import * as ExtensionStrings from '../ExtensionStrings/ExtensionStrings.ts'
 import * as GetExtensionsListItemVirtualDom from '../GetExtensionsListItemVirtualDom/GetExtensionsListItemVirtualDom.ts'
+import * as TabIndex from '../TabIndex/TabIndex.ts'
 
 export const getExtensionsListVirtualDom = (visibleExtensions: readonly VisibleItem[], focusOutline: boolean): readonly VirtualDomNode[] => {
   const className = focusOutline ? mergeClassNames(ClassNames.ListItems, ClassNames.FocusOutline) : ClassNames.ListItems
@@ -24,7 +25,7 @@ export const getExtensionsListVirtualDom = (visibleExtensions: readonly VisibleI
       onTouchStart: DomEventListenerFunctions.HandleTouchStart,
       onWheel: DomEventListenerFunctions.HandleWheel,
       role: AriaRoles.List,
-      tabIndex: 0,
+      tabIndex: TabIndex.Focusable,
       type: VirtualDomElements.Div,
     },
     ...visibleExtensions.flatMap(GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom),

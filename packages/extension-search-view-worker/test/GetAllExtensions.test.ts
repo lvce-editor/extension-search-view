@@ -1,90 +1,62 @@
 import { expect, test } from '@jest/globals'
-import { ExtensionHost, ExtensionManagementWorker, RendererWorker } from '@lvce-editor/rpc-registry'
+import { ExtensionManagementWorker } from '@lvce-editor/rpc-registry'
 import * as GetAllExtensions from '../src/parts/GetAllExtensions/GetAllExtensions.ts'
 import { Electron, Remote, Web } from '../src/parts/PlatformType/PlatformType.ts'
 
-const mockExtensions = [{ id: 'test-extension', name: 'Test Extension', publisher: 'test-publisher' }]
+const assetDir = '/test-assets'
+const mockExtensions = [{ disabled: true, id: 'test-extension', name: 'Test Extension', publisher: 'test-publisher' }]
 
 test('returns extensions for Web platform', async () => {
-  ExtensionHost.registerMockRpc({
-    'Extensions.getExtensions'() {
+  ExtensionManagementWorker.registerMockRpc({
+    'Extensions.getAllExtensions'(actualAssetDir: string, platform: number) {
+      expect(actualAssetDir).toBe(assetDir)
+      expect(platform).toBe(Web)
       return mockExtensions
     },
   })
-  const result = await GetAllExtensions.getAllExtensions(Web)
+  const result = await GetAllExtensions.getAllExtensions(assetDir, Web)
   expect(result).toEqual(mockExtensions)
 })
 
-test('includes dynamically added extensions for Web platform', async () => {
-  ExtensionHost.registerMockRpc({
-    'Extensions.getExtensions'() {
-      return mockExtensions
-    },
-  })
-  ExtensionManagementWorker.registerMockRpc({
-    'Extensions.getDynamicWebExtensions'() {
-      return [{ id: 'dynamic-extension', name: 'Dynamic Extension', publisher: 'test-publisher' }]
-    },
-  })
-
-  const result = await GetAllExtensions.getAllExtensions(Web)
-
-  expect(result).toEqual([...mockExtensions, { id: 'dynamic-extension', name: 'Dynamic Extension', publisher: 'test-publisher' }])
-})
-
 test('returns empty array for Web platform when error occurs', async () => {
-  ExtensionHost.registerMockRpc({
-    'Extensions.getExtensions'() {
+  ExtensionManagementWorker.registerMockRpc({
+    'Extensions.getAllExtensions'() {
       throw new Error('test error')
     },
   })
-  const result = await GetAllExtensions.getAllExtensions(Web)
+  const result = await GetAllExtensions.getAllExtensions(assetDir, Web)
   expect(result).toEqual([])
 })
 
 test('returns extensions for Remote platform', async () => {
-  RendererWorker.registerMockRpc({
-    'ExtensionManagement.getAllExtensions'() {
+  ExtensionManagementWorker.registerMockRpc({
+    'Extensions.getAllExtensions'(actualAssetDir: string, platform: number) {
+      expect(actualAssetDir).toBe(assetDir)
+      expect(platform).toBe(Remote)
       return mockExtensions
     },
   })
-  ExtensionManagementWorker.registerMockRpc({
-    'Extensions.getDynamicWebExtensions'() {
-      return []
-    },
-  })
-  const result = await GetAllExtensions.getAllExtensions(Remote)
+  const result = await GetAllExtensions.getAllExtensions(assetDir, Remote)
   expect(result).toEqual(mockExtensions)
 })
 
-test('includes dynamically added extensions for Remote platform', async () => {
-  RendererWorker.registerMockRpc({
-    'ExtensionManagement.getAllExtensions'() {
-      return mockExtensions
-    },
-  })
+test('throws for Remote platform when error occurs', async () => {
   ExtensionManagementWorker.registerMockRpc({
-    'Extensions.getDynamicWebExtensions'() {
-      return [{ id: 'dynamic-extension', name: 'Dynamic Extension', publisher: 'test-publisher' }]
+    'Extensions.getAllExtensions'() {
+      throw new Error('test error')
     },
   })
-
-  const result = await GetAllExtensions.getAllExtensions(Remote)
-
-  expect(result).toEqual([...mockExtensions, { id: 'dynamic-extension', name: 'Dynamic Extension', publisher: 'test-publisher' }])
+  await expect(GetAllExtensions.getAllExtensions(assetDir, Remote)).rejects.toThrow('test error')
 })
 
 test('returns extensions for Electron platform', async () => {
-  RendererWorker.registerMockRpc({
-    'ExtensionManagement.getAllExtensions'() {
+  ExtensionManagementWorker.registerMockRpc({
+    'Extensions.getAllExtensions'(actualAssetDir: string, platform: number) {
+      expect(actualAssetDir).toBe(assetDir)
+      expect(platform).toBe(Electron)
       return mockExtensions
     },
   })
-  ExtensionManagementWorker.registerMockRpc({
-    'Extensions.getDynamicWebExtensions'() {
-      return []
-    },
-  })
-  const result = await GetAllExtensions.getAllExtensions(Electron)
+  const result = await GetAllExtensions.getAllExtensions(assetDir, Electron)
   expect(result).toEqual(mockExtensions)
 })

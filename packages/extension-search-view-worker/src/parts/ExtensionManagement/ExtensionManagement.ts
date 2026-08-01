@@ -1,28 +1,13 @@
-import { ExtensionManagementWorker, RendererWorker } from '@lvce-editor/rpc-registry'
-import * as ExtensionHostWorker from '../ExtensionHostWorker/ExtensionHostWorker.ts'
+import { ExtensionManagementWorker } from '@lvce-editor/rpc-registry'
 import * as PlatformType from '../PlatformType/PlatformType.ts'
 
-const getDynamicWebExtensions = async (): Promise<readonly any[]> => {
+export const getAllExtensions = async (assetDir: string, platform: number): Promise<readonly any[]> => {
   try {
-    return await ExtensionManagementWorker.invoke('Extensions.getDynamicWebExtensions')
-  } catch {
-    return []
-  }
-}
-
-export const getAllExtensions = async (platform: number): Promise<readonly any[]> => {
-  if (platform === PlatformType.Web) {
-    try {
-      const [extensions, dynamicExtensions] = await Promise.all([ExtensionHostWorker.invoke('Extensions.getExtensions'), getDynamicWebExtensions()])
-      return [...extensions, ...dynamicExtensions]
-    } catch {
+    return await ExtensionManagementWorker.invoke('Extensions.getAllExtensions', assetDir, platform)
+  } catch (error) {
+    if (platform === PlatformType.Web) {
       return []
     }
+    throw error
   }
-  const [extensions, dynamicExtensions] = await Promise.all([
-    // @ts-ignore todo
-    RendererWorker.invoke('ExtensionManagement.getAllExtensions'),
-    getDynamicWebExtensions(),
-  ])
-  return [...extensions, ...dynamicExtensions]
 }

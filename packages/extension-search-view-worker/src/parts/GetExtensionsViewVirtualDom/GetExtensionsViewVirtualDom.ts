@@ -11,6 +11,21 @@ import { getScrollBarVirtualDom } from '../GetScrollBarVirtualDom/GetScrollBarVi
 import * as GetVisibleExtensions from '../GetVisibleExtensions/GetVisibleExtensions.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 
+const contentNode: VirtualDomNode = {
+  childCount: 2,
+  className: MergeClassNames.mergeClassNames(ClassNames.Viewlet, ClassNames.List),
+  type: VirtualDomElements.Div,
+}
+
+const extensionsNode: VirtualDomNode = {
+  ariaBusy: false,
+  ariaLive: 'polite',
+  childCount: 2,
+  className: MergeClassNames.mergeClassNames(ClassNames.Viewlet, ClassNames.Extensions),
+  role: AriaRoles.None,
+  type: VirtualDomElements.Div,
+}
+
 const getContentVirtualDom = (
   visibleExtensions: readonly VisibleItem[],
   message: string,
@@ -22,11 +37,7 @@ const getContentVirtualDom = (
     return getNoExtensionsFoundVirtualDom(message)
   }
   return [
-    {
-      childCount: 2,
-      className: MergeClassNames.mergeClassNames(ClassNames.Viewlet, ClassNames.List),
-      type: VirtualDomElements.Div,
-    },
+    contentNode,
     ...GetExtensionsVirtualDom.getExtensionsVirtualDom(visibleExtensions, focusOutline),
     ...getScrollBarVirtualDom(scrollBarHeight, scrollBarY),
   ]
@@ -34,19 +45,22 @@ const getContentVirtualDom = (
 
 export const getExtensionsViewVirtualDom = (state: State): readonly VirtualDomNode[] => {
   const visibleExtensions = GetVisibleExtensions.getVisible(state)
-  const { completionFocusedIndex, completionItems, focusedIndex, inputActions, message, placeholder, scrollBarHeight, scrollBarY, suggestOpen } =
-    state
+  const {
+    completionFocusedIndex,
+    completionItems,
+    focus,
+    focusedIndex,
+    inputActions,
+    message,
+    placeholder,
+    scrollBarHeight,
+    scrollBarY,
+    suggestOpen,
+  } = state
 
-  const focusOutline = focusedIndex === -1 && state.focus === FocusId.List
+  const focusOutline = focusedIndex === -1 && focus === FocusId.List
   return [
-    {
-      ariaBusy: false,
-      ariaLive: 'polite',
-      childCount: 2,
-      className: MergeClassNames.mergeClassNames(ClassNames.Viewlet, ClassNames.Extensions),
-      role: AriaRoles.None,
-      type: VirtualDomElements.Div,
-    },
+    extensionsNode,
     ...getExtensionHeaderVirtualDom(placeholder, inputActions, completionItems, completionFocusedIndex, suggestOpen),
     ...getContentVirtualDom(visibleExtensions, message, scrollBarHeight, scrollBarY, focusOutline),
   ]

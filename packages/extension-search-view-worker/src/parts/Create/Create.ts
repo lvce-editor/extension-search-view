@@ -1,4 +1,5 @@
 import type { State } from '../State/State.ts'
+import * as ExtensionLoading from '../ExtensionLoading/ExtensionLoading.ts'
 import * as ExtensionSearchViewStates from '../ExtensionSearchViewStates/ExtensionSearchViewStates.ts'
 
 export const create = (
@@ -51,5 +52,6 @@ export const create = (
     x,
     y,
   }
+  ExtensionLoading.create(id)
   ExtensionSearchViewStates.set(id, state, state)
 }
