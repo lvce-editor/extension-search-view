@@ -26,10 +26,12 @@ const listItemDescription: VirtualDomNode = {
   type: VirtualDomElements.Div,
 }
 
-const listItemFooter: VirtualDomNode = {
-  childCount: 3,
-  className: ClassNames.ExtensionListItemFooter,
-  type: VirtualDomElements.Div,
+const getListItemFooter = (hasStatistics: boolean): VirtualDomNode => {
+  return {
+    childCount: hasStatistics ? 3 : 2,
+    className: ClassNames.ExtensionListItemFooter,
+    type: VirtualDomElements.Div,
+  }
 }
 
 const listItemAuthorName: VirtualDomNode = {
@@ -38,11 +40,12 @@ const listItemAuthorName: VirtualDomNode = {
   type: VirtualDomElements.Div,
 }
 
-const getClassName = (focused: boolean): string => {
-  if (focused) {
-    return MergeClassNames.mergeClassNames(ClassNames.ExtensionListItem, ClassNames.ExtensionActive)
-  }
-  return ClassNames.ExtensionListItem
+const getClassName = (focused: boolean, disabled: boolean): string => {
+  return MergeClassNames.mergeClassNames(
+    ClassNames.ExtensionListItem,
+    focused ? ClassNames.ExtensionActive : '',
+    disabled ? ClassNames.ExtensionListItemDisabled : '',
+  )
 }
 
 const getId = (focused: boolean): string | undefined => {
@@ -50,6 +53,13 @@ const getId = (focused: boolean): string | undefined => {
     return `ExtensionActive`
   }
   return undefined
+}
+
+const getStatisticsVirtualDom = (hasStatistics: boolean, downloadCount: string, rating: string): readonly VirtualDomNode[] => {
+  if (!hasStatistics) {
+    return []
+  }
+  return getExtensionStatisticsVirtualDom(downloadCount, rating)
 }
 
 export const getExtensionListItemVirtualDom = (extension: VisibleItem): readonly VirtualDomNode[] => {
@@ -69,13 +79,14 @@ export const getExtensionListItemVirtualDom = (extension: VisibleItem): readonly
     status,
   } = extension
   const actionsDom = GetExtensionActionsVirtualDom.getExtensionActionsVirtualDom(id, builtin, disabled, status)
+  const hasStatistics = !builtin
   const dom: readonly VirtualDomNode[] = [
     {
       ariaPosInSet: posInSet,
       ariaRoleDescription: AriaRoleDescription.Extension,
       ariaSetSize: setSize,
       childCount: 2,
-      className: getClassName(focused),
+      className: getClassName(focused, disabled),
       id: getId(focused),
       role: AriaRoles.ListItem,
       type: VirtualDomElements.Div,
@@ -92,10 +103,10 @@ export const getExtensionListItemVirtualDom = (extension: VisibleItem): readonly
     text(name),
     listItemDescription,
     text(description),
-    listItemFooter,
+    getListItemFooter(hasStatistics),
     listItemAuthorName,
     text(publisher),
-    ...getExtensionStatisticsVirtualDom(downloadCount, rating),
+    ...getStatisticsVirtualDom(hasStatistics, downloadCount, rating),
     ...actionsDom,
   ]
   return dom

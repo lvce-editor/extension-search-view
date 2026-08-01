@@ -30,7 +30,7 @@ test('creates virtual dom with correct structure', () => {
   const item = createMockVisibleItem()
   const result = GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom(item)
 
-  expect(result).toHaveLength(18)
+  expect(result).toHaveLength(13)
 })
 
 test('sets main list item div with correct properties when focused', () => {
@@ -65,6 +65,22 @@ test('sets main list item div with correct properties when not focused', () => {
     // top: 200,
     type: VirtualDomElements.Div,
   })
+})
+
+test('adds disabled class to disabled list item', () => {
+  const item = createMockVisibleItem({ disabled: true })
+  const result = GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom(item)
+
+  expect(result[0].className).toBe(MergeClassNames.mergeClassNames(ClassNames.ExtensionListItem, ClassNames.ExtensionListItemDisabled))
+})
+
+test('adds active and disabled classes to focused disabled list item', () => {
+  const item = createMockVisibleItem({ disabled: true, focused: true })
+  const result = GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom(item)
+
+  expect(result[0].className).toBe(
+    MergeClassNames.mergeClassNames(ClassNames.ExtensionListItem, ClassNames.ExtensionActive, ClassNames.ExtensionListItemDisabled),
+  )
 })
 
 test('sets icon img with correct properties', () => {
@@ -132,7 +148,7 @@ test('sets footer div with correct className', () => {
   const result = GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom(item)
 
   expect(result[7]).toEqual({
-    childCount: 3,
+    childCount: 2,
     className: ClassNames.ExtensionListItemFooter,
     type: VirtualDomElements.Div,
   })
@@ -160,7 +176,7 @@ test('sets actions div with correct className', () => {
   const item = createMockVisibleItem()
   const result = GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom(item)
 
-  expect(result[15]).toEqual({
+  expect(result[10]).toEqual({
     childCount: 1,
     className: ClassNames.ExtensionActions,
     type: VirtualDomElements.Div,
@@ -168,9 +184,10 @@ test('sets actions div with correct className', () => {
 })
 
 test('renders download count and rating in the footer', () => {
-  const item = createMockVisibleItem({ downloadCount: '98,765', rating: '4.8' })
+  const item = createMockVisibleItem({ builtin: false, downloadCount: '98,765', rating: '4.8' })
   const result = GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom(item)
 
+  expect(result[7].childCount).toBe(3)
   expect(result.slice(10, 15)).toEqual([
     {
       childCount: 2,
@@ -197,11 +214,21 @@ test('renders download count and rating in the footer', () => {
 })
 
 test('renders fallback statistics when marketplace data is unavailable', () => {
-  const item = createMockVisibleItem({ downloadCount: undefined, rating: undefined })
+  const item = createMockVisibleItem({ builtin: false, downloadCount: undefined, rating: undefined })
   const result = GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom(item)
 
   expect(result[12]).toEqual(text('n/a'))
   expect(result[14]).toEqual(text('n/a'))
+})
+
+test('does not render download count or rating for builtin extensions', () => {
+  const item = createMockVisibleItem({ builtin: true })
+  const result = GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom(item)
+
+  expect(result[7].childCount).toBe(2)
+  expect(result.some(({ className }) => className?.includes(ClassNames.ExtensionListItemMetadata))).toBe(false)
+  expect(result.some(({ className }) => className?.includes(ClassNames.ExtensionListItemDownloadCount))).toBe(false)
+  expect(result.some(({ className }) => className?.includes(ClassNames.ExtensionListItemRating))).toBe(false)
 })
 
 test('handles all properties correctly together', () => {

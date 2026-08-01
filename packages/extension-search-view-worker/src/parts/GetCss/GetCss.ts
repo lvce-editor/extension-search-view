@@ -23,6 +23,10 @@ export const getCss = (state: State): string => {
   flex-shrink: 0;
 }
 
+.ExtensionListItemDisabled:not(.ExtensionActive) {
+  background: color-mix(in srgb, var(--SideBarBackground, rgb(30, 35, 36)) 95%, black);
+}
+
 .Extensions .ListItems {
   display: flex;
   flex-direction: column;
