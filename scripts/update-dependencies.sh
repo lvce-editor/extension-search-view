@@ -16,7 +16,7 @@ fi
 
 function updateDependencies {
   echo "updating dependencies..."
-  ncu -u -x @types/node -x rollup -x @babel/preset-typescript -x typescript
+  ncu -u -x @types/node -x rollup -x @babel/preset-typescript -x typescript -x @lvce-editor/server -x @lvce-editor/test-with-playwright
 }
 
                                                        updateDependencies             &&

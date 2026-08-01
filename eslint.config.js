@@ -1,6 +1,7 @@
+import { defineConfig } from 'eslint/config'
 import * as config from '@lvce-editor/eslint-config'
 
-export default [
+export default defineConfig([
   ...config.recommendedE2e,
   ...config.default,
   ...config.recommendedTsconfig,
@@ -33,4 +34,4 @@ export default [
       'virtual-dom/prefer-merge-class-names': 'off',
     },
   },
-]
+])

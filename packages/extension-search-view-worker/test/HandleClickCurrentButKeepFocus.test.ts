@@ -31,7 +31,7 @@ test('handleClickCurrentButKeepFocus opens URI for focused extension', async () 
 
   const result = await handleClickCurrentButKeepFocus(state)
 
-  expect(mockRpc.invocations).toEqual([['Main.openUri', 'extension-detail://test-extension-id', undefined, undefined]])
+  expect(mockRpc.invocations).toEqual([['Main.openUri', { focus: undefined, uri: 'extension-detail://test-extension-id' }]])
   expect(result.focus).toBe(FocusId.List)
   expect(result.focusedIndex).toBe(0)
 })
@@ -74,6 +74,6 @@ test('handleClickCurrentButKeepFocus uses focusedIndex correctly', async () => {
 
   const result = await handleClickCurrentButKeepFocus(state)
 
-  expect(mockRpc.invocations).toEqual([['Main.openUri', 'extension-detail://extension-2', undefined, undefined]])
+  expect(mockRpc.invocations).toEqual([['Main.openUri', { focus: undefined, uri: 'extension-detail://extension-2' }]])
   expect(result.focusedIndex).toBe(1)
 })

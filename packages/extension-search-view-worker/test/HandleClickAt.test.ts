@@ -91,7 +91,7 @@ test('handleClickAt handles left click and opens URI', async () => {
   const eventY = 115
   const result = await handleClickAt(state, MouseEventType.LeftClick, eventX, eventY)
 
-  expect(mockRpc.invocations).toEqual([['Main.openUri', 'extension-detail://test-extension-id', undefined, undefined]])
+  expect(mockRpc.invocations).toEqual([['Main.openUri', { focus: undefined, uri: 'extension-detail://test-extension-id' }]])
   expect(result.focus).toBe(FocusId.List)
 })
 
@@ -140,6 +140,6 @@ test('handleClickAt calculates correct index from coordinates', async () => {
   const eventY = 144
   const result = await handleClickAt(state, MouseEventType.LeftClick, eventX, eventY)
 
-  expect(mockRpc.invocations).toEqual([['Main.openUri', 'extension-detail://extension-2', undefined, undefined]])
+  expect(mockRpc.invocations).toEqual([['Main.openUri', { focus: undefined, uri: 'extension-detail://extension-2' }]])
   expect(result.focusedIndex).toBe(1)
 })
