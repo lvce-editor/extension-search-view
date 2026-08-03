@@ -5,13 +5,13 @@ import * as MenuItemFlags from '../MenuItemFlags/MenuItemFlags.ts'
 export const getMenuEntriesFilter = (): readonly MenuEntry[] => {
   return [
     {
-      command: 'SearchExtensions.filterByFeatured',
+      command: 'Extensions.filterByFeatured',
       flags: MenuItemFlags.None,
       id: 'filterByFeatured',
       label: ExtensionStrings.featured(),
     },
     {
-      command: 'SearchExtensions.filterByMcpServers',
+      command: 'Extensions.filterByMcpServers',
       flags: MenuItemFlags.None,
       id: 'filterByMcpServers',
       label: ExtensionStrings.mcpServers(),
@@ -23,13 +23,13 @@ export const getMenuEntriesFilter = (): readonly MenuEntry[] => {
       label: ExtensionStrings.mostPopular(),
     },
     {
-      command: 'SearchExtensions.filterByRecentlyPublished',
+      command: 'Extensions.filterByRecentlyPublished',
       flags: MenuItemFlags.None,
       id: 'filterByRecentlyPublished',
       label: ExtensionStrings.recentlyPublished(),
     },
     {
-      command: 'SearchExtensions.filterByRecommended',
+      command: 'Extensions.filterByRecommended',
       flags: MenuItemFlags.None,
       id: 'filterByRecommended',
       label: ExtensionStrings.recommended(),
@@ -47,37 +47,37 @@ export const getMenuEntriesFilter = (): readonly MenuEntry[] => {
       label: ExtensionStrings.category(),
     },
     {
-      command: 'SearchExtensions.filterByInstalled',
+      command: 'Extensions.filterByInstalled',
       flags: MenuItemFlags.None,
       id: 'filterByInstalled',
       label: ExtensionStrings.installed(),
     },
     {
-      command: 'SearchExtensions.filterByUpdates',
+      command: 'Extensions.filterByUpdates',
       flags: MenuItemFlags.None,
       id: 'filterByUpdates',
       label: ExtensionStrings.updates(),
     },
     {
-      command: 'SearchExtensions.filterByBuiltin',
+      command: 'Extensions.filterByBuiltin',
       flags: MenuItemFlags.None,
       id: 'filterByBuiltin',
       label: ExtensionStrings.builtIn(),
     },
     {
-      command: 'SearchExtensions.filterByEnabled',
+      command: 'Extensions.filterByEnabled',
       flags: MenuItemFlags.None,
       id: 'filterByEnabled',
       label: ExtensionStrings.enabled(),
     },
     {
-      command: 'SearchExtensions.filterByDisabled',
+      command: 'Extensions.filterByDisabled',
       flags: MenuItemFlags.None,
       id: 'filterByDisabled',
       label: ExtensionStrings.disabled(),
     },
     {
-      command: 'SearchExtensions.filterByWorkspaceUnsupported',
+      command: 'Extensions.filterByWorkspaceUnsupported',
       flags: MenuItemFlags.None,
       id: 'filterByWorkspaceUnsupported',
       label: ExtensionStrings.workspaceUnsupported(),
