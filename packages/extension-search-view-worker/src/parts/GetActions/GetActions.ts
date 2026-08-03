@@ -11,11 +11,5 @@ export const getActions = (): readonly Action[] => {
       id: ViewletExtensionStrings.refresh(),
       type: ActionType.Button,
     },
-    {
-      command: '',
-      icon: MaskIcon.Ellipsis,
-      id: ViewletExtensionStrings.viewsAndMoreActions(),
-      type: ActionType.Button,
-    },
   ]
 }
