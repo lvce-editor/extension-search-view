@@ -50,4 +50,20 @@ export const test: Test = async ({ ContextMenu, expect, ExtensionSearch, Locator
   // assert
   const input = extensionsView.locator('.MultilineInputBox')
   await expect(input).toHaveValue('@most-popular')
+
+  // act
+  await ExtensionSearch.clearSearchResults()
+  await ExtensionSearch.handleClickFilter()
+  await ContextMenu.selectIndex(0, 0)
+
+  // assert
+  await expect(input).toHaveValue('@featured')
+
+  // act
+  await ExtensionSearch.clearSearchResults()
+  await ExtensionSearch.handleClickFilter()
+  await ContextMenu.selectIndex(0, 7)
+
+  // assert
+  await expect(input).toHaveValue('@installed')
 }

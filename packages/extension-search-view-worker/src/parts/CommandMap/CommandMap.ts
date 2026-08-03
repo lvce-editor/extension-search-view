@@ -11,9 +11,11 @@ import * as DisableWorkspace from '../DisableWorkspace/DisableWorkspace.ts'
 import * as Dispose from '../Dispose/Dispose.ts'
 import * as Enable from '../Enable/Enable.ts'
 import * as EnableWorkspace from '../EnableWorkspace/EnableWorkspace.ts'
+import * as ExtensionFilterParameter from '../ExtensionFilterParameter/ExtensionFilterParameter.ts'
 import * as WrapCommand from '../ExtensionSearchViewStates/ExtensionSearchViewStates.ts'
 import { getCommandIds } from '../ExtensionSearchViewStates/ExtensionSearchViewStates.ts'
 import * as FilterByMostPopular from '../FilterByMostPopular/FilterByMostPopular.ts'
+import * as FilterByValue from '../FilterByValue/FilterByValue.ts'
 import * as FocusFirst from '../FocusFirst/FocusFirst.ts'
 import * as FocusIndex from '../FocusIndex/FocusIndex.ts'
 import * as FocusLast from '../FocusLast/FocusLast.ts'
@@ -84,7 +86,21 @@ export const commandMap = {
   'SearchExtensions.dispose': Dispose.dispose,
   'SearchExtensions.enable': WrapCommand.wrapCommand(Enable.enable),
   'SearchExtensions.enableWorkspace': WrapCommand.wrapCommand(EnableWorkspace.enableWorkspace),
+  'SearchExtensions.filterByBuiltin': WrapCommand.wrapAsyncCommand(FilterByValue.createFilterCommand(ExtensionFilterParameter.Builtin)),
+  'SearchExtensions.filterByDisabled': WrapCommand.wrapAsyncCommand(FilterByValue.createFilterCommand(ExtensionFilterParameter.Disabled)),
+  'SearchExtensions.filterByEnabled': WrapCommand.wrapAsyncCommand(FilterByValue.createFilterCommand(ExtensionFilterParameter.Enabled)),
+  'SearchExtensions.filterByFeatured': WrapCommand.wrapAsyncCommand(FilterByValue.createFilterCommand(ExtensionFilterParameter.Featured)),
+  'SearchExtensions.filterByInstalled': WrapCommand.wrapAsyncCommand(FilterByValue.createFilterCommand(ExtensionFilterParameter.Installed)),
+  'SearchExtensions.filterByMcpServers': WrapCommand.wrapAsyncCommand(FilterByValue.createFilterCommand(ExtensionFilterParameter.McpServers)),
   'SearchExtensions.filterByMostPopular': WrapCommand.wrapAsyncCommand(FilterByMostPopular.filterByMostPopularWithContext),
+  'SearchExtensions.filterByRecentlyPublished': WrapCommand.wrapAsyncCommand(
+    FilterByValue.createFilterCommand(ExtensionFilterParameter.RecentlyPublished),
+  ),
+  'SearchExtensions.filterByRecommended': WrapCommand.wrapAsyncCommand(FilterByValue.createFilterCommand(ExtensionFilterParameter.Recommended)),
+  'SearchExtensions.filterByUpdates': WrapCommand.wrapAsyncCommand(FilterByValue.createFilterCommand(ExtensionFilterParameter.Outdated)),
+  'SearchExtensions.filterByWorkspaceUnsupported': WrapCommand.wrapAsyncCommand(
+    FilterByValue.createFilterCommand(ExtensionFilterParameter.WorkspaceUnsupported),
+  ),
   'SearchExtensions.focusFirst': WrapCommand.wrapCommand(FocusFirst.focusFirst),
   'SearchExtensions.focusIndex': WrapCommand.wrapCommand(FocusIndex.focusIndex),
   'SearchExtensions.focusLast': WrapCommand.wrapCommand(FocusLast.focusLast),
