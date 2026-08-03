@@ -3,17 +3,18 @@ import { commandMap } from '../src/parts/CommandMap/CommandMap.ts'
 import { getMenuEntriesList } from '../src/parts/GetMenuEntries/GetMenuEntries.ts'
 import * as MenuItemFlags from '../src/parts/MenuItemFlags/MenuItemFlags.ts'
 
-test('getMenuEntries commands exist in commandMap', () => {
+test('getMenuEntries commands are registered as Extensions view commands', () => {
+  const registeredCommands = new Set(Object.keys(commandMap).map((command) => `Extensions.${command.slice(command.indexOf('.') + 1)}`))
   const missingCommands = getMenuEntriesList(false)
     .filter((menuEntry): boolean => menuEntry.command !== '')
     .map((menuEntry): string => menuEntry.command)
-    .filter((command): boolean => !(command in commandMap))
+    .filter((command): boolean => !registeredCommands.has(command))
   expect(missingCommands).toEqual([])
 })
 
-test('enables install another version for non-builtin extensions', () => {
+test('disables unimplemented install another version action for non-builtin extensions', () => {
   const menuEntry = getMenuEntriesList(false).find((entry) => entry.id === 'installAnotherVersion')
-  expect(menuEntry?.flags).toBe(MenuItemFlags.None)
+  expect(menuEntry?.flags).toBe(MenuItemFlags.Disabled)
 })
 
 test('disables install another version for builtin extensions', () => {

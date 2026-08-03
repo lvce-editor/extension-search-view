@@ -1,16 +1,20 @@
 import { expect, test } from '@jest/globals'
-import { DialogWorker } from '@lvce-editor/rpc-registry'
+import { RendererWorker } from '@lvce-editor/rpc-registry'
 import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import { disable } from '../src/parts/Disable/Disable.ts'
 
-test('disable shows placeholder confirm and returns state', async () => {
-  using mockRpc = DialogWorker.registerMockRpc({
-    'ConfirmPrompt.prompt'() {
-      return false
-    },
+test('disable disables the focused extension', async () => {
+  using mockRpc = RendererWorker.registerMockRpc({
+    'ExtensionManagement.disable'() {},
   })
-  const state = createDefaultState()
-  const result = await disable(state, 'test-id')
-  expect(result).toBe(state)
-  expect(mockRpc.invocations).toEqual([['ConfirmPrompt.prompt', 'not implemented', undefined]])
+  const extension = { id: 'test-id' } as any
+  const state = { ...createDefaultState(), allExtensions: [extension], focusedIndex: 0, items: [extension] }
+  const result = await disable(state)
+  expect(result.items[0].status).toBe('disabled')
+  expect(mockRpc.invocations).toEqual([['ExtensionManagement.disable', 'test-id']])
+})
+
+test('disable returns the same state when no extension is focused', async () => {
+  const state = { ...createDefaultState(), focusedIndex: -1, items: [] }
+  expect(await disable(state)).toBe(state)
 })

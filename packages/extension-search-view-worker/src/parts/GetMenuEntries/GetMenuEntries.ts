@@ -29,13 +29,13 @@ export const getMenuEntriesList = (builtin: boolean, disabled = false, status?: 
   const enablementFlags = getEnablementFlags(disabled, status)
   return [
     {
-      command: 'SearchExtensions.enable',
+      command: 'Extensions.enable',
       flags: enablementFlags.enable,
       id: 'enable',
       label: ExtensionStrings.enable(),
     },
     {
-      command: 'SearchExtensions.enableWorkspace',
+      command: 'Extensions.enableWorkspace',
       flags: enablementFlags.enable,
       id: 'enableWorkspace',
       label: ExtensionStrings.enableWorkspace(),
@@ -47,13 +47,13 @@ export const getMenuEntriesList = (builtin: boolean, disabled = false, status?: 
       label: '',
     },
     {
-      command: 'SearchExtensions.disable',
+      command: 'Extensions.disable',
       flags: enablementFlags.disable,
       id: 'disable',
       label: ExtensionStrings.disable(),
     },
     {
-      command: 'SearchExtensions.disableWorkspace',
+      command: 'Extensions.disableWorkspace',
       flags: enablementFlags.disable,
       id: 'disableWorkspace',
       label: ExtensionStrings.disableWorkspace(),
@@ -65,8 +65,8 @@ export const getMenuEntriesList = (builtin: boolean, disabled = false, status?: 
       label: '',
     },
     {
-      command: 'SearchExtensions.installAnotherVersion',
-      flags: builtin ? MenuItemFlags.Disabled : MenuItemFlags.None,
+      command: 'Extensions.installAnotherVersion',
+      flags: MenuItemFlags.Disabled,
       id: 'installAnotherVersion',
       label: ExtensionStrings.installAnotherVersion(),
     },
