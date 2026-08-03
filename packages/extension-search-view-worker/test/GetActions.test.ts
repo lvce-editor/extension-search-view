@@ -6,17 +6,11 @@ import * as MaskIcon from '../src/parts/MaskIcon/MaskIcon.ts'
 
 test('returns correct actions', () => {
   const actions = GetActions.getActions()
-  expect(actions).toHaveLength(2)
+  expect(actions).toHaveLength(1)
   expect(actions[0]).toEqual({
     command: '',
     icon: MaskIcon.Refresh,
     id: ViewletExtensionStrings.refresh(),
-    type: ActionType.Button,
-  })
-  expect(actions[1]).toEqual({
-    command: '',
-    icon: MaskIcon.Ellipsis,
-    id: ViewletExtensionStrings.viewsAndMoreActions(),
     type: ActionType.Button,
   })
 })
