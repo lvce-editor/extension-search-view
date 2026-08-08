@@ -19,6 +19,7 @@ export const getCss = (state: State): string => {
 }
 
 .ExtensionListItem {
+  box-sizing: border-box;
   position: relative !important;
   flex-shrink: 0;
 }

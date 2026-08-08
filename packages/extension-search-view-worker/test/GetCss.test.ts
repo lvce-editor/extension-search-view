@@ -128,3 +128,13 @@ test('returns CSS with a dimmed background for disabled extension list items', (
   background: color-mix(in srgb, var(--SideBarBackground, rgb(30, 35, 36)) 95%, black);
 }`)
 })
+
+test('keeps extension list item padding within the list width', () => {
+  const result = GetCss.getCss(createDefaultState())
+
+  expect(result).toContain(`.ExtensionListItem {
+  box-sizing: border-box;
+  position: relative !important;
+  flex-shrink: 0;
+}`)
+})
