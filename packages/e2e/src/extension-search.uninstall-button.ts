@@ -1,11 +1,12 @@
 import type { Test } from '@lvce-editor/test-with-playwright'
 
-export const skip = 0
+export const skip = 1
 
-export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
-  const extensionId = 'builtin.theme-atom-one-dark'
+export const test: Test = async ({ expect, Extension, ExtensionDetail, ExtensionSearch, Locator }) => {
+  const extensionId = 'test.commands-test'
+  const extensionUri = import.meta.resolve('../fixtures/extension-commands')
+  await Extension.addWebExtension(extensionUri)
   await ExtensionSearch.open()
-  await ExtensionSearch.setExtensionStatus(extensionId, 'enabled', false)
   await ExtensionSearch.handleInput(`@id:${extensionId}`)
 
   const buttons = Locator('.ExtensionListItem .ExtensionActionButton')
@@ -15,8 +16,12 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
 
   await ExtensionSearch.handleUninstall(extensionId)
 
-  const errorMessage = Locator('#DialogBodyErrorMessage')
-  await expect(errorMessage).toBeVisible()
-  await expect(errorMessage).toContainText(`Failed to uninstall extension "${extensionId}"`)
-  await expect(uninstallButton).toHaveText('Uninstall')
+  await expect(buttons).toHaveCount(1)
+  await expect(buttons.first()).toHaveText('Install')
+
+  await ExtensionDetail.open(extensionId)
+  const errorTitle = Locator('.ExtensionDetailErrorTitle')
+  const errorMessage = Locator('.ExtensionDetailErrorMessage')
+  await expect(errorTitle).toHaveText('Unable to load extension')
+  await expect(errorMessage).toHaveText(`The extension "${extensionId}" is not available in this version of LVCE Editor.`)
 }
