@@ -135,6 +135,74 @@ test('matches empty query string', () => {
   expect(matchesParsedValue(extension, parsedValue)).toBe(true)
 })
 
+test('disabled filter matches disabled extension', () => {
+  const extension = {
+    ...createExtension('Test Extension', 'test-extension'),
+    disabled: true,
+  }
+  const parsedValue = {
+    ...createParsedValue(''),
+    disabled: true,
+    enabled: false,
+  }
+  expect(matchesParsedValue(extension, parsedValue)).toBe(true)
+})
+
+test('disabled filter excludes enabled extension', () => {
+  const extension = {
+    ...createExtension('Test Extension', 'test-extension'),
+    disabled: false,
+  }
+  const parsedValue = {
+    ...createParsedValue(''),
+    disabled: true,
+    enabled: false,
+  }
+  expect(matchesParsedValue(extension, parsedValue)).toBe(false)
+})
+
+test('enabled filter matches enabled extension', () => {
+  const extension = {
+    ...createExtension('Test Extension', 'test-extension'),
+    disabled: false,
+  }
+  const parsedValue = createParsedValue('')
+  expect(matchesParsedValue(extension, parsedValue)).toBe(true)
+})
+
+test('enabled filter excludes disabled extension', () => {
+  const extension = {
+    ...createExtension('Test Extension', 'test-extension'),
+    disabled: true,
+  }
+  const parsedValue = createParsedValue('')
+  expect(matchesParsedValue(extension, parsedValue)).toBe(false)
+})
+
+test('enabled status overrides stale disabled manifest flag', () => {
+  const extension = {
+    ...createExtension('Test Extension', 'test-extension'),
+    disabled: true,
+    status: 'enabled',
+  }
+  const parsedValue = createParsedValue('')
+  expect(matchesParsedValue(extension, parsedValue)).toBe(true)
+})
+
+test('disabled status overrides enabled manifest flag', () => {
+  const extension = {
+    ...createExtension('Test Extension', 'test-extension'),
+    disabled: false,
+    status: 'disabled',
+  }
+  const parsedValue = {
+    ...createParsedValue(''),
+    disabled: true,
+    enabled: false,
+  }
+  expect(matchesParsedValue(extension, parsedValue)).toBe(true)
+})
+
 test('matches extension with special characters in name', () => {
   const extension = createExtension('Test & Extension', 'test-extension')
   const parsedValue = createParsedValue('&')
