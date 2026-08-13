@@ -2,6 +2,7 @@ import type { ExtensionAction } from '../ExtensionAction/ExtensionAction.ts'
 import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
 import * as ExtensionStatus from '../ExtensionStatus/ExtensionStatus.ts'
 import * as ExtensionStrings from '../ExtensionStrings/ExtensionStrings.ts'
+import { isExtensionDisabled } from '../IsExtensionDisabled/IsExtensionDisabled.ts'
 
 const install: ExtensionAction = {
   disabled: false,
@@ -49,6 +50,6 @@ export const getExtensionActions = (builtin: boolean, disabled: boolean, status:
   if (status === ExtensionStatus.Uninstalling) {
     return builtin ? [] : [uninstalling]
   }
-  const enableOrDisable = status === ExtensionStatus.Disabled || (status === undefined && disabled) ? enable : disable
+  const enableOrDisable = isExtensionDisabled(disabled, status) ? enable : disable
   return builtin ? [enableOrDisable] : [enableOrDisable, uninstall]
 }
