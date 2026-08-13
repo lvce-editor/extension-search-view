@@ -179,6 +179,20 @@ test('enabled filter excludes disabled extension', () => {
   expect(matchesParsedValue(extension, parsedValue)).toBe(false)
 })
 
+test('resolved manifest status preserves disabled state', () => {
+  const extension = {
+    ...createExtension('Test Extension', 'test-extension'),
+    disabled: true,
+    status: 'resolved',
+  }
+  const parsedValue = {
+    ...createParsedValue(''),
+    disabled: true,
+    enabled: false,
+  }
+  expect(matchesParsedValue(extension, parsedValue)).toBe(true)
+})
+
 test('enabled status overrides stale disabled manifest flag', () => {
   const extension = {
     ...createExtension('Test Extension', 'test-extension'),

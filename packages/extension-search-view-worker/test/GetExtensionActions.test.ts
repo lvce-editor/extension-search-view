@@ -29,6 +29,10 @@ test('returns disable and uninstall actions for an enabled extension', () => {
   ])
 })
 
+test('returns enable for a disabled extension with resolved manifest status', () => {
+  expect(GetExtensionActions.getExtensionActions(true, true, 'resolved').map((action) => action.label)).toEqual(['Enable'])
+})
+
 test('does not return uninstall for a builtin extension', () => {
   expect(GetExtensionActions.getExtensionActions(true, false, ExtensionStatus.Enabled).map((action) => action.label)).toEqual(['Disable'])
   expect(GetExtensionActions.getExtensionActions(true, true, ExtensionStatus.Disabled).map((action) => action.label)).toEqual(['Enable'])
