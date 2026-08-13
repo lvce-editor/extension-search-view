@@ -46,6 +46,7 @@ import { handleHeaderContextMenu } from '../HandleHeaderContextMenu/HandleHeader
 import * as HandleInput from '../HandleInput/HandleInput.ts'
 import * as HandleInputFocus from '../HandleInputFocus/HandleInputFocus.ts'
 import * as HandleInstall from '../HandleInstall/HandleInstall.ts'
+import * as HandleMessagePort from '../HandleMessagePort/HandleMessagePort.ts'
 import * as HandleScrollBarCaptureLost from '../HandleScrollBarCaptureLost/HandleScrollBarCaptureLost.ts'
 import * as HandleScrollBarClick from '../HandleScrollBarClick/HandleScrollBarClick.ts'
 import * as HandleScrollBarMove from '../HandleScrollBarMove/HandleScrollBarMove.ts'
@@ -132,6 +133,7 @@ export const commandMap = {
   'SearchExtensions.handleInput': WrapCommand.wrapAsyncCommand(HandleInput.handleInputWithContext),
   'SearchExtensions.handleInputFocus': WrapCommand.wrapCommand(HandleInputFocus.handleInputFocus),
   'SearchExtensions.handleInstall': WrapCommand.wrapCommand(HandleInstall.handleInstall),
+  'SearchExtensions.handleMessagePort': HandleMessagePort.handleMessagePort,
   'SearchExtensions.handleScrollBarCaptureLost': WrapCommand.wrapCommand(HandleScrollBarCaptureLost.handleScrollBarCaptureLost),
   'SearchExtensions.handleScrollBarClick': WrapCommand.wrapCommand(HandleScrollBarClick.handleScrollBarClick),
   'SearchExtensions.handleScrollBarMove': WrapCommand.wrapCommand(HandleScrollBarMove.handleScrollBarMove),
