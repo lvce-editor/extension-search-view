@@ -72,6 +72,8 @@ import * as SetDeltaY from '../SetDeltaY/SetDeltaY.ts'
 import * as SetExtensionStatus from '../SetExtensionStatus/SetExtensionStatus.ts'
 import * as ToggleSuggest from '../ToggleSuggest/ToggleSuggest.ts'
 
+const handleDirectMessagePort = (port: MessagePort): Promise<void> => HandleMessagePort.handleMessagePort(port, commandMap)
+
 export const commandMap = {
   'Extensions.copyExtensionId': WrapCommand.wrapCommand(copyExtensionId),
   'Extensions.copyExtensionInfo': WrapCommand.wrapCommand(copyExtensionInfo),
@@ -133,7 +135,7 @@ export const commandMap = {
   'SearchExtensions.handleInput': WrapCommand.wrapAsyncCommand(HandleInput.handleInputWithContext),
   'SearchExtensions.handleInputFocus': WrapCommand.wrapCommand(HandleInputFocus.handleInputFocus),
   'SearchExtensions.handleInstall': WrapCommand.wrapCommand(HandleInstall.handleInstall),
-  'SearchExtensions.handleMessagePort': HandleMessagePort.handleMessagePort,
+  'SearchExtensions.handleMessagePort': handleDirectMessagePort,
   'SearchExtensions.handleScrollBarCaptureLost': WrapCommand.wrapCommand(HandleScrollBarCaptureLost.handleScrollBarCaptureLost),
   'SearchExtensions.handleScrollBarClick': WrapCommand.wrapCommand(HandleScrollBarClick.handleScrollBarClick),
   'SearchExtensions.handleScrollBarMove': WrapCommand.wrapCommand(HandleScrollBarMove.handleScrollBarMove),
