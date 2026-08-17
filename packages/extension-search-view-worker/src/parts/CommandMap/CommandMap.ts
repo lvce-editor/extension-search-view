@@ -72,7 +72,8 @@ import * as SetDeltaY from '../SetDeltaY/SetDeltaY.ts'
 import * as SetExtensionStatus from '../SetExtensionStatus/SetExtensionStatus.ts'
 import * as ToggleSuggest from '../ToggleSuggest/ToggleSuggest.ts'
 
-const handleDirectMessagePort = (port: MessagePort): Promise<void> => HandleMessagePort.handleMessagePort(port, commandMap)
+const handleDirectMessagePort = (port: MessagePort, setAsRendererProcess = true): Promise<void> =>
+  HandleMessagePort.handleMessagePort(port, commandMap, setAsRendererProcess)
 
 export const commandMap = {
   'Extensions.copyExtensionId': WrapCommand.wrapCommand(copyExtensionId),
