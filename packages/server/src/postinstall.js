@@ -21,9 +21,6 @@ const isCommitHash = (dirent) => {
 }
 
 const replace = (content, occurrence, replacement) => {
-  if (!content.includes(occurrence) && !content.includes(replacement)) {
-    throw new Error('test worker occurrence not found')
-  }
   return content.includes(occurrence) ? content.replace(occurrence, replacement) : content
 }
 
@@ -219,7 +216,9 @@ const extensionDetailViewWorkerTargetPath = join(
 const testWorkerContent = await readFile(testWorkerMainPath, 'utf-8')
 await writeFile(testWorkerMainPath, patchTestWorker(testWorkerContent))
 const extensionDetailViewWorkerContent = await readFile(extensionDetailViewWorkerTargetPath, 'utf-8')
-await writeFile(extensionDetailViewWorkerTargetPath, patchExtensionDetailWorker(extensionDetailViewWorkerContent))
+if (extensionDetailViewWorkerContent.includes('extension?.isBuiltin || extension?.builtin || false')) {
+  await writeFile(extensionDetailViewWorkerTargetPath, patchExtensionDetailWorker(extensionDetailViewWorkerContent))
+}
 
 const content = await readFile(rendererWorkerMainPath, 'utf-8')
 
