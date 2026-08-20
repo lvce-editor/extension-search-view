@@ -26,6 +26,7 @@ export const getCss = (state: State): string => {
 
 .ExtensionListItemDisabled:not(.ExtensionActive) {
   background: color-mix(in srgb, var(--SideBarBackground, rgb(30, 35, 36)) 95%, black);
+  color: var(--DisabledForeground, color-mix(in srgb, var(--WorkbenchForeground) 48%, transparent));
 }
 
 .Extensions .ListItems {
