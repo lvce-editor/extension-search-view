@@ -4,17 +4,21 @@ import type { VisibleItem } from '../VisibleItem/VisibleItem.ts'
 import * as AriaRoleDescription from '../AriaRoleDescription/AriaRoleDescription.ts'
 import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
+import * as ExtensionStrings from '../ExtensionStrings/ExtensionStrings.ts'
 import * as GetExtensionActionsVirtualDom from '../GetExtensionActionsVirtualDom/GetExtensionActionsVirtualDom.ts'
 import { getExtensionListItemClassName } from '../GetExtensionListItemClassName/GetExtensionListItemClassName.ts'
 import { getExtensionListItemFooter } from '../GetExtensionListItemFooter/GetExtensionListItemFooter.ts'
 import { getExtensionListItemId } from '../GetExtensionListItemId/GetExtensionListItemId.ts'
 import { getExtensionListItemStatisticsVirtualDom } from '../GetExtensionListItemStatisticsVirtualDom/GetExtensionListItemStatisticsVirtualDom.ts'
+import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 import { text } from '../VirtualDomHelpers/VirtualDomHelpers.ts'
 
-const listItemDetail: VirtualDomNode = {
-  childCount: 3,
-  className: ClassNames.ExtensionListItemDetail,
-  type: VirtualDomElements.Div,
+const getListItemDetail = (linked: boolean): VirtualDomNode => {
+  return {
+    childCount: linked ? 4 : 3,
+    className: ClassNames.ExtensionListItemDetail,
+    type: VirtualDomElements.Div,
+  }
 }
 const listItemName: VirtualDomNode = {
   childCount: 1,
@@ -34,6 +38,23 @@ const listItemAuthorName: VirtualDomNode = {
   type: VirtualDomElements.Div,
 }
 
+const getLinkedIconVirtualDom = (linked: boolean): readonly VirtualDomNode[] => {
+  if (!linked) {
+    return []
+  }
+  const label = ExtensionStrings.linked()
+  return [
+    {
+      ariaLabel: label,
+      childCount: 0,
+      className: MergeClassNames.mergeClassNames(ClassNames.MaskIcon, 'MaskIconLinkExternal', ClassNames.ExtensionListItemLinkedIcon),
+      role: AriaRoles.Image,
+      title: label,
+      type: VirtualDomElements.Div,
+    },
+  ]
+}
+
 export const getExtensionListItemVirtualDom = (extension: VisibleItem): readonly VirtualDomNode[] => {
   const {
     builtin = false,
@@ -43,6 +64,7 @@ export const getExtensionListItemVirtualDom = (extension: VisibleItem): readonly
     focused,
     icon,
     id,
+    linked = false,
     name,
     posInSet,
     publisher,
@@ -70,7 +92,7 @@ export const getExtensionListItemVirtualDom = (extension: VisibleItem): readonly
       src: icon,
       type: VirtualDomElements.Img,
     },
-    listItemDetail,
+    getListItemDetail(linked),
     listItemName,
     text(name),
     listItemDescription,
@@ -80,6 +102,7 @@ export const getExtensionListItemVirtualDom = (extension: VisibleItem): readonly
     text(publisher),
     ...getExtensionListItemStatisticsVirtualDom(hasStatistics, downloadCount, rating),
     ...actionsDom,
+    ...getLinkedIconVirtualDom(linked),
   ]
   return dom
 }

@@ -4,7 +4,7 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   await ExtensionSearch.open()
   await ExtensionSearch.handleInput('@', 1, 1)
   const items = Locator('.ExtensionSearchCompletionItem')
-  const lastItem = items.nth(13)
+  const lastItem = items.nth(14)
   await expect(items.first()).toHaveAttribute('id', 'ExtensionSearchCompletion-0')
-  await expect(lastItem).toHaveAttribute('id', 'ExtensionSearchCompletion-13')
+  await expect(lastItem).toHaveAttribute('id', 'ExtensionSearchCompletion-14')
 }

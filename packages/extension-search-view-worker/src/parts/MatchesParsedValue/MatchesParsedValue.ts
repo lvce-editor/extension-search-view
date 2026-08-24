@@ -29,6 +29,9 @@ export const matchesParsedValue = (extension: ExtensionListItem, parsedValue: Pa
   if ((parsedValue.disabled && !extensionIsDisabled) || (parsedValue.enabled && extensionIsDisabled)) {
     return false
   }
+  if (parsedValue.linked && extension.linked !== true) {
+    return false
+  }
   if (parsedValue.id && extension.id) {
     return parsedValue.id === extension.id
   }

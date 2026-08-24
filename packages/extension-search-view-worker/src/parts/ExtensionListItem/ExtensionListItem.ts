@@ -6,6 +6,7 @@ export interface ExtensionListItem {
   readonly downloadCount?: string | undefined
   readonly icon: string
   readonly id: string
+  readonly linked?: boolean | undefined
   readonly name: string
   readonly publisher: string
   readonly rating?: string | undefined

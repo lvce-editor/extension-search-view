@@ -52,6 +52,12 @@ test('copies all item properties correctly', () => {
   expect(result.description).toBe('Test Description')
 })
 
+test('copies linked state', () => {
+  const result = GetVisibleItem.getVisibleItem({ ...mockItem, linked: true }, 10, 30, 0, 0, 0, 0)
+
+  expect(result.linked).toBe(true)
+})
+
 test('handles negative relative value', () => {
   const result = GetVisibleItem.getVisibleItem(mockItem, 10, 30, 0, -10, 2, 0)
   expect(result.top).toBe((2 - 0) * 30 - -10)
