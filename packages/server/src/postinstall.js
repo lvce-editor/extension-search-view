@@ -207,6 +207,7 @@ const dirents = await readdir(serverStaticPath)
 const commitHash = dirents.find(isCommitHash) || ''
 const rendererWorkerMainPath = join(serverStaticPath, commitHash, 'packages', 'renderer-worker', 'dist', 'rendererWorkerMain.js')
 const testWorkerMainPath = join(serverStaticPath, commitHash, 'packages', 'test-worker', 'dist', 'testWorkerMain.js')
+const linkedExtensionManifestPath = join(serverStaticPath, commitHash, 'extensions', 'builtin.language-basics-html', 'extension.json')
 const extensionDetailViewWorkerTargetPath = join(
   serverStaticPath,
   commitHash,
@@ -218,6 +219,8 @@ const extensionDetailViewWorkerTargetPath = join(
 
 const testWorkerContent = await readFile(testWorkerMainPath, 'utf-8')
 await writeFile(testWorkerMainPath, patchTestWorker(testWorkerContent))
+const linkedExtensionManifest = JSON.parse(await readFile(linkedExtensionManifestPath, 'utf-8'))
+await writeFile(linkedExtensionManifestPath, JSON.stringify({ ...linkedExtensionManifest, linked: true }, null, 2) + '\n')
 const extensionDetailViewWorkerContent = await readFile(extensionDetailViewWorkerTargetPath, 'utf-8')
 await writeFile(extensionDetailViewWorkerTargetPath, patchExtensionDetailWorker(extensionDetailViewWorkerContent))
 
