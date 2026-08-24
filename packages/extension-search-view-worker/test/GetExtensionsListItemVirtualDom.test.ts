@@ -241,7 +241,7 @@ test('renders a linked extension indicator', () => {
     childCount: 0,
     className: `${ClassNames.MaskIcon} MaskIconLinkExternal ${ClassNames.ExtensionListItemLinkedIcon}`,
     role: AriaRoles.Image,
-    title: 'Linked',
+    title: 'Extension is linked',
     type: VirtualDomElements.Div,
   })
 })

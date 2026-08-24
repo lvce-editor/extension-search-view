@@ -49,7 +49,7 @@ const getLinkedIconVirtualDom = (linked: boolean): readonly VirtualDomNode[] => 
       childCount: 0,
       className: MergeClassNames.mergeClassNames(ClassNames.MaskIcon, 'MaskIconLinkExternal', ClassNames.ExtensionListItemLinkedIcon),
       role: AriaRoles.Image,
-      title: label,
+      title: 'Extension is linked',
       type: VirtualDomElements.Div,
     },
   ]
