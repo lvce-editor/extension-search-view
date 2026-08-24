@@ -104,6 +104,19 @@ test('normalizeExtension preserves builtin and disabled state', () => {
   expect(result.status).toBe('uninstalling')
 })
 
+test('normalizeExtension recognizes the voice extension isBuiltin flag', () => {
+  const extension = {
+    downloadCount: 12_345,
+    id: 'builtin.gpt-voice',
+    isBuiltin: true,
+    rating: 4.75,
+  }
+
+  const result = NormalizeExtension.normalizeExtension(extension, 1, '/test/assets')
+
+  expect(result.builtin).toBe(true)
+})
+
 test('normalizeExtension includes marketplace statistics', () => {
   const extension = {
     downloadCount: 12_345,
