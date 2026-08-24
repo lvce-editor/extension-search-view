@@ -65,6 +65,12 @@ export const getMenuEntriesFilter = (): readonly MenuEntry[] => {
       label: ExtensionStrings.builtIn(),
     },
     {
+      command: 'Extensions.filterByLinked',
+      flags: MenuItemFlags.None,
+      id: 'filterByLinked',
+      label: ExtensionStrings.linked(),
+    },
+    {
       command: 'Extensions.filterByEnabled',
       flags: MenuItemFlags.None,
       id: 'filterByEnabled',

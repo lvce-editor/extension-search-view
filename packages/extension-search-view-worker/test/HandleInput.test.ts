@@ -50,7 +50,7 @@ test('opens completions for at sign', async () => {
   const result = await handleInput(state, '@', 1, 1)
 
   expect(result.suggestOpen).toBe(true)
-  expect(result.completionItems).toHaveLength(14)
+  expect(result.completionItems).toHaveLength(15)
   expect(result.cursorOffset).toBe(1)
 })
 

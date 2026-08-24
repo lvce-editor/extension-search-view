@@ -231,6 +231,21 @@ test('does not render download count or rating for builtin extensions', () => {
   expect(result.some(({ className }) => className?.includes(ClassNames.ExtensionListItemRating))).toBe(false)
 })
 
+test('renders a linked extension indicator', () => {
+  const item = createMockVisibleItem({ linked: true })
+  const result = GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom(item)
+
+  expect(result[2].childCount).toBe(4)
+  expect(result.at(-1)).toEqual({
+    ariaLabel: 'Linked',
+    childCount: 0,
+    className: `${ClassNames.MaskIcon} MaskIconLinkExternal ${ClassNames.ExtensionListItemLinkedIcon}`,
+    role: AriaRoles.Image,
+    title: 'Linked',
+    type: VirtualDomElements.Div,
+  })
+})
+
 test('handles all properties correctly together', () => {
   const item = createMockVisibleItem({
     description: 'Extension Description',

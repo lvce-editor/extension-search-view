@@ -24,6 +24,16 @@ export const getCss = (state: State): string => {
   flex-shrink: 0;
 }
 
+.ExtensionListItemLinkedIcon {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 14px;
+  height: 14px;
+  color: var(--WorkbenchForeground, rgb(188, 190, 190));
+  opacity: 0.8;
+}
+
 .ExtensionListItemDisabled:not(.ExtensionActive) {
   background: color-mix(in srgb, var(--SideBarBackground, rgb(30, 35, 36)) 95%, black);
   color: var(--DisabledForeground, color-mix(in srgb, var(--WorkbenchForeground) 48%, transparent));

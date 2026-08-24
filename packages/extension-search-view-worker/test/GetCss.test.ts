@@ -139,3 +139,17 @@ test('keeps extension list item padding within the list width', () => {
   flex-shrink: 0;
 }`)
 })
+
+test('positions the linked extension indicator at the top right', () => {
+  const result = GetCss.getCss(createDefaultState())
+
+  expect(result).toContain(`.ExtensionListItemLinkedIcon {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 14px;
+  height: 14px;
+  color: var(--WorkbenchForeground, rgb(188, 190, 190));
+  opacity: 0.8;
+}`)
+})

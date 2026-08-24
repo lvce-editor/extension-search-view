@@ -27,6 +27,20 @@ const createParsedValue = (query: string): ParsedExtensionSearchValue => ({
   sort: 'name',
 })
 
+test('matches linked extensions for @linked', () => {
+  const extension = { ...createExtension('Linked Extension', 'test-linked'), linked: true }
+  const parsedValue = { ...createParsedValue(''), linked: true }
+
+  expect(matchesParsedValue(extension, parsedValue)).toBe(true)
+})
+
+test('does not match regular extensions for @linked', () => {
+  const extension = createExtension('Regular Extension', 'test-regular')
+  const parsedValue = { ...createParsedValue(''), linked: true }
+
+  expect(matchesParsedValue(extension, parsedValue)).toBe(false)
+})
+
 test('matches extension by name', () => {
   const extension = createExtension('Test Extension', 'test-extension')
   const parsedValue = createParsedValue('test')

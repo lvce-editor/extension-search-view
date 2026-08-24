@@ -13,6 +13,7 @@ const titleFilters: readonly TitleFilter[] = [
   { label: ExtensionStrings.enabled, value: ExtensionFilterParameter.Enabled },
   { label: ExtensionStrings.disabled, value: ExtensionFilterParameter.Disabled },
   { label: ExtensionStrings.builtIn, value: ExtensionFilterParameter.Builtin },
+  { label: ExtensionStrings.linked, value: ExtensionFilterParameter.Linked },
   { label: ExtensionStrings.updates, value: ExtensionFilterParameter.Outdated },
   { label: ExtensionStrings.featured, value: ExtensionFilterParameter.Featured },
   { label: ExtensionStrings.mcpServers, value: ExtensionFilterParameter.McpServers },

@@ -95,6 +95,7 @@ export const commandMap = {
   'SearchExtensions.filterByEnabled': WrapCommand.wrapAsyncCommand(FilterByValue.createFilterCommand(ExtensionFilterParameter.Enabled)),
   'SearchExtensions.filterByFeatured': WrapCommand.wrapAsyncCommand(FilterByValue.createFilterCommand(ExtensionFilterParameter.Featured)),
   'SearchExtensions.filterByInstalled': WrapCommand.wrapAsyncCommand(FilterByValue.createFilterCommand(ExtensionFilterParameter.Installed)),
+  'SearchExtensions.filterByLinked': WrapCommand.wrapAsyncCommand(FilterByValue.createFilterCommand(ExtensionFilterParameter.Linked)),
   'SearchExtensions.filterByMcpServers': WrapCommand.wrapAsyncCommand(FilterByValue.createFilterCommand(ExtensionFilterParameter.McpServers)),
   'SearchExtensions.filterByMostPopular': WrapCommand.wrapAsyncCommand(FilterByMostPopular.filterByMostPopularWithContext),
   'SearchExtensions.filterByRecentlyPublished': WrapCommand.wrapAsyncCommand(

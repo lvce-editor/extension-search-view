@@ -5,6 +5,6 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   await ExtensionSearch.clearSearchResults()
   await ExtensionSearch.handleInput('@', 1, 1)
   await ExtensionSearch.selectPreviousCompletion()
-  const lastItem = Locator('.ExtensionSearchCompletionItem').nth(13)
+  const lastItem = Locator('.ExtensionSearchCompletionItem').nth(14)
   await expect(lastItem).toHaveClass('ExtensionSearchCompletionItemFocused')
 }

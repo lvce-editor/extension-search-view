@@ -11,7 +11,7 @@ export const getVisibleItem = (
   focusedIndex: number,
 ): VisibleItem => {
   // TODO use normal parameters
-  const { builtin, description, disabled, downloadCount, icon, id, name, publisher, rating, status } = item
+  const { builtin, description, disabled, downloadCount, icon, id, linked, name, publisher, rating, status } = item
   return {
     builtin,
     description,
@@ -21,6 +21,7 @@ export const getVisibleItem = (
     icon,
     id,
     index: i,
+    linked,
     name,
     posInSet: i + 1,
     publisher,

@@ -16,7 +16,7 @@ test('simple filter entries execute registered extension view commands', () => {
     .filter((entry) => entry.flags === MenuItemFlags.None)
     .map((entry) => entry.command)
 
-  expect(simpleFilterCommands).toHaveLength(11)
+  expect(simpleFilterCommands).toHaveLength(12)
   expect(simpleFilterCommands.every((command) => command.startsWith('Extensions.'))).toBe(true)
   expect(simpleFilterCommands.every((command) => registeredCommands.has(command))).toBe(true)
 })
@@ -30,6 +30,7 @@ test.each([
   ['filterByInstalled', '@installed'],
   ['filterByUpdates', '@outdated'],
   ['filterByBuiltin', '@builtin'],
+  ['filterByLinked', '@linked'],
   ['filterByEnabled', '@enabled'],
   ['filterByDisabled', '@disabled'],
   ['filterByWorkspaceUnsupported', '@workspaceunsupported'],
