@@ -5,5 +5,5 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   await ExtensionSearch.clearSearchResults()
   await ExtensionSearch.handleInput('@', 1, 1)
   const items = Locator('.ExtensionSearchCompletionItem')
-  await expect(items).toHaveCount(14)
+  await expect(items).toHaveCount(15)
 }

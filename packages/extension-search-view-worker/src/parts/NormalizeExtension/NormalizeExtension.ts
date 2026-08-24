@@ -6,6 +6,7 @@ import { getDisabled } from '../GetDisabled/GetDisabled.ts'
 import { getDownloadCount } from '../GetDownloadCount/GetDownloadCount.ts'
 import { getIcon } from '../GetIcon/GetIcon.ts'
 import { getId } from '../GetId/GetId.ts'
+import { getLinked } from '../GetLinked/GetLinked.ts'
 import { getName } from '../GetName/GetName.ts'
 import { getPublisher } from '../GetPublisher/GetPublisher.ts'
 import { getRating } from '../GetRating/GetRating.ts'
@@ -22,6 +23,7 @@ export const normalizeExtension = (extension: unknown, platform: number, assetDi
     downloadCount: getDownloadCount(extension),
     icon: getIcon(extension, platform, assetDir),
     id: getId(extension),
+    linked: getLinked(extension),
     name: getName(extension),
     publisher: getPublisher(extension),
     rating: getRating(extension),

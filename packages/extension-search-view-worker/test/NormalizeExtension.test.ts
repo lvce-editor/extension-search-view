@@ -22,6 +22,7 @@ test('normalizeExtension returns correct ExtensionListItem structure', () => {
     downloadCount: 'n/a',
     icon: '/test/assets/icons/extensionDefaultIcon.png',
     id: 'test-id',
+    linked: false,
     name: 'Test Extension',
     publisher: 'test-id',
     rating: 'n/a',
@@ -48,6 +49,7 @@ test('normalizeExtension handles extension with missing fields', () => {
     downloadCount: 'n/a',
     icon: '/test/assets/icons/extensionDefaultIcon.png',
     id: 'test-id',
+    linked: false,
     name: 'Test Extension',
     publisher: 'test-id',
     rating: 'n/a',
@@ -79,6 +81,7 @@ test('normalizeExtension handles different platform values', () => {
     downloadCount: 'n/a',
     icon: '/test/assets/icons/extensionDefaultIcon.png',
     id: 'test-id',
+    linked: false,
     name: 'Test Extension',
     publisher: 'test-id',
     rating: 'n/a',
@@ -115,6 +118,18 @@ test('normalizeExtension recognizes the voice extension isBuiltin flag', () => {
   const result = NormalizeExtension.normalizeExtension(extension, 1, '/test/assets')
 
   expect(result.builtin).toBe(true)
+})
+
+test('normalizeExtension preserves linked state', () => {
+  const result = NormalizeExtension.normalizeExtension({ id: 'test.linked', linked: true }, 1, '/test/assets')
+
+  expect(result.linked).toBe(true)
+})
+
+test('normalizeExtension recognizes linked extensions from older symlink metadata', () => {
+  const result = NormalizeExtension.normalizeExtension({ id: 'test.linked', symlink: '/test/extension' }, 1, '/test/assets')
+
+  expect(result.linked).toBe(true)
 })
 
 test('normalizeExtension includes marketplace statistics', () => {
