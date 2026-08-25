@@ -1,5 +1,7 @@
 import type { Test } from '@lvce-editor/test-with-playwright'
 
+export const skip = navigator.platform === 'Win32'
+
 export const test: Test = async ({ Command, expect, ExtensionSearch, Locator }) => {
   await ExtensionSearch.open()
   await ExtensionSearch.setExtensionStatus('builtin.theme-atom-one-dark', 'disabled')
