@@ -18,6 +18,11 @@ test('returns array of key bindings', () => {
       when: WhenExpression.FocusExtensionsInput,
     },
     {
+      command: 'Extensions.acceptCompletion',
+      key: KeyCode.Tab,
+      when: WhenExpression.FocusExtensionsInput,
+    },
+    {
       command: 'Extensions.selectPreviousCompletion',
       key: KeyCode.UpArrow,
       when: WhenExpression.FocusExtensionsInput,
