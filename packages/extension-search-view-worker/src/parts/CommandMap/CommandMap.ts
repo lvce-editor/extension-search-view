@@ -24,6 +24,7 @@ import * as FocusNextPage from '../FocusNextPage/FocusNextPage.ts'
 import * as FocusPrevious from '../FocusPrevious/FocusPrevious.ts'
 import * as FocusPreviousPage from '../FocusPreviousPage/FocusPreviousPage.ts'
 import * as GetActions from '../GetActions/GetActions.ts'
+import * as GetComponentState from '../GetComponentState/GetComponentState.ts'
 import * as GetKeyBindings from '../GetKeyBindings/GetKeyBindings.ts'
 import { getMenuEntries2 } from '../GetMenuEntries2/GetMenuEntries2.ts'
 import * as GetMenuEntries from '../GetMenuEntries/GetMenuEntries.ts'
@@ -68,6 +69,7 @@ import * as SearchExtensions from '../SearchExtensions/SearchExtensions.ts'
 import * as SelectIndex from '../SelectIndex/SelectIndex.ts'
 import * as SelectNextCompletion from '../SelectNextCompletion/SelectNextCompletion.ts'
 import * as SelectPreviousCompletion from '../SelectPreviousCompletion/SelectPreviousCompletion.ts'
+import * as SetComponentState from '../SetComponentState/SetComponentState.ts'
 import * as SetDeltaY from '../SetDeltaY/SetDeltaY.ts'
 import * as SetExtensionStatus from '../SetExtensionStatus/SetExtensionStatus.ts'
 import * as ToggleSuggest from '../ToggleSuggest/ToggleSuggest.ts'
@@ -115,6 +117,7 @@ export const commandMap = {
   'SearchExtensions.focusPreviousPage': WrapCommand.wrapCommand(FocusPreviousPage.focusPreviousPage),
   'SearchExtensions.getActions': GetActions.getActions,
   'SearchExtensions.getCommandIds': getCommandIds,
+  'SearchExtensions.getComponentState': GetComponentState.getComponentState,
   'SearchExtensions.getKeyBindings': GetKeyBindings.getKeyBindings,
   'SearchExtensions.getMenuEntries': GetMenuEntries.getMenuEntriesList,
   'SearchExtensions.getMenuEntries2': WrapCommand.wrapGetter(getMenuEntries2),
@@ -160,6 +163,7 @@ export const commandMap = {
   'SearchExtensions.selectIndex': WrapCommand.wrapCommand(SelectIndex.selectIndex),
   'SearchExtensions.selectNextCompletion': WrapCommand.wrapCommand(SelectNextCompletion.selectNextCompletion),
   'SearchExtensions.selectPreviousCompletion': WrapCommand.wrapCommand(SelectPreviousCompletion.selectPreviousCompletion),
+  'SearchExtensions.setComponentState': SetComponentState.setComponentState,
   'SearchExtensions.setDeltaY': WrapCommand.wrapCommand(SetDeltaY.setDeltaY),
   'SearchExtensions.setExtensionStatus': WrapCommand.wrapCommand(SetExtensionStatus.setExtensionStatus),
   'SearchExtensions.terminate': terminate,
