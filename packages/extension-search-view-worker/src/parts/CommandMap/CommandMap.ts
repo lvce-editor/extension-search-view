@@ -24,6 +24,7 @@ import * as FocusNextPage from '../FocusNextPage/FocusNextPage.ts'
 import * as FocusPrevious from '../FocusPrevious/FocusPrevious.ts'
 import * as FocusPreviousPage from '../FocusPreviousPage/FocusPreviousPage.ts'
 import * as GetActions from '../GetActions/GetActions.ts'
+import { getComponentDom } from '../GetComponentDom/GetComponentDom.ts'
 import * as GetComponentState from '../GetComponentState/GetComponentState.ts'
 import * as GetKeyBindings from '../GetKeyBindings/GetKeyBindings.ts'
 import { getMenuEntries2 } from '../GetMenuEntries2/GetMenuEntries2.ts'
@@ -117,6 +118,7 @@ export const commandMap = {
   'SearchExtensions.focusPreviousPage': WrapCommand.wrapCommand(FocusPreviousPage.focusPreviousPage),
   'SearchExtensions.getActions': GetActions.getActions,
   'SearchExtensions.getCommandIds': getCommandIds,
+  'SearchExtensions.getComponentDom': getComponentDom,
   'SearchExtensions.getComponentState': GetComponentState.getComponentState,
   'SearchExtensions.getKeyBindings': GetKeyBindings.getKeyBindings,
   'SearchExtensions.getMenuEntries': GetMenuEntries.getMenuEntriesList,
