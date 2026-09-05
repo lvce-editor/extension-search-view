@@ -1,7 +1,8 @@
 import { join } from 'node:path'
 import { root } from './root.ts'
 
-export const threshold = 544_000
+// Includes the read-only component DOM inspection command.
+export const threshold = 545_000
 
 export const instantiations = 5_000
 
