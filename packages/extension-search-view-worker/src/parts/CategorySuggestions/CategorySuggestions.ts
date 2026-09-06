@@ -1,22 +1,3 @@
-export const CategorySuggestions = [
-  '@category:"ai"',
-  '@category:"azure"',
-  '@category:"chat"',
-  '@category:"data science"',
-  '@category:"debuggers"',
-  '@category:"education"',
-  '@category:"extension packs"',
-  '@category:"formatters"',
-  '@category:"keymaps"',
-  '@category:"language packs"',
-  '@category:"linters"',
-  '@category:"machine learning"',
-  '@category:"notebooks"',
-  '@category:"other"',
-  '@category:"programming languages"',
-  '@category:"scm providers"',
-  '@category:"snippets"',
-  '@category:"testing"',
-  '@category:"themes"',
-  '@category:"visualization"',
-]
+import { extensionCategories } from '../ExtensionCategories/ExtensionCategories.ts'
+
+export const CategorySuggestions = extensionCategories.map((category) => `@category:"${category.toLowerCase()}"`)

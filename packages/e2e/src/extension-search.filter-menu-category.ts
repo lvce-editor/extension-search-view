@@ -1,0 +1,28 @@
+import type { Test } from '@lvce-editor/test-with-playwright'
+
+export const test: Test = async ({ ContextMenu, expect, ExtensionSearch, Locator }) => {
+  await ExtensionSearch.open()
+  await ExtensionSearch.clearSearchResults()
+  await ExtensionSearch.handleClickFilter()
+
+  const menus = Locator('.Menu')
+  const category = menus.nth(0).locator('text=Category')
+  await category.hover()
+  await expect(menus).toHaveCount(2)
+  const subMenu = menus.nth(1)
+  await expect(subMenu.locator('.MenuItem')).toHaveCount(20)
+  await expect(subMenu.locator('text=Themes')).toBeVisible()
+  await subMenu.locator('text=Themes').click()
+
+  const input = Locator('.Extensions .MultilineInputBox')
+  await expect(input).toHaveValue('@category:"themes"')
+  await expect(menus).toHaveCount(0)
+
+  await ExtensionSearch.clearSearchResults()
+  await ExtensionSearch.handleClickFilter()
+  await ContextMenu.selectIndex(0, 6)
+  await expect(menus).toHaveCount(2)
+  await subMenu.locator('text=Programming Languages').click()
+  await expect(input).toHaveValue('@category:"programming languages"')
+  await expect(menus).toHaveCount(0)
+}
