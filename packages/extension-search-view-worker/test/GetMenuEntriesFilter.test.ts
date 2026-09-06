@@ -55,6 +55,8 @@ test('category submenu uses a registered menu and exposes executable category fi
   const { uid } = state
   const entries = getMenuEntries2(state, category.args![0])
   expect(entries).toHaveLength(20)
+  expect(entries.map((entry) => entry.label)).toContain('AI')
+  expect(entries.map((entry) => entry.label)).toContain('SCM Providers')
   expect(entries.map((entry) => entry.label)).toContain('Themes')
   expect(entries.map((entry) => entry.label)).toContain('Programming Languages')
   for (const entry of entries) {
