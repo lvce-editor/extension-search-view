@@ -3,8 +3,8 @@ import { commandMap } from '../src/parts/CommandMap/CommandMap.ts'
 import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import * as ExtensionSearchViewStates from '../src/parts/ExtensionSearchViewStates/ExtensionSearchViewStates.ts'
 import { getMenuEntries2 } from '../src/parts/GetMenuEntries2/GetMenuEntries2.ts'
-import { getMenuIds } from '../src/parts/GetMenuIds/GetMenuIds.ts'
 import { getMenuEntriesFilter } from '../src/parts/GetMenuEntriesFilter/GetMenuEntriesFilter.ts'
+import { getMenuIds } from '../src/parts/GetMenuIds/GetMenuIds.ts'
 import * as MenuItemFlags from '../src/parts/MenuItemFlags/MenuItemFlags.ts'
 
 test('returns array with filter menu entries', () => {
@@ -52,15 +52,16 @@ test('category submenu uses a registered menu and exposes executable category fi
   const category = getMenuEntriesFilter().find((entry) => entry.label === 'Category')!
   expect(getMenuIds()).toContain(category.id)
   const state = { ...createDefaultState(), uid: 123 }
+  const { uid } = state
   const entries = getMenuEntries2(state, category.args![0])
   expect(entries).toHaveLength(20)
   expect(entries.map((entry) => entry.label)).toContain('Themes')
   expect(entries.map((entry) => entry.label)).toContain('Programming Languages')
   for (const entry of entries) {
-    ExtensionSearchViewStates.set(state.uid, state, state)
+    ExtensionSearchViewStates.set(uid, state, state)
     expect(entry.command).toBe('Extensions.filterByCategory')
     const command = commandMap['SearchExtensions.filterByCategory']
-    await command(state.uid, entry.args![0])
-    expect(ExtensionSearchViewStates.get(state.uid).newState.searchValue).toBe(entry.args![0])
+    await command(uid, entry.args![0])
+    expect(ExtensionSearchViewStates.get(uid).newState.searchValue).toBe(entry.args![0])
   }
 })
