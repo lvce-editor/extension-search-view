@@ -1,6 +1,6 @@
 import type { Test } from '@lvce-editor/test-with-playwright'
 
-export const test: Test = async ({ ContextMenu, expect, ExtensionSearch, Locator }) => {
+export const test: Test = async ({ Command, ContextMenu, expect, ExtensionSearch, Locator }) => {
   await ExtensionSearch.open()
   await ExtensionSearch.clearSearchResults()
   await ExtensionSearch.handleClickFilter()
@@ -20,7 +20,7 @@ export const test: Test = async ({ ContextMenu, expect, ExtensionSearch, Locator
 
   await ExtensionSearch.clearSearchResults()
   await ExtensionSearch.handleClickFilter()
-  await ContextMenu.selectIndex(0, 6)
+  await Command.execute('Menu.handleMouseEnter', 0, 6, 0, 0, 2)
   await expect(menus).toHaveCount(2)
   await ContextMenu.selectItem('Programming Languages')
   await expect(input).toHaveValue('@category:"programming languages"')
