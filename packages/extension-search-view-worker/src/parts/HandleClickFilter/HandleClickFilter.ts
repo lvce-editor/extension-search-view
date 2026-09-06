@@ -9,6 +9,7 @@ export const handleClickFilter = async (state: State): Promise<State> => {
   const menuY = y + headerHeight + menuHeight
   await ContextMenu.show2(uid, MenuEntryId.ExtensionSearchFilter, menuX, menuY, {
     menuId: MenuEntryId.ExtensionSearchFilter,
+    openSubMenuToLeft: true,
   })
   return state
 }

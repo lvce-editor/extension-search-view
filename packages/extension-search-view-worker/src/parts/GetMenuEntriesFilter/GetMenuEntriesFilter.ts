@@ -1,3 +1,4 @@
+import { MenuEntryId } from '@lvce-editor/constants'
 import type { MenuEntry } from '../MenuEntry/MenuEntry.ts'
 import * as ExtensionStrings from '../ExtensionStrings/ExtensionStrings.ts'
 import * as MenuItemFlags from '../MenuItemFlags/MenuItemFlags.ts'
@@ -41,9 +42,10 @@ export const getMenuEntriesFilter = (): readonly MenuEntry[] => {
       label: '',
     },
     {
-      command: 'SearchExtensions.filterByCategory',
+      args: [{ menuId: MenuEntryId.ExtensionSearchFilter, subMenu: 'category' }],
+      command: '',
       flags: MenuItemFlags.SubMenu,
-      id: 'filterByCategory',
+      id: MenuEntryId.ExtensionSearchFilter,
       label: ExtensionStrings.category(),
     },
     {

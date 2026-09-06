@@ -94,6 +94,7 @@ export const commandMap = {
   'SearchExtensions.enable': WrapCommand.wrapCommand(Enable.enable),
   'SearchExtensions.enableWorkspace': WrapCommand.wrapCommand(EnableWorkspace.enableWorkspace),
   'SearchExtensions.filterByBuiltin': WrapCommand.wrapAsyncCommand(FilterByValue.createFilterCommand(ExtensionFilterParameter.Builtin)),
+  'SearchExtensions.filterByCategory': WrapCommand.wrapAsyncCommand(FilterByValue.filterByValueWithContext),
   'SearchExtensions.filterByDisabled': WrapCommand.wrapAsyncCommand(FilterByValue.createFilterCommand(ExtensionFilterParameter.Disabled)),
   'SearchExtensions.filterByEnabled': WrapCommand.wrapAsyncCommand(FilterByValue.createFilterCommand(ExtensionFilterParameter.Enabled)),
   'SearchExtensions.filterByFeatured': WrapCommand.wrapAsyncCommand(FilterByValue.createFilterCommand(ExtensionFilterParameter.Featured)),
