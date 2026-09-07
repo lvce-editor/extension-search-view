@@ -3,13 +3,16 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   await ExtensionSearch.open()
   await ExtensionSearch.handleInput('@id:missing.extension')
-  await expect(Locator('.NoExtensionsFoundMessage')).toBeVisible()
+  const message = Locator('.NoExtensionsFoundMessage')
+  await expect(message).toBeVisible()
   const clearButton = Locator('.SearchFieldButton').first()
   await expect(clearButton).not.toHaveClass('SearchFieldButtonDisabled')
-  await clearButton.click()
+  await ExtensionSearch.clearSearchResults()
 
-  await expect(Locator('.Extensions .MultilineInputBox')).toHaveValue('')
-  await expect(Locator('.NoExtensionsFoundMessage')).toHaveCount(0)
-  await expect(Locator('.ExtensionListItem')).toHaveCount(10)
+  const input = Locator('.Extensions .MultilineInputBox')
+  await expect(input).toHaveValue('')
+  await expect(message).toHaveCount(0)
+  const items = Locator('.ExtensionListItem')
+  await expect(items).toHaveCount(10)
   await expect(clearButton).toHaveClass('SearchFieldButtonDisabled')
 }

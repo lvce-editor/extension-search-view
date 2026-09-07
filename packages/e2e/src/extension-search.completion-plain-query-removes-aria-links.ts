@@ -6,9 +6,11 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   const input = Locator('.Extensions .MultilineInputBox')
   await expect(input).toHaveAttribute('aria-controls', 'ExtensionSearchCompletions')
   await ExtensionSearch.handleInput('atom', 1, 4)
-  await expect(Locator('.ExtensionSearchCompletionWidget')).toHaveCount(0)
+  const widget = Locator('.ExtensionSearchCompletionWidget')
+  await expect(widget).toHaveCount(0)
   await expect(input).toHaveAttribute('aria-expanded', 'false')
   await expect(input).toHaveAttribute('aria-controls', null)
   await expect(input).toHaveAttribute('aria-activedescendant', null)
-  await expect(Locator('.ExtensionListItemName')).toHaveText('Atom One Dark Theme')
+  const name = Locator('.ExtensionListItemName')
+  await expect(name).toHaveText('Atom One Dark Theme')
 }

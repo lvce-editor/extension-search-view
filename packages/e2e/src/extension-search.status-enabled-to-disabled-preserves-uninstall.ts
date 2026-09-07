@@ -8,12 +8,14 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   const buttons = Locator('.ExtensionListItem .ExtensionActionButton')
   await expect(buttons).toHaveCount(2)
   await expect(buttons.first()).toHaveText('Disable')
-  await expect(Locator('.ExtensionListItemDisabled')).toHaveCount(0)
+  const disabledItems = Locator('.ExtensionListItemDisabled')
+  await expect(disabledItems).toHaveCount(0)
 
   await ExtensionSearch.setExtensionStatus(extensionId, 'disabled', false)
-  await expect(Locator('.ExtensionListItemDisabled')).toHaveCount(1)
+  await expect(disabledItems).toHaveCount(1)
   await expect(buttons).toHaveCount(2)
   await expect(buttons.first()).toHaveText('Enable')
-  await expect(buttons.nth(1)).toHaveText('Uninstall')
+  const uninstallButton = buttons.nth(1)
+  await expect(uninstallButton).toHaveText('Uninstall')
   await expect(buttons.first()).toHaveAttribute('disabled', null)
 }

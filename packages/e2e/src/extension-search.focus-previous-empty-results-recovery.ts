@@ -3,13 +3,16 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   await ExtensionSearch.open()
   await ExtensionSearch.handleInput('@id:missing.extension')
-  await expect(Locator('.NoExtensionsFoundMessage')).toBeVisible()
+  const message = Locator('.NoExtensionsFoundMessage')
+  await expect(message).toBeVisible()
   await ExtensionSearch.focusPrevious()
-  await expect(Locator('.ExtensionActive')).toHaveCount(0)
-  await expect(Locator('.NoExtensionsFoundMessage')).toHaveText('No extensions found.')
+  const activeItem = Locator('.ExtensionActive')
+  await expect(activeItem).toHaveCount(0)
+  await expect(message).toHaveText('No extensions found.')
 
   await ExtensionSearch.handleInput('atom')
   await ExtensionSearch.focusFirst()
-  await expect(Locator('.NoExtensionsFoundMessage')).toHaveCount(0)
-  await expect(Locator('.ExtensionActive .ExtensionListItemName')).toHaveText('Atom One Dark Theme')
+  await expect(message).toHaveCount(0)
+  const activeName = Locator('.ExtensionActive .ExtensionListItemName')
+  await expect(activeName).toHaveText('Atom One Dark Theme')
 }

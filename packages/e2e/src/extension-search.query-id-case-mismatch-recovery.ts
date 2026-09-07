@@ -6,10 +6,12 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   const input = Locator('.Extensions .MultilineInputBox')
   const message = Locator('.NoExtensionsFoundMessage')
   await expect(input).toHaveValue('@id:BUILTIN.THEME-ATOM-ONE-DARK')
-  await expect(Locator('.ExtensionListItem')).toHaveCount(0)
+  const items = Locator('.ExtensionListItem')
+  await expect(items).toHaveCount(0)
   await expect(message).toHaveText('No extensions found.')
 
   await ExtensionSearch.handleInput('@id:builtin.theme-atom-one-dark')
   await expect(message).toHaveCount(0)
-  await expect(Locator('.ExtensionListItemName')).toHaveText('Atom One Dark Theme')
+  const name = Locator('.ExtensionListItemName')
+  await expect(name).toHaveText('Atom One Dark Theme')
 }
