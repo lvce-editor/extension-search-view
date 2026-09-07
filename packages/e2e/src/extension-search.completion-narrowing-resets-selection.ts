@@ -6,7 +6,7 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   await ExtensionSearch.selectPreviousCompletion()
   await expect(Locator('.ExtensionSearchCompletionItemFocused')).toHaveText('@workspaceunsupported')
 
-  await ExtensionSearch.handleInput('@en', 1, 3)
+  await ExtensionSearch.handleInput('@enab', 1, 5)
   await expect(Locator('.ExtensionSearchCompletionItem')).toHaveCount(1)
   await expect(Locator('.ExtensionSearchCompletionItemFocused')).toHaveText('@enabled')
   await expect(Locator('.Extensions .MultilineInputBox')).toHaveAttribute('aria-activedescendant', 'ExtensionSearchCompletion-0')

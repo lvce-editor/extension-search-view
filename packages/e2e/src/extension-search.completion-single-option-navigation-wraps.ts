@@ -2,7 +2,7 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   await ExtensionSearch.open()
-  await ExtensionSearch.handleInput('@en', 1, 3)
+  await ExtensionSearch.handleInput('@enab', 1, 5)
   await expect(Locator('.ExtensionSearchCompletionItem')).toHaveCount(1)
   await ExtensionSearch.selectNextCompletion()
   await expect(Locator('.ExtensionSearchCompletionItemFocused')).toHaveText('@enabled')
