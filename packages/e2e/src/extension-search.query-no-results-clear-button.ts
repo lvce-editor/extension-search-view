@@ -6,7 +6,7 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   const message = Locator('.NoExtensionsFoundMessage')
   await expect(message).toBeVisible()
   const clearButton = Locator('.SearchFieldButton').first()
-  await expect(clearButton).not.toHaveClass('SearchFieldButtonDisabled')
+  await expect(clearButton).toHaveAttribute('class', 'SearchFieldButton')
   await ExtensionSearch.clearSearchResults()
 
   const input = Locator('.Extensions .MultilineInputBox')
@@ -14,5 +14,5 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   await expect(message).toHaveCount(0)
   const items = Locator('.ExtensionListItem')
   await expect(items).toHaveCount(10)
-  await expect(clearButton).toHaveClass('SearchFieldButtonDisabled')
+  await expect(clearButton).toHaveAttribute('class', 'SearchFieldButton SearchFieldButtonDisabled')
 }
