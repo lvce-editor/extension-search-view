@@ -20,7 +20,8 @@ export const loadContentWithContext = async (context: AsyncCommandContext<State>
     const size = GetViewletSize.getViewletSize(width)
     const scrollSensitivity = IsFirefox.getIsFirefox() ? 2.5 : 1
     await context.updateState((state) => {
-      if (!state.initial) {
+      const { initial } = state
+      if (!initial) {
         return state
       }
       return {

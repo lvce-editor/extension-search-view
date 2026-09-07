@@ -14,45 +14,47 @@ const getCompletionText = (searchValue: string, completion: string, rangeEnd: nu
 
 export const acceptCompletionWithContext = async (context: AsyncCommandContext<State>, label?: string): Promise<void> => {
   const state = context.getState()
-  const completion = label || state.completionItems[state.completionFocusedIndex]?.label
+  const { completionFocusedIndex, completionItems, cursorOffset, searchValue } = state
+  const completion = label || completionItems[completionFocusedIndex]?.label
   if (!completion) {
     return
   }
-  const range = getCompletionRange(state.searchValue, state.cursorOffset)
+  const range = getCompletionRange(searchValue, cursorOffset)
   if (!range) {
     return
   }
-  const completionText = getCompletionText(state.searchValue, completion, range.end)
-  const searchValue = `${state.searchValue.slice(0, range.start)}${completionText}${state.searchValue.slice(range.end)}`
+  const completionText = getCompletionText(searchValue, completion, range.end)
+  const newSearchValue = `${searchValue.slice(0, range.start)}${completionText}${searchValue.slice(range.end)}`
   await HandleChange.handleChangeWithContext(context, {
     completionFocusedIndex: 0,
     completionItems: [],
     cursorOffset: range.start + completionText.length,
     focus: FocusId.Input,
     inputSource: InputSource.Script,
-    searchValue,
+    searchValue: newSearchValue,
     suggestOpen: false,
   })
 }
 
 export const acceptCompletion = async (state: State, label?: string): Promise<State> => {
-  const completion = label || state.completionItems[state.completionFocusedIndex]?.label
+  const { completionFocusedIndex, completionItems, cursorOffset, searchValue } = state
+  const completion = label || completionItems[completionFocusedIndex]?.label
   if (!completion) {
     return state
   }
-  const range = getCompletionRange(state.searchValue, state.cursorOffset)
+  const range = getCompletionRange(searchValue, cursorOffset)
   if (!range) {
     return state
   }
-  const completionText = getCompletionText(state.searchValue, completion, range.end)
-  const searchValue = `${state.searchValue.slice(0, range.start)}${completionText}${state.searchValue.slice(range.end)}`
+  const completionText = getCompletionText(searchValue, completion, range.end)
+  const newSearchValue = `${searchValue.slice(0, range.start)}${completionText}${searchValue.slice(range.end)}`
   return HandleChange.handleChange(state, {
     completionFocusedIndex: 0,
     completionItems: [],
     cursorOffset: range.start + completionText.length,
     focus: FocusId.Input,
     inputSource: InputSource.Script,
-    searchValue,
+    searchValue: newSearchValue,
     suggestOpen: false,
   })
 }

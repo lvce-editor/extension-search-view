@@ -37,5 +37,6 @@ const getTitleSuffix = (searchValue: string): string => {
 }
 
 export const renderTitle = (state: State): string => {
-  return `${ExtensionStrings.extensions()}: ${getTitleSuffix(state.searchValue)}`
+  const { searchValue } = state
+  return `${ExtensionStrings.extensions()}: ${getTitleSuffix(searchValue)}`
 }
