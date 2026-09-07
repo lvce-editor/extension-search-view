@@ -20,13 +20,6 @@ export default defineConfig([
     },
   },
   {
-    files: ['packages/extension-search-view-worker/src/parts/**/*.ts'],
-    ignores: ['packages/extension-search-view-worker/src/parts/**/*VirtualDom/**/*.ts'],
-    rules: {
-      'virtual-dom/prefer-state-destructuring': 'off',
-    },
-  },
-  {
     files: ['packages/extension-search-view-worker/test/**/*.ts'],
     rules: {
       'virtual-dom/no-inline-event-handlers': 'off',

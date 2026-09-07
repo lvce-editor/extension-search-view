@@ -24,6 +24,7 @@ export const createFilterCommand = (filter: string) => {
 }
 
 export const filterByValue = (state: State, filter: string): Promise<State> => {
-  const value = addFilter(state.searchValue, filter)
+  const { searchValue } = state
+  const value = addFilter(searchValue, filter)
   return HandleInput.handleInput(state, value, InputSource.Script)
 }
