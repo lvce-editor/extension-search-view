@@ -1,8 +1,8 @@
 import { join } from 'node:path'
 import { root } from './root.ts'
 
-// Includes the read-only component DOM inspection command.
-export const threshold = 545_000
+// Includes component DOM inspection and state destructuring (545,012 bytes on macOS).
+export const threshold = 545_100
 
 export const instantiations = 5_000
 
