@@ -13,8 +13,7 @@ const getCompletionText = (searchValue: string, completion: string, rangeEnd: nu
 }
 
 export const acceptCompletionWithContext = async (context: AsyncCommandContext<State>, label?: string): Promise<void> => {
-  const state = context.getState()
-  const { completionFocusedIndex, completionItems, cursorOffset, searchValue } = state
+  const { completionFocusedIndex, completionItems, cursorOffset, searchValue } = context.getState()
   const completion = label || completionItems[completionFocusedIndex]?.label
   if (!completion) {
     return
