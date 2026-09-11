@@ -3,9 +3,7 @@
   "version": "0.0.0-dev",
   "license": "MIT",
   "type": "module",
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": ["packages/*"],
   "scripts": {
     "build": "node packages/build/src/build.ts",
     "build:static": "node packages/build/src/build-static.ts",
@@ -33,6 +31,6 @@
     "eslint": "^10.10.0",
     "playwright": "1.63.0",
     "prettier": "^3.9.6",
-    "typescript": "^7.0.2"
+    "typescript": "^6.0.3"
   }
 }
