@@ -1,3 +1,3 @@
 export const getExtensionDetailUri = (extensionId: string): string => {
-  return `extension-detail://${extensionId}`
+  return `extension-detail:///${encodeURIComponent(extensionId)}`
 }
