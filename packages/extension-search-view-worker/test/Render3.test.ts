@@ -1,9 +1,11 @@
 import { expect, jest, test } from '@jest/globals'
 import { createMockRpc } from '@lvce-editor/rpc'
 import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
+import * as Diff2 from '../src/parts/Diff2/Diff2.ts'
 import * as DiffType from '../src/parts/DiffType/DiffType.ts'
 import * as ExtensionSearchViewStates from '../src/parts/ExtensionSearchViewStates/ExtensionSearchViewStates.ts'
 import * as FocusId from '../src/parts/FocusId/FocusId.ts'
+import * as InputSource from '../src/parts/InputSource/InputSource.ts'
 import * as Render3 from '../src/parts/Render3/Render3.ts'
 import * as RendererProcess from '../src/parts/RendererProcess/RendererProcess.ts'
 import * as WhenExpression from '../src/parts/WhenExpression/WhenExpression.ts'
@@ -90,4 +92,21 @@ test('leaves focus context management with the renderer worker', async () => {
     ['Viewlet.setFocusContext', uid, WhenExpression.FocusExtensions],
     ['Viewlet.commitPending', uid, 23],
   ])
+})
+
+test('renders updates that arrive after the renderer worker computed the diff', async () => {
+  const queueCommands = jest.fn((_uid: number, _commands: readonly unknown[]) => 29)
+  RendererProcess.set(createMockRpc({ commandMap: { 'Viewlet.queueCommands': queueCommands } }))
+  const uid = 7
+  const oldState = { ...createDefaultState(), uid }
+  ExtensionSearchViewStates.set(uid, oldState, oldState)
+  const diffResult = Diff2.diff2(uid)
+  const update = ExtensionSearchViewStates.wrapAsyncCommand(async (context) => {
+    await context.updateState((state) => ({ ...state, searchValue: '@enabled ', inputSource: InputSource.Script }))
+  })
+  await update(uid)
+
+  await Render3.render3(uid, diffResult)
+
+  expect(queueCommands).toHaveBeenCalledWith(uid, [['Viewlet.setValueByName', uid, 'extensions', '@enabled ']])
 })
