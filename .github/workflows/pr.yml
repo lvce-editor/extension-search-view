@@ -44,23 +44,10 @@ jobs:
           PLAYWRIGHT_BROWSERS_PATH: 0
       - name: e2e
         working-directory: ./packages/e2e
-        run: npm run e2e:headless -- --filter=completion --trace-renderer-worker
-        env:
-          PLAYWRIGHT_BROWSERS_PATH: 0
-      - name: install memory test browser
-        run: node node_modules/playwright/cli.js install chromium
+        run: npm run e2e:headless
         env:
           PLAYWRIGHT_BROWSERS_PATH: 0
       - name: measure
         run: npm run measure
         env:
           PLAYWRIGHT_BROWSERS_PATH: 0
-      - name: Upload diagnostics
-        if: always()
-        uses: actions/upload-artifact@v7
-        with:
-          name: e2e-${{ matrix.attempt }}
-          path: |
-            packages/e2e/test-results/**
-            packages/e2e/renderer-worker-traces/**
-          if-no-files-found: ignore

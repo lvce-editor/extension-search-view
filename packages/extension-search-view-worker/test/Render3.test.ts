@@ -111,7 +111,7 @@ test('renders updates that arrive after the renderer worker computed the diff', 
   ExtensionSearchViewStates.set(uid, oldState, oldState)
   const diffResult = Diff2.diff2(uid)
   const update = ExtensionSearchViewStates.wrapAsyncCommand(async (context) => {
-    await context.updateState((state) => ({ ...state, searchValue: '@enabled ', inputSource: InputSource.Script }))
+    await context.updateState((state) => ({ ...state, inputSource: InputSource.Script, searchValue: '@enabled ' }))
   })
   await update(uid)
 
