@@ -5,5 +5,6 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   await ExtensionSearch.handleInput('  @id:builtin.theme-atom-one-dark  ')
   const items = Locator('.ExtensionListItem')
   await expect(items).toHaveCount(1)
-  await expect(items.locator('.ExtensionListItemName')).toHaveText('Atom One Dark Theme')
+  const itemName = items.locator('.ExtensionListItemName')
+  await expect(itemName).toHaveText('Atom One Dark Theme')
 }

@@ -8,8 +8,10 @@ import * as ExtensionStrings from '../ExtensionStrings/ExtensionStrings.ts'
 import * as GetExtensionsListItemVirtualDom from '../GetExtensionsListItemVirtualDom/GetExtensionsListItemVirtualDom.ts'
 import * as TabIndex from '../TabIndex/TabIndex.ts'
 
+const focusOutlineClassName = mergeClassNames(ClassNames.ListItems, ClassNames.FocusOutline)
+
 const getListClassName = (focusOutline: boolean): string => {
-  const className = focusOutline ? mergeClassNames(ClassNames.ListItems, ClassNames.FocusOutline) : ClassNames.ListItems
+  const className = focusOutline ? focusOutlineClassName : ClassNames.ListItems
   return className
 }
 
