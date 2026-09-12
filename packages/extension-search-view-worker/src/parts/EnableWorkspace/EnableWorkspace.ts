@@ -9,6 +9,6 @@ export const enableWorkspace = async (state: State): Promise<State> => {
   if (!item) {
     return state
   }
-  await ExtensionManagementWorker.invoke('Extensions.enableWorkspace', item.id)
+  await ExtensionManagementWorker.enableWorkspace(item.id)
   return SetExtensionStatus.setExtensionStatus(state, item.id, ExtensionStatus.Enabled)
 }
