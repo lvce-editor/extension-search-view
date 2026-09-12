@@ -54,7 +54,7 @@ export const loadContent = async (state: State, savedState: unknown): Promise<St
   const size = GetViewletSize.getViewletSize(width)
   const normalized = NormalizeExtensions.normalizeExtensions(allExtensions, platform, assetDir)
   const scrollSensitivity = IsFirefox.getIsFirefox() ? 2.5 : 1
-  return HandleInput.handleInput(
+  const updatedState = await HandleInput.handleInput(
     {
       ...state,
       allExtensions: normalized,
@@ -67,4 +67,5 @@ export const loadContent = async (state: State, savedState: unknown): Promise<St
     searchValue,
     InputSource.Script,
   )
+  return updatedState
 }
