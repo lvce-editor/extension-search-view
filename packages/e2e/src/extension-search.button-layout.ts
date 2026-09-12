@@ -1,12 +1,16 @@
 import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
+  // arrange
   const extensionId = 'builtin.theme-atom-one-dark'
   await ExtensionSearch.open()
   const query = `@id:${extensionId}`
   await ExtensionSearch.handleInput(query, 1, query.length)
+
+  // act
   await ExtensionSearch.setExtensionStatus(extensionId, 'enabled', false)
 
+  // assert
   const footer = Locator('.ExtensionListItemFooter')
   await expect(footer).toHaveCSS('justify-content', 'flex-end')
   await expect(footer).toHaveCSS('padding-right', '2px')

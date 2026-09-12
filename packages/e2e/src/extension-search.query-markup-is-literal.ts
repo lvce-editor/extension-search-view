@@ -1,8 +1,13 @@
 import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
+  // arrange
   await ExtensionSearch.open()
+
+  // act
   await ExtensionSearch.handleInput('<img src=x onerror=alert(1)>')
+
+  // assert
   const input = Locator('.Extensions .MultilineInputBox')
   const message = Locator('.NoExtensionsFoundMessage')
   await expect(input).toHaveValue('<img src=x onerror=alert(1)>')
@@ -12,7 +17,10 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   const injectedImage = Locator('.Extensions img[src="x"]')
   await expect(injectedImage).toHaveCount(0)
 
+  // act
   await ExtensionSearch.handleInput('@id:builtin.theme-atom-one-dark')
+
+  // assert
   await expect(message).toHaveCount(0)
   const name = Locator('.ExtensionListItemName')
   await expect(name).toHaveText('Atom One Dark Theme')
