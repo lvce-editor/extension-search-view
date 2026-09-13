@@ -1,5 +1,6 @@
 export const CheckBox = 'checkbox'
 export const ComboBox = 'combobox'
+export const Image = 'img'
 export const List = 'list'
 export const ListBox = 'listbox'
 export const ListItem = 'listitem'

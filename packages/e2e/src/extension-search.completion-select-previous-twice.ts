@@ -6,7 +6,7 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   await ExtensionSearch.selectPreviousCompletion()
   await ExtensionSearch.selectPreviousCompletion()
   const input = Locator('.Extensions .MultilineInputBox')
-  const selectedItem = Locator('.ExtensionSearchCompletionItem').nth(12)
-  await expect(input).toHaveAttribute('aria-activedescendant', 'ExtensionSearchCompletion-12')
+  const selectedItem = Locator('.ExtensionSearchCompletionItem').nth(13)
+  await expect(input).toHaveAttribute('aria-activedescendant', 'ExtensionSearchCompletion-13')
   await expect(selectedItem).toHaveText('@sort:installs')
 }

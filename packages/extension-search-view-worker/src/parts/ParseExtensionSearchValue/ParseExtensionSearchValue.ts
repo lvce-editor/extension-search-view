@@ -23,6 +23,7 @@ export const parseValue = (value: string): ParsedExtensionSearchValue => {
   let enabled = false
   let disabled = false
   let builtin = false
+  let linked = false
   let sort = ''
   let id = ''
   let outdated = false
@@ -40,6 +41,9 @@ export const parseValue = (value: string): ParsedExtensionSearchValue => {
     }
     if (match.startsWith(ExtensionFilterParameter.Builtin)) {
       builtin = true
+    }
+    if (match.startsWith(ExtensionFilterParameter.Linked)) {
+      linked = true
     }
     if (match.startsWith(ExtensionFilterParameter.Sort)) {
       // Parse sort value after @sort:
@@ -67,7 +71,7 @@ export const parseValue = (value: string): ParsedExtensionSearchValue => {
     }
     return ''
   })
-  const isLocal = enabled || builtin || disabled || outdated || installed
+  const isLocal = enabled || builtin || disabled || outdated || installed || linked
 
   return {
     builtin,
@@ -77,6 +81,7 @@ export const parseValue = (value: string): ParsedExtensionSearchValue => {
     id,
     installed,
     isLocal,
+    linked,
     outdated,
     query: replaced,
     sort,

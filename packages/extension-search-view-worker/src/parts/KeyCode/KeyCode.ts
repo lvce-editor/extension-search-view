@@ -1,3 +1,4 @@
+export const Tab = 2
 export const Enter = 3
 export const Escape = 8
 export const Space = 9

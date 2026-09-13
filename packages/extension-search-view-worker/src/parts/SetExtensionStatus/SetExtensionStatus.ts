@@ -20,12 +20,13 @@ const updateStatus = (
 }
 
 export const setExtensionStatus = (state: State, id: string, status: string, builtin?: boolean): State => {
+  const { allExtensions, items } = state
   if (!ExtensionStatus.isExtensionStatus(status)) {
     throw new TypeError(`Invalid extension status: ${status}`)
   }
   return {
     ...state,
-    allExtensions: state.allExtensions.map((extension) => updateStatus(extension, id, status, builtin)),
-    items: state.items.map((extension) => updateStatus(extension, id, status, builtin)),
+    allExtensions: allExtensions.map((extension) => updateStatus(extension, id, status, builtin)),
+    items: items.map((extension) => updateStatus(extension, id, status, builtin)),
   }
 }

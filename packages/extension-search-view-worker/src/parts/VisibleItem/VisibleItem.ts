@@ -7,6 +7,7 @@ export interface VisibleItem {
   readonly icon: string
   readonly id: string
   readonly index: number
+  readonly linked?: boolean | undefined
   readonly name: string
   readonly posInSet: number
   readonly publisher: string

@@ -149,6 +149,10 @@ export const builtIn = (): string => {
   return I18nString.i18nString(UiStrings.BuiltIn)
 }
 
+export const linked = (): string => {
+  return I18nString.i18nString(UiStrings.Linked)
+}
+
 export const enabled = (): string => {
   return I18nString.i18nString(UiStrings.Enabled)
 }

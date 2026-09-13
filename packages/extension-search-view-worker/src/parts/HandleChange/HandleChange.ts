@@ -22,7 +22,7 @@ const requestVersions = new Map<number, number>()
 const requestVersionGenerator = { value: 0 }
 
 const getSearchResult = async (state: State): Promise<SearchResult> => {
-  const { allExtensions, assetDir, headerHeight, height, itemHeight, minimumSliderSize, platform, searchValue } = state
+  const { allExtensions, assetDir, focus, headerHeight, height, itemHeight, minimumSliderSize, platform, searchValue } = state
   const value = searchValue.trim()
   const inputActions = GetInputActions.getInputActions(value.length > 0)
   const items = await SearchExtensions.searchExtensions(allExtensions, value, platform, assetDir)
@@ -49,7 +49,7 @@ const getSearchResult = async (state: State): Promise<SearchResult> => {
   return {
     deltaY: 0,
     finalDeltaY,
-    focus: state.focus,
+    focus,
     inputActions,
     items,
     maxLineY,
@@ -80,7 +80,8 @@ export const handleChangeWithContext = async (
   try {
     const result = await getSearchResult(requestState)
     await context.updateState((state) => {
-      if (requestVersions.get(state.uid) !== requestVersion) {
+      const { uid } = state
+      if (requestVersions.get(uid) !== requestVersion) {
         return state
       }
       return {
@@ -93,7 +94,8 @@ export const handleChangeWithContext = async (
   } catch (error) {
     await ErrorHandling.handleError(error)
     await context.updateState((state) => {
-      if (requestVersions.get(state.uid) !== requestVersion) {
+      const { uid } = state
+      if (requestVersions.get(uid) !== requestVersion) {
         return state
       }
       return {

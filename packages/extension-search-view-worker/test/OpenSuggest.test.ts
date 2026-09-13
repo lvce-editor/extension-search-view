@@ -6,7 +6,7 @@ test('openSuggest', () => {
   const state = { ...createDefaultState(), cursorOffset: 1, searchValue: '@' }
   const result = openSuggest(state)
   expect(result.suggestOpen).toBe(true)
-  expect(result.completionItems).toHaveLength(14)
+  expect(result.completionItems).toHaveLength(15)
 })
 
 test('openSuggest returns same state without an active completion', () => {

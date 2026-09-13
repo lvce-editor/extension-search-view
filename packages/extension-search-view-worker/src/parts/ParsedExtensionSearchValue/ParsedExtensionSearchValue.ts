@@ -6,6 +6,7 @@ export interface ParsedExtensionSearchValue {
   readonly id: string
   readonly installed: boolean
   readonly isLocal: boolean
+  readonly linked?: boolean
   readonly outdated: boolean
   readonly query: string
   readonly sort: string

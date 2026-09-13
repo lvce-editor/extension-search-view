@@ -9,6 +9,7 @@ test.each([
   ['@enabled', 'Extensions: Enabled'],
   ['@disabled', 'Extensions: Disabled'],
   ['@builtin', 'Extensions: Built-in'],
+  ['@linked', 'Extensions: Linked'],
   ['@outdated', 'Extensions: Updates'],
   ['@featured', 'Extensions: Featured'],
   ['@mcpservers', 'Extensions: MCP Servers'],

@@ -2,7 +2,8 @@ import type { State } from '../State/State.ts'
 import { getCompletionItems } from '../GetCompletionItems/GetCompletionItems.ts'
 
 export const openSuggest = (state: State): State => {
-  const completionItems = getCompletionItems(state.searchValue, state.cursorOffset)
+  const { cursorOffset, searchValue } = state
+  const completionItems = getCompletionItems(searchValue, cursorOffset)
   if (completionItems.length === 0) {
     return state
   }

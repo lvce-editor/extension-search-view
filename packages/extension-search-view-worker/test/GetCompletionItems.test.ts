@@ -3,7 +3,7 @@ import { getCompletionItems } from '../src/parts/GetCompletionItems/GetCompletio
 
 test('returns all extension search completions for at sign', () => {
   const items = getCompletionItems('@', 1)
-  expect(items).toHaveLength(14)
+  expect(items).toHaveLength(15)
   expect(items[0]).toEqual({ highlights: [0, 1], label: '@builtin' })
 })
 

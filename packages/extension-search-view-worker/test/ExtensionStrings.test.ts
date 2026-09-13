@@ -45,6 +45,10 @@ test('installed', () => {
   expect(ExtensionStrings.installed()).toBe('Installed')
 })
 
+test('linked', () => {
+  expect(ExtensionStrings.linked()).toBe('Linked')
+})
+
 test('searchExtensionsInMarketPlace', () => {
   expect(ExtensionStrings.searchExtensionsInMarketPlace()).toBe('Search Extensions in Marketplace')
 })

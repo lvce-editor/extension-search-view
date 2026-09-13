@@ -31,6 +31,13 @@ test('parseValue - @builtin', () => {
   })
 })
 
+test('parseValue - @linked', () => {
+  expect(ParseExtensionSearchValue.parseValue('@linked')).toMatchObject({
+    isLocal: true,
+    linked: true,
+  })
+})
+
 test('parseValue - @sort', () => {
   expect(ParseExtensionSearchValue.parseValue('@sort')).toMatchObject({
     sort: 'installs',

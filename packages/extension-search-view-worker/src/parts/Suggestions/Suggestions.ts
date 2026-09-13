@@ -6,6 +6,7 @@ export const Suggestions = [
   '@featured',
   '@id:',
   '@installed',
+  '@linked',
   '@mcpservers',
   '@most-popular',
   '@outdated',

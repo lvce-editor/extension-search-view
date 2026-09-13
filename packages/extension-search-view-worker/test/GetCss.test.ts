@@ -121,11 +121,12 @@ test('returns CSS with VS Code-style extension action layout', () => {
 }`)
 })
 
-test('returns CSS with a dimmed background for disabled extension list items', () => {
+test('returns CSS with a readable foreground for disabled extension list items', () => {
   const result = GetCss.getCss(createDefaultState())
 
   expect(result).toContain(`.ExtensionListItemDisabled:not(.ExtensionActive) {
   background: color-mix(in srgb, var(--SideBarBackground, rgb(30, 35, 36)) 95%, black);
+  color: var(--ExtensionDisabledForeground, color-mix(in srgb, var(--WorkbenchForeground) 70%, black));
 }`)
 })
 
@@ -136,5 +137,19 @@ test('keeps extension list item padding within the list width', () => {
   box-sizing: border-box;
   position: relative !important;
   flex-shrink: 0;
+}`)
+})
+
+test('positions the linked extension indicator at the top right', () => {
+  const result = GetCss.getCss(createDefaultState())
+
+  expect(result).toContain(`.ExtensionListItemLinkedIcon {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 14px;
+  height: 14px;
+  color: var(--WorkbenchForeground, rgb(188, 190, 190));
+  opacity: 0.8;
 }`)
 })
