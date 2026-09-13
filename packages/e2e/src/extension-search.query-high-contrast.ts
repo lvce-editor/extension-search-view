@@ -5,5 +5,6 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   await ExtensionSearch.handleInput('high contrast')
   const items = Locator('.ExtensionListItem')
   await expect(items).toHaveCount(1)
-  await expect(items.locator('.ExtensionListItemName')).toHaveText('High Contrast Theme')
+  const itemName = items.locator('.ExtensionListItemName')
+  await expect(itemName).toHaveText('High Contrast Theme')
 }

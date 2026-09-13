@@ -7,5 +7,6 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   await ExtensionSearch.focusFirst()
   const activeItem = Locator('.ExtensionActive')
   await expect(activeItem).toHaveAttribute('aria-posinset', '1')
-  await expect(activeItem.locator('.ExtensionListItemName')).toHaveText('Ayu Theme')
+  const itemName = activeItem.locator('.ExtensionListItemName')
+  await expect(itemName).toHaveText('Ayu Theme')
 }

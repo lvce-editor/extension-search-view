@@ -141,7 +141,7 @@ export const commandMap = {
   'SearchExtensions.handleFocus': WrapCommand.wrapCommand(HandleFocus.handleFocus),
   'SearchExtensions.handleHeaderContextMenu': WrapCommand.wrapCommand(handleHeaderContextMenu),
   'SearchExtensions.handleInput': WrapCommand.wrapAsyncCommand(HandleInput.handleInputWithContext),
-  'SearchExtensions.handleInputFocus': WrapCommand.wrapCommand(HandleInputFocus.handleInputFocus),
+  'SearchExtensions.handleInputFocus': WrapCommand.wrapAsyncCommand(HandleInputFocus.handleInputFocusWithContext),
   'SearchExtensions.handleInstall': WrapCommand.wrapCommand(HandleInstall.handleInstall),
   'SearchExtensions.handleMessagePort': handleDirectMessagePort,
   'SearchExtensions.handleScrollBarCaptureLost': WrapCommand.wrapCommand(HandleScrollBarCaptureLost.handleScrollBarCaptureLost),

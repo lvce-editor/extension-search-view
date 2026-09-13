@@ -6,12 +6,13 @@ export const test: Test = async ({ Command, ContextMenu, expect, ExtensionSearch
   await ExtensionSearch.handleClickFilter()
 
   const menus = Locator('.Menu')
-  const category = menus.nth(0).locator('text=Category')
-  await category.hover()
+  await Command.execute('Menu.handleMouseEnter', 0, 6, 0, 0, 2)
   await expect(menus).toHaveCount(2)
   const subMenu = menus.nth(1)
-  await expect(subMenu.locator('.MenuItem')).toHaveCount(20)
-  await expect(subMenu.locator('text=Themes')).toBeVisible()
+  const menuItems = subMenu.locator('.MenuItem')
+  await expect(menuItems).toHaveCount(20)
+  const themesItem = subMenu.locator('text=Themes')
+  await expect(themesItem).toBeVisible()
   await ContextMenu.selectItem('Themes')
 
   const input = Locator('.Extensions .MultilineInputBox')

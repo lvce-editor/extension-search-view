@@ -13,6 +13,8 @@ import { getExtensionListItemStatisticsVirtualDom } from '../GetExtensionListIte
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 import { text } from '../VirtualDomHelpers/VirtualDomHelpers.ts'
 
+const linkedIconClassName = MergeClassNames.mergeClassNames(ClassNames.MaskIcon, 'MaskIconLinkExternal', ClassNames.ExtensionListItemLinkedIcon)
+
 const getListItemDetail = (linked: boolean): VirtualDomNode => {
   return {
     childCount: linked ? 4 : 3,
@@ -47,7 +49,7 @@ const getLinkedIconVirtualDom = (linked: boolean): readonly VirtualDomNode[] => 
     {
       ariaLabel: label,
       childCount: 0,
-      className: MergeClassNames.mergeClassNames(ClassNames.MaskIcon, 'MaskIconLinkExternal', ClassNames.ExtensionListItemLinkedIcon),
+      className: linkedIconClassName,
       role: AriaRoles.Image,
       title: 'Extension is linked',
       type: VirtualDomElements.Div,

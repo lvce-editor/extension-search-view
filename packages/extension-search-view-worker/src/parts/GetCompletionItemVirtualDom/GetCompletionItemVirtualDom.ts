@@ -6,6 +6,8 @@ import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
 import { getCompletionLabelVirtualDom } from '../GetCompletionLabelVirtualDom/GetCompletionLabelVirtualDom.ts'
 
+const focusedClassName = mergeClassNames(ClassNames.ExtensionSearchCompletionItem, ClassNames.ExtensionSearchCompletionItemFocused)
+
 const getRootNodeCount = (nodes: readonly VirtualDomNode[]): number => {
   let count = 0
   const remainingChildCounts: number[] = []
@@ -31,9 +33,7 @@ export const getCompletionItemVirtualDom = (item: CompletionItem, index: number,
     {
       ariaSelected: focused,
       childCount: getRootNodeCount(labelDom),
-      className: focused
-        ? mergeClassNames(ClassNames.ExtensionSearchCompletionItem, ClassNames.ExtensionSearchCompletionItemFocused)
-        : ClassNames.ExtensionSearchCompletionItem,
+      className: focused ? focusedClassName : ClassNames.ExtensionSearchCompletionItem,
       id: `ExtensionSearchCompletion-${index}`,
       name: item.label,
       onPointerDown: DomEventListenerFunctions.HandlePointerDown,
