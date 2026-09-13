@@ -7,6 +7,7 @@ export const test: Test = async ({ Command, ContextMenu, expect, ExtensionSearch
 
   const menus = Locator('.Menu')
   const category = menus.nth(0).locator('text=Category')
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   await category.hover()
   await expect(menus).toHaveCount(2)
   const subMenu = menus.nth(1)
