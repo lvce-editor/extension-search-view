@@ -4,13 +4,19 @@ import { getExtensionInfoText } from '../src/parts/GetExtensionInfoText/GetExten
 
 test('should return formatted info text with all fields', () => {
   const extension: ExtensionListItem = {
+    builtin: false,
     categories: [],
     description: 'A test extension',
+    disabled: false,
+    downloadCount: 'n/a',
     icon: 'icon.png',
     id: 'test.extension',
+    linked: false,
     name: 'Test Extension',
     publisher: 'Test Publisher',
+    rating: 'n/a',
     size: 1000,
+    status: '',
     updatedDate: 1_000_000,
     uri: 'https://example.com',
   }
@@ -27,13 +33,19 @@ test('should return formatted info text with all fields', () => {
 
 test('should handle empty strings', () => {
   const extension: ExtensionListItem = {
+    builtin: false,
     categories: [],
     description: '',
+    disabled: false,
+    downloadCount: 'n/a',
     icon: '',
     id: '',
+    linked: false,
     name: '',
     publisher: '',
+    rating: 'n/a',
     size: 0,
+    status: '',
     updatedDate: 0,
     uri: '',
   }
@@ -50,13 +62,19 @@ test('should handle empty strings', () => {
 
 test('should trim trailing whitespace from formatted rows', () => {
   const extension: ExtensionListItem = {
+    builtin: false,
     categories: [],
     description: '  A test extension  ',
+    disabled: false,
+    downloadCount: 'n/a',
     icon: 'icon.png',
     id: '  test.extension  ',
+    linked: false,
     name: '  Test Extension  ',
     publisher: '  Test Publisher  ',
+    rating: 'n/a',
     size: 1000,
+    status: '',
     updatedDate: 1_000_000,
     uri: 'https://example.com',
   }
@@ -70,13 +88,19 @@ test('should trim trailing whitespace from formatted rows', () => {
 
 test('should maintain correct order of fields', () => {
   const extension: ExtensionListItem = {
+    builtin: false,
     categories: [],
     description: 'Description A',
+    disabled: false,
+    downloadCount: 'n/a',
     icon: 'icon.png',
     id: 'ext.a',
+    linked: false,
     name: 'Extension A',
     publisher: 'Publisher A',
+    rating: 'n/a',
     size: 1000,
+    status: '',
     updatedDate: 1_000_000,
     uri: 'https://example.com',
   }

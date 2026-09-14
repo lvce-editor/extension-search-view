@@ -14,8 +14,8 @@ export const handleContextMenu = async (state: State, button: number, eventX: nu
 
   const item = items[index]
   await ContextMenu.show2(uid, MenuEntryId.ManageExtension, eventX, eventY, {
-    builtin: item.builtin === true,
-    disabled: item.disabled === true,
+    builtin: item.builtin,
+    disabled: item.disabled,
     menuId: MenuEntryId.ManageExtension,
     status: item.status,
   })

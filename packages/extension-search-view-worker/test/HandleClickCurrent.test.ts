@@ -7,13 +7,19 @@ import { handleClickCurrent } from '../src/parts/HandleClickCurrent/HandleClickC
 
 test('handleClickCurrent opens URI for focused extension', async () => {
   const mockExtension: ExtensionListItem = {
+    builtin: false,
     categories: [],
     description: 'test-description',
+    disabled: false,
+    downloadCount: 'n/a',
     icon: 'test-icon',
     id: 'test-extension-id',
+    linked: false,
     name: 'Test Extension',
     publisher: 'test-publisher',
+    rating: 'n/a',
     size: 1000,
+    status: '',
     updatedDate: 1000,
     uri: 'test-uri',
   }
@@ -38,25 +44,37 @@ test('handleClickCurrent opens URI for focused extension', async () => {
 
 test('handleClickCurrent uses focusedIndex correctly', async () => {
   const mockExtension1: ExtensionListItem = {
+    builtin: false,
     categories: [],
     description: 'desc-1',
+    disabled: false,
+    downloadCount: 'n/a',
     icon: 'icon-1',
     id: 'extension-1',
+    linked: false,
     name: 'Extension 1',
     publisher: 'publisher-1',
+    rating: 'n/a',
     size: 1000,
+    status: '',
     updatedDate: 1000,
     uri: 'uri-1',
   }
 
   const mockExtension2: ExtensionListItem = {
+    builtin: false,
     categories: [],
     description: 'desc-2',
+    disabled: false,
+    downloadCount: 'n/a',
     icon: 'icon-2',
     id: 'extension-2',
+    linked: false,
     name: 'Extension 2',
     publisher: 'publisher-2',
+    rating: 'n/a',
     size: 2000,
+    status: '',
     updatedDate: 2000,
     uri: 'uri-2',
   }

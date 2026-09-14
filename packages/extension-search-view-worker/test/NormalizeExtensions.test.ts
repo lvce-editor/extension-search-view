@@ -21,7 +21,7 @@ test('normalizeExtension should normalize multiple extensions', () => {
     publisher: '1',
     rating: 'n/a',
     size: 1000,
-    status: undefined,
+    status: '',
     updatedDate: 1000,
     uri: '',
   })
@@ -38,7 +38,7 @@ test('normalizeExtension should normalize multiple extensions', () => {
     publisher: '2',
     rating: 'n/a',
     size: 2000,
-    status: undefined,
+    status: '',
     updatedDate: 2000,
     uri: '',
   })
@@ -64,7 +64,7 @@ test('normalizeExtension should handle invalid extension values', () => {
     publisher: 'n/a',
     rating: 'n/a',
     size: 0,
-    status: undefined,
+    status: '',
     updatedDate: 0,
     uri: '',
   }

@@ -10,13 +10,19 @@ test('copyExtensionId copies extension id to clipboard when item is focused', as
   })
   const state = createDefaultState()
   const item: ExtensionListItem = {
+    builtin: false,
     categories: [],
     description: 'Test description',
+    disabled: false,
+    downloadCount: 'n/a',
     icon: 'icon.png',
     id: 'test-extension-id',
+    linked: false,
     name: 'Test Extension',
     publisher: 'test-publisher',
+    rating: 'n/a',
     size: 1000,
+    status: '',
     updatedDate: 1_000_000,
     uri: 'test-uri',
   }

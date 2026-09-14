@@ -6,13 +6,19 @@ import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaul
 import * as HandleContextMenu from '../src/parts/HandleContextMenu/HandleContextMenu.ts'
 
 const extension = {
+  builtin: false,
   categories: [],
   description: 'Test Description',
+  disabled: false,
+  downloadCount: 'n/a',
   icon: 'test-icon.png',
   id: 'test-extension',
+  linked: false,
   name: 'Test Extension',
   publisher: 'Test Publisher',
+  rating: 'n/a',
   size: 1000,
+  status: '',
   updatedDate: 1000,
   uri: 'https://example.com',
 }
@@ -40,7 +46,7 @@ test('handleContextMenu shows context menu for valid index', async () => {
       MenuEntryId.ManageExtension,
       100,
       120,
-      { builtin: false, disabled: false, menuId: MenuEntryId.ManageExtension, status: undefined },
+      { builtin: false, disabled: false, menuId: MenuEntryId.ManageExtension, status: '' },
     ],
   ])
 })
@@ -57,10 +63,13 @@ test('handleContextMenu includes builtin status', async () => {
         categories: [],
         description: 'Test Description',
         disabled: true,
+        downloadCount: 'n/a',
         icon: 'test-icon.png',
         id: 'test-extension',
+        linked: false,
         name: 'Test Extension',
         publisher: 'Test Publisher',
+        rating: 'n/a',
         size: 1000,
         status: 'disabled',
         updatedDate: 1000,
@@ -168,7 +177,7 @@ test('handleContextMenu shows context menu for index 0', async () => {
       MenuEntryId.ManageExtension,
       0,
       15,
-      { builtin: false, disabled: false, menuId: MenuEntryId.ManageExtension, status: undefined },
+      { builtin: false, disabled: false, menuId: MenuEntryId.ManageExtension, status: '' },
     ],
   ])
 })
@@ -197,7 +206,7 @@ test('handleContextMenu shows context menu with scrolled state', async () => {
       MenuEntryId.ManageExtension,
       150,
       100,
-      { builtin: false, disabled: false, menuId: MenuEntryId.ManageExtension, status: undefined },
+      { builtin: false, disabled: false, menuId: MenuEntryId.ManageExtension, status: '' },
     ],
   ])
 })
