@@ -27,13 +27,19 @@ test('handleClickAt accepts completion by name', async () => {
 
 test('handleClickAt does not open extension details when clicking an action button', async () => {
   const mockExtension: ExtensionListItem = {
+    builtin: false,
     categories: [],
     description: 'test-description',
+    disabled: false,
+    downloadCount: 'n/a',
     icon: 'test-icon',
     id: 'test-extension-id',
+    linked: false,
     name: 'Test Extension',
     publisher: 'test-publisher',
+    rating: 'n/a',
     size: 1000,
+    status: '',
     updatedDate: 1_000_000,
     uri: 'test-uri',
   }
@@ -60,13 +66,19 @@ test('handleClickAt does not open extension details when clicking an action butt
 
 test('handleClickAt handles left click and opens URI', async () => {
   const mockExtension: ExtensionListItem = {
+    builtin: false,
     categories: [],
     description: 'test-description',
+    disabled: false,
+    downloadCount: 'n/a',
     icon: 'test-icon',
     id: 'test-extension-id',
+    linked: false,
     name: 'Test Extension',
     publisher: 'test-publisher',
+    rating: 'n/a',
     size: 1000,
+    status: '',
     updatedDate: 1_000_000,
     uri: 'test-uri',
   }
@@ -97,25 +109,37 @@ test('handleClickAt handles left click and opens URI', async () => {
 
 test('handleClickAt calculates correct index from coordinates', async () => {
   const mockExtension1: ExtensionListItem = {
+    builtin: false,
     categories: [],
     description: 'desc-1',
+    disabled: false,
+    downloadCount: 'n/a',
     icon: 'icon-1',
     id: 'extension-1',
+    linked: false,
     name: 'Extension 1',
     publisher: 'publisher-1',
+    rating: 'n/a',
     size: 1000,
+    status: '',
     updatedDate: 1_000_000,
     uri: 'uri-1',
   }
 
   const mockExtension2: ExtensionListItem = {
+    builtin: false,
     categories: [],
     description: 'desc-2',
+    disabled: false,
+    downloadCount: 'n/a',
     icon: 'icon-2',
     id: 'extension-2',
+    linked: false,
     name: 'Extension 2',
     publisher: 'publisher-2',
+    rating: 'n/a',
     size: 2000,
+    status: '',
     updatedDate: 2_000_000,
     uri: 'uri-2',
   }

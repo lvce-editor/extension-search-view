@@ -4,13 +4,19 @@ import type { ParsedExtensionSearchValue } from '../src/parts/ParsedExtensionSea
 import * as SortExtensions from '../src/parts/SortExtensions/SortExtensions.ts'
 
 const createExtension = (overrides: Partial<ExtensionListItem>): ExtensionListItem => ({
+  builtin: false,
   categories: [],
   description: 'description',
+  disabled: false,
+  downloadCount: 'n/a',
   icon: 'icon',
   id: 'id',
+  linked: false,
   name: 'name',
   publisher: 'publisher',
+  rating: 'n/a',
   size: 1000,
+  status: '',
   updatedDate: 1000,
   uri: 'uri',
   ...overrides,

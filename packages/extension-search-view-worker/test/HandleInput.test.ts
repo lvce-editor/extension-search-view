@@ -6,13 +6,19 @@ import { Remote } from '../src/parts/PlatformType/PlatformType.js'
 
 const mockExtensions = [
   {
+    builtin: false,
     categories: [],
     description: 'test-description',
+    disabled: false,
+    downloadCount: 'n/a',
     icon: 'test-icon',
     id: 'test-extension',
+    linked: false,
     name: 'Test Extension',
     publisher: 'test-publisher',
+    rating: 'n/a',
     size: 1000,
+    status: '',
     updatedDate: 1_000_000,
     uri: 'test-uri',
   },
