@@ -1,4 +1,4 @@
-import { expect, test } from '@jest/globals'
+import { expect, jest, test } from '@jest/globals'
 import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaultState.js'
 import * as ViewletExtensionsStrings from '../src/parts/ExtensionStrings/ExtensionStrings.js'
 import { handleInput } from '../src/parts/HandleInput/HandleInput.js'
@@ -93,6 +93,7 @@ test('uses list height when calculating scroll range', async () => {
 })
 
 test('handles error during search', async () => {
+  const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {})
   const invalidExtensions = [
     {
       ...mockExtensions[0],
@@ -102,8 +103,13 @@ test('handles error during search', async () => {
     },
   ]
   const state = { ...createDefaultState(), allExtensions: invalidExtensions as any, platform: Remote }
-  const result = await handleInput(state, 'test')
+  try {
+    const result = await handleInput(state, 'test')
 
-  expect(result.message).toBe('Failed to search for extensions: error')
-  expect(result.searchValue).toBe('test')
+    expect(consoleErrorSpy).toHaveBeenCalledWith(expect.objectContaining({ message: 'Failed to search for extensions: error' }))
+    expect(result.message).toBe('Failed to search for extensions: error')
+    expect(result.searchValue).toBe('test')
+  } finally {
+    consoleErrorSpy.mockRestore()
+  }
 })
