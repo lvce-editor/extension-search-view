@@ -48,16 +48,13 @@ test('copyExtensionInfo copies extension info text to clipboard when focused ite
   const result = await CopyExtensionInfo.copyExtensionInfo(state)
   expect(result).toBe(state)
   expect(mockRpc.invocations).toEqual([
-    [
-      'ClipBoard.writeText',
-      'Name: Test Extension\nId: test.extension\nDescription: A test extension\nVersion:\nPublisher: Test Publisher\nMarketplace Link:',
-    ],
+    ['ClipBoard.writeText', 'Name: Test Extension\nId: test.extension\nDescription: A test extension\nVersion:\nPublisher: Test Publisher'],
   ])
 })
 
 test('copyExtensionInfo handles item with empty strings', async () => {
   const emptyItem: ExtensionListItem = {
-    builtin: false,
+    builtin: true,
     categories: [],
     description: '',
     disabled: false,
@@ -83,5 +80,5 @@ test('copyExtensionInfo handles item with empty strings', async () => {
   })
   const result = await CopyExtensionInfo.copyExtensionInfo(state)
   expect(result).toBe(state)
-  expect(mockRpc.invocations).toEqual([['ClipBoard.writeText', 'Name:\nId:\nDescription:\nVersion:\nPublisher:\nMarketplace Link:']])
+  expect(mockRpc.invocations).toEqual([['ClipBoard.writeText', 'Name:\nId:\nDescription:\nVersion:\nPublisher:']])
 })

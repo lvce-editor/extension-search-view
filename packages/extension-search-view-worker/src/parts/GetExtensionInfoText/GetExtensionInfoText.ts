@@ -36,10 +36,14 @@ export const getExtensionInfoText = (extension: ExtensionListItem): string => {
       key: ExtensionSearchStrings.publisher(),
       value: publisher,
     },
-    {
-      key: ExtensionSearchStrings.marketplaceLink(),
-      value: marketplaceLink,
-    },
+    ...(marketplaceLink
+      ? [
+          {
+            key: ExtensionSearchStrings.marketplaceLink(),
+            value: marketplaceLink,
+          },
+        ]
+      : []),
   ]
   const infoRows = rows.map(stringifyRow)
   const infoText = infoRows.join('\n')
