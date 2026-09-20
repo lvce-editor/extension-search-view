@@ -1,5 +1,13 @@
-import * as ExtensionManagement from '../ExtensionManagement/ExtensionManagement.ts'
+import { ExtensionManagementWorker } from '@lvce-editor/rpc-registry'
+import * as PlatformType from '../PlatformType/PlatformType.ts'
 
-export const getAllExtensions = (assetDir: string, platform: number): Promise<readonly unknown[]> => {
-  return ExtensionManagement.getAllExtensions(assetDir, platform)
+export const getAllExtensions = async (assetDir: string, platform: number): Promise<readonly unknown[]> => {
+  try {
+    return await ExtensionManagementWorker.getAllExtensions(assetDir, platform)
+  } catch (error) {
+    if (platform === PlatformType.Web) {
+      return []
+    }
+    throw error
+  }
 }

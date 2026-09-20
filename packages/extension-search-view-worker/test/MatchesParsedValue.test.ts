@@ -4,13 +4,19 @@ import type { ParsedExtensionSearchValue } from '../src/parts/ParsedExtensionSea
 import { matchesParsedValue } from '../src/parts/MatchesParsedValue/MatchesParsedValue.js'
 
 const createExtension = (name: string, id: string): ExtensionListItem => ({
+  builtin: false,
   categories: [],
   description: 'test-description',
+  disabled: false,
+  downloadCount: 'n/a',
   icon: 'test-icon',
   id,
+  linked: false,
   name,
   publisher: 'test-publisher',
+  rating: 'n/a',
   size: 1000,
+  status: '',
   updatedDate: 1_000_000,
   uri: 'test-uri',
 })
@@ -105,13 +111,19 @@ test('matches partial name in middle of name', () => {
 
 test('matches partial id in middle of id when extension has no name', () => {
   const extension: ExtensionListItem = {
+    builtin: false,
     categories: [],
     description: 'test-description',
+    disabled: false,
+    downloadCount: 'n/a',
     icon: 'test-icon',
     id: 'my-awesome-extension',
+    linked: false,
     name: '',
     publisher: 'test-publisher',
+    rating: 'n/a',
     size: 1000,
+    status: '',
     updatedDate: 1_000_000,
     uri: 'test-uri',
   }
@@ -239,13 +251,19 @@ test('matches extension with special characters in name', () => {
 
 test('matches extension with special characters in id when extension has no name', () => {
   const extension: ExtensionListItem = {
+    builtin: false,
     categories: [],
     description: 'test-description',
+    disabled: false,
+    downloadCount: 'n/a',
     icon: 'test-icon',
     id: 'test-extension-v2',
+    linked: false,
     name: '',
     publisher: 'test-publisher',
+    rating: 'n/a',
     size: 1000,
+    status: '',
     updatedDate: 1_000_000,
     uri: 'test-uri',
   }
@@ -267,13 +285,19 @@ test('matches full name', () => {
 
 test('matches full id when extension has no name', () => {
   const extension: ExtensionListItem = {
+    builtin: false,
     categories: [],
     description: 'test-description',
+    disabled: false,
+    downloadCount: 'n/a',
     icon: 'test-icon',
     id: 'test-extension',
+    linked: false,
     name: '',
     publisher: 'test-publisher',
+    rating: 'n/a',
     size: 1000,
+    status: '',
     updatedDate: 1_000_000,
     uri: 'test-uri',
   }
@@ -301,13 +325,19 @@ test('matches with numbers in name', () => {
 
 test('matches with numbers in id when extension has no name', () => {
   const extension: ExtensionListItem = {
+    builtin: false,
     categories: [],
     description: 'test-description',
+    disabled: false,
+    downloadCount: 'n/a',
     icon: 'test-icon',
     id: 'extension-2024',
+    linked: false,
     name: '',
     publisher: 'test-publisher',
+    rating: 'n/a',
     size: 1000,
+    status: '',
     updatedDate: 1_000_000,
     uri: 'test-uri',
   }
@@ -487,13 +517,19 @@ test('category - matches when category is in multiple categories', () => {
 
 test('returns false when extension has no name and no id', () => {
   const extension: ExtensionListItem = {
+    builtin: false,
     categories: [],
     description: 'test-description',
+    disabled: false,
+    downloadCount: 'n/a',
     icon: 'test-icon',
     id: '',
+    linked: false,
     name: '',
     publisher: 'test-publisher',
+    rating: 'n/a',
     size: 1000,
+    status: '',
     updatedDate: 1_000_000,
     uri: 'test-uri',
   }
@@ -513,13 +549,19 @@ test('returns false when extension has no name and no id', () => {
 
 test('returns false when extension has no name, no id, and no matching category', () => {
   const extension: ExtensionListItem = {
+    builtin: false,
     categories: ['Other'],
     description: 'test-description',
+    disabled: false,
+    downloadCount: 'n/a',
     icon: 'test-icon',
     id: '',
+    linked: false,
     name: '',
     publisher: 'test-publisher',
+    rating: 'n/a',
     size: 1000,
+    status: '',
     updatedDate: 1_000_000,
     uri: 'test-uri',
   }
@@ -615,12 +657,18 @@ test('category - returns false when extension does not have categories property'
 
 test('category - returns false when categories is not an array', () => {
   const extension = {
+    builtin: false,
     categories: 'not-an-array',
     description: 'test-description',
+    disabled: false,
+    downloadCount: 'n/a',
     icon: 'test-icon',
     id: 'xyz-no-match-id',
+    linked: false,
     name: 'xyz-no-match-name',
     publisher: 'test-publisher',
+    rating: 'n/a',
+    status: '',
     uri: 'test-uri',
   } as unknown as ExtensionListItem
   const parsedValue: ParsedExtensionSearchValue = {

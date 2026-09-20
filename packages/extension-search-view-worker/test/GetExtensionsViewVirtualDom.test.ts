@@ -10,13 +10,19 @@ import * as MergeClassNames from '../src/parts/MergeClassNames/MergeClassNames.t
 
 const createMockExtensionListItem = (overrides?: Partial<ExtensionListItem>): ExtensionListItem => {
   return {
+    builtin: false,
     categories: [],
     description: 'Test Description',
+    disabled: false,
+    downloadCount: 'n/a',
     icon: 'test-icon.png',
     id: 'test-extension',
+    linked: false,
     name: 'Test Extension',
     publisher: 'Test Publisher',
+    rating: 'n/a',
     size: 1000,
+    status: '',
     updatedDate: 1000,
     uri: 'https://example.com',
     ...overrides,
