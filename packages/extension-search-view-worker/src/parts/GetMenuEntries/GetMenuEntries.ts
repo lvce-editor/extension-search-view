@@ -18,7 +18,7 @@ const getEnablementFlags = (
       enable: MenuItemFlags.Disabled,
     }
   }
-  const isDisabled = status === ExtensionStatus.Disabled || (status === undefined && disabled)
+  const isDisabled = status === ExtensionStatus.Disabled || (!status && disabled)
   return {
     disable: isDisabled ? MenuItemFlags.Disabled : MenuItemFlags.None,
     enable: isDisabled ? MenuItemFlags.None : MenuItemFlags.Disabled,

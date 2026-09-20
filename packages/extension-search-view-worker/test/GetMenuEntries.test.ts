@@ -45,3 +45,9 @@ test.each(['installing', 'not-installed', 'uninstalling'])('disables enablement 
   expect(menuEntries.find((entry) => entry.id === 'disable')?.flags).toBe(MenuItemFlags.Disabled)
   expect(menuEntries.find((entry) => entry.id === 'disableWorkspace')?.flags).toBe(MenuItemFlags.Disabled)
 })
+
+test('uses disabled state when status is empty', () => {
+  const menuEntries = getMenuEntriesList(false, true, '')
+  expect(menuEntries.find((entry) => entry.id === 'enable')?.flags).toBe(MenuItemFlags.None)
+  expect(menuEntries.find((entry) => entry.id === 'disable')?.flags).toBe(MenuItemFlags.Disabled)
+})

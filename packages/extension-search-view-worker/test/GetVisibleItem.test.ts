@@ -3,13 +3,19 @@ import type { ExtensionListItem } from '../src/parts/ExtensionListItem/Extension
 import * as GetVisibleItem from '../src/parts/GetVisibleItem/GetVisibleItem.ts'
 
 const mockItem: ExtensionListItem = {
+  builtin: false,
   categories: [],
   description: 'Test Description',
+  disabled: false,
+  downloadCount: 'n/a',
   icon: 'test-icon.png',
   id: 'test-extension',
+  linked: false,
   name: 'Test Extension',
   publisher: 'Test Publisher',
+  rating: '4.7',
   size: 1000,
+  status: '',
   updatedDate: 1_000_000,
   uri: 'https://example.com',
 }

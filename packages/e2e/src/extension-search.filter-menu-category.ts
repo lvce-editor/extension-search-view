@@ -10,6 +10,7 @@ export const test: Test = async ({ Command, ContextMenu, expect, ExtensionSearch
   const category = menus.nth(0).locator('text=Category')
 
   // act
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   await category.hover()
 
   // assert
