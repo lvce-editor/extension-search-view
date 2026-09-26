@@ -1,5 +1,12 @@
 import * as PlatformType from '../PlatformType/PlatformType.ts'
 
+const normalizePath = (path: string): string => {
+  return path
+    .split('/')
+    .filter((part) => part && part !== '.')
+    .join('/')
+}
+
 export const getRemoteUrl = (extension: unknown, platform: number, assetDir: string): string => {
   if (extension === null || typeof extension !== 'object') {
     return ''
@@ -12,7 +19,9 @@ export const getRemoteUrl = (extension: unknown, platform: number, assetDir: str
     if (builtin) {
       return `${assetDir}/extensions/${id}/${icon}`
     }
-    return `/remote/${path}/${icon}` // TODO support windows paths
+    const normalizedPath = normalizePath(path)
+    const normalizedIcon = normalizePath(icon)
+    return `/remote/${[normalizedPath, normalizedIcon].filter(Boolean).join('/')}` // TODO support windows paths
   }
   if (platform === PlatformType.Web) {
     return `${path}/${icon}`

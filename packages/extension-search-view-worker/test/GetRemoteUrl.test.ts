@@ -14,6 +14,25 @@ test('returns correct path for remote non-builtin extension', () => {
   expect(GetRemoteUrl.getRemoteUrl(extension, PlatformType.Remote, assetDir)).toBe('/remote/test/path/icon.png')
 })
 
+test('normalizes absolute remote extension paths and relative icon paths', () => {
+  const extension = {
+    builtin: false,
+    icon: './media/icon.png',
+    id: 'builtin.hetzner',
+    path: '/home/simon/.local/share/lvce/extensions/hetzner/',
+  }
+  const assetDir = '/test/assets'
+  expect(GetRemoteUrl.getRemoteUrl(extension, PlatformType.Remote, assetDir)).toBe(
+    '/remote/home/simon/.local/share/lvce/extensions/hetzner/media/icon.png',
+  )
+})
+
+test('preserves already-normalized remote extension paths', () => {
+  const extension = { builtin: false, icon: 'media/icon.png', id: 'test', path: '/home/test/extension' }
+  const assetDir = '/test/assets'
+  expect(GetRemoteUrl.getRemoteUrl(extension, PlatformType.Remote, assetDir)).toBe('/remote/home/test/extension/media/icon.png')
+})
+
 test('returns correct path for electron builtin extension', () => {
   const extension = { builtin: true, icon: 'icon.png', id: 'test' }
   const assetDir = '/test/assets'
