@@ -1,0 +1,5 @@
+{
+  "id": "test.extension-search-unicode-markup",
+  "name": "Unicode extension 🧪 日本語 </div><img data-edge=markup onerror=alert(1)>",
+  "description": "Unicode and markup-like text remain plain text"
+}

@@ -5,7 +5,7 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   await ExtensionSearch.open()
 
   // act
-  await ExtensionSearch.handleInput('@linked')
+  await ExtensionSearch.handleInput('@id:test.linked-extension')
 
   // assert
   const linkedIcon = Locator('.ExtensionListItemLinkedIcon')
