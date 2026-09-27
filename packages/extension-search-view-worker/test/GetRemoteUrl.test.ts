@@ -47,9 +47,7 @@ test('returns correct path for electron builtin extension with a different direc
     path: '/08a711e/extensions/builtin.pull-request-github',
   }
   const assetDir = '/08a711e'
-  expect(GetRemoteUrl.getRemoteUrl(extension, PlatformType.Electron, assetDir)).toBe(
-    '/08a711e/extensions/builtin.pull-request-github/media/icon.svg',
-  )
+  expect(GetRemoteUrl.getRemoteUrl(extension, PlatformType.Electron, assetDir)).toBe('/08a711e/extensions/builtin.pull-request-github/media/icon.svg')
 })
 
 test('returns correct path for electron non-builtin extension', () => {

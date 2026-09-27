@@ -1,5 +1,7 @@
 import * as PlatformType from '../PlatformType/PlatformType.ts'
 
+const pathSeparatorRegex = /[\\/]/
+
 const normalizePath = (path: string): string => {
   return path
     .split('/')
@@ -17,7 +19,7 @@ export const getRemoteUrl = (extension: unknown, platform: number, assetDir: str
   const path = 'path' in extension && typeof extension.path === 'string' ? extension.path : ''
   if (platform === PlatformType.Remote || platform === PlatformType.Electron) {
     if (builtin) {
-      const directory = path.split(/[\\/]/).filter(Boolean).pop() || id
+      const directory = path.split(pathSeparatorRegex).findLast(Boolean) || id
       return `${assetDir}/extensions/${directory}/${icon}`
     }
     const normalizedPath = normalizePath(path)
