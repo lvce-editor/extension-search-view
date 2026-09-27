@@ -25,7 +25,7 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   await ExtensionSearch.handleInput('@id:test.extension-search-missing-fields')
   await expect(descriptions).toHaveText('n/a')
 
-  const markupName = 'Unicode extension 🧪 日本語 </div><img src=x onerror=alert(1)>'
+  const markupName = 'Unicode extension 🧪 日本語 </div><img data-edge=markup onerror=alert(1)>'
   await ExtensionSearch.handleInput('@id:test.extension-search-unicode-markup')
   await expect(name).toHaveText(markupName)
   const injectedImages = Locator('.ExtensionListItemName img')
