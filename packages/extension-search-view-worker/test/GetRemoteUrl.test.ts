@@ -39,6 +39,19 @@ test('returns correct path for electron builtin extension', () => {
   expect(GetRemoteUrl.getRemoteUrl(extension, PlatformType.Electron, assetDir)).toBe('/test/assets/extensions/test/icon.png')
 })
 
+test('returns correct path for electron builtin extension with a different directory name', () => {
+  const extension = {
+    builtin: true,
+    icon: 'media/icon.svg',
+    id: 'github.pull-requests',
+    path: '/08a711e/extensions/builtin.pull-request-github',
+  }
+  const assetDir = '/08a711e'
+  expect(GetRemoteUrl.getRemoteUrl(extension, PlatformType.Electron, assetDir)).toBe(
+    '/08a711e/extensions/builtin.pull-request-github/media/icon.svg',
+  )
+})
+
 test('returns correct path for electron non-builtin extension', () => {
   const extension = { builtin: false, icon: 'icon.png', id: 'test', path: 'test/path' }
   const assetDir = '/test/assets'
