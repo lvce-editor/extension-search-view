@@ -11,11 +11,11 @@ import { getScrollBarVirtualDom } from '../GetScrollBarVirtualDom/GetScrollBarVi
 import * as GetVisibleExtensions from '../GetVisibleExtensions/GetVisibleExtensions.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 
-const contentNode: VirtualDomNode = {
-  childCount: 2,
+const getContentNode = (scrollBarHeight: number): VirtualDomNode => ({
+  childCount: scrollBarHeight > 0 ? 2 : 1,
   className: MergeClassNames.mergeClassNames(ClassNames.Viewlet, ClassNames.List),
   type: VirtualDomElements.Div,
-}
+})
 
 const extensionsNode: VirtualDomNode = {
   ariaBusy: false,
@@ -37,7 +37,7 @@ const getContentVirtualDom = (
     return getNoExtensionsFoundVirtualDom(message)
   }
   return [
-    contentNode,
+    getContentNode(scrollBarHeight),
     ...GetExtensionsVirtualDom.getExtensionsVirtualDom(visibleExtensions, focusOutline),
     ...getScrollBarVirtualDom(scrollBarHeight, scrollBarY),
   ]
