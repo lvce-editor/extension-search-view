@@ -108,6 +108,32 @@ test('does not include scrollbar when scrollBarHeight is 0', () => {
   expect(hasScrollBar).toBe(false)
 })
 
+test('sets the content child count to one when the scrollbar is omitted', () => {
+  const state: State = {
+    ...createDefaultState(),
+    message: '',
+    scrollBarHeight: 0,
+    scrollBarY: 0,
+  }
+  const result = GetExtensionsViewVirtualDom.getExtensionsViewVirtualDom(state)
+  const contentNode = result.find((node) => node.className === MergeClassNames.mergeClassNames(ClassNames.Viewlet, ClassNames.List))
+
+  expect(contentNode?.childCount).toBe(1)
+})
+
+test('sets the content child count to two when the scrollbar is included', () => {
+  const state: State = {
+    ...createDefaultState(),
+    message: '',
+    scrollBarHeight: 100,
+    scrollBarY: 50,
+  }
+  const result = GetExtensionsViewVirtualDom.getExtensionsViewVirtualDom(state)
+  const contentNode = result.find((node) => node.className === MergeClassNames.mergeClassNames(ClassNames.Viewlet, ClassNames.List))
+
+  expect(contentNode?.childCount).toBe(2)
+})
+
 test('sets focusOutline to true when focusedIndex is -1 and focus is List', () => {
   const mockItem = createMockExtensionListItem()
   const state: State = {
