@@ -5,10 +5,10 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   await ExtensionSearch.open()
 
   // act
-  await ExtensionSearch.clearSearchResults()
+  await ExtensionSearch.handleInput('@category:"themes"')
 
   // assert
   const firstItem = Locator('.ExtensionListItem').first()
   await expect(firstItem).toHaveAttribute('aria-posinset', '1')
-  await expect(firstItem).toHaveAttribute('aria-setsize', '72')
+  await expect(firstItem).toHaveAttribute('aria-setsize', '2')
 }
