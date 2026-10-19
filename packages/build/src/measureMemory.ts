@@ -2,8 +2,9 @@ import { measureMemory } from '@lvce-editor/measure-memory'
 import { join } from 'node:path'
 import { root } from './root.ts'
 
-// Includes component DOM inspection and state destructuring (545,012 bytes on macOS).
-const threshold = 550_500
+// Baseline 549,672 bytes; toolbar menu adds 896 bytes (Linux Chromium).
+// CI macOS candidate: 550,640 bytes. Keep a small allowance for platform variance.
+const threshold = 551_000
 
 const instantiations = 5_000
 

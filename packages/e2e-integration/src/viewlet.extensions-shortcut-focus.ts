@@ -22,7 +22,7 @@ export const test: Test = async ({ Command, expect, FileSystem, KeyBoard, Locato
   await FileSystem.writeFile(fileUri, '')
   await Workspace.setUri(tmpDir)
   await SideBar.open('Explorer')
-  await Main.openUri(fileUri)
+  await Main.openInput({ editorInput: { forceText: true, type: 'editor', uri: fileUri }, focus: true })
 
   const editorInput = Locator('[name="editor"]')
   const extensionsInput = Locator('.SideBar input[name="extensions"]')
