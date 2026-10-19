@@ -10,6 +10,8 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   // act
   const settingsButton = Locator('.ExtensionListItemActionManage').first()
   await expect(settingsButton).toBeVisible()
+  // Exercise the actual DOM listener; the page object only calls the handler directly.
+  // eslint-disable-next-line e2e/no-direct-click, @typescript-eslint/no-deprecated
   await settingsButton.click()
 
   // assert
