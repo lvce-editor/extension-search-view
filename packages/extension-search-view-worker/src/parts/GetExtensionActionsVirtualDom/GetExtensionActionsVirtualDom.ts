@@ -5,13 +5,12 @@ import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEven
 import * as GetExtensionActions from '../GetExtensionActions/GetExtensionActions.ts'
 import * as GetExtensionActionVirtualDom from '../GetExtensionActionVirtualDom/GetExtensionActionVirtualDom.ts'
 
-const manageButton: Omit<VirtualDomNode, 'name'> = {
+const manageButtonProps = {
   ariaLabel: 'Extension settings',
   childCount: 0,
   className: 'ExtensionListItemActionManage',
   onClick: DomEventListenerFunctions.HandleSettingsButtonClick,
   title: 'Extension settings',
-  type: VirtualDomElements.Button,
 }
 
 const manageActionsContainer: VirtualDomNode = {
@@ -28,7 +27,7 @@ export const getExtensionActionsVirtualDom = (
   index: number,
 ): readonly VirtualDomNode[] => {
   if (status !== 'not-installed' && status !== 'installing' && status !== 'uninstalling') {
-    return [manageActionsContainer, { ...manageButton, name: String(index) }]
+    return [manageActionsContainer, { ...manageButtonProps, name: String(index), type: VirtualDomElements.Button }]
   }
   const actions = GetExtensionActions.getExtensionActions(builtin, disabled, status)
   return [
