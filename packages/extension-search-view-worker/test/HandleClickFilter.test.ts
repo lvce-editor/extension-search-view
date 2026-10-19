@@ -10,9 +10,9 @@ test('returns state unchanged', async () => {
     ...createDefaultState(),
     headerHeight: 41,
     uid: 123,
+    width: 300,
     x: 100,
     y: 200,
-    width: 300,
   }
   using mockRpc = RendererWorker.registerMockRpc({
     'ContextMenu.show2'() {},
