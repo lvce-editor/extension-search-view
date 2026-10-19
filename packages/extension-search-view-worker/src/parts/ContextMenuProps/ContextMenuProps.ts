@@ -14,7 +14,7 @@ export interface ContextMenuPropsExplorer extends ContextMenuPropsBase {
 export interface ContextMenuPropsExtensionSearchFilter extends ContextMenuPropsBase {
   readonly menuId: typeof MenuEntryId.ExtensionSearchFilter
   readonly openSubMenuToLeft?: boolean
-  readonly subMenu?: 'category'
+  readonly subMenu?: 'category' | 'moreActions'
 }
 
 export type ContextMenuProps = ContextMenuPropsExplorer | ContextMenuPropsExtensionSearchFilter
