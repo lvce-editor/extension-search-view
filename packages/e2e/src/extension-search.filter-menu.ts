@@ -13,6 +13,7 @@ export const test: Test = async ({ ContextMenu, expect, ExtensionSearch, Locator
   // assert
   const filterMenu = Locator('.Menu')
   await expect(filterMenu).toBeVisible()
+  await expect(filterMenu).toHaveCSS('top', '72px')
   const menuItems = filterMenu.locator('.MenuItem')
   await expect(menuItems).toHaveCount(14)
   const menuItem1 = menuItems.nth(0)

@@ -8,9 +8,11 @@ import { handleClickFilter } from '../src/parts/HandleClickFilter/HandleClickFil
 test('returns state unchanged', async () => {
   const state: State = {
     ...createDefaultState(),
+    headerHeight: 41,
     uid: 123,
     x: 100,
     y: 200,
+    width: 300,
   }
   using mockRpc = RendererWorker.registerMockRpc({
     'ContextMenu.show2'() {},
@@ -18,7 +20,7 @@ test('returns state unchanged', async () => {
   const result = await handleClickFilter(state)
   expect(result).toBe(state)
   expect(mockRpc.invocations).toEqual([
-    ['ContextMenu.show2', 123, MenuEntryId.ExtensionSearchFilter, 160, 570, { menuId: MenuEntryId.ExtensionSearchFilter, openSubMenuToLeft: true }],
+    ['ContextMenu.show2', 123, MenuEntryId.ExtensionSearchFilter, 460, 241, { menuId: MenuEntryId.ExtensionSearchFilter, openSubMenuToLeft: true }],
   ])
 })
 
@@ -36,7 +38,7 @@ test('returns state with modified searchValue unchanged', async () => {
   const result = await handleClickFilter(state)
   expect(result).toBe(state)
   expect(mockRpc.invocations).toEqual([
-    ['ContextMenu.show2', 456, MenuEntryId.ExtensionSearchFilter, 110, 445, { menuId: MenuEntryId.ExtensionSearchFilter, openSubMenuToLeft: true }],
+    ['ContextMenu.show2', 456, MenuEntryId.ExtensionSearchFilter, 110, 75, { menuId: MenuEntryId.ExtensionSearchFilter, openSubMenuToLeft: true }],
   ])
 })
 
@@ -72,6 +74,6 @@ test('returns state with items unchanged', async () => {
   const result = await handleClickFilter(state)
   expect(result).toBe(state)
   expect(mockRpc.invocations).toEqual([
-    ['ContextMenu.show2', 789, MenuEntryId.ExtensionSearchFilter, 60, 370, { menuId: MenuEntryId.ExtensionSearchFilter, openSubMenuToLeft: true }],
+    ['ContextMenu.show2', 789, MenuEntryId.ExtensionSearchFilter, 60, 0, { menuId: MenuEntryId.ExtensionSearchFilter, openSubMenuToLeft: true }],
   ])
 })
