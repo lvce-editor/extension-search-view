@@ -41,3 +41,5 @@ export const WorkspaceUnsupported = 'Workspace Unsupported'
 export const Deprecated = 'Deprecated'
 export const SortBy = 'Sort By'
 export const Size = 'Size'
+
+export const ShowRunningExtensions = 'Show Running Extensions'

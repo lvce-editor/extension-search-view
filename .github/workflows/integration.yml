@@ -30,7 +30,7 @@ jobs:
       - uses: actions/checkout@v7
         with:
           repository: lvce-editor/lvce-editor
-          ref: 236de223cab8f9eeb72dc68a260b63f0db3b4ef9
+          ref: 291629b7f9851bc1ce6f92b1e98c3da7a7407b37
           path: .tmp/lvce-integration
       - uses: actions/setup-node@v6
         with:
@@ -47,4 +47,8 @@ jobs:
         if: matrix.os == 'ubuntu-24.04'
         working-directory: .tmp/lvce-integration/packages/extension-host-worker-tests
         run: npm run e2e:headless -- --test-name-prefix=viewlet.extensions-shortcut-focus
+        shell: bash
+      - name: Test Extensions more actions
+        working-directory: .tmp/lvce-integration/packages/extension-host-worker-tests
+        run: npm run e2e:headless -- --test-name-prefix=viewlet.extensions-more-actions
         shell: bash

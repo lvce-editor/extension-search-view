@@ -168,3 +168,5 @@ export const deprecated = (): string => {
 export const sortBy = (): string => {
   return I18nString.i18nString(UiStrings.SortBy)
 }
+
+export const showRunningExtensions = (): string => I18nString.i18nString(UiStrings.ShowRunningExtensions)
