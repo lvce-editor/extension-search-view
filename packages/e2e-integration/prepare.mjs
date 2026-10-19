@@ -1,4 +1,5 @@
-import { cp, mkdir, readdir, readFile, realpath, rm } from 'node:fs/promises'
+import { cp, mkdir, readdir, readFile, realpath, rm, writeFile } from 'node:fs/promises'
+import { stripTypeScriptTypes } from 'node:module'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -15,6 +16,15 @@ for (const name of await readdir(join(tests, 'src'))) {
   if (name !== '_all.js') await rm(join(tests, 'src', name), { recursive: true })
 }
 await cp(join(here, 'src'), join(tests, 'src'), { recursive: true })
+// The browser test worker imports .js URLs; the development server serves files
+// directly, so materialize JavaScript without changing the owned test sources.
+for (const name of await readdir(join(tests, 'src'))) {
+  if (!name.endsWith('.ts')) continue
+  const source = join(tests, 'src', name)
+  const javascript = stripTypeScriptTypes(await readFile(source, 'utf8'))
+  await writeFile(source.replace(/\.ts$/, '.js'), javascript)
+  await rm(source)
+}
 await rm(join(tests, 'fixtures'), { recursive: true, force: true })
 await mkdir(join(tests, 'fixtures'), { recursive: true })
 try {
