@@ -1,9 +1,24 @@
 import { VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
+import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
 import * as GetExtensionActions from '../GetExtensionActions/GetExtensionActions.ts'
 import * as GetExtensionActionVirtualDom from '../GetExtensionActionVirtualDom/GetExtensionActionVirtualDom.ts'
-import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
+
+const manageButton: Omit<VirtualDomNode, 'name'> = {
+  ariaLabel: 'Extension settings',
+  childCount: 0,
+  className: 'ExtensionListItemActionManage',
+  onClick: DomEventListenerFunctions.HandleSettingsButtonClick,
+  title: 'Extension settings',
+  type: VirtualDomElements.Button,
+}
+
+const manageActionsContainer: VirtualDomNode = {
+  childCount: 1,
+  className: ClassNames.ExtensionActions,
+  type: VirtualDomElements.Div,
+}
 
 export const getExtensionActionsVirtualDom = (
   id: string,
@@ -13,16 +28,7 @@ export const getExtensionActionsVirtualDom = (
   index: number,
 ): readonly VirtualDomNode[] => {
   if (status !== 'not-installed' && status !== 'installing' && status !== 'uninstalling') {
-    const manage = {
-      ariaLabel: 'Extension settings',
-      childCount: 0,
-      className: 'ExtensionListItemActionManage',
-      name: String(index),
-      onClick: DomEventListenerFunctions.HandleSettingsButtonClick,
-      title: 'Extension settings',
-      type: VirtualDomElements.Button,
-    }
-    return [{ childCount: 1, className: ClassNames.ExtensionActions, type: VirtualDomElements.Div }, manage]
+    return [manageActionsContainer, { ...manageButton, name: String(index) }]
   }
   const actions = GetExtensionActions.getExtensionActions(builtin, disabled, status)
   return [
