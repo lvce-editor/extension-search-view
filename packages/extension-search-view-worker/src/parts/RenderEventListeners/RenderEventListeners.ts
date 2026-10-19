@@ -7,7 +7,7 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
   return [
     {
       name: 'handleExtensionsMoreActions',
-      params: ['handleMoreActions'],
+      params: ['handleExtensionsMoreActions'],
     },
     {
       name: DomEventListenerFunctions.HandleContextMenu,

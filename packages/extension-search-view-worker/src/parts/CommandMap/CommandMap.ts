@@ -31,7 +31,6 @@ import { getMenuEntries2 } from '../GetMenuEntries2/GetMenuEntries2.ts'
 import * as GetMenuEntries from '../GetMenuEntries/GetMenuEntries.ts'
 import * as GetMenuEntriesFilter from '../GetMenuEntriesFilter/GetMenuEntriesFilter.ts'
 import { getMenuIds } from '../GetMenuIds/GetMenuIds.ts'
-import { handleMoreActions } from '../HandleMoreActions/HandleMoreActions.ts'
 import * as HandleBlur from '../HandleBlur/HandleBlur.ts'
 import * as HandleClick from '../HandleClick/HandleClick.ts'
 import * as HandleClickAt from '../HandleClickAt/HandleClickAt.ts'
@@ -44,6 +43,7 @@ import * as HandleDisableWorkspace from '../HandleDisableWorkspace/HandleDisable
 import * as HandleEnable from '../HandleEnable/HandleEnable.ts'
 import * as HandleEnableWorkspace from '../HandleEnableWorkspace/HandleEnableWorkspace.ts'
 import * as HandleExtensionsChanged from '../HandleExtensionsChanged/HandleExtensionsChanged.ts'
+import { handleExtensionsMoreActions } from '../HandleExtensionsMoreActions/HandleExtensionsMoreActions.ts'
 import * as HandleFocus from '../HandleFocus/HandleFocus.ts'
 import { handleHeaderContextMenu } from '../HandleHeaderContextMenu/HandleHeaderContextMenu.ts'
 import * as HandleInput from '../HandleInput/HandleInput.ts'
@@ -127,7 +127,6 @@ export const commandMap = {
   'SearchExtensions.getMenuEntries2': WrapCommand.wrapGetter(getMenuEntries2),
   'SearchExtensions.getMenuEntriesFilter': GetMenuEntriesFilter.getMenuEntriesFilter,
   'SearchExtensions.getMenuIds': getMenuIds,
-  'SearchExtensions.handleMoreActions': WrapCommand.wrapCommand(handleMoreActions),
   'SearchExtensions.handleBlur': WrapCommand.wrapCommand(HandleBlur.handleBlur),
   'SearchExtensions.handleClick': WrapCommand.wrapCommand(HandleClick.handleClick),
   'SearchExtensions.handleClickAt': WrapCommand.wrapCommand(HandleClickAt.handleClickAt),
@@ -140,6 +139,7 @@ export const commandMap = {
   'SearchExtensions.handleEnable': WrapCommand.wrapCommand(HandleEnable.handleEnable),
   'SearchExtensions.handleEnableWorkspace': WrapCommand.wrapCommand(HandleEnableWorkspace.handleEnableWorkspace),
   'SearchExtensions.handleExtensionsChanged': WrapCommand.wrapCommand(HandleExtensionsChanged.handleExtensionsChanged),
+  'SearchExtensions.handleExtensionsMoreActions': WrapCommand.wrapCommand(handleExtensionsMoreActions),
   'SearchExtensions.handleFocus': WrapCommand.wrapCommand(HandleFocus.handleFocus),
   'SearchExtensions.handleHeaderContextMenu': WrapCommand.wrapCommand(handleHeaderContextMenu),
   'SearchExtensions.handleInput': WrapCommand.wrapAsyncCommand(HandleInput.handleInputWithContext),
