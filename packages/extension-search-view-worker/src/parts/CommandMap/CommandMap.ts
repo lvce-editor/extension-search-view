@@ -55,6 +55,7 @@ import * as HandleScrollBarClick from '../HandleScrollBarClick/HandleScrollBarCl
 import * as HandleScrollBarMove from '../HandleScrollBarMove/HandleScrollBarMove.ts'
 import * as HandleSettingsButtonClick from '../HandleSettingsButtonClick/HandleSettingsButtonClick.ts'
 import * as HandleUninstall from '../HandleUninstall/HandleUninstall.ts'
+import * as HandleUninstallSelected from '../HandleUninstallSelected/HandleUninstallSelected.ts'
 import * as HandleWheel from '../HandleWheel/HandleWheel.ts'
 import * as Initialize from '../Initialize/Initialize.ts'
 import * as InstallAnotherVersion from '../InstallAnotherVersion/InstallAnotherVersion.ts'
@@ -173,4 +174,5 @@ export const commandMap = {
   'SearchExtensions.setExtensionStatus': WrapCommand.wrapCommand(SetExtensionStatus.setExtensionStatus),
   'SearchExtensions.terminate': terminate,
   'SearchExtensions.toggleSuggest': WrapCommand.wrapCommand(ToggleSuggest.toggleSuggest),
+  'SearchExtensions.uninstall': WrapCommand.wrapCommand(HandleUninstallSelected.handleUninstallSelected),
 }

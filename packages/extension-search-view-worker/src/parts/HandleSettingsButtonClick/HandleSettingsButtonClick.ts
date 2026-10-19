@@ -21,5 +21,8 @@ export const handleSettingsButtonClick = async (state: State, index: number): Pr
     menuId: MenuEntryId.ManageExtension,
     status: items[actualIndex].status,
   })
-  return state
+  return {
+    ...state,
+    focusedIndex: actualIndex,
+  }
 }

@@ -12,8 +12,8 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   // assert
   const disabledItems = Locator('.ExtensionListItemDisabled')
   await expect(disabledItems).toHaveCount(1)
-  const action = Locator('.ExtensionActionButton')
-  await expect(action).toHaveText('Enable')
+  const action = Locator('.ExtensionListItemActionManage')
+  await expect(action).toHaveCount(1)
 
   // act
   await ExtensionSearch.setExtensionStatus(extensionId, 'enabled', true)
@@ -21,5 +21,4 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   // assert
   await expect(disabledItems).toHaveCount(0)
   await expect(action).toHaveCount(1)
-  await expect(action).toHaveText('Disable')
 }

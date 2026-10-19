@@ -22,8 +22,6 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   await expect(actions).toHaveCSS('display', 'flex')
   await expect(actions).toHaveCSS('gap', '6px')
 
-  const buttons = Locator('.ExtensionActionButton')
-  await expect(buttons).toHaveCount(2)
-  await expect(buttons.first()).toHaveCSS('padding-left', '5px')
-  await expect(buttons.first()).toHaveCSS('padding-right', '5px')
+  const buttons = Locator('.ExtensionListItemActionManage')
+  await expect(buttons).toHaveCount(1)
 }

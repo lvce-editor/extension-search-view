@@ -22,6 +22,16 @@ test('disables install another version for builtin extensions', () => {
   expect(menuEntry?.flags).toBe(MenuItemFlags.Disabled)
 })
 
+test('includes uninstall in the settings menu for installed non-builtin extensions', () => {
+  const menuEntry = getMenuEntriesList(false, false, 'enabled').find((entry) => entry.id === 'uninstall')
+  expect(menuEntry).toMatchObject({ command: 'Extensions.uninstall', flags: MenuItemFlags.None, label: 'Uninstall' })
+})
+
+test('omits uninstall from the settings menu for builtin extensions', () => {
+  const menuEntry = getMenuEntriesList(true, false, 'enabled').find((entry) => entry.id === 'uninstall')
+  expect(menuEntry).toBeUndefined()
+})
+
 test('disables enable actions for enabled extensions', () => {
   const menuEntries = getMenuEntriesList(false, false, 'enabled')
   expect(menuEntries.find((entry) => entry.id === 'enable')?.flags).toBe(MenuItemFlags.Disabled)

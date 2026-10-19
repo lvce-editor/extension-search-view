@@ -1,8 +1,6 @@
 import type { Test } from '@lvce-editor/test-with-playwright'
 
-export const skip = 1
-
-export const test: Test = async ({ expect, Extension, ExtensionDetail, ExtensionSearch, Locator }) => {
+export const test: Test = async ({ ContextMenu, expect, Extension, ExtensionDetail, ExtensionSearch, Locator }) => {
   // arrange
   const extensionId = 'test.commands-test'
   const extensionUri = import.meta.resolve('../fixtures/extension-commands')
@@ -13,17 +11,19 @@ export const test: Test = async ({ expect, Extension, ExtensionDetail, Extension
   await ExtensionSearch.handleInput(`@id:${extensionId}`)
 
   // assert
-  const buttons = Locator('.ExtensionListItem .ExtensionActionButton')
-  await expect(buttons).toHaveCount(2)
-  const uninstallButton = buttons.nth(1)
-  await expect(uninstallButton).toHaveText('Uninstall')
+  const buttons = Locator('.ExtensionListItemActionManage')
+  await expect(buttons).toHaveCount(1)
 
   // act
-  await ExtensionSearch.handleUninstall(extensionId)
+  await ExtensionSearch.handleSettingsButtonClick(0)
+  const uninstallMenuItem = Locator('.MenuItem', { hasText: 'Uninstall' })
+  await expect(uninstallMenuItem).toBeVisible()
+  await ContextMenu.selectItem('Uninstall')
 
   // assert
-  await expect(buttons).toHaveCount(1)
-  await expect(buttons.first()).toHaveText('Install')
+  const installButton = Locator('.ExtensionActionButton')
+  await expect(installButton).toHaveCount(1)
+  await expect(installButton).toHaveText('Install')
 
   // act
   await ExtensionDetail.open(extensionId)
