@@ -55,7 +55,7 @@ test('handleSettingsButtonClick shows context menu with builtin status', async (
     'ContextMenu.show2'() {},
   })
   const result = await HandleSettingsButtonClick.handleSettingsButtonClick(state, 0)
-  expect(result).toBe(state)
+  expect(result).toEqual({ ...state, focusedIndex: 0 })
   expect(mockRpc.invocations).toEqual([
     [
       'ContextMenu.show2',

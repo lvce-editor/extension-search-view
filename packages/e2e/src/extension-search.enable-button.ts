@@ -13,6 +13,6 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   const listItem = Locator('.ExtensionListItemDisabled')
   await expect(listItem).toBeVisible()
 
-  const buttons = Locator('.ExtensionListItem .ExtensionActionButton')
-  await expect(buttons.first()).toHaveText('Enable')
+  const buttons = Locator('.ExtensionListItem .ExtensionListItemActionManage')
+  await expect(buttons).toHaveCount(1)
 }

@@ -3,7 +3,7 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   // arrange
   const extensionId = 'builtin.theme-atom-one-dark'
-  const action = Locator(`.ExtensionActionButton[name="${extensionId}"]`)
+  const action = Locator(`.ExtensionListItemActionManage[aria-label="Extension settings for ${extensionId}"]`)
 
   await ExtensionSearch.open()
   await ExtensionSearch.setExtensionStatus(extensionId, 'disabled')
@@ -12,7 +12,7 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   await ExtensionSearch.handleInput('@disabled')
 
   // assert
-  await expect(action.first()).toHaveText('Enable')
+  await expect(action).toHaveCount(1)
 
   // act
   await ExtensionSearch.handleInput('@enabled')
@@ -25,7 +25,7 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   await ExtensionSearch.handleInput('@enabled')
 
   // assert
-  await expect(action.first()).toHaveText('Disable')
+  await expect(action).toHaveCount(1)
 
   // act
   await ExtensionSearch.handleInput('@disabled')

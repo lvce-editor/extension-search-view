@@ -26,6 +26,6 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   // assert
   await expect(name).toHaveText('Atom One Dark Theme')
   await expect(disabledItems).toHaveCount(1)
-  const action = Locator('.ExtensionActionButton')
-  await expect(action).toHaveText('Enable')
+  const action = Locator('.ExtensionListItemActionManage')
+  await expect(action).toHaveCount(1)
 }

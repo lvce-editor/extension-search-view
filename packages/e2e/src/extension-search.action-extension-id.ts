@@ -9,7 +9,7 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   await ExtensionSearch.handleInput(`@id:${extensionId}`)
 
   // assert
-  const button = Locator('.ExtensionActionButton')
+  const button = Locator('.ExtensionListItemActionManage')
   await expect(button).toHaveCount(1)
-  await expect(button).toHaveAttribute('name', extensionId)
+  await expect(button).toHaveAttribute('aria-label', `Extension settings for ${extensionId}`)
 }

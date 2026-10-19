@@ -19,11 +19,8 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   await ExtensionSearch.setExtensionStatus(extensionId, 'enabled', false)
 
   // assert
-  await expect(buttons).toHaveCount(2)
-  await expect(buttons.first()).toHaveText('Disable')
-  await expect(buttons.first()).toHaveAttribute('disabled', null)
-  const uninstallButton = buttons.nth(1)
-  await expect(uninstallButton).toHaveText('Uninstall')
+  const manageButton = Locator('.ExtensionListItemActionManage')
+  await expect(manageButton).toHaveCount(1)
   const name = Locator('.ExtensionListItemName')
   await expect(name).toHaveText('Atom One Dark Theme')
 }

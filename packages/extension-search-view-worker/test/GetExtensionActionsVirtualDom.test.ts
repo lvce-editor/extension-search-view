@@ -7,7 +7,7 @@ test('renders a settings button for enabled extensions', () => {
   const result = GetExtensionActionsVirtualDom.getExtensionActionsVirtualDom('publisher.extension', false, false, 'enabled', 4)
   expect(result).toHaveLength(2)
   expect(result[1]).toMatchObject({
-    ariaLabel: 'Extension settings',
+    ariaLabel: 'Extension settings for publisher.extension',
     className: 'ExtensionListItemActionManage',
     name: '4',
     onClick: DomEventListenerFunctions.HandleSettingsButtonClick,

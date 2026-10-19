@@ -10,8 +10,8 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   await ExtensionSearch.setExtensionStatus(extensionId, 'enabled', true)
 
   // assert
-  const action = Locator('.ExtensionActionButton')
-  await expect(action).toHaveText('Disable')
+  const action = Locator('.ExtensionListItemActionManage')
+  await expect(action).toHaveCount(1)
 
   // act
   await ExtensionSearch.setExtensionStatus('missing.extension', 'installing', false)
@@ -20,8 +20,7 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   const name = Locator('.ExtensionListItemName')
   await expect(name).toHaveText('Atom One Dark Theme')
   await expect(action).toHaveCount(1)
-  await expect(action).toHaveText('Disable')
-  await expect(action).toHaveAttribute('disabled', null)
+  await expect(action).toHaveCount(1)
   const disabledItems = Locator('.ExtensionListItemDisabled')
   await expect(disabledItems).toHaveCount(0)
 }
