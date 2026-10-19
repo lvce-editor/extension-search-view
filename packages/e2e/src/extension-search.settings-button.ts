@@ -10,7 +10,7 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   // act
   const settingsButton = Locator('.ExtensionListItemActionManage').first()
   await expect(settingsButton).toBeVisible()
-  await ExtensionSearch.handleSettingsButtonClick(0)
+  await settingsButton.click()
 
   // assert
   const contextMenu = Locator('.Menu')
