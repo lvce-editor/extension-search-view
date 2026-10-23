@@ -10,5 +10,6 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   // assert
   const items = Locator('.ExtensionListItem')
   await expect(items).toHaveCount(1)
-  await expect(items.locator('.ExtensionListItemName')).toHaveText('Gruvbox Theme')
+  const itemName = items.locator('.ExtensionListItemName')
+  await expect(itemName).toHaveText('Gruvbox Theme')
 }

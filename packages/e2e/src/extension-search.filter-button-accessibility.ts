@@ -7,5 +7,6 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   // assert
   const filterButton = Locator('.SearchFieldButton').nth(1)
   await expect(filterButton).toHaveAttribute('title', 'Filter')
-  await expect(filterButton.locator('.MaskIconFilter')).toHaveCount(1)
+  const filterIcon = filterButton.locator('.MaskIconFilter')
+  await expect(filterIcon).toHaveCount(1)
 }

@@ -12,5 +12,6 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   // assert
   const metadata = Locator('.ExtensionListItemMetadata')
   await expect(metadata).toHaveCount(1)
-  await expect(metadata.locator('.ExtensionListItemStatistic')).toHaveCount(2)
+  const statistics = metadata.locator('.ExtensionListItemStatistic')
+  await expect(statistics).toHaveCount(2)
 }

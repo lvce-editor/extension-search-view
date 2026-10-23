@@ -16,8 +16,10 @@ export const test: Test = async ({ Command, ContextMenu, expect, ExtensionSearch
   // assert
   await expect(menus).toHaveCount(2)
   const subMenu = menus.nth(1)
-  await expect(subMenu.locator('.MenuItem')).toHaveCount(20)
-  await expect(subMenu.locator('text=Themes')).toBeVisible()
+  const menuItems = subMenu.locator('.MenuItem')
+  await expect(menuItems).toHaveCount(20)
+  const themesItem = subMenu.locator('text=Themes')
+  await expect(themesItem).toBeVisible()
 
   // act
   await ContextMenu.selectItem('Themes')

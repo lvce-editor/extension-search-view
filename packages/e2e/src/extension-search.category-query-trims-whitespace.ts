@@ -10,5 +10,6 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   // assert
   const items = Locator('.ExtensionListItem')
   await expect(items).toHaveCount(2)
-  await expect(items.first().locator('.ExtensionListItemName')).toHaveText('Ayu Theme')
+  const firstItemName = items.first().locator('.ExtensionListItemName')
+  await expect(firstItemName).toHaveText('Ayu Theme')
 }

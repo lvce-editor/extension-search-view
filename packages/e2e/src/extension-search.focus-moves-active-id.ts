@@ -10,11 +10,12 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
 
   // assert
   const activeItem = Locator('.ExtensionListItem#ExtensionActive')
-  await expect(activeItem.locator('.ExtensionListItemName')).toHaveText('Ayu Theme')
+  const itemName = activeItem.locator('.ExtensionListItemName')
+  await expect(itemName).toHaveText('Ayu Theme')
 
   // act
   await ExtensionSearch.focusNext()
 
   // assert
-  await expect(activeItem.locator('.ExtensionListItemName')).toHaveText('Cobalt 2 Theme')
+  await expect(itemName).toHaveText('Cobalt 2 Theme')
 }

@@ -14,20 +14,21 @@ export const test: Test = async ({ expect, ExtensionSearch, KeyBoard, Locator })
 
   // assert
   const activeItem = Locator('.ExtensionActive')
+  const activeItemName = activeItem.locator('.ExtensionListItemName')
   await expect(activeItem).toHaveAttribute('aria-posinset', '2')
-  await expect(activeItem.locator('.ExtensionListItemName')).toHaveText('Cobalt 2 Theme')
+  await expect(activeItemName).toHaveText('Cobalt 2 Theme')
 
   // act
   await KeyBoard.press('ArrowDown')
 
   // assert
   await expect(activeItem).toHaveAttribute('aria-posinset', '1')
-  await expect(activeItem.locator('.ExtensionListItemName')).toHaveText('Ayu Theme')
+  await expect(activeItemName).toHaveText('Ayu Theme')
 
   // act
   await KeyBoard.press('ArrowUp')
 
   // assert
   await expect(activeItem).toHaveAttribute('aria-posinset', '1')
-  await expect(activeItem.locator('.ExtensionListItemName')).toHaveText('Ayu Theme')
+  await expect(activeItemName).toHaveText('Ayu Theme')
 }

@@ -11,5 +11,6 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   // assert
   const activeItem = Locator('.ExtensionActive')
   await expect(activeItem).toHaveAttribute('aria-posinset', '2')
-  await expect(activeItem.locator('.ExtensionListItemName')).toHaveText('Cobalt 2 Theme')
+  const itemName = activeItem.locator('.ExtensionListItemName')
+  await expect(itemName).toHaveText('Cobalt 2 Theme')
 }

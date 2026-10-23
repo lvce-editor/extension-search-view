@@ -10,5 +10,6 @@ export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
   // assert
   const actions = Locator('.ExtensionActions')
   await expect(actions).toHaveCount(1)
-  await expect(actions.locator('.ExtensionListItemActionManage')).toHaveCount(1)
+  const manageButton = actions.locator('.ExtensionListItemActionManage')
+  await expect(manageButton).toHaveCount(1)
 }
