@@ -1,0 +1,6 @@
+{
+  "id": "test.extension-search-gif-icon",
+  "name": "GIF Icon Test Extension",
+  "description": "Extension with a local GIF icon",
+  "icon": "icon.gif"
+}

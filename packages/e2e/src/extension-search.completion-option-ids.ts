@@ -1,8 +1,13 @@
 import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
+  // arrange
   await ExtensionSearch.open()
+
+  // act
   await ExtensionSearch.handleInput('@', 1, 1)
+
+  // assert
   const items = Locator('.ExtensionSearchCompletionItem')
   const lastItem = items.nth(14)
   await expect(items.first()).toHaveAttribute('id', 'ExtensionSearchCompletion-0')

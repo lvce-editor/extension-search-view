@@ -3,13 +3,19 @@ import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefau
 import * as SetExtensionStatus from '../src/parts/SetExtensionStatus/SetExtensionStatus.ts'
 
 const extension = {
+  builtin: false,
   categories: [],
   description: 'Test extension',
+  disabled: false,
+  downloadCount: 'n/a',
   icon: '',
   id: 'test.extension',
+  linked: false,
   name: 'Test Extension',
   publisher: 'test',
+  rating: 'n/a',
   size: 0,
+  status: '',
   updatedDate: 0,
   uri: '',
 }

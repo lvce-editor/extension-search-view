@@ -1,5 +1,14 @@
 import * as PlatformType from '../PlatformType/PlatformType.ts'
 
+const pathSeparatorRegex = /[\\/]/
+
+const normalizePath = (path: string): string => {
+  return path
+    .split('/')
+    .filter((part) => part && part !== '.')
+    .join('/')
+}
+
 export const getRemoteUrl = (extension: unknown, platform: number, assetDir: string): string => {
   if (extension === null || typeof extension !== 'object') {
     return ''
@@ -10,9 +19,12 @@ export const getRemoteUrl = (extension: unknown, platform: number, assetDir: str
   const path = 'path' in extension && typeof extension.path === 'string' ? extension.path : ''
   if (platform === PlatformType.Remote || platform === PlatformType.Electron) {
     if (builtin) {
-      return `${assetDir}/extensions/${id}/${icon}`
+      const directory = path.split(pathSeparatorRegex).findLast(Boolean) || id
+      return `${assetDir}/extensions/${directory}/${icon}`
     }
-    return `/remote/${path}/${icon}` // TODO support windows paths
+    const normalizedPath = normalizePath(path)
+    const normalizedIcon = normalizePath(icon)
+    return `/remote/${[normalizedPath, normalizedIcon].filter(Boolean).join('/')}` // TODO support windows paths
   }
   if (platform === PlatformType.Web) {
     return `${path}/${icon}`

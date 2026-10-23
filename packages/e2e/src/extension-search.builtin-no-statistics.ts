@@ -1,8 +1,10 @@
 import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
+  // act
   await ExtensionSearch.open()
 
+  // assert
   const extensionItem = Locator('.ExtensionListItem').first()
   const authorName = extensionItem.locator('.ExtensionListItemAuthorName')
   await expect(authorName).toHaveText('builtin')

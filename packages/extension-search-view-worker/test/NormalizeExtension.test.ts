@@ -27,7 +27,7 @@ test('normalizeExtension returns correct ExtensionListItem structure', () => {
     publisher: 'test-id',
     rating: 'n/a',
     size: 1000,
-    status: undefined,
+    status: '',
     updatedDate: 1000,
     uri: '',
   })
@@ -54,7 +54,7 @@ test('normalizeExtension handles extension with missing fields', () => {
     publisher: 'test-id',
     rating: 'n/a',
     size: 0,
-    status: undefined,
+    status: '',
     updatedDate: 0,
     uri: '',
   })
@@ -86,7 +86,7 @@ test('normalizeExtension handles different platform values', () => {
     publisher: 'test-id',
     rating: 'n/a',
     size: 1000,
-    status: undefined,
+    status: '',
     updatedDate: 1000,
     uri: '',
   })

@@ -1,25 +1,34 @@
 import type { Test } from '@lvce-editor/test-with-playwright'
 
-export const skip = 1
-
-export const test: Test = async ({ expect, Extension, ExtensionDetail, ExtensionSearch, Locator }) => {
+export const test: Test = async ({ ContextMenu, expect, Extension, ExtensionDetail, ExtensionSearch, Locator }) => {
+  // arrange
   const extensionId = 'test.commands-test'
   const extensionUri = import.meta.resolve('../fixtures/extension-commands')
   await Extension.addWebExtension(extensionUri)
   await ExtensionSearch.open()
+
+  // act
   await ExtensionSearch.handleInput(`@id:${extensionId}`)
 
-  const buttons = Locator('.ExtensionListItem .ExtensionActionButton')
-  await expect(buttons).toHaveCount(2)
-  const uninstallButton = buttons.nth(1)
-  await expect(uninstallButton).toHaveText('Uninstall')
-
-  await ExtensionSearch.handleUninstall(extensionId)
-
+  // assert
+  const buttons = Locator('.ExtensionListItemActionManage')
   await expect(buttons).toHaveCount(1)
-  await expect(buttons.first()).toHaveText('Install')
 
+  // act
+  await ExtensionSearch.handleSettingsButtonClick(0)
+  const uninstallMenuItem = Locator('.MenuItem', { hasText: 'Uninstall' })
+  await expect(uninstallMenuItem).toBeVisible()
+  await ContextMenu.selectItem('Uninstall')
+
+  // assert
+  const installButton = Locator('.ExtensionActionButton')
+  await expect(installButton).toHaveCount(1)
+  await expect(installButton).toHaveText('Install')
+
+  // act
   await ExtensionDetail.open(extensionId)
+
+  // assert
   const errorTitle = Locator('.ExtensionDetailErrorTitle')
   const errorMessage = Locator('.ExtensionDetailErrorMessage')
   await expect(errorTitle).toHaveText('Unable to load extension')

@@ -1,11 +1,16 @@
 import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const test: Test = async ({ expect, ExtensionSearch, Locator }) => {
+  // arrange
   await ExtensionSearch.open()
   await ExtensionSearch.clearSearchResults()
   await ExtensionSearch.handleInput('@', 1, 1)
   await ExtensionSearch.closeSuggest()
+
+  // act
   await ExtensionSearch.clearSearchResults()
+
+  // assert
   const widget = Locator('.ExtensionSearchCompletionWidget')
   const input = Locator('.Extensions .MultilineInputBox')
   await expect(widget).toHaveCount(0)

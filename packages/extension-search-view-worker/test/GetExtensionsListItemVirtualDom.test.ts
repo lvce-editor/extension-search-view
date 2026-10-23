@@ -30,7 +30,7 @@ test('creates virtual dom with correct structure', () => {
   const item = createMockVisibleItem()
   const result = GetExtensionsListItemVirtualDom.getExtensionListItemVirtualDom(item)
 
-  expect(result).toHaveLength(13)
+  expect(result).toHaveLength(12)
 })
 
 test('sets main list item div with correct properties when focused', () => {

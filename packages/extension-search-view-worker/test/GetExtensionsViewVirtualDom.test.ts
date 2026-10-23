@@ -10,13 +10,19 @@ import * as MergeClassNames from '../src/parts/MergeClassNames/MergeClassNames.t
 
 const createMockExtensionListItem = (overrides?: Partial<ExtensionListItem>): ExtensionListItem => {
   return {
+    builtin: false,
     categories: [],
     description: 'Test Description',
+    disabled: false,
+    downloadCount: 'n/a',
     icon: 'test-icon.png',
     id: 'test-extension',
+    linked: false,
     name: 'Test Extension',
     publisher: 'Test Publisher',
+    rating: 'n/a',
     size: 1000,
+    status: '',
     updatedDate: 1000,
     uri: 'https://example.com',
     ...overrides,
@@ -100,6 +106,32 @@ test('does not include scrollbar when scrollBarHeight is 0', () => {
 
   const hasScrollBar = result.some((node) => node.className === MergeClassNames.mergeClassNames(ClassNames.ScrollBar, ClassNames.ScrollBarSmall))
   expect(hasScrollBar).toBe(false)
+})
+
+test('sets the content child count to one when the scrollbar is omitted', () => {
+  const state: State = {
+    ...createDefaultState(),
+    message: '',
+    scrollBarHeight: 0,
+    scrollBarY: 0,
+  }
+  const result = GetExtensionsViewVirtualDom.getExtensionsViewVirtualDom(state)
+  const contentNode = result.find((node) => node.className === MergeClassNames.mergeClassNames(ClassNames.Viewlet, ClassNames.List))
+
+  expect(contentNode?.childCount).toBe(1)
+})
+
+test('sets the content child count to two when the scrollbar is included', () => {
+  const state: State = {
+    ...createDefaultState(),
+    message: '',
+    scrollBarHeight: 100,
+    scrollBarY: 50,
+  }
+  const result = GetExtensionsViewVirtualDom.getExtensionsViewVirtualDom(state)
+  const contentNode = result.find((node) => node.className === MergeClassNames.mergeClassNames(ClassNames.Viewlet, ClassNames.List))
+
+  expect(contentNode?.childCount).toBe(2)
 })
 
 test('sets focusOutline to true when focusedIndex is -1 and focus is List', () => {

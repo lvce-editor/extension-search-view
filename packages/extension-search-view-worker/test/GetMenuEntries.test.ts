@@ -22,6 +22,16 @@ test('disables install another version for builtin extensions', () => {
   expect(menuEntry?.flags).toBe(MenuItemFlags.Disabled)
 })
 
+test('includes uninstall in the settings menu for installed non-builtin extensions', () => {
+  const menuEntry = getMenuEntriesList(false, false, 'enabled').find((entry) => entry.id === 'uninstall')
+  expect(menuEntry).toMatchObject({ command: 'Extensions.uninstall', flags: MenuItemFlags.None, label: 'Uninstall' })
+})
+
+test('omits uninstall from the settings menu for builtin extensions', () => {
+  const menuEntry = getMenuEntriesList(true, false, 'enabled').find((entry) => entry.id === 'uninstall')
+  expect(menuEntry).toBeUndefined()
+})
+
 test('disables enable actions for enabled extensions', () => {
   const menuEntries = getMenuEntriesList(false, false, 'enabled')
   expect(menuEntries.find((entry) => entry.id === 'enable')?.flags).toBe(MenuItemFlags.Disabled)
@@ -44,4 +54,10 @@ test.each(['installing', 'not-installed', 'uninstalling'])('disables enablement 
   expect(menuEntries.find((entry) => entry.id === 'enableWorkspace')?.flags).toBe(MenuItemFlags.Disabled)
   expect(menuEntries.find((entry) => entry.id === 'disable')?.flags).toBe(MenuItemFlags.Disabled)
   expect(menuEntries.find((entry) => entry.id === 'disableWorkspace')?.flags).toBe(MenuItemFlags.Disabled)
+})
+
+test('uses disabled state when status is empty', () => {
+  const menuEntries = getMenuEntriesList(false, true, '')
+  expect(menuEntries.find((entry) => entry.id === 'enable')?.flags).toBe(MenuItemFlags.None)
+  expect(menuEntries.find((entry) => entry.id === 'disable')?.flags).toBe(MenuItemFlags.Disabled)
 })

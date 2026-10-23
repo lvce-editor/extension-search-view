@@ -14,10 +14,40 @@ test('returns correct path for remote non-builtin extension', () => {
   expect(GetRemoteUrl.getRemoteUrl(extension, PlatformType.Remote, assetDir)).toBe('/remote/test/path/icon.png')
 })
 
+test('normalizes absolute remote extension paths and relative icon paths', () => {
+  const extension = {
+    builtin: false,
+    icon: './media/icon.png',
+    id: 'builtin.hetzner',
+    path: '/home/simon/.local/share/lvce/extensions/hetzner/',
+  }
+  const assetDir = '/test/assets'
+  expect(GetRemoteUrl.getRemoteUrl(extension, PlatformType.Remote, assetDir)).toBe(
+    '/remote/home/simon/.local/share/lvce/extensions/hetzner/media/icon.png',
+  )
+})
+
+test('preserves already-normalized remote extension paths', () => {
+  const extension = { builtin: false, icon: 'media/icon.png', id: 'test', path: '/home/test/extension' }
+  const assetDir = '/test/assets'
+  expect(GetRemoteUrl.getRemoteUrl(extension, PlatformType.Remote, assetDir)).toBe('/remote/home/test/extension/media/icon.png')
+})
+
 test('returns correct path for electron builtin extension', () => {
   const extension = { builtin: true, icon: 'icon.png', id: 'test' }
   const assetDir = '/test/assets'
   expect(GetRemoteUrl.getRemoteUrl(extension, PlatformType.Electron, assetDir)).toBe('/test/assets/extensions/test/icon.png')
+})
+
+test('returns correct path for electron builtin extension with a different directory name', () => {
+  const extension = {
+    builtin: true,
+    icon: 'media/icon.svg',
+    id: 'github.pull-requests',
+    path: '/08a711e/extensions/builtin.pull-request-github',
+  }
+  const assetDir = '/08a711e'
+  expect(GetRemoteUrl.getRemoteUrl(extension, PlatformType.Electron, assetDir)).toBe('/08a711e/extensions/builtin.pull-request-github/media/icon.svg')
 })
 
 test('returns correct path for electron non-builtin extension', () => {

@@ -1,5 +1,1 @@
-import { initializeExtensionManagementWorker } from '../InitializeExtensionManagementWorker/InitializeExtensionManagementWorker.ts'
-
-export const initialize = async (): Promise<void> => {
-  await initializeExtensionManagementWorker()
-}
+export { initializeExtensionManagementWorker as initialize } from '../InitializeExtensionManagementWorker/InitializeExtensionManagementWorker.ts'

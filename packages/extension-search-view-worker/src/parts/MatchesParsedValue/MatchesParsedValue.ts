@@ -25,11 +25,11 @@ const matchesCategory = (extension: ExtensionListItem, category: string): boolea
 }
 
 export const matchesParsedValue = (extension: ExtensionListItem, parsedValue: ParsedExtensionSearchValue): boolean => {
-  const extensionIsDisabled = isExtensionDisabled(extension.disabled === true, extension.status)
+  const extensionIsDisabled = isExtensionDisabled(extension.disabled, extension.status)
   if ((parsedValue.disabled && !extensionIsDisabled) || (parsedValue.enabled && extensionIsDisabled)) {
     return false
   }
-  if (parsedValue.linked && extension.linked !== true) {
+  if (parsedValue.linked && !extension.linked) {
     return false
   }
   if (parsedValue.id && extension.id) {

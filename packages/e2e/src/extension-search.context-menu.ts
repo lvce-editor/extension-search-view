@@ -26,12 +26,14 @@ export const test: Test = async ({ ClipBoard, ContextMenu, expect, ExtensionSear
   const menuItem4 = menuItems.nth(3)
   await expect(menuItem4).toHaveText('Disable Workspace')
   const menuItem5 = menuItems.nth(4)
-  await expect(menuItem5).toHaveText('Install Another Version')
+  await expect(menuItem5).toHaveText('Uninstall')
   const menuItem6 = menuItems.nth(5)
-  await expect(menuItem6).toHaveText('Copy')
+  await expect(menuItem6).toHaveText('Install Another Version')
   const menuItem7 = menuItems.nth(6)
-  await expect(menuItem7).toHaveText('Copy Extension Id')
+  await expect(menuItem7).toHaveText('Copy')
+  const menuItem8 = menuItems.nth(7)
+  await expect(menuItem8).toHaveText('Copy Extension Id')
 
-  await ContextMenu.selectIndex(0, 8)
+  await ContextMenu.selectIndex(0, 9)
   await ClipBoard.shouldHaveText(extensionId)
 }

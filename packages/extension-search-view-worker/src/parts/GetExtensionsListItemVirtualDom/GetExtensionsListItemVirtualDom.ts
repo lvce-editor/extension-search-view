@@ -74,7 +74,7 @@ export const getExtensionListItemVirtualDom = (extension: VisibleItem): readonly
     setSize,
     status,
   } = extension
-  const actionsDom = GetExtensionActionsVirtualDom.getExtensionActionsVirtualDom(id, builtin, disabled, status)
+  const actionsDom = GetExtensionActionsVirtualDom.getExtensionActionsVirtualDom(id, builtin, disabled, status, extension.index)
   const hasStatistics = !builtin
   const dom: readonly VirtualDomNode[] = [
     {

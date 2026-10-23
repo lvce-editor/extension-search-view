@@ -16,6 +16,5 @@ export const test: Test = async ({ ClipBoard, expect, ExtensionSearch, Locator }
 Id: builtin.theme-atom-one-dark
 Description: One Dark Theme based on Atom
 Version:
-Publisher: builtin
-Marketplace Link:`)
+Publisher: builtin`)
 }

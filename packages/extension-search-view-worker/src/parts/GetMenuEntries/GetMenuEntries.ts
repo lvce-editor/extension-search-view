@@ -18,7 +18,7 @@ const getEnablementFlags = (
       enable: MenuItemFlags.Disabled,
     }
   }
-  const isDisabled = status === ExtensionStatus.Disabled || (status === undefined && disabled)
+  const isDisabled = status === ExtensionStatus.Disabled || (!status && disabled)
   return {
     disable: isDisabled ? MenuItemFlags.Disabled : MenuItemFlags.None,
     enable: isDisabled ? MenuItemFlags.None : MenuItemFlags.Disabled,
@@ -27,7 +27,7 @@ const getEnablementFlags = (
 
 export const getMenuEntriesList = (builtin: boolean, disabled = false, status?: string): readonly MenuEntry[] => {
   const enablementFlags = getEnablementFlags(disabled, status)
-  return [
+  const entries = [
     {
       command: 'Extensions.enable',
       flags: enablementFlags.enable,
@@ -82,5 +82,18 @@ export const getMenuEntriesList = (builtin: boolean, disabled = false, status?: 
       id: 'copyExtensionId',
       label: ExtensionStrings.copyExtensionId(),
     },
+  ]
+  if (builtin || status === ExtensionStatus.NotInstalled || status === ExtensionStatus.Installing || status === ExtensionStatus.Uninstalling) {
+    return entries
+  }
+  return [
+    ...entries.slice(0, 6),
+    {
+      command: 'Extensions.uninstall',
+      flags: MenuItemFlags.None,
+      id: 'uninstall',
+      label: ExtensionStrings.uninstall(),
+    },
+    ...entries.slice(6),
   ]
 }

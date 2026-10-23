@@ -6,6 +6,10 @@ import * as InputSource from '../InputSource/InputSource.ts'
 export const renderEventListeners = (): readonly DomEventListener[] => {
   return [
     {
+      name: 'handleExtensionsMoreActions',
+      params: ['handleExtensionsMoreActions'],
+    },
+    {
       name: DomEventListenerFunctions.HandleContextMenu,
       params: ['handleContextMenu', EventExpression.Button, EventExpression.ClientX, EventExpression.ClientY],
       preventDefault: true,
@@ -74,6 +78,10 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
     {
       name: DomEventListenerFunctions.HandleDisable,
       params: ['handleDisable', EventExpression.TargetName],
+    },
+    {
+      name: DomEventListenerFunctions.HandleSettingsButtonClick,
+      params: ['handleSettingsButtonClick', EventExpression.TargetName],
     },
     {
       name: DomEventListenerFunctions.HandleInputFocus,

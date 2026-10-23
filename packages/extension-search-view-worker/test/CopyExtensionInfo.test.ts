@@ -5,13 +5,19 @@ import * as CopyExtensionInfo from '../src/parts/CopyExtensionInfo/CopyExtension
 import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 
 const mockItem: ExtensionListItem = {
+  builtin: false,
   categories: [],
   description: 'A test extension',
+  disabled: false,
+  downloadCount: 'n/a',
   icon: 'icon.png',
   id: 'test.extension',
+  linked: false,
   name: 'Test Extension',
   publisher: 'Test Publisher',
+  rating: 'n/a',
   size: 1000,
+  status: '',
   updatedDate: 1_000_000,
   uri: 'https://example.com',
 }
@@ -42,22 +48,25 @@ test('copyExtensionInfo copies extension info text to clipboard when focused ite
   const result = await CopyExtensionInfo.copyExtensionInfo(state)
   expect(result).toBe(state)
   expect(mockRpc.invocations).toEqual([
-    [
-      'ClipBoard.writeText',
-      'Name: Test Extension\nId: test.extension\nDescription: A test extension\nVersion:\nPublisher: Test Publisher\nMarketplace Link:',
-    ],
+    ['ClipBoard.writeText', 'Name: Test Extension\nId: test.extension\nDescription: A test extension\nVersion:\nPublisher: Test Publisher'],
   ])
 })
 
 test('copyExtensionInfo handles item with empty strings', async () => {
   const emptyItem: ExtensionListItem = {
+    builtin: true,
     categories: [],
     description: '',
+    disabled: false,
+    downloadCount: 'n/a',
     icon: '',
     id: '',
+    linked: false,
     name: '',
     publisher: '',
+    rating: 'n/a',
     size: 0,
+    status: '',
     updatedDate: 0,
     uri: '',
   }
@@ -71,5 +80,5 @@ test('copyExtensionInfo handles item with empty strings', async () => {
   })
   const result = await CopyExtensionInfo.copyExtensionInfo(state)
   expect(result).toBe(state)
-  expect(mockRpc.invocations).toEqual([['ClipBoard.writeText', 'Name:\nId:\nDescription:\nVersion:\nPublisher:\nMarketplace Link:']])
+  expect(mockRpc.invocations).toEqual([['ClipBoard.writeText', 'Name:\nId:\nDescription:\nVersion:\nPublisher:']])
 })

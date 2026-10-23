@@ -8,13 +8,19 @@ import { handleClick } from '../src/parts/HandleClick/HandleClick.ts'
 
 test('handleClick opens URI and updates state with focus', async () => {
   const mockExtension: ExtensionListItem = {
+    builtin: false,
     categories: [],
     description: 'test-description',
+    disabled: false,
+    downloadCount: 'n/a',
     icon: 'test-icon',
     id: 'test-extension-id',
+    linked: false,
     name: 'Test Extension',
     publisher: 'test-publisher',
+    rating: 'n/a',
     size: 1000,
+    status: '',
     updatedDate: 1_000_000,
     uri: 'test-uri',
   }
@@ -39,25 +45,37 @@ test('handleClick opens URI and updates state with focus', async () => {
 
 test('handleClick calculates actualIndex correctly with minLineY and preserves scroll position', async () => {
   const mockExtension1: ExtensionListItem = {
+    builtin: false,
     categories: [],
     description: 'desc-1',
+    disabled: false,
+    downloadCount: 'n/a',
     icon: 'icon-1',
     id: 'extension-1',
+    linked: false,
     name: 'Extension 1',
     publisher: 'publisher-1',
+    rating: 'n/a',
     size: 1000,
+    status: '',
     updatedDate: 1_000_000,
     uri: 'uri-1',
   }
 
   const mockExtension2: ExtensionListItem = {
+    builtin: false,
     categories: [],
     description: 'desc-2',
+    disabled: false,
+    downloadCount: 'n/a',
     icon: 'icon-2',
     id: 'extension-2',
+    linked: false,
     name: 'Extension 2',
     publisher: 'publisher-2',
+    rating: 'n/a',
     size: 2000,
+    status: '',
     updatedDate: 2_000_000,
     uri: 'uri-2',
   }
@@ -89,13 +107,19 @@ test('handleClick calculates actualIndex correctly with minLineY and preserves s
 
 test('handleClick returns state with focus List and focusedIndex -1 when actualIndex is negative', async () => {
   const mockExtension: ExtensionListItem = {
+    builtin: false,
     categories: [],
     description: 'test-description',
+    disabled: false,
+    downloadCount: 'n/a',
     icon: 'test-icon',
     id: 'test-extension-id',
+    linked: false,
     name: 'Test Extension',
     publisher: 'test-publisher',
+    rating: 'n/a',
     size: 1000,
+    status: '',
     updatedDate: 1_000_000,
     uri: 'test-uri',
   }
@@ -120,13 +144,19 @@ test('handleClick returns state with focus List and focusedIndex -1 when actualI
 
 test('handleClick returns state with focus List and focusedIndex -1 when actualIndex exceeds items length', async () => {
   const mockExtension: ExtensionListItem = {
+    builtin: false,
     categories: [],
     description: 'test-description',
+    disabled: false,
+    downloadCount: 'n/a',
     icon: 'test-icon',
     id: 'test-extension-id',
+    linked: false,
     name: 'Test Extension',
     publisher: 'test-publisher',
+    rating: 'n/a',
     size: 1000,
+    status: '',
     updatedDate: 1_000_000,
     uri: 'test-uri',
   }

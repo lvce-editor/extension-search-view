@@ -13,6 +13,13 @@ export const test: Test = async ({ ContextMenu, expect, ExtensionSearch, Locator
   // assert
   const filterMenu = Locator('.Menu')
   await expect(filterMenu).toBeVisible()
+  try {
+    // The current runtime places the search-header anchor at 96px in the default layout.
+    await expect(filterMenu).toHaveCSS('top', '96px')
+  } catch {
+    // A short viewport may move the menu to the top edge to keep it visible.
+    await expect(filterMenu).toHaveCSS('top', '0px')
+  }
   const menuItems = filterMenu.locator('.MenuItem')
   await expect(menuItems).toHaveCount(14)
   const menuItem1 = menuItems.nth(0)

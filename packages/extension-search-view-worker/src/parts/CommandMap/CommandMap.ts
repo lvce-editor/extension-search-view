@@ -43,6 +43,7 @@ import * as HandleDisableWorkspace from '../HandleDisableWorkspace/HandleDisable
 import * as HandleEnable from '../HandleEnable/HandleEnable.ts'
 import * as HandleEnableWorkspace from '../HandleEnableWorkspace/HandleEnableWorkspace.ts'
 import * as HandleExtensionsChanged from '../HandleExtensionsChanged/HandleExtensionsChanged.ts'
+import { handleExtensionsMoreActions } from '../HandleExtensionsMoreActions/HandleExtensionsMoreActions.ts'
 import * as HandleFocus from '../HandleFocus/HandleFocus.ts'
 import { handleHeaderContextMenu } from '../HandleHeaderContextMenu/HandleHeaderContextMenu.ts'
 import * as HandleInput from '../HandleInput/HandleInput.ts'
@@ -54,6 +55,7 @@ import * as HandleScrollBarClick from '../HandleScrollBarClick/HandleScrollBarCl
 import * as HandleScrollBarMove from '../HandleScrollBarMove/HandleScrollBarMove.ts'
 import * as HandleSettingsButtonClick from '../HandleSettingsButtonClick/HandleSettingsButtonClick.ts'
 import * as HandleUninstall from '../HandleUninstall/HandleUninstall.ts'
+import * as HandleUninstallSelected from '../HandleUninstallSelected/HandleUninstallSelected.ts'
 import * as HandleWheel from '../HandleWheel/HandleWheel.ts'
 import * as Initialize from '../Initialize/Initialize.ts'
 import * as InstallAnotherVersion from '../InstallAnotherVersion/InstallAnotherVersion.ts'
@@ -138,6 +140,7 @@ export const commandMap = {
   'SearchExtensions.handleEnable': WrapCommand.wrapCommand(HandleEnable.handleEnable),
   'SearchExtensions.handleEnableWorkspace': WrapCommand.wrapCommand(HandleEnableWorkspace.handleEnableWorkspace),
   'SearchExtensions.handleExtensionsChanged': WrapCommand.wrapCommand(HandleExtensionsChanged.handleExtensionsChanged),
+  'SearchExtensions.handleExtensionsMoreActions': WrapCommand.wrapCommand(handleExtensionsMoreActions),
   'SearchExtensions.handleFocus': WrapCommand.wrapCommand(HandleFocus.handleFocus),
   'SearchExtensions.handleHeaderContextMenu': WrapCommand.wrapCommand(handleHeaderContextMenu),
   'SearchExtensions.handleInput': WrapCommand.wrapAsyncCommand(HandleInput.handleInputWithContext),
@@ -171,4 +174,5 @@ export const commandMap = {
   'SearchExtensions.setExtensionStatus': WrapCommand.wrapCommand(SetExtensionStatus.setExtensionStatus),
   'SearchExtensions.terminate': terminate,
   'SearchExtensions.toggleSuggest': WrapCommand.wrapCommand(ToggleSuggest.toggleSuggest),
+  'SearchExtensions.uninstall': WrapCommand.wrapCommand(HandleUninstallSelected.handleUninstallSelected),
 }

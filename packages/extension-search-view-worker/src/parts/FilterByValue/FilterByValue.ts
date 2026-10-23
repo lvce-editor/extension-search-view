@@ -6,11 +6,13 @@ import * as InputSource from '../InputSource/InputSource.ts'
 const RE_WHITESPACE_SEQUENCE = /\s+/
 
 const addFilter = (searchValue: string, filter: string): string => {
-  const values = searchValue.trim().split(RE_WHITESPACE_SEQUENCE)
+  const trimmedValue = searchValue.trim()
+
+  const values = trimmedValue.split(RE_WHITESPACE_SEQUENCE)
   if (values.includes(filter)) {
     return searchValue
   }
-  return `${searchValue.trim()} ${filter}`.trim()
+  return `${trimmedValue} ${filter}`.trim()
 }
 
 export const filterByValueWithContext = async (context: AsyncCommandContext<State>, filter: string): Promise<void> => {

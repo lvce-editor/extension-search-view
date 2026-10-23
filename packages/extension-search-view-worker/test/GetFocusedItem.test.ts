@@ -4,37 +4,55 @@ import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaul
 import * as GetFocusedItem from '../src/parts/GetFocusedItem/GetFocusedItem.ts'
 
 const mockItem1: ExtensionListItem = {
+  builtin: false,
   categories: [],
   description: 'Test Description 1',
+  disabled: false,
+  downloadCount: 'n/a',
   icon: 'test-icon-1.png',
   id: 'test-extension-1',
+  linked: false,
   name: 'Test Extension 1',
   publisher: 'Test Publisher',
+  rating: 'n/a',
   size: 1000,
+  status: '',
   updatedDate: 1000,
   uri: 'https://example.com/1',
 }
 
 const mockItem2: ExtensionListItem = {
+  builtin: false,
   categories: [],
   description: 'Test Description 2',
+  disabled: false,
+  downloadCount: 'n/a',
   icon: 'test-icon-2.png',
   id: 'test-extension-2',
+  linked: false,
   name: 'Test Extension 2',
   publisher: 'Test Publisher',
+  rating: 'n/a',
   size: 2000,
+  status: '',
   updatedDate: 2000,
   uri: 'https://example.com/2',
 }
 
 const mockItem3: ExtensionListItem = {
+  builtin: false,
   categories: [],
   description: 'Test Description 3',
+  disabled: false,
+  downloadCount: 'n/a',
   icon: 'test-icon-3.png',
   id: 'test-extension-3',
+  linked: false,
   name: 'Test Extension 3',
   publisher: 'Test Publisher',
+  rating: 'n/a',
   size: 3000,
+  status: '',
   updatedDate: 3000,
   uri: 'https://example.com/3',
 }
