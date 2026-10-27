@@ -81,7 +81,7 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
     },
     {
       name: DomEventListenerFunctions.HandleSettingsButtonClick,
-      params: ['handleSettingsButtonClick', EventExpression.TargetName],
+      params: ['handleSettingsButtonClick', EventExpression.TargetName, EventExpression.ClientX, EventExpression.ClientY],
     },
     {
       name: DomEventListenerFunctions.HandleInputFocus,

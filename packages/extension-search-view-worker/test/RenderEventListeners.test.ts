@@ -8,9 +8,9 @@ test('renderEventListeners returns array of event listeners', () => {
   expect(result).toBeDefined()
 })
 
-test('settings button click passes the button name to its handler', () => {
+test('settings button click passes the button name and click coordinates to its handler', () => {
   expect(renderEventListeners()).toContainEqual({
     name: DomEventListenerFunctions.HandleSettingsButtonClick,
-    params: ['handleSettingsButtonClick', EventExpression.TargetName],
+    params: ['handleSettingsButtonClick', EventExpression.TargetName, EventExpression.ClientX, EventExpression.ClientY],
   })
 })
