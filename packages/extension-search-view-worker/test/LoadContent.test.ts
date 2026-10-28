@@ -199,7 +199,7 @@ test('loadContent preserves state properties', async () => {
   expect(result.platform).toBe(Remote)
 })
 
-test('loadContent uses increased scroll sensitivity in Firefox', async () => {
+test('loadContent does not compound Firefox sensitivity with application scroll speed', async () => {
   setNavigator('Mozilla/5.0 (X11; Linux x86_64; rv:140.0) Gecko/20100101 Firefox/140.0')
   ExtensionManagementWorker.registerMockRpc({
     'Extensions.getAllExtensions'() {
@@ -216,7 +216,34 @@ test('loadContent uses increased scroll sensitivity in Firefox', async () => {
     null,
   )
 
-  expect(result.scrollSensitivity).toBe(2.5)
+  expect(result.scrollSensitivity).toBe(1)
+})
+
+test('loadContentWithContext does not compound Firefox sensitivity with application scroll speed', async () => {
+  setNavigator('Mozilla/5.0 (X11; Linux x86_64; rv:140.0) Gecko/20100101 Firefox/140.0')
+  using mockRpc = ExtensionManagementWorker.registerMockRpc({
+    'Extensions.getAllExtensions'() {
+      return mockExtensions
+    },
+  })
+  const state: State = {
+    ...createDefaultState(),
+    initial: true,
+    platform: Remote,
+    uid: 42,
+    width: 500,
+  }
+  const { uid } = state
+  ExtensionLoading.create(uid)
+  ExtensionSearchViewStates.set(uid, state, state)
+  const loadCommand = ExtensionSearchViewStates.wrapAsyncCommand(loadContentWithContext)
+
+  await loadCommand(uid, null)
+
+  const { newState } = ExtensionSearchViewStates.get(uid)
+  expect(newState.scrollSensitivity).toBe(1)
+  expect(newState.allExtensions).toHaveLength(1)
+  expect(mockRpc.invocations).toEqual([['Extensions.getAllExtensions', '', Remote]])
 })
 
 test('loadContent uses normal scroll sensitivity in Chrome', async () => {

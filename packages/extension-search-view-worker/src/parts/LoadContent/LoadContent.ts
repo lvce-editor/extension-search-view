@@ -6,7 +6,6 @@ import * as GetViewletSize from '../GetViewletSize/GetViewletSize.ts'
 import * as HandleChange from '../HandleChange/HandleChange.ts'
 import * as HandleInput from '../HandleInput/HandleInput.ts'
 import * as InputSource from '../InputSource/InputSource.ts'
-import * as IsFirefox from '../IsFirefox/IsFirefox.ts'
 import * as NormalizeExtensions from '../NormalizeExtensions/NormalizeExtensions.ts'
 import * as RestoreState from '../RestoreState/RestoreState.ts'
 
@@ -18,7 +17,7 @@ export const loadContentWithContext = async (context: AsyncCommandContext<State>
     const { assetDir, platform, width } = initialState
     const { deltaY, searchValue: restoredSearchValue } = RestoreState.restoreState(savedState)
     const size = GetViewletSize.getViewletSize(width)
-    const scrollSensitivity = IsFirefox.getIsFirefox() ? 2.5 : 1
+    const scrollSensitivity = 1
     await context.updateState((state) => {
       const { initial } = state
       if (!initial) {
@@ -53,7 +52,7 @@ export const loadContent = async (state: State, savedState: unknown): Promise<St
   const allExtensions = await GetAllExtensions.getAllExtensions(assetDir, platform)
   const size = GetViewletSize.getViewletSize(width)
   const normalized = NormalizeExtensions.normalizeExtensions(allExtensions, platform, assetDir)
-  const scrollSensitivity = IsFirefox.getIsFirefox() ? 2.5 : 1
+  const scrollSensitivity = 1
   const updatedState = await HandleInput.handleInput(
     {
       ...state,
